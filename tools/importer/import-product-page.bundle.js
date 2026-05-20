@@ -595,13 +595,38 @@ var CustomImportScript = (() => {
     ".trustpilot-widget",
     // Bi-visibility tracking helpers
     '[class*="bi-visibility-"]',
-    // Cookie consent and geo banners
+    // Cookie consent, geo banners, and CHEQ debug overlay
     "#onetrust-banner-sdk",
     ".onetrust-pc-dark-filter",
     ".cookie-banner",
     ".geo-banner",
     ".bi-cookie-banner",
     "#cheq__cookie-preferences",
+    "#cheq__cookie-preferences--banner",
+    "#cheq__cookie-preferences--modal",
+    '[id^="cheq__"]',
+    '[class^="cheq__"]',
+    '[class^="cheqMini__"]',
+    ".cheq-debug",
+    "#cheq-dev",
+    '[id^="cheq-dev"]',
+    '[class^="cheq-dev"]',
+    "#cheqMini",
+    '[id^="cheqMini"]',
+    "#ensNotifyBanner",
+    ".ensNotifyBanner",
+    '[id^="ens"]',
+    // CHEQ-rendered Q&A modal anchor div with Zendesk style id
+    '[id^="ZN_"]',
+    // Bing UET tracking beacons
+    '[id^="batBeacon"]',
+    // Tracking pixels (Bing/MS UET, Adobe Audience Manager etc)
+    'img[src*="bat.bing.com"]',
+    'img[src*="demdex.net"]',
+    'img[src*="omtrdc.net"]',
+    'img[src*="doubleclick.net"]',
+    'img[src*="google-analytics.com"]',
+    'img[src*="googletagmanager.com"]',
     // Pre-content nav rows (top utility bar with Log in / Blog / language flag)
     ".navigation-top",
     ".navigation-header",
