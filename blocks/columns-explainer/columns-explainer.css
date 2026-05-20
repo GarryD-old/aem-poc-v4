@@ -49,9 +49,9 @@
 }
 
 /* Image column — center the illustration; cap its size on small screens.
- * Higher specificity than the text-col rules above so the picture/p reset
- * applies inside the image cell. */
-.columns-explainer .columns-explainer-img-col {
+ * Selectors match the same parent depth as the text-col rules above so
+ * specificity is unambiguously higher (no descending-specificity warning). */
+.columns-explainer > div > .columns-explainer-img-col {
   order: 0;
   display: flex;
   justify-content: center;
@@ -59,13 +59,13 @@
   width: 100%;
 }
 
-.columns-explainer .columns-explainer-img-col picture,
-.columns-explainer .columns-explainer-img-col p {
+.columns-explainer > div > .columns-explainer-img-col picture,
+.columns-explainer > div > .columns-explainer-img-col p {
   margin: 0;
   display: block;
 }
 
-.columns-explainer .columns-explainer-img-col img {
+.columns-explainer > div > .columns-explainer-img-col img {
   display: block;
   width: 100%;
   max-width: 320px;
@@ -112,12 +112,12 @@
     gap: 64px;
   }
 
-  .columns-explainer .columns-explainer-img-col {
+  .columns-explainer > div > .columns-explainer-img-col {
     flex: 0 0 40%;
     order: unset;
   }
 
-  .columns-explainer .columns-explainer-img-col img {
+  .columns-explainer > div > .columns-explainer-img-col img {
     max-width: 100%;
   }
 
