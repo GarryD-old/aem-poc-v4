@@ -11,18 +11,21 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-  --overlay-background-color:lightgrey;
+  /* colors - extracted from Figma frame 3831:297798 (AVG AntiTrack - Desktop) */
+  --background-color: #fff;
+  --light-color: #f3f5f7;
+  --dark-color: #0e1a2b;
+  --text-color: #1a1a1a;
+  --muted-text-color: #6b7280;
+  --link-color: #1976ff;
+  --link-hover-color: #0d5ad9;
+  --brand-color: #1ec55a;
+  --brand-hover-color: #17a84a;
+  --overlay-background-color: lightgrey;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --heading-font-family: roboto, roboto-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -183,14 +186,14 @@ button {
   margin: 12px 0;
   border: 2px solid transparent;
   border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  padding: 0.65em 1.6em;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
+  background-color: var(--brand-color);
   color: var(--background-color);
   cursor: pointer;
   overflow: hidden;
@@ -202,7 +205,7 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--brand-hover-color);
   cursor: pointer;
 }
 
@@ -259,8 +262,29 @@ main > .section:first-of-type {
 
 /* section metadata */
 main .section.light,
-main .section.highlight {
+main .section.highlight,
+main .section.grey {
   background-color: var(--light-color);
   margin: 0;
-  padding: 40px 0;
+  padding: 60px 0;
+}
+
+main .section.dark {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+  margin: 0;
+  padding: 80px 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--background-color);
+}
+
+main .section.dark a:any-link {
+  color: var(--brand-color);
 }

@@ -1,9 +1,11 @@
 /*
  * cards-illustrated variant
- * 3-up illustration-top cards on a light background.
+ * 3-up illustration-top cards (image > h3 > paragraph) for AVG AntiTrack.
+ * Sourced from Figma frame 3831:297798 — WYSIWYG card pattern (3831:297800).
  * Uses only :root tokens from styles/styles.css.
  */
 
+/* Cards group: stack on mobile, 3-up at desktop */
 .cards-illustrated > ul {
   list-style: none;
   margin: 0;
@@ -13,51 +15,82 @@
   gap: 24px;
 }
 
+/* Card: white surface, soft border, rounded corners, illustration sits flush at top */
 .cards-illustrated > ul > li {
-  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
+  background-color: var(--background-color);
+  border: 1px solid rgba(28 34 42 / 12%);
+  border-radius: 12px;
   overflow: hidden;
+  text-align: center;
 }
 
+/* Illustration: full card width, fixed aspect, sharp focus */
 .cards-illustrated .cards-illustrated-card-image {
   line-height: 0;
+  margin: 0;
+}
+
+.cards-illustrated .cards-illustrated-card-image picture,
+.cards-illustrated .cards-illustrated-card-image img {
+  display: block;
+  width: 100%;
 }
 
 .cards-illustrated .cards-illustrated-card-image img {
-  width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  display: block;
 }
 
+/* Body: comfortable padding around heading + paragraph */
 .cards-illustrated .cards-illustrated-card-body {
-  padding: 16px 0;
+  padding: 24px 24px 32px;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  color: var(--dark-color);
+  line-height: 1.4;
+  color: var(--muted-text-color);
 }
 
 .cards-illustrated .cards-illustrated-card-body h3,
 .cards-illustrated .cards-illustrated-card-body h4 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-m);
-  color: var(--text-color);
   margin: 0 0 12px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-color);
 }
 
 .cards-illustrated .cards-illustrated-card-body p {
   margin: 0;
 }
 
+.cards-illustrated .cards-illustrated-card-body p + p {
+  margin-top: 12px;
+}
+
+/* Tablet: 2-up to use available width before going 3-up */
 @media (width >= 600px) {
   .cards-illustrated > ul {
     grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
 }
 
+/* Desktop: 3-up grid with generous gap, larger card padding */
 @media (width >= 900px) {
   .cards-illustrated > ul {
     grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .cards-illustrated .cards-illustrated-card-body {
+    padding: 28px 32px 40px;
+  }
+
+  .cards-illustrated .cards-illustrated-card-body h3,
+  .cards-illustrated .cards-illustrated-card-body h4 {
+    margin-bottom: 16px;
   }
 }

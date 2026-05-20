@@ -1,7 +1,9 @@
 /*
  * cards-features variant
- * 2x2 feature blurb tiles on a soft grey backdrop, icon-left + text-right per tile.
- * Uses only :root tokens from styles/styles.css.
+ * 4-up feature blurb grid (Figma 3831:297798 — Product UI / advertisers).
+ * Each card: rounded rectangle on a soft light background containing a
+ * circular soft-tinted icon + H3 heading + paragraph.
+ * 1-col on mobile, 2x2 on desktop. Uses only :root tokens from styles.css.
  */
 
 .cards-features > ul {
@@ -14,44 +16,84 @@
 }
 
 .cards-features > ul > li {
-  background-color: var(--light-color);
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 80px 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
-  align-items: start;
+  padding: 24px;
+  border-radius: 16px;
+  background-color: var(--light-color);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
 }
 
 .cards-features .cards-features-card-image {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--background-color);
   line-height: 0;
 }
 
+.cards-features .cards-features-card-image picture,
 .cards-features .cards-features-card-image img {
-  width: 64px;
-  height: 64px;
+  display: block;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
 .cards-features .cards-features-card-body {
+  flex: 1;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  color: var(--dark-color);
+  color: var(--muted-text-color);
 }
 
 .cards-features .cards-features-card-body h3,
 .cards-features .cards-features-card-body h4 {
+  margin: 0 0 8px;
   font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.25;
   color: var(--text-color);
-  margin: 0 0 8px;
 }
 
 .cards-features .cards-features-card-body p {
   margin: 0;
+  line-height: 1.5;
+  color: var(--muted-text-color);
 }
 
-@media (width >= 600px) {
+.cards-features .cards-features-card-body p + p {
+  margin-top: 8px;
+}
+
+@media (width >= 900px) {
   .cards-features > ul {
     grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .cards-features > ul > li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px;
+  }
+
+  .cards-features .cards-features-card-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .cards-features .cards-features-card-image picture,
+  .cards-features .cards-features-card-image img {
+    width: 56px;
+    height: 56px;
   }
 }

@@ -1,77 +1,137 @@
 /*
  * columns-explainer variant
- * Two-column explainer (image left, text/list right) for use inside a dark section.
+ * Two-column explainer (image left, heading + body + bullet list right) for use
+ * inside a dark section. Section.dark already supplies background, text and
+ * heading colors, so this block only handles layout and list bullet styling.
  * Uses only :root tokens from styles/styles.css.
  */
 
+/* Constrain the inner width on the wrapper without overriding section padding */
+.columns-explainer {
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+/* Each row of the block stacks vertically by default (mobile) */
 .columns-explainer > div {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  gap: 32px;
 }
 
-.columns-explainer img {
+/* Image column — center the illustration; cap its size on small screens */
+.columns-explainer .columns-explainer-img-col {
+  order: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+}
+
+.columns-explainer .columns-explainer-img-col picture,
+.columns-explainer .columns-explainer-img-col p {
+  margin: 0;
   display: block;
 }
 
+.columns-explainer .columns-explainer-img-col img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* Text column — heading, paragraphs, list */
 .columns-explainer > div > div {
   order: 1;
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
-  color: var(--background-color);
+  width: 100%;
 }
 
 .columns-explainer > div > div h2,
 .columns-explainer > div > div h3 {
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l);
-  color: var(--background-color);
+  font-size: var(--heading-font-size-xl);
   margin: 0 0 16px;
+  line-height: 1.15;
 }
 
 .columns-explainer > div > div p {
-  margin: 0 0 12px;
-  color: var(--background-color);
+  margin: 0 0 16px;
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
 }
 
+.columns-explainer > div > div p:last-of-type {
+  margin-bottom: 24px;
+}
+
+/* Bullet list — custom markers via ::before so we don't depend on any assets */
 .columns-explainer > div > div ul {
-  margin: 16px 0 0;
+  margin: 8px 0 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 16px;
-  color: var(--background-color);
+  grid-template-columns: 1fr;
+  gap: 12px 24px;
 }
 
 .columns-explainer > div > div ul li {
-  padding: 4px 0;
+  position: relative;
+  padding: 0 0 0 28px;
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-xs);
+  font-size: var(--body-font-size-s);
+  line-height: 1.4;
 }
 
-.columns-explainer > div > div a {
-  color: var(--link-color);
+.columns-explainer > div > div ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
 }
 
-.columns-explainer > div > div a:hover {
-  color: var(--link-hover-color);
-}
+/* Links inside the explainer — section.dark already styles these green;
+   keep hover from base styles. */
 
-.columns-explainer > div > .columns-explainer-img-col {
-  order: 0;
-}
-
+/* Desktop: side-by-side two-column layout */
 @media (width >= 900px) {
   .columns-explainer > div {
-    align-items: center;
     flex-direction: row;
-    gap: 48px;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .columns-explainer .columns-explainer-img-col {
+    flex: 0 0 40%;
+    order: unset;
+  }
+
+  .columns-explainer .columns-explainer-img-col img {
+    max-width: 100%;
   }
 
   .columns-explainer > div > div {
-    flex: 1;
+    flex: 1 1 60%;
     order: unset;
+  }
+
+  .columns-explainer > div > div h2,
+  .columns-explainer > div > div h3 {
+    font-size: var(--heading-font-size-xl);
+    margin: 0 0 20px;
+  }
+
+  /* 8-item list reads better as a two-column grid on wide screens */
+  .columns-explainer > div > div ul {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 32px;
+    margin-top: 12px;
   }
 }

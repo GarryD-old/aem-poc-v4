@@ -1,81 +1,211 @@
 /*
  * cards-pricing variant
- * Two pricing tiles side-by-side, light backdrop, prominent price.
- * Uses only :root tokens from styles/styles.css.
+ * Two pricing tiles displayed side-by-side inside a single light cream/off-white
+ * panel with a vertical divider between them. Per Figma frame 3831:297798
+ * (nodes 3831:322311 hero pricing and 3831:301505 before-footer pricing).
+ *
+ * Each card stack (centered):
+ *   platform icon(s) > plan name (h3) > price/year (strong) >
+ *   "It works out as X/month" > blue rounded "Buy now" button.
+ *
+ * Constraints: only :root tokens, no new variables, no hard-coded hex
+ * (transparent / currentColor / rgba shadow only). Mobile-first.
  */
 
+/* Panel: hosts both cards inside a single rounded surface */
 .cards-pricing > ul {
   list-style: none;
-  margin: 0 auto;
-  padding: 0;
+  margin: 24px auto 0;
+  padding: 24px 16px;
+  max-width: 1100px;
+  background-color: var(--light-color);
+  border-radius: 16px;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
-  max-width: 960px;
+  gap: 16px;
 }
 
+/* Card: vertical stack, centered content */
 .cards-pricing > ul > li {
-  border: 1px solid var(--light-color);
-  background-color: var(--background-color);
-  padding: 24px;
-  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 16px 12px;
+  background-color: transparent;
+  border: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
   align-items: center;
+  text-align: center;
+  gap: 8px;
 }
 
+/* Image cell: row of platform icons, sized small */
 .cards-pricing .cards-pricing-card-image {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 4px;
   line-height: 0;
 }
 
+.cards-pricing .cards-pricing-card-image p {
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-pricing .cards-pricing-card-image picture,
 .cards-pricing .cards-pricing-card-image img {
+  display: inline-block;
   width: auto;
-  max-width: 80px;
+  max-width: 24px;
+  max-height: 24px;
   height: auto;
   object-fit: contain;
 }
 
+/* Body cell: typography + CTA */
 .cards-pricing .cards-pricing-card-body {
+  width: 100%;
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Plan name */
 .cards-pricing .cards-pricing-card-body h3 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-l);
-  color: var(--text-color);
-  margin: 0 0 12px;
-}
-
-.cards-pricing .cards-pricing-card-body p {
   margin: 0 0 8px;
-  color: var(--dark-color);
-}
-
-.cards-pricing .cards-pricing-card-body strong {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.25;
   color: var(--text-color);
 }
 
-.cards-pricing .cards-pricing-card-body a {
+/* Reset paragraph margins inside body — control with flex gap */
+.cards-pricing .cards-pricing-card-body p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+/* Old / current price (authored as <strong>) */
+.cards-pricing .cards-pricing-card-body strong {
   display: inline-block;
-  margin-top: 12px;
-  padding: 12px 28px;
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* The "It works out as X/month" line — large, prominent monthly price.
+ * Authored as the second <p> inside the body cell. After EDS auto-decoration,
+ * the third <p><a> becomes a .button-container, so this remains p:nth-of-type(2). */
+.cards-pricing .cards-pricing-card-body p:nth-of-type(2) {
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  color: var(--text-color);
+  line-height: 1.15;
+  margin-top: 4px;
+}
+
+/* Buy now CTA — blue (link-color), pill, white text.
+ * EDS auto-decorates standalone <p><a> as a.button + .button-container,
+ * so we must override the global a.button (which is brand-color/green). */
+.cards-pricing .cards-pricing-card-body .button-container {
+  margin: 8px 0 4px;
+  text-align: center;
+  width: 100%;
+}
+
+.cards-pricing .cards-pricing-card-body a,
+.cards-pricing .cards-pricing-card-body a.button:any-link,
+main .cards-pricing .cards-pricing-card-body a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  padding: 0.65em 2.4em;
+  border: 2px solid transparent;
+  border-radius: 2.4em;
   background-color: var(--link-color);
   color: var(--background-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
   text-decoration: none;
-  border-radius: 4px;
-  font-family: var(--heading-font-family);
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.cards-pricing .cards-pricing-card-body a:hover {
+.cards-pricing .cards-pricing-card-body a:hover,
+.cards-pricing .cards-pricing-card-body a.button:hover,
+.cards-pricing .cards-pricing-card-body a.button:focus,
+main .cards-pricing .cards-pricing-card-body a.button:hover,
+main .cards-pricing .cards-pricing-card-body a.button:focus {
   background-color: var(--link-hover-color);
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+/* Inside dark sections the panel keeps its light background — overrides
+ * inherited light text color from the section. */
+main .section.dark .cards-pricing > ul,
+main .section.dark .cards-pricing > ul > li,
+main .section.dark .cards-pricing .cards-pricing-card-body,
+main .section.dark .cards-pricing .cards-pricing-card-body p,
+main .section.dark .cards-pricing .cards-pricing-card-body strong {
+  color: var(--text-color);
+}
+
+main .section.dark .cards-pricing .cards-pricing-card-body h3 {
+  color: var(--text-color);
+}
+
+main .section.dark .cards-pricing .cards-pricing-card-body a:any-link,
+main .section.dark .cards-pricing .cards-pricing-card-body a.button:any-link {
   color: var(--background-color);
 }
 
-@media (width >= 600px) {
+/* Desktop: two cards side-by-side with a vertical divider between them */
+@media (width >= 900px) {
   .cards-pricing > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 40px 24px;
+    border-radius: 20px;
+  }
+
+  .cards-pricing > ul > li {
+    padding: 8px 24px;
+  }
+
+  /* Vertical divider between the two cards (only when there are 2+) */
+  .cards-pricing > ul > li + li {
+    border-left: 1px solid var(--muted-text-color);
+  }
+
+  .cards-pricing .cards-pricing-card-image picture,
+  .cards-pricing .cards-pricing-card-image img {
+    max-width: 28px;
+    max-height: 28px;
+  }
+
+  .cards-pricing .cards-pricing-card-body h3 {
+    font-size: var(--heading-font-size-s);
+  }
+
+  .cards-pricing .cards-pricing-card-body p:nth-of-type(2) {
+    font-size: var(--heading-font-size-l);
+  }
+
+  .cards-pricing .cards-pricing-card-body a,
+  .cards-pricing .cards-pricing-card-body a.button:any-link,
+  main .cards-pricing .cards-pricing-card-body a.button:any-link {
+    padding: 0.65em 3em;
+    font-size: var(--body-font-size-s);
   }
 }

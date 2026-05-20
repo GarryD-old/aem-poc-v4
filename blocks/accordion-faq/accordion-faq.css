@@ -1,84 +1,135 @@
 /*
  * accordion-faq variant
- * FAQ accordion sitting on a soft grey container.
+ * FAQ accordion: white rounded card containing a stack of Q&A items
+ * separated by thin divider lines. Each question has a green outlined
+ * "plus" toggle on the right that becomes a "minus" when expanded.
+ *
+ * Sits inside a section with style=grey (background already provided).
  * Uses only :root tokens from styles/styles.css.
  */
 
-.accordion-faq details {
-  border: 1px solid var(--light-color);
+.accordion-faq {
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: 12px;
   background-color: var(--background-color);
+  overflow: hidden;
 }
 
-.accordion-faq details + details {
-  margin-top: 16px;
+.accordion-faq details {
+  border-top: 1px solid var(--light-color);
 }
 
-.accordion-faq details p {
-  margin-bottom: 0.8em;
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
-  color: var(--dark-color);
+.accordion-faq details:first-of-type {
+  border-top: 0;
 }
 
+/* question row */
 .accordion-faq details summary {
   position: relative;
-  padding: 16px 46px 16px 16px;
+  display: flex;
+  align-items: center;
+  padding: 24px 80px 24px 24px;
   cursor: pointer;
   list-style: none;
-  overflow: auto;
-  transition: background-color 0.2s;
   font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-s);
-  color: var(--text-color);
-}
-
-.accordion-faq details[open] summary {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary:focus,
-.accordion-faq details summary:hover {
-  background-color: var(--light-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  color: var(--dark-color);
+  line-height: 1.4;
+  transition: background-color 0.2s ease;
 }
 
 .accordion-faq details summary::-webkit-details-marker {
   display: none;
 }
 
+.accordion-faq details summary:hover,
+.accordion-faq details summary:focus-visible {
+  background-color: var(--light-color);
+  outline: none;
+}
+
+/* plus / minus toggle button on the right */
 .accordion-faq details summary::after {
   content: '';
   position: absolute;
   top: 50%;
-  right: 18px;
-  transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
-  border: 2px solid var(--text-color);
-  border-width: 2px 2px 0 0;
-  transition: transform 0.2s;
+  right: 24px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--brand-color);
+  border-radius: 8px;
+
+  /* Plus icon drawn with crossed gradients (no hex needed) */
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor);
+  background-size: 14px 2px, 2px 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--brand-color);
+  transition: transform 0.25s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .accordion-faq details[open] summary::after {
-  transform: translateY(-25%) rotate(-45deg);
+  /* collapse to minus by hiding the vertical bar */
+  background-size: 14px 2px, 0 0;
+  transform: translateY(-50%) rotate(180deg);
 }
 
-.accordion-faq details .accordion-faq-item-body {
-  padding: 16px;
+.accordion-faq details summary:hover::after,
+.accordion-faq details summary:focus-visible::after {
+  border-color: var(--brand-hover-color);
+  color: var(--brand-hover-color);
 }
 
-.accordion-faq details:not([open]) .accordion-faq-item-body {
-  display: none;
+/* answer body */
+.accordion-faq .accordion-faq-item-body {
+  padding: 0 24px 24px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-.accordion-faq details[open] .accordion-faq-item-body {
-  border-top: 1px solid var(--light-color);
-  background-color: var(--background-color);
+.accordion-faq .accordion-faq-item-body p {
+  margin-top: 0;
+  margin-bottom: 0.8em;
 }
 
-.accordion-faq details a {
+.accordion-faq .accordion-faq-item-body p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-faq .accordion-faq-item-body a {
   color: var(--link-color);
 }
 
-.accordion-faq details a:hover {
+.accordion-faq .accordion-faq-item-body a:hover {
   color: var(--link-hover-color);
+}
+
+@media (width >= 900px) {
+  .accordion-faq details summary {
+    padding: 32px 96px 32px 32px;
+    font-size: var(--body-font-size-m);
+  }
+
+  .accordion-faq details summary::after {
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background-size: 18px 2px, 2px 18px;
+    border-radius: 10px;
+  }
+
+  .accordion-faq details[open] summary::after {
+    background-size: 18px 2px, 0 0;
+  }
+
+  .accordion-faq .accordion-faq-item-body {
+    padding: 0 32px 32px;
+  }
 }
