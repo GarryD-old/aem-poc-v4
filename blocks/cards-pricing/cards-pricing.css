@@ -122,8 +122,7 @@
 }
 
 .cards-pricing .cards-pricing-card-body a,
-.cards-pricing .cards-pricing-card-body a.button:any-link,
-main .cards-pricing .cards-pricing-card-body a.button:any-link {
+.cards-pricing .cards-pricing-card-body a.button:any-link {
   display: inline-block;
   margin: 0;
   padding: 0.65em 2.4em;
@@ -142,10 +141,9 @@ main .cards-pricing .cards-pricing-card-body a.button:any-link {
 }
 
 .cards-pricing .cards-pricing-card-body a:hover,
+.cards-pricing .cards-pricing-card-body a:focus,
 .cards-pricing .cards-pricing-card-body a.button:hover,
-.cards-pricing .cards-pricing-card-body a.button:focus,
-main .cards-pricing .cards-pricing-card-body a.button:hover,
-main .cards-pricing .cards-pricing-card-body a.button:focus {
+.cards-pricing .cards-pricing-card-body a.button:focus {
   background-color: var(--link-hover-color);
   color: var(--background-color);
   text-decoration: none;
@@ -203,8 +201,7 @@ main .section.dark .cards-pricing .cards-pricing-card-body a.button:any-link {
   }
 
   .cards-pricing .cards-pricing-card-body a,
-  .cards-pricing .cards-pricing-card-body a.button:any-link,
-  main .cards-pricing .cards-pricing-card-body a.button:any-link {
+  .cards-pricing .cards-pricing-card-body a.button:any-link {
     padding: 0.65em 3em;
     font-size: var(--body-font-size-s);
   }

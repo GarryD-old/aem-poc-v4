@@ -64,8 +64,8 @@
 
   /* Plus icon drawn with crossed gradients (no hex needed) */
   background-image:
-    linear-gradient(currentColor, currentColor),
-    linear-gradient(currentColor, currentColor);
+    linear-gradient(currentcolor, currentcolor),
+    linear-gradient(currentcolor, currentcolor);
   background-size: 14px 2px, 2px 14px;
   background-position: center;
   background-repeat: no-repeat;

@@ -20,29 +20,9 @@
   gap: 32px;
 }
 
-/* Image column — center the illustration; cap its size on small screens */
-.columns-explainer .columns-explainer-img-col {
-  order: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.columns-explainer .columns-explainer-img-col picture,
-.columns-explainer .columns-explainer-img-col p {
-  margin: 0;
-  display: block;
-}
-
-.columns-explainer .columns-explainer-img-col img {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-}
-
-/* Text column — heading, paragraphs, list */
+/* Text column — heading, paragraphs, list. Defined first so the more
+ * specific image-col rules below override correctly without descending
+ * specificity warnings. */
 .columns-explainer > div > div {
   order: 1;
   font-family: var(--body-font-family);
@@ -66,6 +46,30 @@
 
 .columns-explainer > div > div p:last-of-type {
   margin-bottom: 24px;
+}
+
+/* Image column — center the illustration; cap its size on small screens.
+ * Higher specificity than the text-col rules above so the picture/p reset
+ * applies inside the image cell. */
+.columns-explainer .columns-explainer-img-col {
+  order: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.columns-explainer .columns-explainer-img-col picture,
+.columns-explainer .columns-explainer-img-col p {
+  margin: 0;
+  display: block;
+}
+
+.columns-explainer .columns-explainer-img-col img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
 }
 
 /* Bullet list — custom markers via ::before so we don't depend on any assets */
