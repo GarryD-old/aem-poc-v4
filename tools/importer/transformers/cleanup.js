@@ -35,11 +35,16 @@ const BEFORE_REMOVE_SELECTORS = [
   'header',
   '.header',
   '#header',
-  // Page footer
+  // Page footer (the AVG site has both #bottom holding the link menu and
+  // #footer holding the copyright row — both must go)
+  '#bottom',
   '#footer',
   'footer',
   '.footer',
   '.copyright-row',
+  '.footer-links',
+  '.login-section',
+  '.bi-nav-footer-links',
   // Language switcher modal
   '.language-selector',
   '#language-selector',
