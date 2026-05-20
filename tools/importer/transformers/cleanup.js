@@ -111,14 +111,19 @@ export default function transform(hookName, element, payload) {
     //    BEFORE block parsing so block parsers see only authorable content.
     WebImporter.DOMUtils.remove(element, BEFORE_REMOVE_SELECTORS);
 
-    // 2) Remove duplicate hidden buy variants inside action boxes.
-    //    Verified in cleaned.html: each .actionbox holds .js-pc + .js-mac +
-    //    .js-android + .js-ios siblings (lines 636-651, 658-660, 1007-1039).
-    //    Keep only .js-pc (the default visible variant) and drop the rest.
-    const hiddenBuyVariants = element.querySelectorAll(
-      '.actionbox .js-mac, .actionbox .js-android, .actionbox .js-ios',
+    // 2) Remove duplicate hidden buy variants inside action boxes AND
+    //    duplicate platform-specific banner illustrations.
+    //    Verified in cleaned.html:
+    //    - .actionbox holds .js-pc + .js-mac + .js-android + .js-ios buy CTAs
+    //    - .banner under #advertisers holds the same 4 platform variants of
+    //      the product UI illustration (img-pc.png / img-mac.png) once for
+    //      each platform class. Authoring shows only the .js-pc variant by
+    //      default, so we drop the other 3.
+    const hiddenPlatformVariants = element.querySelectorAll(
+      '.actionbox .js-mac, .actionbox .js-android, .actionbox .js-ios, '
+      + '.banner .js-mac, .banner .js-android, .banner .js-ios',
     );
-    hiddenBuyVariants.forEach((node) => {
+    hiddenPlatformVariants.forEach((node) => {
       if (node && node.parentNode) node.remove();
     });
 

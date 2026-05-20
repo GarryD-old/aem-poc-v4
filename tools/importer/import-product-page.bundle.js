@@ -119,7 +119,11 @@ var CustomImportScript = (() => {
       name: "hero-product",
       cells
     });
-    element.replaceWith(block);
+    const preserved = [
+      ...element.querySelectorAll(":scope .actionbox.actionbox-facelift, :scope .money-back")
+    ];
+    preserved.forEach((node) => node.remove());
+    element.replaceChildren(block, ...preserved);
   }
 
   // tools/importer/parsers/cards-pricing.js
@@ -647,10 +651,10 @@ var CustomImportScript = (() => {
   function transform(hookName, element, payload) {
     if (hookName === TransformHook.beforeTransform) {
       WebImporter.DOMUtils.remove(element, BEFORE_REMOVE_SELECTORS);
-      const hiddenBuyVariants = element.querySelectorAll(
-        ".actionbox .js-mac, .actionbox .js-android, .actionbox .js-ios"
+      const hiddenPlatformVariants = element.querySelectorAll(
+        ".actionbox .js-mac, .actionbox .js-android, .actionbox .js-ios, .banner .js-mac, .banner .js-android, .banner .js-ios"
       );
-      hiddenBuyVariants.forEach((node) => {
+      hiddenPlatformVariants.forEach((node) => {
         if (node && node.parentNode) node.remove();
       });
       element.querySelectorAll('img[src^="data:"]').forEach((img) => {

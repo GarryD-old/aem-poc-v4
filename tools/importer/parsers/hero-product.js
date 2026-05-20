@@ -130,11 +130,25 @@ export default function parse(element, { document }) {
   cells.push([textFrag]);
 
   // ---------------------------------------------------------------------------
-  // 4. Create block and replace the source element
+  // 4. Create block and replace the section's hero content only
   // ---------------------------------------------------------------------------
+  // The hero <section id="top"> also contains sibling content that belongs to
+  // OTHER blocks/parsers in the same section:
+  //   - .actionbox.actionbox-facelift  -> cards-pricing parser
+  //   - .money-back                    -> default content
+  // So we must NOT call element.replaceWith() (which would destroy them).
+  // Instead, replace the section's children with the new hero block followed
+  // by any preserved sibling nodes, keeping the section#top wrapper intact so
+  // downstream selectors continue to resolve.
   const block = WebImporter.Blocks.createBlock(document, {
     name: 'hero-product',
     cells,
   });
-  element.replaceWith(block);
+
+  const preserved = [
+    ...element.querySelectorAll(':scope .actionbox.actionbox-facelift, :scope .money-back'),
+  ];
+  // Detach so they're not destroyed by replaceChildren()
+  preserved.forEach((node) => node.remove());
+  element.replaceChildren(block, ...preserved);
 }
