@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-illustrated",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-20T10:09:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-eu/antitrack",
+    "originPage": "AVG AntiTrack product page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "illustration-cards",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "top illustration + heading + paragraph",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "3-up illustration cards",
+      "explainer cards with hero illustrations",
+      "magazine-style content tiles"
+    ],
+    "notSuitableFor": [
+      "icon-led feature blurbs",
+      "pricing tiles",
+      "stat callouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-eu/antitrack"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-20T10:09:00.000Z"
+  }
+}

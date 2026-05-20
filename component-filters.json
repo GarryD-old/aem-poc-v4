@@ -28,9 +28,39 @@
     ]
   },
   {
+    "id": "accordion-faq",
+    "components": [
+      "accordion-faq-item"
+    ]
+  },
+  {
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "cards-features",
+    "components": [
+      "card-feature"
+    ]
+  },
+  {
+    "id": "cards-illustrated",
+    "components": [
+      "card-illustrated"
+    ]
+  },
+  {
+    "id": "cards-pricing",
+    "components": [
+      "card-pricing"
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "components": [
+      "card-stat"
     ]
   },
   {
@@ -40,9 +70,30 @@
     ]
   },
   {
+    "id": "carousel-articles",
+    "components": [
+      "carousel-articles-item"
+    ]
+  },
+  {
     "id": "carousel",
     "components": [
       "carousel-item"
+    ]
+  },
+  {
+    "id": "columns-explainer",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
     ]
   },
   {
@@ -58,6 +109,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "table-comparison",
+    "components": [
+      "table-comparison-row"
     ]
   },
   {

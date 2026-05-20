@@ -1,0 +1,66 @@
+/*
+ * cards-stats variant
+ * Four-up icon + statistic + caption tiles, light backdrop.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.cards-stats > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-stats > ul > li {
+  background-color: var(--background-color);
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards-stats .cards-stats-card-image {
+  line-height: 0;
+}
+
+.cards-stats .cards-stats-card-image img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.cards-stats .cards-stats-card-body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--dark-color);
+}
+
+.cards-stats .cards-stats-card-body h3,
+.cards-stats .cards-stats-card-body strong {
+  display: block;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xxl);
+  color: var(--link-color);
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+
+.cards-stats .cards-stats-card-body p {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

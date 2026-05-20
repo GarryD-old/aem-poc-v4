@@ -1,0 +1,84 @@
+/*
+ * table-comparison variant
+ * Product comparison table with icon-headed columns.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.table-comparison.block {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-comparison.block table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  background-color: var(--background-color);
+}
+
+@media (width >= 600px) {
+  .table-comparison.block table {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+@media (width >= 900px) {
+  .table-comparison.block table {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+.table-comparison.block table thead tr {
+  border-top: 2px solid var(--dark-color);
+  border-bottom: 2px solid var(--dark-color);
+}
+
+.table-comparison.block table tbody tr {
+  border-bottom: 1px solid var(--light-color);
+}
+
+.table-comparison.block table th {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.table-comparison.block table thead th img {
+  display: block;
+  margin: 0 auto 8px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.table-comparison.block table th,
+.table-comparison.block table td {
+  padding: 12px 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-comparison.block table tbody tr th[scope='row'],
+.table-comparison.block table tbody tr td:first-child,
+.table-comparison.block table tbody tr th:first-child {
+  text-align: left;
+  color: var(--text-color);
+}
+
+.table-comparison.block table td img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.table-comparison table th p,
+.table-comparison table td p {
+  margin: 0;
+}
+
+.table-comparison table td p + p {
+  margin-top: 0.25em;
+}

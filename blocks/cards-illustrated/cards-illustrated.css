@@ -1,0 +1,63 @@
+/*
+ * cards-illustrated variant
+ * 3-up illustration-top cards on a light background.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.cards-illustrated > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-illustrated > ul > li {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cards-illustrated .cards-illustrated-card-image {
+  line-height: 0;
+}
+
+.cards-illustrated .cards-illustrated-card-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.cards-illustrated .cards-illustrated-card-body {
+  padding: 16px 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--dark-color);
+}
+
+.cards-illustrated .cards-illustrated-card-body h3,
+.cards-illustrated .cards-illustrated-card-body h4 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-m);
+  color: var(--text-color);
+  margin: 0 0 12px;
+}
+
+.cards-illustrated .cards-illustrated-card-body p {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .cards-illustrated > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-illustrated > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

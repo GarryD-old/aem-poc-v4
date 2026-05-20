@@ -1,0 +1,50 @@
+{
+  "definitions": [
+    {
+      "title": "Columns (explainer)",
+      "id": "columns-explainer",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/columns/v1/columns",
+            "template": {
+              "columns": "2",
+              "rows": "1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns-explainer",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "2",
+          "label": "Columns"
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "1",
+          "label": "Rows"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns-explainer",
+      "components": ["column"]
+    },
+    {
+      "id": "column",
+      "components": ["text", "image", "button", "title"]
+    }
+  ]
+}

@@ -83,6 +83,38 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Accordion (FAQ)",
+          "id": "accordion-faq",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Accordion (FAQ)",
+                  "filter": "accordion-faq"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "FAQ Item",
+          "id": "accordion-faq-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "FAQ Item",
+                  "model": "accordion-faq-item",
+                  "summary": "Question",
+                  "text": "<p>Answer goes here.</p>"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Accordion",
           "id": "accordion",
           "plugins": {
@@ -109,6 +141,126 @@
                   "model": "accordion-item",
                   "summary": "Lorem Ipsum",
                   "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur volutpat consequat dui, sit amet ...</p>"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards (features)",
+          "id": "cards-features",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards (features)",
+                  "filter": "cards-features"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Feature Card",
+          "id": "card-feature",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Feature Card",
+                  "model": "card-feature"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards (illustrated)",
+          "id": "cards-illustrated",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards (illustrated)",
+                  "filter": "cards-illustrated"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Illustrated Card",
+          "id": "card-illustrated",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Illustrated Card",
+                  "model": "card-illustrated"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards (pricing)",
+          "id": "cards-pricing",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards (pricing)",
+                  "filter": "cards-pricing"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Pricing Card",
+          "id": "card-pricing",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Pricing Card",
+                  "model": "card-pricing"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards (stats)",
+          "id": "cards-stats",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards (stats)",
+                  "filter": "cards-stats"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stat Card",
+          "id": "card-stat",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Stat Card",
+                  "model": "card-stat"
                 }
               }
             }
@@ -145,6 +297,36 @@
           }
         },
         {
+          "title": "Carousel (articles)",
+          "id": "carousel-articles",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel (articles)",
+                  "filter": "carousel-articles"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Article Slide",
+          "id": "carousel-articles-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Article Slide",
+                  "model": "carousel-articles-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Carousel",
           "id": "carousel",
           "plugins": {
@@ -153,7 +335,6 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Carousel",
-                  "model": "carousel",
                   "filter": "carousel"
                 }
               }
@@ -170,6 +351,21 @@
                 "template": {
                   "name": "Carousel Slide",
                   "model": "carousel-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Columns (explainer)",
+          "id": "columns-explainer",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/columns/v1/columns",
+                "template": {
+                  "columns": "2",
+                  "rows": "1"
                 }
               }
             }
@@ -236,6 +432,21 @@
           }
         },
         {
+          "title": "Hero (product)",
+          "id": "hero-product",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero (product)",
+                  "model": "hero-product"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
@@ -291,6 +502,42 @@
                   "name": "Search",
                   "model": "search",
                   "filter": "search"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Table (comparison)",
+          "id": "table-comparison",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Table (comparison)",
+                  "model": "table-comparison",
+                  "filter": "table-comparison"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Comparison Row",
+          "id": "table-comparison-row",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Comparison Row",
+                  "model": "table-comparison-row",
+                  "column1text": "Feature",
+                  "column2text": "",
+                  "column3text": "",
+                  "column4text": "",
+                  "column5text": ""
                 }
               }
             }

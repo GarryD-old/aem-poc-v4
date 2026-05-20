@@ -1,0 +1,77 @@
+/*
+ * columns-explainer variant
+ * Two-column explainer (image left, text/list right) for use inside a dark section.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.columns-explainer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-explainer img {
+  width: 100%;
+  display: block;
+}
+
+.columns-explainer > div > div {
+  order: 1;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--background-color);
+}
+
+.columns-explainer > div > div h2,
+.columns-explainer > div > div h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  color: var(--background-color);
+  margin: 0 0 16px;
+}
+
+.columns-explainer > div > div p {
+  margin: 0 0 12px;
+  color: var(--background-color);
+}
+
+.columns-explainer > div > div ul {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  color: var(--background-color);
+}
+
+.columns-explainer > div > div ul li {
+  padding: 4px 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+}
+
+.columns-explainer > div > div a {
+  color: var(--link-color);
+}
+
+.columns-explainer > div > div a:hover {
+  color: var(--link-hover-color);
+}
+
+.columns-explainer > div > .columns-explainer-img-col {
+  order: 0;
+}
+
+@media (width >= 900px) {
+  .columns-explainer > div {
+    align-items: center;
+    flex-direction: row;
+    gap: 48px;
+  }
+
+  .columns-explainer > div > div {
+    flex: 1;
+    order: unset;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "variantName": "table-comparison",
+  "baseBlock": "table",
+  "version": "1.0.0",
+  "created": "2026-05-20T10:09:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-eu/antitrack",
+    "originPage": "AVG AntiTrack product page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "comparison",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "header row with icons + product names; body rows with feature labels and tick/blank cells",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product/feature comparison tables",
+      "VPN/antivirus/etc. competitor comparison rows",
+      "tabular feature matrices"
+    ],
+    "notSuitableFor": [
+      "data tables without icons (use vanilla table)",
+      "key/value spec sheets",
+      "dense numerical reports"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-eu/antitrack"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-20T10:09:00.000Z"
+  }
+}

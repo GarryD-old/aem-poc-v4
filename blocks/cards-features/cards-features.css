@@ -1,0 +1,57 @@
+/*
+ * cards-features variant
+ * 2x2 feature blurb tiles on a soft grey backdrop, icon-left + text-right per tile.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.cards-features > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-features > ul > li {
+  background-color: var(--light-color);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.cards-features .cards-features-card-image {
+  line-height: 0;
+}
+
+.cards-features .cards-features-card-image img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.cards-features .cards-features-card-body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--dark-color);
+}
+
+.cards-features .cards-features-card-body h3,
+.cards-features .cards-features-card-body h4 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  color: var(--text-color);
+  margin: 0 0 8px;
+}
+
+.cards-features .cards-features-card-body p {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .cards-features > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

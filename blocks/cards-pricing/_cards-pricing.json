@@ -1,0 +1,68 @@
+{
+  "definitions": [
+    {
+      "title": "Cards (pricing)",
+      "id": "cards-pricing",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards (pricing)",
+              "filter": "cards-pricing"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Pricing Card",
+      "id": "card-pricing",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Pricing Card",
+              "model": "card-pricing"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "card-pricing",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Platform Icon",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Icon Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Card Body (plan, price, monthly equivalent, CTA)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-pricing",
+      "components": ["card-pricing"]
+    }
+  ]
+}

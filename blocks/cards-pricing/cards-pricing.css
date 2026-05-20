@@ -1,0 +1,81 @@
+/*
+ * cards-pricing variant
+ * Two pricing tiles side-by-side, light backdrop, prominent price.
+ * Uses only :root tokens from styles/styles.css.
+ */
+
+.cards-pricing > ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 960px;
+}
+
+.cards-pricing > ul > li {
+  border: 1px solid var(--light-color);
+  background-color: var(--background-color);
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.cards-pricing .cards-pricing-card-image {
+  line-height: 0;
+}
+
+.cards-pricing .cards-pricing-card-image img {
+  width: auto;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+.cards-pricing .cards-pricing-card-body {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+}
+
+.cards-pricing .cards-pricing-card-body h3 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  color: var(--text-color);
+  margin: 0 0 12px;
+}
+
+.cards-pricing .cards-pricing-card-body p {
+  margin: 0 0 8px;
+  color: var(--dark-color);
+}
+
+.cards-pricing .cards-pricing-card-body strong {
+  color: var(--text-color);
+}
+
+.cards-pricing .cards-pricing-card-body a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 28px;
+  background-color: var(--link-color);
+  color: var(--background-color);
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: var(--heading-font-family);
+}
+
+.cards-pricing .cards-pricing-card-body a:hover {
+  background-color: var(--link-hover-color);
+  color: var(--background-color);
+}
+
+@media (width >= 600px) {
+  .cards-pricing > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

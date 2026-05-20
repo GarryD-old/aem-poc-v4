@@ -1,0 +1,20 @@
+{
+  "status": "success",
+  "url": "https://www.avg.com/en-eu/antitrack",
+  "path": "antitrack",
+  "timestamp": "2026-05-20T10:41:24.671Z",
+  "title": "Anti-Tracking Software: Block & Remove Cookies | AVG",
+  "template": "product-page",
+  "blocks": [
+    "hero-product",
+    "cards-pricing",
+    "cards-pricing",
+    "cards-stats",
+    "columns-explainer",
+    "cards-features",
+    "cards-illustrated",
+    "table-comparison",
+    "accordion-faq",
+    "carousel-articles"
+  ]
+}

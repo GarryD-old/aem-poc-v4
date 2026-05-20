@@ -1,0 +1,39 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion",
+  "version": "1.0.0",
+  "created": "2026-05-20T10:09:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-eu/antitrack",
+    "originPage": "AVG AntiTrack product page",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "faq",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "question heading + answer rich-text body",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "FAQ sections on product pages",
+      "support article expandable Q&A",
+      "long-form expandable detail blocks"
+    ],
+    "notSuitableFor": [
+      "menu navigation accordions",
+      "product spec accordions with tables",
+      "image-led collapsible content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-eu/antitrack"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-20T10:09:00.000Z"
+  }
+}

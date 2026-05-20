@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-product",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-20T10:09:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-eu/antitrack",
+    "originPage": "AVG AntiTrack product page",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "product-hero",
+    "imagePattern": "background"
+  },
+  "contentPattern": {
+    "structure": "heading + subheading + trust line + background image",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product landing pages with light backgrounds",
+      "marketing pages with centered hero copy",
+      "pages where the hero introduces a single named product"
+    ],
+    "notSuitableFor": [
+      "dark-image hero pages",
+      "split-content / two-column hero layouts",
+      "pages where the hero has a foreground product UI screenshot"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-eu/antitrack"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-20T10:09:00.000Z"
+  }
+}
