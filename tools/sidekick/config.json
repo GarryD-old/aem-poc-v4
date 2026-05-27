@@ -1,9 +1,12 @@
 {
+  "project": "AVG AntiTrack",
+  "host": "main--aem-poc-v4--garryd-old.aem.live",
+  "previewHost": "main--aem-poc-v4--garryd-old.aem.page",
   "plugins": [
     {
       "id": "aemedit",
       "title": "Edit",
-      "environments": [ "dev", "preview", "live" ],
+      "environments": ["dev", "preview", "live"],
       "event": "aemedit"
     }
   ]
