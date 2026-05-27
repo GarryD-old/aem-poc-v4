@@ -1,58 +1,83 @@
+.tabs-container .default-content-wrapper {
+  text-align: center;
+}
+
 .tabs .tabs-list {
   display: flex;
-  gap: 0.5ch;
-  max-width: 100%;
-  font-size: var(--body-font-size-xs);
-  overflow-x: auto;
-}
-
-@media (width >= 600px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (width >= 900px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-m);
-  }
+  max-width: 500px;
+  margin: 0 auto 40px;
+  padding: 4px;
+  background-color: var(--border-color);
+  border-radius: 40px;
+  overflow: hidden;
 }
 
 .tabs .tabs-list button {
-  flex: 0 0 max-content;
+  flex: 1;
   margin: 0;
-  border: 1px solid #dadada;
-  border-radius: 0;
-  padding: 0.5em;
-  background-color: var(--light-color);
-  color: initial;
-  font-weight: bold;
-  line-height: unset;
-  text-align: initial;
+  border: none;
+  border-radius: 40px;
+  padding: 14px 24px;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  overflow: visible;
   text-overflow: unset;
-  overflow: unset;
-  white-space: unset;
-  transition: background-color 0.2s;
 }
 
 .tabs .tabs-list button p {
   margin: 0;
 }
 
-
 .tabs .tabs-list button[aria-selected='true'] {
-  border-bottom: 1px solid var(--background-color);
   background-color: var(--background-color);
-  cursor: initial;
+  color: var(--text-color);
+  box-shadow: 0 2px 8px rgb(28 34 46 / 10%);
+  cursor: default;
+}
+
+.tabs .tabs-list button:hover:not([aria-selected='true']) {
+  background-color: rgb(255 255 255 / 50%);
 }
 
 .tabs .tabs-panel {
-  margin-top: -1px;
-  padding: 24px;
-  border: 1px solid #dadada;
-  overflow: auto;
+  padding: 0;
+  border: none;
+  margin: 0;
+  overflow: visible;
 }
 
 .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
+}
+
+.tabs .tabs-panel h3 {
+  text-align: center;
+  font-size: var(--heading-font-size-m);
+  font-weight: 900;
+  margin: 0 0 32px;
+}
+
+.tabs .tabs-panel ul {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs .tabs-panel ul li {
+  padding: 12px 0;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tabs .tabs-panel ul li:last-child {
+  border-bottom: none;
 }
