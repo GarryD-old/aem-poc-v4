@@ -63,4 +63,30 @@ export default async function decorate(block) {
   });
 
   block.prepend(tablist);
+
+  // Handle nested accordion blocks inside tabs panels (not decorated by block loader)
+  block.querySelectorAll('.tabs-panel .accordion').forEach((accordion) => {
+    [...accordion.children].forEach((item) => {
+      const heading = item.children[0];
+      const body = item.children[1];
+      if (!heading || !body) return;
+
+      // Hide body by default
+      body.style.display = 'none';
+      item.setAttribute('data-open', 'false');
+
+      // Make heading clickable
+      heading.style.cursor = 'pointer';
+      heading.addEventListener('click', () => {
+        const isOpen = item.getAttribute('data-open') === 'true';
+        if (isOpen) {
+          body.style.display = 'none';
+          item.setAttribute('data-open', 'false');
+        } else {
+          body.style.display = 'block';
+          item.setAttribute('data-open', 'true');
+        }
+      });
+    });
+  });
 }

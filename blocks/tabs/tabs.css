@@ -134,6 +134,10 @@
   line-height: 1;
 }
 
+.tabs .tabs-panel .accordion > div[data-open='true'] > div:first-child::after {
+  content: '×';
+}
+
 .tabs .tabs-panel .accordion > div > div:nth-child(2) {
   padding: 0 24px 24px;
 }
