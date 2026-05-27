@@ -1,242 +1,45 @@
-/*
- * table-comparison variant
- * Product comparison table: 5 columns (feature label + 4 product columns).
- * AntiTrack column (3rd product column = nth-child(3)) is visually highlighted.
- * Only :root tokens from styles/styles.css are used.
- */
-
-.table-comparison.block {
-  width: 100%;
-  margin: 24px 0;
+.table-comparison {
   overflow-x: auto;
 }
 
-.table-comparison.block table {
+.table-comparison table {
   width: 100%;
-  max-width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-xs);
-  background-color: var(--background-color);
+  font-size: var(--body-font-size-s);
 }
 
-@media (width >= 600px) {
-  .table-comparison.block table {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (width >= 900px) {
-  .table-comparison.block table {
-    font-size: var(--body-font-size-m);
-  }
-}
-
-/* paragraphs inside cells: collapse default margins */
-.table-comparison.block table p {
-  margin: 0;
-}
-
-.table-comparison.block table td p + p {
-  margin-top: 0.25em;
-}
-
-/* cells: shared base */
-.table-comparison.block table th,
-.table-comparison.block table td {
-  padding: 14px 12px;
-  text-align: center;
-  vertical-align: middle;
-  border: 0;
-}
-
-@media (width >= 900px) {
-  .table-comparison.block table th,
-  .table-comparison.block table td {
-    padding: 18px 16px;
-  }
-}
-
-/* ---------- header row ---------- */
-
-.table-comparison.block table thead tr {
-  border-bottom: 2px solid var(--dark-color);
-}
-
-.table-comparison.block table thead th {
+.table-comparison thead th {
+  background-color: var(--light-color);
   font-family: var(--heading-font-family);
   font-size: var(--body-font-size-s);
   font-weight: 700;
-  color: var(--dark-color);
-  line-height: 1.25;
-  vertical-align: bottom;
-  border-bottom: 2px solid var(--dark-color);
-  background-color: var(--background-color);
-}
-
-@media (width >= 900px) {
-  .table-comparison.block table thead th {
-    font-size: var(--heading-font-size-xs);
-  }
-}
-
-.table-comparison.block table thead th img {
-  display: block;
-  margin: 0 auto 8px;
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-@media (width >= 900px) {
-  .table-comparison.block table thead th img {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 12px;
-  }
-}
-
-.table-comparison.block table thead th:first-child {
-  background-color: transparent;
-  border-bottom-color: transparent;
-}
-
-/* ---------- body cells: ticks via SVG mask ---------- */
-
-/* product columns (every column except first) — hide raw text and render tick */
-.table-comparison.block table tbody td:not(:first-child) {
-  position: relative;
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
-}
-
-.table-comparison.block table tbody td:not(:first-child) p {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
-  vertical-align: middle;
-  background-color: var(--brand-color);
-  mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: 22px 22px;
-}
-
-@media (width >= 900px) {
-  .table-comparison.block table tbody td:not(:first-child) p {
-    width: 28px;
-    height: 28px;
-    mask-size: 28px 28px;
-  }
-}
-
-/* feature label column (first column): full text, left-aligned */
-.table-comparison.block table tbody td:first-child {
-  font-family: var(--heading-font-family);
-  font-size: var(--body-font-size-xs);
-  font-weight: 600;
   color: var(--text-color);
+  padding: 16px 12px;
+  text-align: center;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.table-comparison thead th:first-child {
   text-align: left;
-  line-height: 1.4;
 }
 
-@media (width >= 600px) {
-  .table-comparison.block table tbody td:first-child {
-    font-size: var(--body-font-size-s);
-  }
+.table-comparison tbody td {
+  padding: 14px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
 }
 
-@media (width >= 900px) {
-  .table-comparison.block table tbody td:first-child {
-    font-size: var(--body-font-size-m);
-  }
+.table-comparison tbody td:first-child {
+  text-align: left;
+  font-weight: 500;
 }
 
-/* zebra striping (placed AFTER first/other-cell text rules so striping
-   doesn't interfere with label color/visibility). */
-.table-comparison.block table tbody tr:nth-child(odd) td {
+.table-comparison tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-comparison tbody tr:hover {
   background-color: var(--light-color);
-}
-
-.table-comparison.block table tbody tr:nth-child(even) td {
-  background-color: var(--background-color);
-}
-
-/* ---------- AntiTrack column highlight ---------- */
-
-/* AntiTrack = 3rd product column = nth-child(3) overall (1=label, 2=VPN, 3=AntiTrack). */
-.table-comparison.block table thead th:nth-child(3) {
-  position: relative;
-  color: var(--brand-color);
-  border-top: 4px solid var(--brand-color);
-  background-color: var(--background-color);
-}
-
-.table-comparison.block table tbody tr td:nth-child(3) {
-  background-color: rgb(30 197 90 / 8%);
-  border-left: 1px solid rgb(30 197 90 / 20%);
-  border-right: 1px solid rgb(30 197 90 / 20%);
-}
-
-.table-comparison.block table tbody tr:last-child td:nth-child(3) {
-  border-bottom: 4px solid var(--brand-color);
-}
-
-.table-comparison.block table tbody tr td:nth-child(3) p {
-  background-color: var(--brand-color);
-}
-
-/* ---------- footnote / partial-support asterisks ---------- */
-
-.table-comparison.block table tbody td sup {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  color: var(--muted-text-color);
-  font-size: var(--body-font-size-xs);
-  line-height: 1;
-  background: none;
-  mask: none;
-}
-
-.table-comparison.block table tbody td:not(:first-child) p:has(sup) {
-  width: auto;
-  height: auto;
-  color: var(--muted-text-color);
-  font-size: var(--body-font-size-xs);
-  line-height: 1;
-  background-color: transparent;
-  mask: none;
-}
-
-/* ---------- mobile: horizontal scroll, sticky first column ---------- */
-
-@media (width < 900px) {
-  .table-comparison.block table {
-    min-width: 560px;
-  }
-
-  .table-comparison.block table thead th,
-  .table-comparison.block table tbody td {
-    padding: 12px 8px;
-  }
-
-  .table-comparison.block table tbody td:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-  }
-
-  .table-comparison.block table tbody tr:nth-child(odd) td:first-child {
-    background-color: var(--light-color);
-  }
-
-  .table-comparison.block table tbody tr:nth-child(even) td:first-child {
-    background-color: var(--background-color);
-  }
 }

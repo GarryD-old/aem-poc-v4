@@ -1,30 +1,32 @@
-/*
- * table-comparison variant
- * Product comparison table: first row is the header, subsequent rows compare features.
- * Variant of the base table block.
- */
-
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-export default async function decorate(block) {
+export default function decorate(block) {
   const table = document.createElement('table');
-  const thead = document.createElement('thead');
-  const tbody = document.createElement('tbody');
-  const header = !block.classList.contains('no-header');
+  const rows = [...block.children];
 
-  [...block.children].forEach((row, i) => {
+  rows.forEach((row, rowIndex) => {
     const tr = document.createElement('tr');
     moveInstrumentation(row, tr);
-
-    [...row.children].forEach((cell) => {
-      const td = document.createElement(i === 0 && header ? 'th' : 'td');
-      if (i === 0) td.setAttribute('scope', 'column');
-      td.innerHTML = cell.innerHTML;
-      tr.append(td);
+    const cells = [...row.children];
+    cells.forEach((cell) => {
+      const el = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
+      el.innerHTML = cell.innerHTML;
+      tr.append(el);
     });
-    if (i === 0 && header) thead.append(tr);
-    else tbody.append(tr);
+    if (rowIndex === 0) {
+      const thead = document.createElement('thead');
+      thead.append(tr);
+      table.append(thead);
+    } else {
+      let tbody = table.querySelector('tbody');
+      if (!tbody) {
+        tbody = document.createElement('tbody');
+        table.append(tbody);
+      }
+      tbody.append(tr);
+    }
   });
-  table.append(thead, tbody);
-  block.replaceChildren(table);
+
+  block.textContent = '';
+  block.append(table);
 }

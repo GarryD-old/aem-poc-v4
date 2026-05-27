@@ -1,39 +1,8 @@
 {
-  "variantName": "cards-stats",
-  "baseBlock": "cards",
-  "version": "1.0.0",
-  "created": "2026-05-20T10:09:00.000Z",
+  "name": "cards-stats",
+  "description": "4-up responsive stat callout grid with icon, large stat number, and caption",
   "sourceContext": {
-    "originUrl": "https://www.avg.com/en-eu/antitrack",
-    "originPage": "AVG AntiTrack product page",
-    "blockPosition": "middle"
-  },
-  "visualCharacteristics": {
-    "colorScheme": "light",
-    "density": "compact",
-    "purpose": "stats-callouts",
-    "imagePattern": "icon"
-  },
-  "contentPattern": {
-    "structure": "icon + large statistic value + short caption",
-    "buttonCount": 0,
-    "imageCount": 1
-  },
-  "reuseGuidance": {
-    "suitableFor": [
-      "trust callouts with percentages or counts",
-      "marketing 'by the numbers' rows",
-      "key fact strips below an intro"
-    ],
-    "notSuitableFor": [
-      "image-led illustration cards",
-      "feature blurbs with paragraphs",
-      "pricing tiles"
-    ]
-  },
-  "usage": {
-    "pagesUsing": ["/en-eu/antitrack"],
-    "reuseCount": 1,
-    "lastUsed": "2026-05-20T10:09:00.000Z"
+    "figmaFile": "8rqXJHOgsb99dBqYnrepyI",
+    "figmaFrame": "2268:29672"
   }
 }

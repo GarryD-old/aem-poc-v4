@@ -1,9 +1,3 @@
-/*
- * cards-stats variant
- * Statistic callout cards: each card has an icon, a large value and a short caption.
- * Variant of the base cards block.
- */
-
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
@@ -15,7 +9,7 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'cards-stats-card-image';
+        div.className = 'cards-stats-card-icon';
       } else {
         div.className = 'cards-stats-card-body';
       }
@@ -23,7 +17,7 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '120' }]);
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '150' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });

@@ -1,9 +1,3 @@
-/*
- * cards-features variant
- * Feature blurb tiles: each tile has a circular icon on the left and a heading + paragraph on the right.
- * Variant of the base cards block.
- */
-
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
@@ -15,7 +9,7 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'cards-features-card-image';
+        div.className = 'cards-features-card-icon';
       } else {
         div.className = 'cards-features-card-body';
       }
@@ -23,7 +17,7 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '160' }]);
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '150' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });

@@ -1,0 +1,80 @@
+.columns-bait {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-bait > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-bait .columns-bait-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.columns-bait .columns-bait-image img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  object-fit: contain;
+}
+
+.columns-bait .columns-bait-content {
+  color: var(--background-color);
+}
+
+.columns-bait .columns-bait-content h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  color: var(--background-color);
+  margin: 0 0 16px;
+}
+
+.columns-bait .columns-bait-content p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  color: var(--overlay-background-color);
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.columns-bait .columns-bait-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.columns-bait .columns-bait-content ul li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 12px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  color: var(--overlay-background-color);
+  line-height: 1.5;
+}
+
+.columns-bait .columns-bait-content ul li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--brand-color);
+  font-weight: 700;
+}
+
+@media (width >= 900px) {
+  .columns-bait > div {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .columns-bait .columns-bait-image,
+  .columns-bait .columns-bait-content {
+    flex: 1;
+  }
+}

@@ -1,39 +1,8 @@
 {
-  "variantName": "cards-pricing",
-  "baseBlock": "cards",
-  "version": "1.0.0",
-  "created": "2026-05-20T10:09:00.000Z",
+  "name": "cards-pricing",
+  "description": "Side-by-side pricing cards with plan name, platform icons, price, monthly breakdown, CTA button, and subscription details",
   "sourceContext": {
-    "originUrl": "https://www.avg.com/en-eu/antitrack",
-    "originPage": "AVG AntiTrack product page",
-    "blockPosition": "top, before-footer"
-  },
-  "visualCharacteristics": {
-    "colorScheme": "light",
-    "density": "spacious",
-    "purpose": "pricing",
-    "imagePattern": "icon"
-  },
-  "contentPattern": {
-    "structure": "platform icon + plan name + price + monthly equivalent + Buy CTA",
-    "buttonCount": 1,
-    "imageCount": 1
-  },
-  "reuseGuidance": {
-    "suitableFor": [
-      "product pricing tiles",
-      "side-by-side plan comparison cards",
-      "subscription buy boxes"
-    ],
-    "notSuitableFor": [
-      "feature grids without prices",
-      "image-led illustration cards",
-      "carousel slides"
-    ]
-  },
-  "usage": {
-    "pagesUsing": ["/en-eu/antitrack"],
-    "reuseCount": 1,
-    "lastUsed": "2026-05-20T10:09:00.000Z"
+    "figmaFile": "8rqXJHOgsb99dBqYnrepyI",
+    "figmaFrame": "2268:29672"
   }
 }

@@ -142,25 +142,6 @@
     ]
   },
   {
-    "id": "accordion-faq-item",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "summary",
-        "value": "",
-        "label": "Question"
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Answer",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "accordion-item",
     "fields": [
       {
@@ -180,7 +161,7 @@
     ]
   },
   {
-    "id": "card-feature",
+    "id": "cards-features-item",
     "fields": [
       {
         "component": "reference",
@@ -190,75 +171,54 @@
         "multi": false
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Icon Alt",
-        "value": ""
-      },
-      {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Heading + Paragraph",
+        "label": "Text",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "card-illustrated",
+    "id": "cards-illustrated-item",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Top Illustration",
+        "label": "Image",
         "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt",
-        "value": ""
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Heading + Paragraph",
+        "label": "Text",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "card-pricing",
+    "id": "cards-pricing-item",
     "fields": [
       {
         "component": "reference",
         "valueType": "string",
         "name": "image",
-        "label": "Platform Icon",
+        "label": "Platform Icons",
         "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Icon Alt",
-        "value": ""
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Card Body (plan, price, monthly equivalent, CTA)",
+        "label": "Text",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "card-stat",
+    "id": "cards-stats-item",
     "fields": [
       {
         "component": "reference",
@@ -268,17 +228,10 @@
         "multi": false
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Icon Alt",
-        "value": ""
-      },
-      {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Stat Value + Caption",
+        "label": "Text",
         "valueType": "string"
       }
     ]
@@ -298,32 +251,6 @@
         "name": "text",
         "value": "",
         "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "carousel-articles-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "media_image",
-        "label": "Article Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "media_imageAlt",
-        "value": "",
-        "label": "Image Alt"
-      },
-      {
-        "component": "richtext",
-        "name": "content_text",
-        "value": "",
-        "label": "Title + Perex + Read more link",
         "valueType": "string"
       }
     ]
@@ -355,21 +282,21 @@
     ]
   },
   {
-    "id": "columns-explainer",
+    "id": "columns-bait",
     "fields": [
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": "2",
-        "label": "Columns"
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       },
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
-        "value": "1",
-        "label": "Rows"
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },
@@ -440,32 +367,6 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
-      }
-    ]
-  },
-  {
-    "id": "hero-product",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Background Image Alt",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Hero Text",
-        "valueType": "string"
       }
     ]
   },
@@ -559,60 +460,37 @@
     ]
   },
   {
-    "id": "table-comparison",
-    "fields": [
-      {
-        "component": "multiselect",
-        "name": "classes",
-        "value": "",
-        "label": "Options",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Header",
-            "children": [
-              {
-                "name": "No Header",
-                "value": "no-header"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "table-comparison-row",
     "fields": [
       {
         "component": "richtext",
         "valueType": "string",
         "name": "column1text",
-        "label": "Column 1 (label)"
+        "label": "Feature"
       },
       {
         "component": "richtext",
         "valueType": "string",
         "name": "column2text",
-        "label": "Column 2"
+        "label": "Product 1"
       },
       {
         "component": "richtext",
         "valueType": "string",
         "name": "column3text",
-        "label": "Column 3"
+        "label": "Product 2"
       },
       {
         "component": "richtext",
         "valueType": "string",
         "name": "column4text",
-        "label": "Column 4"
+        "label": "Product 3"
       },
       {
         "component": "richtext",
         "valueType": "string",
         "name": "column5text",
-        "label": "Column 5"
+        "label": "Product 4"
       }
     ]
   },

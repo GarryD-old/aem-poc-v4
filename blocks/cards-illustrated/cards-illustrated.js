@@ -1,9 +1,3 @@
-/*
- * cards-illustrated variant
- * Image-top illustrated cards: top illustration, heading, paragraph.
- * Variant of the base cards block.
- */
-
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
@@ -23,7 +17,7 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '600' }]);
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '400' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });

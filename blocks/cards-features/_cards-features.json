@@ -1,14 +1,14 @@
 {
   "definitions": [
     {
-      "title": "Cards (features)",
+      "title": "Cards Features",
       "id": "cards-features",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Cards (features)",
+              "name": "Cards Features",
               "filter": "cards-features"
             }
           }
@@ -17,14 +17,14 @@
     },
     {
       "title": "Feature Card",
-      "id": "card-feature",
+      "id": "cards-features-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Feature Card",
-              "model": "card-feature"
+              "model": "cards-features-item"
             }
           }
         }
@@ -33,7 +33,7 @@
   ],
   "models": [
     {
-      "id": "card-feature",
+      "id": "cards-features-item",
       "fields": [
         {
           "component": "reference",
@@ -43,17 +43,10 @@
           "multi": false
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Icon Alt",
-          "value": ""
-        },
-        {
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Heading + Paragraph",
+          "label": "Text",
           "valueType": "string"
         }
       ]
@@ -62,7 +55,7 @@
   "filters": [
     {
       "id": "cards-features",
-      "components": ["card-feature"]
+      "components": ["cards-features-item"]
     }
   ]
 }

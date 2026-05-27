@@ -1,9 +1,3 @@
-/*
- * cards-pricing variant
- * Pricing cards: each card displays platform icons, plan name, price, monthly equivalent and a CTA button.
- * Variant of the base cards block — keeps the row-per-card authoring model.
- */
-
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
@@ -23,7 +17,7 @@ export default function decorate(block) {
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '120' }]);
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '200' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
