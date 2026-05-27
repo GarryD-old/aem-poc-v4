@@ -1,3 +1,7 @@
+.hero-container {
+  position: relative;
+}
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -5,33 +9,69 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  padding: 80px 24px 60px;
+  min-height: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-color);
+  overflow: hidden;
+}
+
+.hero > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero > div:first-child picture,
+.hero > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.hero > div:nth-child(2) {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
   color: var(--background-color);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 16px;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero p {
+  color: var(--background-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero-container .cards-pricing-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: -40px auto 0;
+  padding: 0 24px 60px;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 120px 32px 100px;
+    min-height: 600px;
+  }
+
+  .hero-container .cards-pricing-wrapper {
+    margin-top: -60px;
+    padding: 0 32px 80px;
   }
 }

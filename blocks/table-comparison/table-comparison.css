@@ -1,21 +1,19 @@
 .table-comparison {
   overflow-x: auto;
+  padding: 0;
 }
 
 .table-comparison table {
   width: 100%;
   border-collapse: collapse;
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
+  min-width: 600px;
 }
 
 .table-comparison thead th {
-  background-color: var(--light-color);
-  font-family: var(--heading-font-family);
+  padding: 16px 12px;
   font-size: var(--body-font-size-s);
   font-weight: 700;
   color: var(--text-color);
-  padding: 16px 12px;
   text-align: center;
   border-bottom: 2px solid var(--border-color);
 }
@@ -26,18 +24,15 @@
 
 .table-comparison tbody td {
   padding: 14px 12px;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
   text-align: center;
   border-bottom: 1px solid var(--border-color);
-  color: var(--text-color);
 }
 
 .table-comparison tbody td:first-child {
   text-align: left;
   font-weight: 500;
-}
-
-.table-comparison tbody tr:last-child td {
-  border-bottom: none;
 }
 
 .table-comparison tbody tr:hover {

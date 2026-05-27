@@ -1,55 +1,53 @@
+.cards-stats {
+  padding: 0;
+}
+
 .cards-stats > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 .cards-stats > ul > li {
-  background-color: var(--background-color);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 32px 24px;
   text-align: center;
+  padding: 32px 24px;
 }
 
-.cards-stats .cards-stats-card-icon {
-  display: flex;
-  justify-content: center;
+.cards-stats .cards-stats-card-image {
   margin-bottom: 16px;
 }
 
-.cards-stats .cards-stats-card-icon img {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
+.cards-stats .cards-stats-card-image img {
+  width: 80px;
+  height: 80px;
 }
 
 .cards-stats .cards-stats-card-body h3 {
-  font-family: var(--heading-font-family);
   font-size: var(--heading-font-size-xl);
-  font-weight: 700;
+  font-weight: 900;
   color: var(--text-color);
   margin: 0 0 8px;
+  line-height: 1.2;
 }
 
 .cards-stats .cards-stats-card-body p {
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
   color: var(--muted-text-color);
+  font-size: var(--body-font-size-s);
   margin: 0;
+  line-height: 1.5;
 }
 
 @media (width >= 600px) {
   .cards-stats > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (width >= 900px) {
   .cards-stats > ul {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

@@ -1,3 +1,7 @@
+.cards-illustrated {
+  padding: 0;
+}
+
 .cards-illustrated > ul {
   list-style: none;
   margin: 0;
@@ -8,19 +12,20 @@
 }
 
 .cards-illustrated > ul > li {
-  background-color: var(--background-color);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
+  background-color: var(--background-color);
 }
 
 .cards-illustrated .cards-illustrated-card-image {
-  line-height: 0;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
 }
 
 .cards-illustrated .cards-illustrated-card-image img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -29,29 +34,21 @@
 }
 
 .cards-illustrated .cards-illustrated-card-body h3 {
-  font-family: var(--heading-font-family);
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
+  font-size: var(--body-font-size-m);
+  font-weight: 900;
   color: var(--text-color);
-  margin: 0 0 8px;
+  margin: 0 0 12px;
 }
 
 .cards-illustrated .cards-illustrated-card-body p {
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
   color: var(--muted-text-color);
-  margin: 0;
+  font-size: var(--body-font-size-s);
   line-height: 1.5;
-}
-
-@media (width >= 600px) {
-  .cards-illustrated > ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  margin: 0;
 }
 
 @media (width >= 900px) {
   .cards-illustrated > ul {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
