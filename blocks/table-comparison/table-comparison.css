@@ -32,6 +32,10 @@
   min-width: 650px;
 }
 
+.table-comparison table p {
+  margin: 0;
+}
+
 .table-comparison thead th {
   padding: 24px 16px 16px;
   font-size: var(--body-font-size-s);
@@ -55,8 +59,8 @@
 
 .table-comparison tbody td {
   padding: 16px;
-  font-size: var(--body-font-size-s);
-  color: var(--text-color);
+  font-size: 18px;
+  color: var(--link-color);
   text-align: center;
   border-bottom: 1px solid var(--border-color);
 }
@@ -64,6 +68,7 @@
 .table-comparison tbody td:first-child {
   text-align: left;
   font-weight: 400;
+  font-size: var(--body-font-size-s);
   color: var(--text-color);
 }
 
@@ -76,26 +81,4 @@
 .table-comparison tbody tr:last-child td:nth-child(3) {
   border-bottom: 2px dashed var(--link-color);
   border-radius: 0 0 8px 8px;
-}
-
-.table-comparison tbody td p {
-  margin: 0;
-}
-
-.table-comparison thead th p {
-  margin: 0;
-}
-
-/* Blue checkmarks and grey crosses */
-.table-comparison tbody td:not(:first-child) {
-  font-size: 18px;
-}
-
-.table-comparison tbody td:not(:first-child) p {
-  color: var(--link-color);
-}
-
-/* Grey out × marks */
-.table-comparison tbody td:not(:first-child) p:only-child {
-  color: var(--muted-text-color);
 }
