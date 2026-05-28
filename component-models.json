@@ -641,7 +641,16 @@
   },
   {
     "id": "tabs",
-    "fields": []
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": []
+      }
+    ]
   },
   {
     "id": "tabs-item",
