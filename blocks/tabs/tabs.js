@@ -27,34 +27,6 @@ export default async function decorate(block) {
     tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
     tabpanel.setAttribute('role', 'tabpanel');
 
-    // Process model cells: title(0), heading(1), headingType(2), image(3), richtext(4)
-    // Note: title cell (cells[0]) is still present at this point, removed later by tab.remove()
-    const cells = [...tabpanel.children];
-    // cells[0] = title, cells[1] = heading, cells[2] = headingType, cells[3] = image, cells[4] = richtext
-    const headingCell = cells[1];
-    const headingTypeCell = cells[2];
-    const imageCell = cells[3];
-
-    // Build proper heading from headingType + heading text
-    if (headingCell && headingTypeCell) {
-      const typeText = headingTypeCell.textContent.trim();
-      const validTypes = ['h3', 'h4', 'h5', 'h6'];
-      const headingType = validTypes.includes(typeText) ? typeText : 'h3';
-      const headingText = headingCell.textContent.trim();
-      if (headingText) {
-        const headingEl = document.createElement(headingType);
-        headingEl.textContent = headingText;
-        headingCell.innerHTML = '';
-        headingCell.append(headingEl);
-      }
-      headingTypeCell.remove();
-    }
-
-    // Remove empty image cell
-    if (imageCell && !imageCell.textContent.trim() && !imageCell.querySelector('img')) {
-      imageCell.remove();
-    }
-
     // build tab button
     const button = document.createElement('button');
     button.className = 'tabs-tab';
