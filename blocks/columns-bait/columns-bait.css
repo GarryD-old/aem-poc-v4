@@ -1,3 +1,7 @@
+.columns-bait-container {
+  padding: 0;
+}
+
 .columns-bait {
   display: flex;
   flex-direction: column;
@@ -22,6 +26,7 @@
 .columns-bait .columns-bait-image img {
   max-width: 100%;
   height: auto;
+  max-height: 523px;
 }
 
 .columns-bait .columns-bait-content {
@@ -49,26 +54,37 @@
   margin: 24px 0 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 8px;
 }
 
 .columns-bait .columns-bait-content li {
   color: var(--background-color);
   font-weight: 700;
-  font-size: var(--body-font-size-s);
-  padding-left: 28px;
+  font-size: 16px;
+  line-height: 1.4;
+  padding-left: 40px;
   position: relative;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
 }
 
 .columns-bait .columns-bait-content li::before {
-  content: "✓";
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--brand-color);
-  font-weight: 900;
+  width: 32px;
+  height: 32px;
+  background-image: url('/icons/check-oval.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media (width >= 900px) {
+  .columns-bait-container {
+    padding: 56px 0;
+  }
+
   .columns-bait > div {
     flex-direction: row;
     gap: 80px;

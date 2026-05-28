@@ -1,3 +1,7 @@
+main .section.grey.table-comparison-container {
+  background-color: var(--background-color);
+}
+
 .table-comparison-container .default-content-wrapper {
   text-align: center;
   max-width: 900px;
@@ -7,6 +11,10 @@
 .table-comparison-container .default-content-wrapper h2 {
   font-size: var(--heading-font-size-xl);
   font-weight: 900;
+}
+
+.table-comparison table p {
+  margin: 0;
 }
 
 .table-comparison-container .default-content-wrapper p {
@@ -31,10 +39,7 @@
   border-collapse: separate;
   border-spacing: 0;
   min-width: 650px;
-}
-
-.table-comparison table p {
-  margin: 0;
+  table-layout: fixed;
 }
 
 .table-comparison thead th {
@@ -44,6 +49,8 @@
   color: var(--text-color);
   text-align: center;
   vertical-align: bottom;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .table-comparison thead th:first-child {
@@ -51,12 +58,55 @@
   width: 35%;
 }
 
+.table-comparison thead th:last-child {
+  border-right: none;
+}
+
+.table-comparison thead th:nth-child(2) {
+  border-right: none;
+}
+
+/* Icons above product names in header */
+.table-comparison thead th:nth-child(n+2) p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-comparison thead th:nth-child(n+2) p::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.table-comparison thead th:nth-child(2) p::before {
+  background-image: url('/icons/vpn.svg');
+}
+
+.table-comparison thead th:nth-child(3) p::before {
+  background-image: url('/icons/antitrack.svg');
+}
+
+.table-comparison thead th:nth-child(4) p::before {
+  background-image: url('/icons/incognito.svg');
+}
+
+.table-comparison thead th:nth-child(5) p::before {
+  background-image: url('/icons/adblocker.svg');
+}
+
+/* Highlighted column header */
 .table-comparison thead th:nth-child(3) {
   border-left: 2px solid var(--link-color);
   border-right: 2px solid var(--link-color);
   border-top: 2px solid var(--link-color);
-  border-radius: 12px 12px 0 0;
-  background-color: var(--light-color);
+  border-radius: 0;
+  background-color: var(--background-color);
 }
 
 .table-comparison tbody td {
@@ -64,6 +114,7 @@
   font-size: 16px;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   color: var(--muted-text-color);
 }
 
@@ -79,20 +130,28 @@
   text-decoration: underline;
 }
 
-/* VPN column: green checks */
-.table-comparison tbody td:nth-child(2) {
-  color: var(--brand-color);
+.table-comparison tbody td:last-child {
+  border-right: none;
 }
 
-/* AntiTrack highlighted column: blue checks */
-.table-comparison tbody td:nth-child(3) {
-  border-left: 2px solid var(--link-color);
-  border-right: 2px solid var(--link-color);
+/* Cells with ticks get light blue background */
+.table-comparison tbody td.has-tick {
   background-color: var(--light-color);
   color: var(--link-color);
 }
 
-/* Incognito + Ad blockers columns: blue checks when present */
+/* VPN column: no right border (adjacent to highlighted) */
+.table-comparison tbody td:nth-child(2) {
+  border-right: none;
+}
+
+/* AntiTrack highlighted column: blue border */
+.table-comparison tbody td:nth-child(3) {
+  border-left: 2px solid var(--link-color);
+  border-right: 2px solid var(--link-color);
+}
+
+/* Incognito + Ad blockers columns */
 .table-comparison tbody td:nth-child(4),
 .table-comparison tbody td:nth-child(5) {
   color: var(--link-color);
@@ -100,5 +159,5 @@
 
 .table-comparison tbody tr:last-child td:nth-child(3) {
   border-bottom: 2px solid var(--link-color);
-  border-radius: 0 0 12px 12px;
+  border-radius: 0;
 }

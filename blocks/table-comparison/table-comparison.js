@@ -11,6 +11,9 @@ export default function decorate(block) {
     cells.forEach((cell) => {
       const el = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
       el.innerHTML = cell.innerHTML;
+      if (rowIndex > 0 && el.textContent.trim() === '✓') {
+        el.classList.add('has-tick');
+      }
       tr.append(el);
     });
     if (rowIndex === 0) {
