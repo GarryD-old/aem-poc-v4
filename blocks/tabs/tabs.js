@@ -65,7 +65,7 @@ export default async function decorate(block) {
   block.prepend(tablist);
 
   // Handle nested accordion blocks inside tabs panels (not decorated by block loader)
-  block.querySelectorAll('.tabs-panel .accordion').forEach((accordion) => {
+  block.querySelectorAll('.tabs-panel .faq-list').forEach((accordion) => {
     [...accordion.children].forEach((item) => {
       const heading = item.children[0];
       const body = item.children[1];

@@ -83,7 +83,7 @@
 }
 
 /* Accordion nested inside tabs panel */
-.tabs .tabs-panel .accordion {
+.tabs .tabs-panel .faq-list {
   max-width: 800px;
   margin: 0 auto;
   padding: 0;
@@ -93,21 +93,21 @@
   overflow: hidden;
 }
 
-.tabs .tabs-panel .accordion > div {
+.tabs .tabs-panel .faq-list > div {
   border-bottom: 1px solid var(--border-color);
 }
 
-.tabs .tabs-panel .accordion > div:last-child {
+.tabs .tabs-panel .faq-list > div:last-child {
   border-bottom: none;
 }
 
-.tabs .tabs-panel .accordion > div > div:first-child {
+.tabs .tabs-panel .faq-list > div > div:first-child {
   position: relative;
   padding: 24px 60px 24px 24px;
   cursor: pointer;
 }
 
-.tabs .tabs-panel .accordion > div > div:first-child p {
+.tabs .tabs-panel .faq-list > div > div:first-child p {
   margin: 0;
   font-size: var(--body-font-size-m);
   font-weight: 700;
@@ -115,7 +115,7 @@
   line-height: 1.4;
 }
 
-.tabs .tabs-panel .accordion > div > div:first-child::after {
+.tabs .tabs-panel .faq-list > div > div:first-child::after {
   content: '+';
   position: absolute;
   top: 50%;
@@ -134,22 +134,22 @@
   line-height: 1;
 }
 
-.tabs .tabs-panel .accordion > div[data-open='true'] > div:first-child::after {
+.tabs .tabs-panel .faq-list > div[data-open='true'] > div:first-child::after {
   content: '×';
 }
 
-.tabs .tabs-panel .accordion > div > div:nth-child(2) {
+.tabs .tabs-panel .faq-list > div > div:nth-child(2) {
   padding: 0 24px 24px;
 }
 
-.tabs .tabs-panel .accordion > div > div:nth-child(2) p {
+.tabs .tabs-panel .faq-list > div > div:nth-child(2) p {
   color: var(--text-color);
   font-size: var(--body-font-size-s);
   line-height: 1.6;
   margin: 0 0 12px;
 }
 
-.tabs .tabs-panel .accordion > div > div:nth-child(2) a {
+.tabs .tabs-panel .faq-list > div > div:nth-child(2) a {
   color: var(--link-color);
   text-decoration: underline;
 }
