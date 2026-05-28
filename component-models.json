@@ -640,6 +640,10 @@
     ]
   },
   {
+    "id": "tabs",
+    "fields": []
+  },
+  {
     "id": "tabs-item",
     "fields": [
       {
