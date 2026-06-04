@@ -3,7 +3,7 @@ export default function decorate(block) {
   if (textDiv) {
     const awardSet = document.createElement('div');
     awardSet.className = 'hero-award-set';
-    awardSet.innerHTML = '<img src="/content/antitrack/media/award-badge-set.png" alt="AVG Excellent rating on Trustpilot - 15,354 reviews">';
+    awardSet.innerHTML = '<img src="/content/dam/avg/awards/trustpilot-badge.png" alt="AVG Excellent rating on Trustpilot - 15,354 reviews">';
     textDiv.append(awardSet);
   }
 

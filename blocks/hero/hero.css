@@ -1,6 +1,6 @@
 .hero-container {
   position: relative;
-  background-color: var(--dark-color);
+  background-color: #1c222e;
   overflow: hidden;
 }
 
@@ -11,8 +11,8 @@
 
 .hero {
   position: static;
-  padding: 80px 24px 60px;
-  min-height: 400px;
+  padding: 80px 24px 40px;
+  min-height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -36,6 +36,15 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
+}
+
+.hero > div:first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #1c222e;
+  opacity: 0.64;
+  z-index: 1;
 }
 
 .hero > div:first-child picture,
