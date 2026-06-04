@@ -1,62 +1,84 @@
+.cards-illustrated-container {
+  background-color: #f7f9fc;
+  padding: 60px 24px 80px;
+}
+
+.cards-illustrated-container .default-content-wrapper {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+}
+
+.cards-illustrated-container .default-content-wrapper h2 {
+  font-size: 46px;
+  font-weight: 900;
+  color: #1c222e;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cards-illustrated-container .cards-illustrated-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .cards-illustrated {
-  padding: 32px 0 0;
+  padding: 0;
 }
 
 .cards-illustrated > ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 32px;
 }
 
 .cards-illustrated > ul > li {
-  width: 100%;
-  max-width: 316px;
   background-color: transparent;
 }
 
 .cards-illustrated .cards-illustrated-card-image {
-  margin-bottom: 32px;
-  border-radius: 10px;
+  margin-bottom: 24px;
+  border-radius: 8px;
   overflow: hidden;
-}
-
-.cards-illustrated .cards-illustrated-card-image p {
-  margin: 0;
 }
 
 .cards-illustrated .cards-illustrated-card-image img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
 }
 
-.cards-illustrated .cards-illustrated-card-body h3 {
-  font-size: 20px;
+.cards-illustrated .cards-illustrated-card-body p:first-child {
+  font-size: 24px;
   font-weight: 900;
-  color: var(--text-color);
+  color: #1c222e;
   margin: 0 0 16px;
   line-height: 1.3;
 }
 
-.cards-illustrated .cards-illustrated-card-body p {
-  color: var(--text-color);
-  font-size: var(--body-font-size-s);
-  line-height: 1.4;
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-illustrated .cards-illustrated-card-body p:first-child strong {
+  font-weight: 900;
+}
+
+.cards-illustrated .cards-illustrated-card-body p:last-child {
+  color: #697284;
+  font-size: 16px;
+  line-height: 1.5;
   margin: 0;
 }
 
 @media (width >= 900px) {
-  .cards-illustrated > ul {
-    flex-wrap: nowrap;
+  .cards-illustrated-container {
+    padding: 80px 120px 100px;
   }
 
-  .cards-illustrated > ul > li {
-    flex: 0 0 316px;
+  .cards-illustrated > ul {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
