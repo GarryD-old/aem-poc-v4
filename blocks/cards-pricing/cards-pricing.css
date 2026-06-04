@@ -77,6 +77,15 @@
 
 .cards-pricing .cards-pricing-card-body {
   width: 100%;
+  color: #1c222e;
+}
+
+.cards-pricing .cards-pricing-card-body p {
+  color: #1c222e;
+}
+
+.cards-pricing .cards-pricing-card-body strong {
+  color: #1c222e;
 }
 
 .cards-pricing .cards-pricing-card-image img {
