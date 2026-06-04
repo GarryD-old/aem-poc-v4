@@ -6,7 +6,7 @@ export default function decorate(block) {
         col.className = 'columns-bait-image';
         const img = col.querySelector('img');
         if (img) {
-          img.src = '/content/antitrack/media/fingerprint-illustration.png';
+          img.src = '/content/dam/avg-eds-garry/avg/hero/fingerprint.png';
           img.alt = 'Digital fingerprint illustration';
         }
       } else {
