@@ -214,6 +214,11 @@ export default async function decorate(block) {
       buttonContainer.classList.remove('button-container');
       buttonContainer.querySelector('.button').classList.remove('button');
     });
+    navSections.querySelectorAll('ul ul li').forEach((li) => {
+      if (li.querySelector('strong')) {
+        li.classList.add('nav-category');
+      }
+    });
   }
 
   const navTools = nav.querySelector('.nav-tools');
