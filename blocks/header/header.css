@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid #e8ecf2;
 }
 
 header nav {
@@ -163,6 +164,10 @@ header nav[aria-expanded='true'] .nav-sections {
   align-self: start;
 }
 
+header nav[aria-expanded='true'] .nav-sections ul > li[aria-expanded='true'] > ul {
+  display: block;
+}
+
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
@@ -175,6 +180,7 @@ header nav .nav-sections ul > li {
 
 header nav .nav-sections ul > li > ul {
   margin-top: 0;
+  display: none;
 }
 
 header nav .nav-sections ul > li > ul > li {
