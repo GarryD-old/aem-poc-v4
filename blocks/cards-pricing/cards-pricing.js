@@ -1,4 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const PLATFORM_OPTIONS = [
@@ -130,11 +129,6 @@ export default function decorate(block) {
       if (h3) h3.after(imageDiv);
     }
     ul.append(li);
-  });
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '200' }]);
-    moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
   });
 
   ul.querySelectorAll('.cards-pricing-card-body').forEach((body) => {
