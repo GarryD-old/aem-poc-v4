@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 999;
   position: relative;
+  border-bottom: 1px solid #e4e8f0;
 }
 
 header nav {
@@ -12,8 +13,8 @@ header nav {
   flex-wrap: wrap;
   align-items: center;
   margin: auto;
-  max-width: 1400px;
-  padding: 0 40px;
+  max-width: 1600px;
+  padding: 0 120px;
   font-family: var(--body-font-family);
   position: relative;
 }
@@ -49,7 +50,7 @@ header nav .nav-brand img {
   height: auto;
 }
 
-/* tools row: above nav links, far right */
+/* tools row: top-right utility links */
 header nav .nav-tools {
   flex: 1 1 auto;
   display: flex;
@@ -65,19 +66,20 @@ header nav .nav-tools ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 24px;
   align-items: center;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools li {
   font-size: 12px;
+  line-height: 18px;
   white-space: nowrap;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools li + li {
-  margin-left: 20px;
-  padding-left: 20px;
+  padding-left: 24px;
   border-left: 1px solid #ced4e0;
 }
 
@@ -86,6 +88,7 @@ header nav .nav-tools a {
   color: #697284;
   text-decoration: none;
   font-size: 12px;
+  line-height: 18px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -93,7 +96,7 @@ header nav .nav-tools a:hover {
   color: #1c222e;
 }
 
-/* nav sections: main links row below tools */
+/* nav sections: main links row */
 header nav .nav-sections {
   display: flex;
   width: 100%;
@@ -117,6 +120,7 @@ header nav .nav-sections ul {
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections ul > li {
   font-size: 16px;
+  line-height: 22px;
   font-weight: 400;
   color: #1c222e;
   white-space: nowrap;
@@ -129,54 +133,46 @@ header nav .nav-sections ul > li {
 
 /* active/expanded green underline */
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
-  border-bottom: 3px solid #008941;
+  border-bottom: 2px solid #008941;
 }
 
-/* dropdown panel - single solid white container */
+/* dropdown panel */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
   top: 100%;
   right: 0;
-  padding: 16px 0 0;
   margin: 0;
+  padding: 12px 0;
   background-color: #fff;
-  border-right: 1px solid #e4e8f0;
-  border-bottom: 1px solid #e4e8f0;
-  border-left: 1px solid #e4e8f0;
-  width: 240px;
+  border: 1px solid #ced4e0;
+  border-top: none;
+  min-width: 320px;
   z-index: 9999;
   text-align: left;
   list-style: none;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
   display: block;
 }
 
-/* dropdown items — 12px top/bottom, 24px left/right per Figma */
+/* dropdown items */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-  padding: 12px 24px;
+  padding: 12px 16px;
   font-size: 16px;
+  line-height: 22px;
   font-weight: 400;
   color: #1c222e;
   white-space: nowrap;
   text-align: left;
   margin: 0;
   background-color: #fff;
-  position: relative;
 }
 
-/* category header text styling */
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: #1c222e;
-}
-
-/* category items - green top border added via JS class */
+/* category headers via JS .nav-category class */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
   border-top: 2px solid #008941;
   padding-top: 12px;
@@ -185,13 +181,21 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-catego
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child {
   border-top: none;
-  padding-top: 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: #1c222e;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li a {
   color: #1c222e;
   font-size: 16px;
+  line-height: 22px;
   text-decoration: none;
   display: block;
 }
@@ -200,11 +204,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li a:hover {
   color: #2276d9;
 }
 
-/* last item "All products" - centered with grey top border */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child {
-  border-top: 1px solid #e4e8f0;
+  border-top: 1px solid #ced4e0;
   text-align: center;
-  padding: 16px 24px;
+  padding: 12px 16px;
   margin-top: 0;
 }
