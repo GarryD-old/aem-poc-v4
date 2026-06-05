@@ -238,6 +238,75 @@ export default async function decorate(block) {
     if (search && search.textContent === '') {
       search.setAttribute('aria-label', 'Search');
     }
+    const regionLink = navTools.querySelector('a[href*="region"]');
+    if (regionLink) {
+      regionLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const existing = document.querySelector('.region-modal-overlay');
+        if (existing) { existing.remove(); return; }
+        const modal = document.createElement('div');
+        modal.className = 'region-modal-overlay';
+        modal.innerHTML = `<div class="region-modal">
+          <div class="region-modal-header">
+            <h2>Change language</h2>
+            <button class="region-modal-close" aria-label="Close">✕</button>
+          </div>
+          <div class="region-modal-body">
+            <div class="region-modal-col">
+              <a href="/en-ar/">🇦🇷 Argentina: <span>Español</span></a>
+              <a href="/en-au/">🇦🇺 Australia: <span>English</span></a>
+              <a href="/nl-be/">🇧🇪 België: <span>Nederlands</span></a>
+              <a href="/fr-be/">🇧🇪 Belgique: <span>Français</span></a>
+              <a href="/pt-br/">🇧🇷 Brasil: <span>Português do Brasil</span></a>
+              <a href="/en-ca/">🇨🇦 Canada: <span>English</span></a>
+              <a href="/fr-ca/">🇨🇦 Canada: <span>Français</span></a>
+              <a href="/cs-cz/">🇨🇿 Česká republika: <span>Čeština</span></a>
+              <a href="/es-cl/">🇨🇱 Chile: <span>Español</span></a>
+              <a href="/es-co/">🇨🇴 Colombia: <span>Español</span></a>
+              <a href="/en-dk/">🇩🇰 Denmark: <span>English</span></a>
+              <a href="/de-de/">🇩🇪 Deutschland: <span>Deutsch</span></a>
+            </div>
+            <div class="region-modal-col">
+              <a href="/es-es/">🇪🇸 España: <span>Español</span></a>
+              <a href="/fr-fr/">🇫🇷 France: <span>Français</span></a>
+              <a href="/en-in/">🇮🇳 India: <span>English</span></a>
+              <a href="/id-id/">🇮🇩 Indonesia: <span>Bahasa Indonesia</span></a>
+              <a href="/it-it/">🇮🇹 Italia: <span>Italiano</span></a>
+              <a href="/ms-my/">🇲🇾 Malaysia: <span>Bahasa Melayu</span></a>
+              <a href="/es-mx/">🇲🇽 México: <span>Español</span></a>
+              <a href="/nl-nl/">🇳🇱 Nederland: <span>Nederlands</span></a>
+              <a href="/en-nz/">🇳🇿 New Zealand: <span>English</span></a>
+              <a href="/no-no/">🇳🇴 Norge: <span>Norsk</span></a>
+              <a href="/pl-pl/">🇵🇱 Polska: <span>Polski</span></a>
+              <a href="/pt-pt/">🇵🇹 Portugal: <span>Português</span></a>
+            </div>
+            <div class="region-modal-col">
+              <a href="/ru-ru/">🇷🇺 Россия: <span>Русский</span></a>
+              <a href="/de-ch/">🇨🇭 Schweiz: <span>Deutsch</span></a>
+              <a href="/sk-sk/">🇸🇰 Slovensko: <span>Slovenčina</span></a>
+              <a href="/en-za/">🇿🇦 South Africa: <span>English</span></a>
+              <a href="/fr-ch/">🇨🇭 Suisse: <span>Français</span></a>
+              <a href="/en-se/">🇸🇪 Sweden: <span>English</span></a>
+              <a href="/tr-tr/">🇹🇷 Türkiye: <span>Türkçe</span></a>
+              <a href="/en-gb/">🇬🇧 United Kingdom: <span>English</span></a>
+              <a href="/en-us/">🇺🇸 United States: <span>English</span></a>
+              <a href="/zh-tw/">🇹🇼 臺灣: <span>繁體中文</span></a>
+              <a href="/ja-jp/">🇯🇵 日本: <span>日本語</span></a>
+              <a href="/ko-kr/">🇰🇷 대한민국: <span>한국어</span></a>
+            </div>
+          </div>
+          <div class="region-modal-footer">
+            <span>🌐 Global Website:</span>
+            <a href="/es-ww/">Español</a> /
+            <a href="/en-ww/">Worldwide (English)</a> /
+            <a href="/en-eu/">Europe (English)</a>
+          </div>
+        </div>`;
+        document.body.appendChild(modal);
+        modal.querySelector('.region-modal-close').addEventListener('click', () => modal.remove());
+        modal.addEventListener('click', (ev) => { if (ev.target === modal) modal.remove(); });
+      });
+    }
   }
 
   // hamburger for mobile
