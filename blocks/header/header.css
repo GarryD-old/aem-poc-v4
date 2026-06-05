@@ -148,14 +148,12 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   border-left: 1px solid #e4e8f0;
   min-width: 280px;
   z-index: 9999;
-  flex-direction: column;
-  gap: 0;
   text-align: left;
   list-style: none;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-  display: flex;
+  display: block;
 }
 
 /* dropdown items - no individual background */
