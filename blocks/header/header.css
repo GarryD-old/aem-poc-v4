@@ -141,14 +141,16 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   top: 100%;
   left: 0;
   padding: 0;
-  background: #fff;
-  border: 1px solid #e4e8f0;
-  border-top: none;
+  background-color: #fff;
+  border-right: 1px solid #e4e8f0;
+  border-bottom: 1px solid #e4e8f0;
+  border-left: 1px solid #e4e8f0;
   min-width: 280px;
   z-index: 9999;
   flex-direction: column;
   gap: 0;
   text-align: left;
+  list-style: none;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
@@ -164,19 +166,25 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
   color: #1c222e;
   white-space: nowrap;
   text-align: left;
+  background-color: #fff;
 }
 
-/* category headers (bold items with green separator above) */
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li:has(strong) {
-  padding: 16px 24px 8px;
+/* category headers - items containing strong text */
+header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
+  display: block;
   font-size: 14px;
   font-weight: 700;
   color: #1c222e;
+  padding: 4px 0;
   border-top: 2px solid #008941;
+  margin-top: 4px;
+  padding-top: 12px;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li:has(strong):first-child {
+header nav .nav-sections .default-content-wrapper > ul > li > ul > li:first-child strong {
   border-top: none;
+  margin-top: 0;
+  padding-top: 4px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
