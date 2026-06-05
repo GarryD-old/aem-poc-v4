@@ -1,10 +1,14 @@
 export default function decorate(block) {
-  const textDiv = block.querySelector(':scope > div:nth-child(2)');
-  if (textDiv) {
-    const awardSet = document.createElement('div');
-    awardSet.className = 'hero-award-set';
-    awardSet.innerHTML = '<img src="/content/antitrack/media/award-badge-set.png" alt="AVG Excellent rating on Trustpilot - 15,354 reviews">';
-    textDiv.append(awardSet);
+  const imgDiv = block.querySelector(':scope > div:first-child');
+  const img = imgDiv?.querySelector('img');
+  if (img && img.getAttribute('src')) {
+    const section = block.closest('.hero-container');
+    if (section) {
+      section.style.backgroundImage = `url('${img.getAttribute('src')}')`;
+      section.style.backgroundSize = 'cover';
+      section.style.backgroundPosition = 'center';
+    }
+    imgDiv.style.display = 'none';
   }
 
   const section = block.closest('.hero-container');
