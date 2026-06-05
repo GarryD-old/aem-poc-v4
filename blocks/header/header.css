@@ -131,9 +131,13 @@ header nav .nav-sections ul > li {
   align-items: center;
 }
 
-/* active/expanded green underline */
+/* active/expanded - green pill background */
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
-  border-bottom: 2px solid #008941;
+  background-color: #008941;
+  color: #fff;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin: -6px -12px;
 }
 
 /* dropdown panel */
