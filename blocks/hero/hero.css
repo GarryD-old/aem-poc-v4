@@ -11,8 +11,8 @@
 
 .hero {
   position: static;
-  padding: 64px 24px 60px;
-  min-height: 400px;
+  padding: 64px 24px 40px;
+  min-height: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -97,10 +97,10 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 120px 32px 80px;
+    padding: 64px 32px 40px;
   }
 
   .hero-container > .cards-pricing-wrapper {
-    padding: 0 32px 80px;
+    padding: 0 32px 60px;
   }
 }
