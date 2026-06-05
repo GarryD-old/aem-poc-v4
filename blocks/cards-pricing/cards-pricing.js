@@ -52,12 +52,12 @@ function restructureCardBody(body) {
   const allP = [...body.querySelectorAll(':scope > p:not(.button-container)')];
   const buttonContainer = body.querySelector('.button-container');
 
-  const priceLine = allP.find((p) => /€[\d.]+\/year/.test(p.textContent));
+  const priceLine = allP.find((p) => /[$€][\dX.]+\/year/.test(p.textContent));
   const worksOutLine = allP.find((p) => p.textContent.includes('It works out as'));
 
   if (priceLine && worksOutLine) {
     const annualText = priceLine.textContent.trim();
-    const monthlyMatch = worksOutLine.textContent.match(/€[\d.]+/);
+    const monthlyMatch = worksOutLine.textContent.match(/[$€][\dX.]+/);
     const monthly = monthlyMatch ? monthlyMatch[0] : '';
 
     priceLine.className = 'cards-pricing-annual';
