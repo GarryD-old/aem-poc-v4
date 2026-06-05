@@ -158,10 +158,10 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   display: block;
 }
 
-/* dropdown items */
+/* dropdown items - 16px left/right padding per Figma */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-  padding: 12px 16px;
+  padding: 6px 16px;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
@@ -175,12 +175,13 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
 /* category headers via JS .nav-category class */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
   border-top: 2px solid #008941;
-  padding-top: 12px;
+  padding: 12px 16px 6px;
   margin-top: 0;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child {
   border-top: none;
+  padding-top: 6px;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
