@@ -1,9 +1,11 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: #fff;
   width: 100%;
-  z-index: 2;
+  z-index: 999;
   position: fixed;
+  top: 0;
+  left: 0;
   border-bottom: 1px solid #e4e8f0;
 }
 
@@ -13,8 +15,10 @@ header nav {
   align-items: center;
   margin: auto;
   max-width: 1400px;
-  padding: 16px 40px;
+  padding: 0 40px;
+  height: 64px;
   font-family: var(--body-font-family);
+  position: relative;
 }
 
 header nav p {
@@ -35,7 +39,7 @@ header nav .nav-hamburger {
 /* brand / logo */
 header .nav-brand {
   flex-shrink: 0;
-  margin-right: 40px;
+  margin-right: auto;
 }
 
 header nav .nav-brand a {
@@ -48,12 +52,10 @@ header nav .nav-brand img {
   height: auto;
 }
 
-/* right side container: tools on top, sections below */
+/* nav sections: main links right-aligned */
 header nav .nav-sections {
   display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
 }
 
 header nav .nav-sections ul {
@@ -71,29 +73,27 @@ header nav .nav-sections ul > li {
   font-weight: 400;
   color: #1c222e;
   white-space: nowrap;
-}
-
-header nav .nav-sections .default-content-wrapper > ul > li {
   position: relative;
   cursor: pointer;
 }
 
+/* dropdown panel */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: 100%;
-  left: -24px;
-  margin-top: 16px;
-  padding: 20px 24px;
-  background-color: var(--background-color);
-  border-radius: 8px;
-  box-shadow: 0 8px 32px rgb(28 34 46 / 12%);
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 24px 32px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 10%);
   border: 1px solid #e4e8f0;
-  white-space: normal;
-  min-width: 220px;
-  z-index: 10;
+  min-width: 240px;
+  z-index: 9999;
   flex-direction: column;
   gap: 0;
+  text-align: left;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
@@ -102,41 +102,48 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
 
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-  padding: 8px 0;
-  font-size: 14px;
+  padding: 10px 0;
+  font-size: 16px;
   font-weight: 400;
   color: #1c222e;
   white-space: nowrap;
+  text-align: left;
+  border-bottom: 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li a {
   color: #1c222e;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li a:hover {
   color: #2276d9;
 }
 
-header nav .nav-sections .nav-drop::after {
+/* active nav item green underline */
+header nav .nav-sections .nav-drop[aria-expanded='true'] {
+  color: #1c222e;
+}
+
+header nav .nav-sections .nav-drop[aria-expanded='true']::before {
   content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border: 1.5px solid currentcolor;
-  border-width: 0 1.5px 1.5px 0;
-  transform: rotate(45deg);
-  margin-left: 6px;
-  margin-bottom: 2px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #008941;
+  border-radius: 2px;
 }
 
 /* tools: top-right utility links */
 header nav .nav-tools {
-  position: absolute;
-  top: 12px;
-  right: 40px;
   display: flex;
   align-items: center;
-  gap: 0;
+  margin-left: 40px;
+  flex-shrink: 0;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -145,7 +152,6 @@ header nav .nav-tools ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0;
   align-items: center;
 }
 
@@ -155,9 +161,10 @@ header nav .nav-tools li {
   white-space: nowrap;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools li + li {
-  margin-left: 24px;
-  padding-left: 24px;
+  margin-left: 20px;
+  padding-left: 20px;
   border-left: 1px solid #ced4e0;
 }
 
@@ -168,6 +175,7 @@ header nav .nav-tools a {
   font-size: 12px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-tools a:hover {
   color: #1c222e;
 }
