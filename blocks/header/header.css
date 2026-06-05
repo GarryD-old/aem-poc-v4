@@ -131,13 +131,22 @@ header nav .nav-sections ul > li {
   align-items: center;
 }
 
-/* active/expanded - green pill background */
-header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
-  background-color: #008941;
-  color: #fff;
-  border-radius: 4px;
-  padding: 6px 12px;
-  margin: -6px -12px;
+/* active/hovered - green underline below text */
+header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 21px;
+  height: 2px;
+  background: #008941;
+}
+
+/* show dropdown on hover */
+header nav .nav-sections .default-content-wrapper > ul > li:hover > ul {
+  display: block;
 }
 
 /* dropdown panel */
