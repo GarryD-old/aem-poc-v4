@@ -1,16 +1,6 @@
 .hero-container {
   position: relative;
-  background-color: #1c222e;
   overflow: hidden;
-}
-
-.hero-container::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgb(28 34 46 / 60%);
-  z-index: 0;
-  pointer-events: none;
 }
 
 .hero-container .hero-wrapper {
