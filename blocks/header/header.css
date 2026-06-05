@@ -156,7 +156,7 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   display: block;
 }
 
-/* dropdown items - no individual background */
+/* dropdown items */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
   padding: 10px 24px;
@@ -166,6 +166,8 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
   white-space: nowrap;
   text-align: left;
   margin: 0;
+  background-color: #fff;
+  position: relative;
 }
 
 /* category header text styling */
