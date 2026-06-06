@@ -26,7 +26,8 @@
 .columns-bait .columns-bait-image img {
   max-width: 100%;
   height: auto;
-  max-height: 523px;
+  max-height: 400px;
+  width: 400px;
 }
 
 .columns-bait .columns-bait-content {
@@ -75,19 +76,20 @@
   left: 0;
   width: 32px;
   height: 32px;
-  background-image: url('/icons/check-oval.png');
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='none' stroke='%23008941' stroke-width='2'/%3E%3Cpath d='M9 16l5 5 9-9' fill='none' stroke='%23008941' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 @media (width >= 900px) {
   .columns-bait-container {
-    padding: 56px 0;
+    padding: 56px 120px;
   }
 
   .columns-bait > div {
     flex-direction: row;
-    gap: 80px;
+    gap: 32px;
+    align-items: flex-start;
   }
 
   .columns-bait .columns-bait-content ul {
@@ -95,6 +97,7 @@
   }
 
   .columns-bait .columns-bait-content h2 {
-    font-size: var(--heading-font-size-xl);
+    font-size: 46px;
+    line-height: 1.3;
   }
 }
