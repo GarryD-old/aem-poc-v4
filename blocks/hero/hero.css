@@ -1,6 +1,10 @@
 .hero-container {
   position: relative;
   overflow: hidden;
+  background-image: url('/content/dam/avg-eds-garry/avg/hero/bg-antitrack-hero1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #1c222e;
 }
 
 .hero-container .hero-wrapper {
