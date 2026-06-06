@@ -49,35 +49,36 @@
   margin: 0 0 16px;
 }
 
-.columns-bait ul,
-.columns-bait .columns-bait-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 0;
+.columns-bait .columns-bait-checklist {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 32px;
+  margin-top: 24px;
 }
 
-.columns-bait li,
-.columns-bait .columns-bait-content li {
-  color: var(--background-color);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.4;
-  padding-left: 0;
-  position: relative;
-  min-height: 32px;
+.columns-bait .columns-bait-check-item {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.columns-bait li img,
-.columns-bait .columns-bait-content li img {
-  width: 24px;
-  height: 24px;
+.columns-bait .columns-bait-check-item picture {
   flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-bait .columns-bait-check-item img {
+  width: 32px;
+  height: 32px;
+}
+
+.columns-bait .columns-bait-check-item p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--background-color);
 }
 
 @media (width >= 900px) {
@@ -91,10 +92,6 @@
     align-items: flex-start;
   }
 
-  .columns-bait ul,
-  .columns-bait .columns-bait-content ul {
-    grid-template-columns: 1fr 1fr;
-  }
 
   .columns-bait .columns-bait-content h2 {
     font-size: 46px;

@@ -6,26 +6,39 @@ export default function decorate(block) {
         col.className = 'columns-bait-image';
         const img = col.querySelector('img');
         if (img) {
-          img.src = '/content/dam/avg-eds-garry/avg/hero/fingerprint.png';
-          img.alt = 'Digital fingerprint illustration';
           img.style.width = '368px';
           img.style.height = '523px';
+          img.style.maxWidth = '100%';
         }
       } else {
         col.className = 'columns-bait-content';
-        col.querySelectorAll('p').forEach((p) => {
-          const text = p.textContent.trim();
-          if (text && !p.querySelector('a') && !p.querySelector('strong') && !p.querySelector('h2') && p.closest('.columns-bait-content') && !text.includes('.') && text.length < 40) {
-            const icon = document.createElement('img');
-            icon.src = '/content/dam/avg-eds-garry/avg/icons/Check-Oval.png';
-            icon.alt = '';
-            icon.width = 24;
-            icon.height = 24;
-            icon.style.verticalAlign = 'middle';
-            icon.style.marginRight = '8px';
-            p.prepend(icon);
+        const allP = [...col.querySelectorAll(':scope > p')];
+        const checkItems = [];
+        let i = 0;
+        while (i < allP.length) {
+          const p = allP[i];
+          const pic = p.querySelector('picture');
+          if (pic && p.children.length === 1 && p.textContent.trim() === '') {
+            const nextP = allP[i + 1];
+            if (nextP && nextP.querySelector('strong')) {
+              const item = document.createElement('div');
+              item.className = 'columns-bait-check-item';
+              item.append(pic);
+              item.append(nextP);
+              checkItems.push(item);
+              p.remove();
+              i += 2;
+              continue;
+            }
           }
-        });
+          i += 1;
+        }
+        if (checkItems.length > 0) {
+          const grid = document.createElement('div');
+          grid.className = 'columns-bait-checklist';
+          checkItems.forEach((item) => grid.append(item));
+          col.append(grid);
+        }
       }
     });
   });
