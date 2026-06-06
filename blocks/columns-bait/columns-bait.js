@@ -14,26 +14,22 @@ export default function decorate(block) {
         col.className = 'columns-bait-content';
         const allP = [...col.querySelectorAll(':scope > p')];
         const checkItems = [];
-        let i = 0;
-        while (i < allP.length) {
-          const p = allP[i];
-          const pic = p.querySelector('picture');
-          let handled = false;
-          if (pic && p.children.length === 1 && p.textContent.trim() === '') {
-            const nextP = allP[i + 1];
-            if (nextP && nextP.querySelector('strong')) {
-              const item = document.createElement('div');
-              item.className = 'columns-bait-check-item';
-              item.append(pic);
-              item.append(nextP);
-              checkItems.push(item);
-              p.remove();
-              i += 2;
-              handled = true;
-            }
+        allP.forEach((p) => {
+          const img = p.querySelector('img');
+          const strong = p.querySelector('strong');
+          if (img && strong) {
+            const item = document.createElement('div');
+            item.className = 'columns-bait-check-item';
+            const icon = document.createElement('picture');
+            icon.append(img);
+            item.append(icon);
+            const text = document.createElement('p');
+            text.append(strong);
+            item.append(text);
+            checkItems.push(item);
+            p.remove();
           }
-          if (!handled) i += 1;
-        }
+        });
         if (checkItems.length > 0) {
           const grid = document.createElement('div');
           grid.className = 'columns-bait-checklist';
