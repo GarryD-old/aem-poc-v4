@@ -18,6 +18,7 @@ export default function decorate(block) {
         while (i < allP.length) {
           const p = allP[i];
           const pic = p.querySelector('picture');
+          let handled = false;
           if (pic && p.children.length === 1 && p.textContent.trim() === '') {
             const nextP = allP[i + 1];
             if (nextP && nextP.querySelector('strong')) {
@@ -28,10 +29,10 @@ export default function decorate(block) {
               checkItems.push(item);
               p.remove();
               i += 2;
-              continue;
+              handled = true;
             }
           }
-          i += 1;
+          if (!handled) i += 1;
         }
         if (checkItems.length > 0) {
           const grid = document.createElement('div');
