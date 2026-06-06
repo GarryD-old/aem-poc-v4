@@ -49,6 +49,7 @@
   margin: 0 0 16px;
 }
 
+.columns-bait ul,
 .columns-bait .columns-bait-content ul {
   list-style: none;
   padding: 0;
@@ -58,6 +59,7 @@
   gap: 8px;
 }
 
+.columns-bait li,
 .columns-bait .columns-bait-content li {
   color: var(--background-color);
   font-weight: 700;
@@ -70,6 +72,7 @@
   align-items: center;
 }
 
+.columns-bait li::before,
 .columns-bait .columns-bait-content li::before {
   content: '';
   position: absolute;
@@ -92,6 +95,7 @@
     align-items: flex-start;
   }
 
+  .columns-bait ul,
   .columns-bait .columns-bait-content ul {
     grid-template-columns: 1fr 1fr;
   }
