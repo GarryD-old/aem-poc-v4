@@ -231,6 +231,7 @@
 
 .tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open {
   color: var(--link-color);
+  border-bottom: none;
 }
 
 .tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open::after {
