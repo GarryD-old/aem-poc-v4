@@ -251,17 +251,20 @@
   border-color: var(--brand-color);
 }
 
-/* System requirements panel (second tab) */
-.tabs .tabs-panel:nth-of-type(2) > div > div[data-aue-type='richtext'] {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 0;
-}
-
 /* stylelint-disable-next-line no-descending-specificity */
-.tabs .tabs-panel:nth-of-type(2) > div > div[data-aue-type='richtext'] > p {
-  margin: 0 0 16px;
+.tabs .tabs-panel:nth-of-type(2) p:has(> img) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto 16px;
   font-size: var(--body-font-size-s);
   color: var(--text-color);
   line-height: 1.5;
+}
+
+.tabs .tabs-panel:nth-of-type(2) p:has(> img) img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
