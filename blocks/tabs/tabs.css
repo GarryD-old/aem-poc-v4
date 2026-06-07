@@ -252,7 +252,7 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.tabs .tabs-panel:nth-of-type(2) p:has(> img) {
+.tabs .tabs-panel:nth-of-type(2) p:not(:first-child) {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -264,8 +264,23 @@
   line-height: 1.5;
 }
 
-.tabs .tabs-panel:nth-of-type(2) p:has(> img) img {
+.tabs .tabs-panel:nth-of-type(2) p:not(:first-child)::before {
+  content: '';
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.tabs .tabs-panel:nth-of-type(2) p:nth-child(2)::before {
+  background-image: url('/content/dam/avg-eds-garry/avg/icons/icon-platform-win.png');
+}
+
+.tabs .tabs-panel:nth-of-type(2) p:nth-child(3)::before {
+  background-image: url('/content/dam/avg-eds-garry/avg/icons/icon-platform-mac.png');
+}
+
+.tabs .tabs-panel:nth-of-type(2) p:nth-child(4)::before {
+  background-image: url('/content/dam/avg-eds-garry/avg/icons/icon-platform-browser.png');
 }
