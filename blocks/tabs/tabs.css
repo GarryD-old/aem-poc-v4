@@ -140,6 +140,11 @@
 
 .tabs .tabs-panel .faq-list > div > div:nth-child(2) {
   padding: 0 24px 24px;
+  display: none;
+}
+
+.tabs .tabs-panel .faq-list > div[data-open='true'] > div:nth-child(2) {
+  display: block;
 }
 
 .tabs .tabs-panel .faq-list > div > div:nth-child(2) p {
