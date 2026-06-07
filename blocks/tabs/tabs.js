@@ -95,6 +95,7 @@ export default async function decorate(block) {
       question.addEventListener('click', () => {
         const visible = answer.style.display === 'block';
         answer.style.display = visible ? 'none' : 'block';
+        question.classList.toggle('faq-open', !visible);
       });
     }
   });

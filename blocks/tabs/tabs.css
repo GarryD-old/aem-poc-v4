@@ -217,6 +217,25 @@
   line-height: 1;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .tabs .tabs-panel > div > div[data-aue-type='richtext'] > p:nth-child(even) {
   display: none;
+  padding: 0 32px 32px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--muted-text-color);
+  line-height: 1.7;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open {
+  color: var(--link-color);
+}
+
+.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open::after {
+  content: '×';
+  background-color: var(--brand-color);
+  color: var(--background-color);
+  border-color: var(--brand-color);
 }
