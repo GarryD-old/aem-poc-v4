@@ -234,6 +234,11 @@ main img {
   width: 100%;
 }
 
+.metadata-container,
+.metadata {
+  display: none;
+}
+
 /* sections */
 main > .section {
   margin: 0;
