@@ -70,6 +70,23 @@
   margin: 0 0 40px;
 }
 
+.tabs .tabs-panel p:has(> img) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto 16px;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.tabs .tabs-panel p:has(> img) img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 .tabs .tabs-panel ul {
   max-width: 700px;
   margin: 0 auto;
@@ -81,7 +98,6 @@
   padding: 12px 0;
   font-size: var(--body-font-size-s);
   color: var(--text-color);
-  border-bottom: 1px solid var(--border-color);
 }
 
 .tabs .tabs-panel ul li:last-child {
