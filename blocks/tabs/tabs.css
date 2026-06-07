@@ -186,8 +186,8 @@
   text-decoration: underline;
 }
 
-/* Author fallback: faq-list gets flattened to <p> tags in richtext */
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] {
+/* Author fallback: faq-list gets flattened to <p> tags in richtext (first panel only) */
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] {
   max-width: 900px;
   margin: 0 auto;
   background-color: var(--background-color);
@@ -197,7 +197,7 @@
   padding: 0;
 }
 
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p:nth-child(odd) {
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] > p:nth-child(odd) {
   position: relative;
   padding: 32px 72px 32px 32px;
   margin: 0;
@@ -208,7 +208,7 @@
   cursor: pointer;
 }
 
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p:nth-child(odd)::after {
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] > p:nth-child(odd)::after {
   content: '+';
   position: absolute;
   top: 32px;
@@ -228,7 +228,7 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p:nth-child(even) {
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] > p:nth-child(even) {
   display: none;
   padding: 0 32px 32px;
   margin: 0;
@@ -239,14 +239,29 @@
   border-bottom: 1px solid var(--border-color);
 }
 
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open {
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] > p.faq-open {
   color: var(--link-color);
   border-bottom: none;
 }
 
-.tabs .tabs-panel > div > div[data-aue-type='richtext'] > p.faq-open::after {
+.tabs .tabs-panel:first-of-type > div > div[data-aue-type='richtext'] > p.faq-open::after {
   content: '×';
   background-color: var(--brand-color);
   color: var(--background-color);
   border-color: var(--brand-color);
+}
+
+/* System requirements panel (second tab) */
+.tabs .tabs-panel:nth-of-type(2) > div > div[data-aue-type='richtext'] {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.tabs .tabs-panel:nth-of-type(2) > div > div[data-aue-type='richtext'] > p {
+  margin: 0 0 16px;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.5;
 }
