@@ -264,6 +264,12 @@ main .section.grey {
   padding: 60px 0;
 }
 
+main .section.light-gray {
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 88px 0;
+}
+
 main .section.dark {
   background-color: var(--dark-color);
   color: var(--background-color);
