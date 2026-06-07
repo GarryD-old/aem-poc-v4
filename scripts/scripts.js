@@ -138,6 +138,37 @@ async function loadEager(doc) {
   }
 }
 
+function buildStickyNav() {
+  const statsSection = document.querySelector('.cards-stats-container');
+  if (!statsSection) return;
+
+  const bar = document.createElement('div');
+  bar.className = 'sticky-bar';
+  bar.innerHTML = `
+    <div class="sticky-bar-inner">
+      <img src="/content/dam/avg-eds-garry/avg/hero/avg-logo.png" alt="AVG" class="sticky-bar-logo">
+      <div class="sticky-bar-buttons">
+        <a href="/en-eu/download-thank-you.php?product=ANW" class="sticky-bar-btn sticky-bar-btn-outline">Download free trial</a>
+        <a href="https://checkout.avg.com/en-eu/web?product=anw.1.12m&quantity=1&campaignMarker=WDG~en-eu~antitrack~~~trSrcCookieValue&provider=gen&clearCart=1" class="sticky-bar-btn sticky-bar-btn-primary">Buy now</a>
+      </div>
+    </div>
+  `;
+  document.body.append(bar);
+
+  const heroSection = document.querySelector('.hero-container');
+  const trigger = statsSection;
+
+  window.addEventListener('scroll', () => {
+    const triggerBottom = trigger.getBoundingClientRect().bottom;
+    const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
+    if (triggerBottom < 0 && heroBottom < 0) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  });
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -157,6 +188,8 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  buildStickyNav();
 }
 
 /**
