@@ -85,8 +85,9 @@
 }
 
 @media (width >= 900px) {
-  .columns-bait-container {
-    padding: 56px 120px;
+  .columns-bait-container > .columns-bait-wrapper {
+    max-width: unset;
+    padding: 56px 236px 56px 120px;
   }
 
   .columns-bait > div {
