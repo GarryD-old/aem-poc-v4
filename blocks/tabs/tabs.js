@@ -64,39 +64,36 @@ export default async function decorate(block) {
 
   block.prepend(tablist);
 
-  // Handle nested accordion blocks inside tabs panels (not decorated by block loader)
-  block.querySelectorAll('.tabs-panel .faq-list').forEach((accordion) => {
-    [...accordion.children].forEach((item) => {
-      const heading = item.children[0];
-      const body = item.children[1];
-      if (!heading || !body) return;
-
-      item.setAttribute('data-open', 'false');
-
-      heading.style.cursor = 'pointer';
-      heading.addEventListener('click', () => {
-        const isOpen = item.getAttribute('data-open') === 'true';
-        if (isOpen) {
+  // Build FAQ accordion from flat <p> pairs in the first tab panel
+  const faqPanel = block.querySelector('.tabs-panel');
+  if (faqPanel) {
+    const contentDiv = faqPanel.querySelector(':scope > div > div') || faqPanel.querySelector(':scope > div');
+    if (contentDiv) {
+      const paragraphs = [...contentDiv.querySelectorAll(':scope > p')];
+      if (paragraphs.length >= 2) {
+        const faqList = document.createElement('div');
+        faqList.className = 'faq-list';
+        for (let i = 0; i < paragraphs.length; i += 2) {
+          const q = paragraphs[i];
+          const a = paragraphs[i + 1];
+          if (!a) break;
+          const item = document.createElement('div');
           item.setAttribute('data-open', 'false');
-        } else {
-          item.setAttribute('data-open', 'true');
+          const heading = document.createElement('div');
+          heading.append(q);
+          heading.style.cursor = 'pointer';
+          const body = document.createElement('div');
+          body.append(a);
+          item.append(heading);
+          item.append(body);
+          heading.addEventListener('click', () => {
+            const isOpen = item.getAttribute('data-open') === 'true';
+            item.setAttribute('data-open', isOpen ? 'false' : 'true');
+          });
+          faqList.append(item);
         }
-      });
-    });
-  });
-
-  // Fallback: handle flat <p> structure in richtext on author
-  block.querySelectorAll('.tabs-panel div[data-aue-type="richtext"]').forEach((rt) => {
-    const paragraphs = [...rt.querySelectorAll(':scope > p')];
-    for (let i = 0; i < paragraphs.length; i += 2) {
-      const question = paragraphs[i];
-      const answer = paragraphs[i + 1];
-      if (!answer) break;
-      question.addEventListener('click', () => {
-        const visible = answer.style.display === 'block';
-        answer.style.display = visible ? 'none' : 'block';
-        question.classList.toggle('faq-open', !visible);
-      });
+        contentDiv.append(faqList);
+      }
     }
-  });
+  }
 }
