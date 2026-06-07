@@ -17,17 +17,20 @@
 }
 
 .columns-bait .columns-bait-image {
-  flex: 1;
   display: flex;
-  align-items: center;
+  width: 368px;
+  height: 523px;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .columns-bait .columns-bait-image img {
   max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
-  max-height: 400px;
-  width: 400px;
 }
 
 .columns-bait .columns-bait-content {

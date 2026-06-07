@@ -4,12 +4,6 @@ export default function decorate(block) {
     [...row.children].forEach((col, index) => {
       if (index === 0) {
         col.className = 'columns-bait-image';
-        const img = col.querySelector('img');
-        if (img) {
-          img.style.width = '368px';
-          img.style.height = '523px';
-          img.style.maxWidth = '100%';
-        }
       } else {
         col.className = 'columns-bait-content';
         const allP = [...col.querySelectorAll(':scope > p')];
