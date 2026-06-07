@@ -70,21 +70,14 @@
   margin: 0 0 40px;
 }
 
-.tabs .tabs-panel p:has(> img) {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 700px;
-  margin: 0 auto 16px;
-  font-size: var(--body-font-size-s);
-  color: var(--text-color);
-  line-height: 1.5;
+.tabs .tabs-panel p:first-child:has(> strong:only-child) {
+  text-align: center;
+  font-size: var(--heading-font-size-m);
+  margin: 0 0 40px;
 }
 
-.tabs .tabs-panel p:has(> img) img {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
+.tabs .tabs-panel p:first-child:has(> strong:only-child) strong {
+  font-weight: 900;
 }
 
 .tabs .tabs-panel ul {
@@ -129,6 +122,7 @@
   cursor: pointer;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .tabs .faq-list > div > div:first-child p {
   margin: 0;
   font-size: var(--body-font-size-m);
