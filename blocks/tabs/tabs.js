@@ -71,22 +71,31 @@ export default async function decorate(block) {
       const body = item.children[1];
       if (!heading || !body) return;
 
-      // Hide body by default
-      body.style.display = 'none';
       item.setAttribute('data-open', 'false');
 
-      // Make heading clickable
       heading.style.cursor = 'pointer';
       heading.addEventListener('click', () => {
         const isOpen = item.getAttribute('data-open') === 'true';
         if (isOpen) {
-          body.style.display = 'none';
           item.setAttribute('data-open', 'false');
         } else {
-          body.style.display = 'block';
           item.setAttribute('data-open', 'true');
         }
       });
     });
+  });
+
+  // Fallback: handle flat <p> structure in richtext on author
+  block.querySelectorAll('.tabs-panel div[data-aue-type="richtext"]').forEach((rt) => {
+    const paragraphs = [...rt.querySelectorAll(':scope > p')];
+    for (let i = 0; i < paragraphs.length; i += 2) {
+      const question = paragraphs[i];
+      const answer = paragraphs[i + 1];
+      if (!answer) break;
+      question.addEventListener('click', () => {
+        const visible = answer.style.display === 'block';
+        answer.style.display = visible ? 'none' : 'block';
+      });
+    }
   });
 }
