@@ -37,3 +37,27 @@
     order: unset;
   }
 }
+
+/* Dark section checklist items: p with only strong child */
+/* stylelint-disable-next-line selector-max-compound-selectors */
+.section.dark .columns > div > div:not(.columns-img-col) p:has(> strong:only-child) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin: 0 0 12px;
+  width: 48%;
+  vertical-align: top;
+}
+
+/* stylelint-disable-next-line selector-max-compound-selectors, no-descending-specificity */
+.section.dark .columns > div > div:not(.columns-img-col) p:has(> strong:only-child)::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background-image: url('/content/dam/avg-eds-garry/avg/icons/Check-Oval.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
