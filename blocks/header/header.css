@@ -167,8 +167,9 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: calc(100% - 1px);
+  left: -16px;
+  right: -16px;
   margin: 0;
   padding: 12px 0;
   background-color: #fff;
