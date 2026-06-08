@@ -299,7 +299,7 @@
 /* JS-injected heading for standalone pricing section */
 .cards-pricing-heading {
   text-align: center;
-  margin-bottom: 56px;
+  padding-bottom: 56px;
 }
 
 .cards-pricing-title {
