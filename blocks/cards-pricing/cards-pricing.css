@@ -295,6 +295,38 @@
   color: var(--text-color);
 }
 
+/* JS-injected heading for standalone pricing section */
+.cards-pricing-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cards-pricing-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cards-pricing-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.cards-pricing-heading h2 {
+  font-size: 46px;
+  font-weight: 900;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.cards-pricing-subtitle {
+  font-size: 18px;
+  color: var(--text-color);
+  margin: 0;
+}
+
 /* Extra top padding in cards for dropdown overlap */
 .cards-pricing > ul > li:first-child {
   padding-top: 48px;

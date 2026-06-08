@@ -154,6 +154,20 @@ export default function decorate(block) {
   block.append(ul);
 
   const section = block.closest('.section');
+  if (section && !section.classList.contains('hero-container') && !section.querySelector('.cards-pricing-heading')) {
+    const heading = document.createElement('div');
+    heading.className = 'cards-pricing-heading';
+    heading.innerHTML = `
+      <div class="cards-pricing-title">
+        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/antitrack.png" alt="AVG AntiTrack" class="cards-pricing-icon">
+        <h2>AVG AntiTrack</h2>
+      </div>
+      <p class="cards-pricing-subtitle">The simple way to get your privacy back</p>
+    `;
+    const wrapper = block.closest('.cards-pricing-wrapper');
+    if (wrapper) wrapper.before(heading);
+  }
+
   if (section) {
     section.querySelectorAll('p').forEach((p) => {
       if (p.textContent.trim() === '30-day money-back guarantee' && !p.classList.contains('cards-pricing-money-back')) {
