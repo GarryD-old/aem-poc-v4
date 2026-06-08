@@ -5,43 +5,46 @@ footer {
 }
 
 footer .footer > div {
-  margin: auto;
   max-width: 1600px;
+  margin: 0 auto;
   padding: 64px 120px;
+  display: flex;
+  gap: 48px;
 }
 
 footer .footer > div:last-child {
+  display: block;
   border-top: 1px solid rgb(255 255 255 / 15%);
   padding-top: 40px;
   padding-bottom: 40px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer p {
-  margin: 0;
+  margin: 0 0 12px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 footer a:any-link {
   color: var(--background-color);
   text-decoration: none;
+  opacity: 0.8;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 footer a:hover {
   text-decoration: underline;
   color: var(--background-color);
+  opacity: 1;
 }
 
-/* Top section: brand + columns */
-.footer-top {
-  display: flex;
-  gap: 80px;
-}
-
-.footer-brand {
+/* Brand section (first child in flex) */
+footer .footer > div:first-child > div:first-child {
   flex-shrink: 0;
   min-width: 200px;
 }
 
-.footer-logo {
+footer .footer > div:first-child > div:first-child .footer-logo {
   width: 98px;
   height: 40px;
   background-image: url('/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
@@ -50,97 +53,57 @@ footer a:hover {
   margin-bottom: 32px;
 }
 
-.footer-country {
-  margin-bottom: 16px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.footer-country a {
-  font-size: 14px;
-}
-
-.footer-brand > p:last-child a {
-  font-size: 14px;
-  text-decoration: underline;
-}
-
-/* Footer columns */
-.footer-columns {
-  display: flex;
-  flex: 1;
-  gap: 48px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.footer-columns > div {
-  flex: 1;
-}
-
-.footer-columns strong {
+/* Column headings */
+footer .footer strong {
   display: block;
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 16px;
-  color: var(--background-color);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.footer-columns p {
-  margin-bottom: 12px;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.footer-columns a {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-.footer-columns a:hover {
   opacity: 1;
 }
 
-/* Bottom section */
-.footer-gen {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:first-child > div {
+  flex: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div:first-child > div a {
+  font-size: 14px;
+}
+
+/* Bottom section text */
+footer .footer > div:last-child > div > p:first-child {
   font-size: 14px;
   margin-bottom: 16px;
   opacity: 0.9;
 }
 
-.footer-copyright {
+footer .footer > div:last-child > div > p:nth-child(2) {
   font-size: 12px;
   line-height: 1.6;
-  opacity: 0.6;
+  opacity: 0.5;
   margin-bottom: 24px;
 }
 
-.footer-links {
+footer .footer > div:last-child > div > p:last-child {
   font-size: 12px;
   opacity: 0.7;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.footer-links a {
+footer .footer > div:last-child > div > p:last-child a {
   font-size: 12px;
 }
 
 @media (width < 900px) {
   footer .footer > div {
     padding: 40px 24px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  .footer-columns {
     flex-wrap: wrap;
-    gap: 32px;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
-  .footer-columns > div {
+  footer .footer > div:first-child > div {
     flex: 1 1 45%;
   }
 }
