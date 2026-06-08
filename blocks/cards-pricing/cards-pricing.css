@@ -314,6 +314,7 @@
   height: 48px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .cards-pricing-heading h2 {
   font-size: 46px;
   font-weight: 900;
