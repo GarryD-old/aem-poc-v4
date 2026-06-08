@@ -431,14 +431,16 @@ main > .section:nth-of-type(2) .default-content-wrapper a.button:hover {
   background-color: #f0faf4;
 }
 
-.sticky-bar-btn-primary {
+a.sticky-bar-btn-primary {
   background-color: var(--link-color);
   border: 1px solid var(--link-color);
-  color: var(--background-color);
+  color: #fff;
 }
 
-.sticky-bar-btn-primary:hover {
+a.sticky-bar-btn-primary:hover {
   background-color: var(--link-hover-color);
+  color: #fff;
+  text-decoration: none;
 }
 
 @media (width < 900px) {
