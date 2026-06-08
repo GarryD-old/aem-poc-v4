@@ -165,8 +165,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
   top: 100%;
-  right: -17px;
-  margin-top: 0;
+  right: 0;
   padding: 12px 0;
   background-color: #fff;
   border: 1px solid #ced4e0;
@@ -176,6 +175,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   text-align: left;
   list-style: none;
   box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+  margin: 0;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul,
