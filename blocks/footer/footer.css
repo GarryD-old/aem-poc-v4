@@ -4,30 +4,46 @@ footer {
   font-size: var(--body-font-size-xs);
 }
 
-footer .footer > div {
+footer .footer {
   max-width: 1600px;
   margin: 0 auto;
   padding: 64px 120px;
 }
 
-footer .footer > div > div {
+/* Top row: brand + 4 columns side by side */
+footer .footer-top {
   display: flex;
   gap: 48px;
 }
 
-footer .footer > div > div:last-child {
-  display: block;
-  border-top: 1px solid rgb(255 255 255 / 15%);
-  margin-top: 48px;
-  padding-top: 40px;
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-top > div {
+  flex: 1;
 }
 
+footer .footer-top > div:first-child {
+  flex: 0 0 200px;
+}
+
+/* Logo */
+.footer-logo {
+  width: 98px;
+  height: 40px;
+  background-image: url('/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 32px;
+}
+
+/* All paragraphs */
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer p {
   margin: 0 0 12px;
   line-height: 1.6;
 }
 
+/* All links */
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer a {
   color: var(--background-color);
   text-decoration: none;
@@ -41,45 +57,30 @@ footer .footer a:hover {
   opacity: 1;
 }
 
-/* Logo */
-.footer-logo {
-  width: 98px;
-  height: 40px;
-  background-image: url('/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-bottom: 32px;
-}
-
-/* Brand section (first in flex) */
-footer .footer > div > div > div:first-child {
-  flex-shrink: 0;
-  min-width: 200px;
-}
-
-/* Columns */
-/* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div > div > div {
-  flex: 1;
-}
-
 /* Column headings */
 footer .footer strong {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   opacity: 1;
 }
 
-/* Bottom section text */
-footer .footer > div > div:last-child p:first-child {
+/* Bottom row */
+footer .footer-bottom {
+  border-top: 1px solid rgb(255 255 255 / 15%);
+  margin-top: 48px;
+  padding-top: 40px;
+}
+
+footer .footer-bottom p:first-child {
   font-size: 14px;
   opacity: 0.9;
   margin-bottom: 16px;
 }
 
-footer .footer > div > div:last-child p:nth-child(2) {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer-bottom p:nth-child(2) {
   font-size: 12px;
   line-height: 1.7;
   opacity: 0.5;
@@ -87,27 +88,31 @@ footer .footer > div > div:last-child p:nth-child(2) {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div > div:last-child p:last-child {
+footer .footer-bottom p:last-child {
   font-size: 12px;
   opacity: 0.7;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div > div:last-child a {
+footer .footer-bottom a {
   font-size: 12px;
 }
 
 @media (width < 900px) {
-  footer .footer > div {
+  footer .footer {
     padding: 40px 24px;
   }
 
-  footer .footer > div > div {
+  footer .footer-top {
     flex-wrap: wrap;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
-  footer .footer > div > div > div {
+  footer .footer-top > div {
     flex: 1 1 45%;
+  }
+
+  footer .footer-top > div:first-child {
+    flex: 1 1 100%;
   }
 }

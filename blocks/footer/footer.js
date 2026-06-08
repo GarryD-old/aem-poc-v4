@@ -6,32 +6,46 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
   const footerMeta = getMetadata('footer');
   const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
   const fragment = await loadFragment(footerPath);
 
-  // decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  // Remove button decoration from footer links
-  footer.querySelectorAll('a.button').forEach((a) => {
-    a.classList.remove('button', 'primary', 'secondary');
-    const wrapper = a.closest('.button-container');
-    if (wrapper) {
-      wrapper.classList.remove('button-container');
+  const sections = [...fragment.querySelectorAll(':scope .section')];
+
+  // Build footer structure: top row (columns) + bottom row
+  const topRow = document.createElement('div');
+  topRow.className = 'footer-top';
+
+  const bottomRow = document.createElement('div');
+  bottomRow.className = 'footer-bottom';
+
+  // First section = brand (logo + country + login)
+  // Sections 2-5 = columns (About, Home products, Customer area, Partners)
+  // Last section = bottom (copyright)
+  sections.forEach((section, i) => {
+    section.querySelectorAll('a.button').forEach((a) => {
+      a.classList.remove('button', 'primary', 'secondary');
+      const wrapper = a.closest('.button-container');
+      if (wrapper) wrapper.classList.remove('button-container');
+    });
+
+    if (i < sections.length - 1) {
+      topRow.append(section);
+    } else {
+      bottomRow.append(section);
     }
   });
 
-  // Add logo to first section
-  const firstSection = footer.querySelector(':scope > div:first-child');
-  if (firstSection) {
+  // Add logo to brand section
+  const brandSection = topRow.querySelector(':scope > div:first-child');
+  if (brandSection) {
     const logo = document.createElement('div');
     logo.className = 'footer-logo';
-    firstSection.prepend(logo);
+    brandSection.prepend(logo);
   }
 
-  block.append(footer);
+  block.append(topRow);
+  block.append(bottomRow);
 }
