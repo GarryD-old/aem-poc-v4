@@ -16,7 +16,7 @@ export default function decorate(block) {
     const awardSet = document.createElement('div');
     awardSet.className = 'hero-award-set';
     awardSet.innerHTML = `
-      <img src="/content/dam/avg-eds-garry/avg/logo/avg-awards.svg" alt="AVG" class="hero-award-logo">
+      <img src="/content/dam/avg-eds-garry/avg/logo/AVG-awards.png" alt="AVG" class="hero-award-logo">
       <span class="hero-award-divider">|</span>
       <span class="hero-award-label">Excellent</span>
       <span class="hero-award-stars">
