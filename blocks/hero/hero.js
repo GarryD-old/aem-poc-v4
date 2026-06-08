@@ -11,6 +11,14 @@ export default function decorate(block) {
     imgDiv.style.display = 'none';
   }
 
+  const contentDiv = block.querySelector(':scope > div:nth-child(2)');
+  if (contentDiv) {
+    const awardSet = document.createElement('div');
+    awardSet.className = 'hero-award-set';
+    awardSet.innerHTML = '<img src="/content/dam/avg-eds-garry/avg/icons/trustpilot-award-set.png" alt="AVG Excellent - 15,354 reviews on Trustpilot">';
+    contentDiv.querySelector('div')?.append(awardSet);
+  }
+
   const section = block.closest('.hero-container');
   const pricingWrapper = section?.querySelector('.cards-pricing-wrapper');
   if (pricingWrapper) {
