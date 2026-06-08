@@ -168,17 +168,18 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
   top: 100%;
-  right: 0;
+  left: -16px;
   margin: 0;
   padding: 12px 0;
   background-color: #fff;
   border: 1px solid #ced4e0;
   border-top: none;
-  min-width: 320px;
+  min-width: 280px;
   z-index: 9999;
   text-align: left;
   list-style: none;
   box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+  border-radius: 0 0 6px 6px;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul,
@@ -186,12 +187,12 @@ header nav .nav-sections .default-content-wrapper > ul > li:hover > ul {
   display: block;
 }
 
-/* dropdown items - 16px left/right padding per Figma */
+/* dropdown items */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-  padding: 6px 16px;
-  font-size: 16px;
-  line-height: 22px;
+  padding: 4px 16px;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
   color: #1c222e;
   white-space: nowrap;
@@ -203,13 +204,14 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
 /* category headers via JS .nav-category class */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
   border-top: 2px solid #008941;
-  padding: 12px 16px 6px;
-  margin-top: 0;
+  padding: 10px 16px 4px;
+  margin-top: 8px;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child {
   border-top: none;
-  padding-top: 6px;
+  padding-top: 4px;
+  margin-top: 0;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
@@ -223,8 +225,8 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li a {
   color: #1c222e;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 20px;
   text-decoration: none;
   display: block;
 }
