@@ -169,13 +169,14 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   position: absolute;
   top: calc(100% - 1px);
   left: -16px;
-  right: -16px;
   margin: 0;
   padding: 12px 0;
   background-color: #fff;
-  border: 1px solid #ced4e0;
+  border-left: 1px solid #ced4e0;
+  border-right: 1px solid #ced4e0;
+  border-bottom: 1px solid #ced4e0;
   border-top: none;
-  min-width: 320px;
+  min-width: 240px;
   z-index: 9999;
   text-align: left;
   list-style: none;
