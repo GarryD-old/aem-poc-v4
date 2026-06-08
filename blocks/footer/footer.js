@@ -48,4 +48,16 @@ export default async function decorate(block) {
 
   block.append(topRow);
   block.append(bottomRow);
+
+  // Country selector: trigger same modal as header nav
+  const regionLink = block.querySelector('a[href*="region"]');
+  if (regionLink) {
+    regionLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const headerRegion = document.querySelector('header .nav-tools a[href*="region"]');
+      if (headerRegion) {
+        headerRegion.click();
+      }
+    });
+  }
 }
