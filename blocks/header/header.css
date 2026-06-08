@@ -160,12 +160,12 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #008941;
 }
 
-/* dropdown panel - below tab, left edge aligned with tab left */
+/* dropdown panel - below tab, right edge aligned with tab right */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: -16px;
   margin-top: 0;
   padding: 12px 0;
   background-color: #fff;
