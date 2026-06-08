@@ -37,6 +37,12 @@ header nav .nav-hamburger {
 header .nav-brand {
   flex-shrink: 0;
   padding: 16px 0;
+  min-width: 128px;
+  min-height: 32px;
+  background-image: url('/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 header nav .nav-brand a {
