@@ -140,8 +140,11 @@ header nav .nav-sections ul > li {
 header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
-  border: 1px solid #ced4e0;
-  border-radius: 6px;
+  border-top: 1px solid #ced4e0;
+  border-left: 1px solid #ced4e0;
+  border-right: 1px solid #ced4e0;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
   padding: 8px 16px;
   margin: -8px -16px;
@@ -160,16 +163,19 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #008941;
 }
 
-/* dropdown panel - positioned to right of tab */
+/* dropdown panel - drops below, left-aligned with tab */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: -9px;
-  left: calc(100% + 16px);
-  margin: 0;
+  top: 100%;
+  left: -16px;
+  margin-top: -1px;
   padding: 12px 0;
   background-color: #fff;
-  border: 1px solid #ced4e0;
+  border-left: 1px solid #ced4e0;
+  border-right: 1px solid #ced4e0;
+  border-bottom: 1px solid #ced4e0;
+  border-top: none;
   min-width: 240px;
   z-index: 9999;
   text-align: left;
