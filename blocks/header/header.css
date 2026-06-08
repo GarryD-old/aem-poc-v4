@@ -140,11 +140,8 @@ header nav .nav-sections ul > li {
 header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
-  border-top: 1px solid #ced4e0;
-  border-left: 1px solid #ced4e0;
-  border-bottom: 1px solid #ced4e0;
-  border-right: none;
-  border-radius: 6px 0 0 6px;
+  border: 1px solid #ced4e0;
+  border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
   padding: 8px 16px;
   margin: -8px -16px;
@@ -163,20 +160,18 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #008941;
 }
 
-/* dropdown panel - to the right of tab, connected */
+/* dropdown panel - below tab, left edge aligned with tab left */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: -9px;
-  left: calc(100% + 16px - 1px);
-  margin: 0;
+  top: 100%;
+  left: 0;
+  margin-top: 0;
   padding: 12px 0;
   background-color: #fff;
-  border-top: 1px solid #ced4e0;
-  border-right: 1px solid #ced4e0;
-  border-bottom: 1px solid #ced4e0;
-  border-left: none;
-  min-width: 240px;
+  border: 1px solid #ced4e0;
+  border-top: none;
+  min-width: 280px;
   z-index: 9999;
   text-align: left;
   list-style: none;
