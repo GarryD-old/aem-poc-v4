@@ -15,7 +15,20 @@ export default function decorate(block) {
   if (contentDiv) {
     const awardSet = document.createElement('div');
     awardSet.className = 'hero-award-set';
-    awardSet.innerHTML = '<img src="/content/dam/avg-eds-garry/avg/icons/trustpilot-award-set.png" alt="AVG Excellent - 15,354 reviews on Trustpilot">';
+    awardSet.innerHTML = `
+      <img src="/content/dam/avg-eds-garry/avg/logo/avg-awards.svg" alt="AVG" class="hero-award-logo">
+      <span class="hero-award-divider">|</span>
+      <span class="hero-award-label">Excellent</span>
+      <span class="hero-award-stars">
+        <img src="/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="/content/dam/avg-eds-garry/avg/icons/Star-half.svg" alt="half star">
+      </span>
+      <span class="hero-award-reviews">15,354 reviews on</span>
+      <img src="/content/dam/avg-eds-garry/avg/logo/trustpilot.svg" alt="Trustpilot" class="hero-award-trustpilot">
+    `;
     contentDiv.querySelector('div')?.append(awardSet);
   }
 

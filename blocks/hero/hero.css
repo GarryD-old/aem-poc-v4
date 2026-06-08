@@ -26,13 +26,49 @@
 }
 
 .hero-award-set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin-top: 32px;
+  flex-wrap: wrap;
 }
 
-.hero-award-set img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
+.hero-award-logo {
+  height: 24px;
+  width: auto;
+}
+
+.hero-award-divider {
+  color: var(--background-color);
+  opacity: 0.4;
+}
+
+.hero-award-label {
+  color: var(--background-color);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero-award-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.hero-award-stars img {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-award-reviews {
+  color: var(--background-color);
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.hero-award-trustpilot {
+  height: 20px;
+  width: auto;
 }
 
 /* Background image positioned relative to section container */
