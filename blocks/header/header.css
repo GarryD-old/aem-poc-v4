@@ -55,14 +55,14 @@ header nav .nav-brand img {
   height: 40px;
 }
 
-/* tools row: top-right utility links */
+/* tools row: top-right utility links - full width on its own row */
 header nav .nav-tools {
-  flex: 1 1 auto;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 8px 0;
-  order: 0;
+  order: -1;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -101,15 +101,15 @@ header nav .nav-tools a:hover {
   color: #1c222e;
 }
 
-/* nav sections: main links row */
+/* nav sections: main links row - inline with logo */
 header nav .nav-sections {
   display: flex;
-  width: 100%;
+  flex: 1;
   justify-content: flex-end;
   align-items: center;
   border-top: none;
   padding: 0;
-  order: 1;
+  order: 0;
 }
 
 header nav .nav-sections ul {
