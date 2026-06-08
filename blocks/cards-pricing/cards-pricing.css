@@ -297,9 +297,10 @@
 }
 
 /* JS-injected heading for standalone pricing section */
-.cards-pricing-heading {
+.cards-pricing-container .cards-pricing-heading {
   text-align: center;
-  padding-bottom: 56px;
+  padding: 0 32px 56px;
+  max-width: unset;
 }
 
 .cards-pricing-title {
