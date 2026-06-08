@@ -1,7 +1,12 @@
 {
-  "previewOrg": "garryd-old",
+  "previewOrg": "GarryD-old",
   "previewSite": "aem-poc-v4",
   "type": "xwalk",
   "contentHostUrl": "author-p149556-e1749182.adobeaemcloud.com",
-  "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+  "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
+  "aemSitePath": "/content/avg-eds-garry",
+  "aemAssetsFolderPath": "/content/dam/avg-eds-garry",
+  "aemSiteName": "avg-eds-garry",
+  "aemSiteTitle": "AVG-EDS-(Universal Editor)-Garry",
+  "baseUrl": "https://www.avg.com/en-ww/antitrack"
 }

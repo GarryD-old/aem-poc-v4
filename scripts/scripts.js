@@ -146,7 +146,7 @@ function buildStickyNav() {
   bar.className = 'sticky-bar';
   bar.innerHTML = `
     <div class="sticky-bar-inner">
-      <img src="https://author-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/avg-logo.png" alt="AVG" class="sticky-bar-logo">
+      <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/avg-logo.png" alt="AVG" class="sticky-bar-logo">
       <div class="sticky-bar-buttons">
         <a href="https://www.avg.com/en-eu/download-thank-you.php?product=ANW" class="sticky-bar-btn sticky-bar-btn-outline">Download free trial</a>
         <a href="#top" class="sticky-bar-btn sticky-bar-btn-primary">Buy now</a>
