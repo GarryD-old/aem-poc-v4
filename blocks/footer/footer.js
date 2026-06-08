@@ -16,5 +16,22 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // Remove button decoration from footer links
+  footer.querySelectorAll('a.button').forEach((a) => {
+    a.classList.remove('button', 'primary', 'secondary');
+    const wrapper = a.closest('.button-container');
+    if (wrapper) {
+      wrapper.classList.remove('button-container');
+    }
+  });
+
+  // Add logo to first section
+  const firstSection = footer.querySelector(':scope > div:first-child');
+  if (firstSection) {
+    const logo = document.createElement('div');
+    logo.className = 'footer-logo';
+    firstSection.prepend(logo);
+  }
+
   block.append(footer);
 }

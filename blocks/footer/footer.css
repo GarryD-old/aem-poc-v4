@@ -8,49 +8,59 @@ footer .footer > div {
   max-width: 1600px;
   margin: 0 auto;
   padding: 64px 120px;
+}
+
+footer .footer > div > div {
   display: flex;
   gap: 48px;
 }
 
-footer .footer > div:last-child {
+footer .footer > div > div:last-child {
   display: block;
   border-top: 1px solid rgb(255 255 255 / 15%);
+  margin-top: 48px;
   padding-top: 40px;
-  padding-bottom: 40px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 footer .footer p {
   margin: 0 0 12px;
+  line-height: 1.6;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-footer a:any-link {
+footer .footer a {
   color: var(--background-color);
   text-decoration: none;
   opacity: 0.8;
+  font-size: 14px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer a:hover {
+footer .footer a:hover {
   text-decoration: underline;
-  color: var(--background-color);
   opacity: 1;
 }
 
-/* Brand section (first child in flex) */
-footer .footer > div:first-child > div:first-child {
-  flex-shrink: 0;
-  min-width: 200px;
-}
-
-footer .footer > div:first-child > div:first-child .footer-logo {
+/* Logo */
+.footer-logo {
   width: 98px;
   height: 40px;
   background-image: url('/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 32px;
+}
+
+/* Brand section (first in flex) */
+footer .footer > div > div > div:first-child {
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+/* Columns */
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div > div > div {
+  flex: 1;
 }
 
 /* Column headings */
@@ -62,48 +72,42 @@ footer .footer strong {
   opacity: 1;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:first-child > div {
-  flex: 1;
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:first-child > div a {
-  font-size: 14px;
-}
-
 /* Bottom section text */
-footer .footer > div:last-child > div > p:first-child {
+footer .footer > div > div:last-child p:first-child {
   font-size: 14px;
-  margin-bottom: 16px;
   opacity: 0.9;
+  margin-bottom: 16px;
 }
 
-footer .footer > div:last-child > div > p:nth-child(2) {
+footer .footer > div > div:last-child p:nth-child(2) {
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.7;
   opacity: 0.5;
   margin-bottom: 24px;
 }
 
-footer .footer > div:last-child > div > p:last-child {
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer > div > div:last-child p:last-child {
   font-size: 12px;
   opacity: 0.7;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-footer .footer > div:last-child > div > p:last-child a {
+footer .footer > div > div:last-child a {
   font-size: 12px;
 }
 
 @media (width < 900px) {
   footer .footer > div {
     padding: 40px 24px;
+  }
+
+  footer .footer > div > div {
     flex-wrap: wrap;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
-  footer .footer > div:first-child > div {
+  footer .footer > div > div > div {
     flex: 1 1 45%;
   }
 }
