@@ -149,7 +149,7 @@ function buildStickyNav() {
       <img src="/content/dam/avg-eds-garry/avg/logo/avg-logo.png" alt="AVG" class="sticky-bar-logo">
       <div class="sticky-bar-buttons">
         <a href="/en-eu/download-thank-you.php?product=ANW" class="sticky-bar-btn sticky-bar-btn-outline">Download free trial</a>
-        <a href="https://checkout.avg.com/en-eu/web?product=anw.1.12m&quantity=1&campaignMarker=WDG~en-eu~antitrack~~~trSrcCookieValue&provider=gen&clearCart=1" class="sticky-bar-btn sticky-bar-btn-primary">Buy now</a>
+        <a href="#top" class="sticky-bar-btn sticky-bar-btn-primary">Buy now</a>
       </div>
     </div>
   `;
