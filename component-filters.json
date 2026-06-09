@@ -46,6 +46,12 @@
     ]
   },
   {
+    "id": "cards-pricing-trio",
+    "components": [
+      "cards-pricing-trio-item"
+    ]
+  },
+  {
     "id": "cards-pricing",
     "components": [
       "cards-pricing-item"
@@ -70,6 +76,12 @@
     ]
   },
   {
+    "id": "columns-feature",
+    "components": [
+      "columns-feature-item"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"
@@ -82,6 +94,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "table-compare2",
+    "components": [
+      "table-compare2-item"
     ]
   },
   {
