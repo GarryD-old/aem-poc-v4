@@ -498,7 +498,7 @@
     ]
   },
   {
-    "id": "table-compare2-item",
+    "id": "table-compare-item",
     "fields": [
       {
         "component": "richtext",

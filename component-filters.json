@@ -97,9 +97,9 @@
     ]
   },
   {
-    "id": "table-compare2",
+    "id": "table-compare",
     "components": [
-      "table-compare2-item"
+      "table-compare-item"
     ]
   },
   {

@@ -11,7 +11,7 @@ export default function decorate(block) {
 
     // Detect a pricing/CTA footer row (contains a link/button)
     const isFooterRow = row.querySelector('a');
-    if (isFooterRow) tr.classList.add('table-compare2-cta-row');
+    if (isFooterRow) tr.classList.add('table-compare-cta-row');
 
     cells.forEach((cell) => {
       const el = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
