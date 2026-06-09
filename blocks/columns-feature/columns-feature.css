@@ -1,0 +1,57 @@
+.columns-feature {
+  padding: 0;
+}
+
+.columns-feature > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.columns-feature .columns-feature-content {
+  flex: 1;
+}
+
+.columns-feature .columns-feature-content h2 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 900;
+  margin: 0 0 16px;
+  color: var(--text-color);
+}
+
+.columns-feature .columns-feature-content p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.columns-feature .columns-feature-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.columns-feature .columns-feature-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  .columns-feature-container > div {
+    max-width: 1200px;
+    padding: 0 120px;
+  }
+
+  .columns-feature > div {
+    flex-direction: row;
+    gap: 64px;
+    padding: 56px 0;
+  }
+
+  .columns-feature > div.columns-feature-reversed {
+    flex-direction: row-reverse;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Pricing Trio",
+      "id": "cards-pricing-trio",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Pricing Trio",
+              "filter": "cards-pricing-trio"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Pricing Card Trio Item",
+      "id": "cards-pricing-trio-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Pricing Card",
+              "model": "cards-pricing-trio-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-pricing-trio-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Platform Icons",
+          "multi": false
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-pricing-trio",
+      "components": ["cards-pricing-trio-item"]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+.cards-pricing-trio-money-back > img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.cards-pricing-trio-modal-overlay h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+}
+
+.cards-pricing-trio-modal-overlay p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0 0 12px;
+}
+
+.cards-pricing-trio-dropdown {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.cards-pricing-trio-select {
+  appearance: none;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 36px 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  cursor: pointer;
+  white-space: nowrap;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231C2236' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px;
+  box-shadow: 0 2px 8px rgb(28 34 46 / 10%);
+}
+
+.cards-pricing-trio-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.cards-pricing-trio {
+  padding: 0;
+}
+
+.cards-pricing-trio > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-pricing-trio > ul > li {
+  position: relative;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgb(28 34 46 / 8%);
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-image {
+  margin: 0 0 12px;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body {
+  width: 100%;
+  color: #1c222e;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body p {
+  color: #1c222e;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body strong {
+  color: #1c222e;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-image img {
+  height: 16px;
+  width: auto;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 12px;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body .cards-pricing-trio-works-out {
+  font-size: 12px;
+  color: var(--text-color);
+  margin: 12px 0 0;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body .cards-pricing-trio-price {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--text-color);
+  margin: 4px 0 0;
+  line-height: 1.2;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body .cards-pricing-trio-price span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body .cards-pricing-trio-annual {
+  font-size: 12px;
+  color: var(--text-color);
+  margin: 4px 0 0;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body .button-container {
+  margin-top: 16px;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body a.button {
+  background-color: var(--link-color);
+  color: var(--background-color);
+  border-radius: 6px;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.6px;
+  display: inline-block;
+  text-decoration: none;
+  min-width: 120px;
+  min-height: 48px;
+  box-sizing: border-box;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cards-pricing-trio .cards-pricing-trio-card-body a.button:hover {
+  background-color: var(--link-hover-color);
+}
+
+/* Free-trial card: outlined button + centered trial text */
+.cards-pricing-trio .cards-pricing-trio-trial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-pricing-trio .cards-pricing-trio-trial .cards-pricing-trio-card-body a.button {
+  background-color: var(--background-color);
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
+}
+
+.cards-pricing-trio .cards-pricing-trio-trial .cards-pricing-trio-card-body a.button:hover {
+  background-color: #f0faf4;
+}
+
+.cards-pricing-trio .cards-pricing-trio-subscription-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+.cards-pricing-trio .cards-pricing-trio-info-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-color);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.cards-pricing-trio .cards-pricing-trio-info-btn:hover {
+  color: var(--link-color);
+}
+
+.cards-pricing-trio-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.cards-pricing-trio-modal {
+  background: var(--background-color);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.cards-pricing-trio-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 24px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+.cards-pricing-trio-modal-ok {
+  margin-top: 24px;
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--background-color);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.cards-pricing-trio-modal-ok:hover {
+  background: var(--light-color);
+}
+
+.cards-pricing-trio-modal-overlay h2 {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 0 0 24px;
+  padding-right: 40px;
+}
+
+/* Standalone pricing section (not in hero) */
+.cards-pricing-trio-container:not(.hero-container) {
+  padding: 100px 24px 60px;
+  text-align: center;
+}
+
+.cards-pricing-trio-container:not(.hero-container) .cards-pricing-trio-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 16px;
+}
+
+/* Money-back guarantee */
+.cards-pricing-trio-container:not(.hero-container) .default-content-wrapper p.cards-pricing-trio-money-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+/* JS-injected heading for standalone pricing section */
+.cards-pricing-trio-container .cards-pricing-trio-heading {
+  text-align: center;
+  padding: 0 32px 56px;
+  max-width: unset;
+}
+
+.cards-pricing-trio-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cards-pricing-trio-icon {
+  width: 48px;
+  height: 48px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-pricing-trio-heading h2 {
+  font-size: 46px;
+  font-weight: 900;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.cards-pricing-trio-subtitle {
+  font-size: 18px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* Extra top padding in first card for dropdown overlap */
+.cards-pricing-trio > ul > li:first-child {
+  padding-top: 48px;
+}
+
+@media (width >= 900px) {
+  .cards-pricing-trio > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-pricing-trio-container:not(.hero-container) {
+    padding: 80px 32px;
+  }
+}
