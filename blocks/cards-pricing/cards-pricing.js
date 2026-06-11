@@ -159,7 +159,7 @@ export default function decorate(block) {
     heading.className = 'cards-pricing-heading';
     heading.innerHTML = `
       <div class="cards-pricing-title">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/antitrack.png" alt="AVG AntiTrack" class="cards-pricing-icon">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/antitrack.png" alt="AVG AntiTrack" class="cards-pricing-icon">
         <h2>AVG AntiTrack</h2>
       </div>
       <p class="cards-pricing-subtitle">The simple way to get your privacy back</p>

@@ -36,7 +36,7 @@ Copy `blocks/cards-pricing/` (JS, CSS, `_cards-pricing.json`, `metadata.json`) a
 - **Prices**: Placeholders pending user input.
 
 ## New Assets Required (naming convention for upload to `/content/dam/avg-eds-garry/`)
-All paths use the publish URL prefix `https://publish-p149556-e1749182.adobeaemcloud.com`.
+All paths use the publish URL prefix `https://publish-p149556-e1749225.adobeaemcloud.com`.
 
 | Asset | Proposed DAM path |
 |-------|-------------------|
@@ -88,7 +88,7 @@ All paths use the publish URL prefix `https://publish-p149556-e1749182.adobeaemc
 - [ ] Verify `tabs` block handles 3 tabs (currently 2)
 
 ### Asset Paths
-- [ ] All `<img>`/CSS use `https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/...`
+- [ ] All `<img>`/CSS use `https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/...`
 - [ ] No inline `<img>` inside xwalk richtext block content (use image cells, JS injection, or CSS) — per project constraint
 
 ### Validation & Delivery

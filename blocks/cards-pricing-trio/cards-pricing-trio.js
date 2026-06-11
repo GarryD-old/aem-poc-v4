@@ -157,7 +157,7 @@ export default function decorate(block) {
     heading.className = 'cards-pricing-trio-heading';
     heading.innerHTML = `
       <div class="cards-pricing-trio-title">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/internet-security-mac.png" alt="AVG Internet Security for Mac" class="cards-pricing-trio-icon">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/internet-security-mac.png" alt="AVG Internet Security for Mac" class="cards-pricing-trio-icon">
         <h2>AVG Internet Security for Mac</h2>
       </div>
       <p class="cards-pricing-trio-subtitle">Get our most advanced security for your Mac now</p>

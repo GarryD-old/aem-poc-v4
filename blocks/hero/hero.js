@@ -16,18 +16,18 @@ export default function decorate(block) {
     const awardSet = document.createElement('div');
     awardSet.className = 'hero-award-set';
     awardSet.innerHTML = `
-      <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/AVG-awards.png" alt="AVG" class="hero-award-logo">
+      <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/AVG-awards.png" alt="AVG" class="hero-award-logo">
       <span class="hero-award-divider">|</span>
       <span class="hero-award-label">Excellent</span>
       <span class="hero-award-stars">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
-        <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star-half.svg" alt="half star">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star.svg" alt="star">
+        <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/icons/Star-half.svg" alt="half star">
       </span>
       <span class="hero-award-reviews">15,354 reviews on</span>
-      <img src="https://publish-p149556-e1749182.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/trustpilot.svg" alt="Trustpilot" class="hero-award-trustpilot">
+      <img src="https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/trustpilot.svg" alt="Trustpilot" class="hero-award-trustpilot">
     `;
     contentDiv.querySelector('div')?.append(awardSet);
   }
