@@ -1,19 +1,33 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
+import { getPriceBySku, buildBuylink } from '../../scripts/pricing.js';
 
-const PLATFORM_OPTIONS = [
-  {
-    label: '1 Mac',
-    price: '€XX.XX/year',
-    monthly: '€X.XX',
-    url: 'https://checkout.avg.com/en-eu/web?product=ismac.1.12m&quantity=1&campaignMarker=WDG~en-eu~internet-security-for-mac~~~trSrcCookieValue&provider=gen&clearCart=1',
-  },
-  {
-    label: '1 Windows PC',
-    price: '€XX.XX/year',
-    monthly: '€X.XX',
-    url: 'https://checkout.avg.com/en-eu/web?product=isw.1.12m&quantity=1&campaignMarker=WDG~en-eu~internet-security-for-mac~~~trSrcCookieValue&provider=gen&clearCart=1',
-  },
-];
+// SKUs offered in the platform dropdown on the first card (POC)
+const PLATFORM_SKUS = ['ismac-00-001-12', 'apw-00-001-12'];
+
+async function applyPricingFromSku(body, sku) {
+  const record = await getPriceBySku(sku);
+  if (!record) return;
+
+  // Title (strong/h3) from entitlement
+  const titleEl = body.querySelector('h3') || body.querySelector('strong');
+  if (titleEl) titleEl.textContent = record.entitlementTitle;
+
+  // Annual price line
+  const annual = body.querySelector('.cards-pricing-trio-annual');
+  if (annual) {
+    annual.textContent = `${record.currency}${record.yearlySalePrice}${record.priceFormat}`;
+  }
+
+  // Monthly headline price
+  const price = body.querySelector('.cards-pricing-trio-price');
+  if (price) {
+    price.innerHTML = `${record.currency}${record.monthlySalePrice}<span>${record.secondaryPriceFormat}</span>`;
+  }
+
+  // Buylink
+  const btn = body.querySelector('a.button');
+  if (btn) btn.href = await buildBuylink(record);
+}
 
 function createPlatformDropdown(li) {
   const dropdown = document.createElement('div');
@@ -22,25 +36,21 @@ function createPlatformDropdown(li) {
   const select = document.createElement('select');
   select.className = 'cards-pricing-trio-select';
   select.setAttribute('aria-label', 'Select platform');
-  PLATFORM_OPTIONS.forEach((opt, i) => {
-    const option = document.createElement('option');
-    option.value = i;
-    option.textContent = opt.label;
-    select.append(option);
+
+  const body = li.querySelector('.cards-pricing-trio-card-body');
+
+  Promise.all(PLATFORM_SKUS.map((sku) => getPriceBySku(sku))).then((records) => {
+    records.forEach((record, i) => {
+      if (!record) return;
+      const option = document.createElement('option');
+      option.value = i;
+      option.textContent = record.entitlementTitle;
+      select.append(option);
+    });
   });
 
   select.addEventListener('change', () => {
-    const selected = PLATFORM_OPTIONS[select.value];
-    const body = li.querySelector('.cards-pricing-trio-card-body');
-    const h3 = body.querySelector('h3');
-    const annual = body.querySelector('.cards-pricing-trio-annual');
-    const price = body.querySelector('.cards-pricing-trio-price');
-    const btn = body.querySelector('a.button');
-
-    if (h3) h3.textContent = selected.label;
-    if (annual) annual.textContent = selected.price;
-    if (price) price.innerHTML = `${selected.monthly}<span>/month</span>`;
-    if (btn) btn.href = selected.url;
+    applyPricingFromSku(body, PLATFORM_SKUS[select.value]);
   });
 
   dropdown.append(select);
@@ -122,8 +132,17 @@ export default function decorate(block) {
       const h3 = bodyDiv.querySelector('h3');
       if (h3) h3.after(imageDiv);
     }
-    // Mark the free-trial card (no price line, has a button only)
-    if (bodyDiv && !bodyDiv.textContent.includes('/year')) {
+    // Extract SKU directive (e.g. "sku: ismac-00-001-12") into a data attr
+    if (bodyDiv) {
+      const skuP = [...bodyDiv.querySelectorAll(':scope > p')]
+        .find((p) => /^sku:/i.test(p.textContent.trim()));
+      if (skuP) {
+        li.dataset.sku = skuP.textContent.trim().replace(/^sku:\s*/i, '');
+        skuP.remove();
+      }
+    }
+    // Mark the free-trial card (no SKU and no yearly price)
+    if (bodyDiv && !li.dataset.sku && !bodyDiv.textContent.includes('/year')) {
       li.classList.add('cards-pricing-trio-trial');
     }
     ul.append(li);
@@ -143,8 +162,14 @@ export default function decorate(block) {
     }
   });
 
+  // Populate priced cards from their SKU record
+  ul.querySelectorAll('li[data-sku]').forEach((li) => {
+    const body = li.querySelector('.cards-pricing-trio-card-body');
+    if (body) applyPricingFromSku(body, li.dataset.sku);
+  });
+
   const firstCard = ul.querySelector('li:first-child');
-  if (firstCard) {
+  if (firstCard && firstCard.dataset.sku) {
     createPlatformDropdown(firstCard);
   }
 
