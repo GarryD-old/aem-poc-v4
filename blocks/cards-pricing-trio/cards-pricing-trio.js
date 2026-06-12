@@ -1,32 +1,28 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
-import { getPriceBySku, buildBuylink } from '../../scripts/pricing.js';
+import { getPriceBySku } from '../../scripts/pricing.js';
 
-// SKUs offered in the platform dropdown on the first card (POC)
-const PLATFORM_SKUS = ['ismac-00-001-12', 'apw-00-001-12'];
+// Platform dropdown options on the first card (POC).
+// label = authored display text; sku = which price to inject.
+const PLATFORM_OPTIONS = [
+  { label: '1 Mac', sku: 'ismac-00-001-12' },
+  { label: '1 Windows PC', sku: 'apw-00-001-12' },
+];
 
-async function applyPricingFromSku(body, sku) {
+// Inject ONLY the price numbers from the SKU record. Format text (/year,
+// /month) and the price label stay as authored on the page.
+async function applyPriceFromSku(body, sku) {
   const record = await getPriceBySku(sku);
   if (!record) return;
 
-  // Title (strong/h3) from entitlement
-  const titleEl = body.querySelector('h3') || body.querySelector('strong');
-  if (titleEl) titleEl.textContent = record.entitlementTitle;
-
-  // Annual price line
   const annual = body.querySelector('.cards-pricing-trio-annual');
   if (annual) {
-    annual.textContent = `${record.currency}${record.yearlySalePrice}${record.priceFormat}`;
+    annual.textContent = `${record.currency}${record.yearly}${annual.dataset.format || '/year'}`;
   }
 
-  // Monthly headline price
   const price = body.querySelector('.cards-pricing-trio-price');
   if (price) {
-    price.innerHTML = `${record.currency}${record.monthlySalePrice}<span>${record.secondaryPriceFormat}</span>`;
+    price.innerHTML = `${record.currency}${record.monthly}<span>${price.dataset.format || '/month'}</span>`;
   }
-
-  // Buylink
-  const btn = body.querySelector('a.button');
-  if (btn) btn.href = await buildBuylink(record);
 }
 
 function createPlatformDropdown(li) {
@@ -39,18 +35,15 @@ function createPlatformDropdown(li) {
 
   const body = li.querySelector('.cards-pricing-trio-card-body');
 
-  Promise.all(PLATFORM_SKUS.map((sku) => getPriceBySku(sku))).then((records) => {
-    records.forEach((record, i) => {
-      if (!record) return;
-      const option = document.createElement('option');
-      option.value = i;
-      option.textContent = record.entitlementTitle;
-      select.append(option);
-    });
+  PLATFORM_OPTIONS.forEach((opt, i) => {
+    const option = document.createElement('option');
+    option.value = i;
+    option.textContent = opt.label;
+    select.append(option);
   });
 
   select.addEventListener('change', () => {
-    applyPricingFromSku(body, PLATFORM_SKUS[select.value]);
+    applyPriceFromSku(body, PLATFORM_OPTIONS[select.value].sku);
   });
 
   dropdown.append(select);
@@ -66,10 +59,14 @@ function restructureCardBody(body) {
 
   if (priceLine && worksOutLine) {
     const annualText = priceLine.textContent.trim();
+    // Preserve authored format suffixes (e.g. "/year", "/month")
+    const annualFormatMatch = annualText.match(/\/\w+/);
     const monthlyMatch = worksOutLine.textContent.match(/[$€][\dX.]+/);
     const monthly = monthlyMatch ? monthlyMatch[0] : '';
+    const monthlyFormatMatch = worksOutLine.textContent.match(/\/\w+/);
 
     priceLine.className = 'cards-pricing-trio-annual';
+    priceLine.dataset.format = annualFormatMatch ? annualFormatMatch[0] : '/year';
     priceLine.textContent = annualText;
 
     worksOutLine.className = 'cards-pricing-trio-works-out';
@@ -77,7 +74,8 @@ function restructureCardBody(body) {
 
     const priceEl = document.createElement('p');
     priceEl.className = 'cards-pricing-trio-price';
-    priceEl.innerHTML = `${monthly}<span>/month</span>`;
+    priceEl.dataset.format = monthlyFormatMatch ? monthlyFormatMatch[0] : '/month';
+    priceEl.innerHTML = `${monthly}<span>${priceEl.dataset.format}</span>`;
 
     if (buttonContainer) {
       buttonContainer.before(priceEl);
@@ -162,10 +160,10 @@ export default function decorate(block) {
     }
   });
 
-  // Populate priced cards from their SKU record
+  // Inject prices into cards that reference a SKU
   ul.querySelectorAll('li[data-sku]').forEach((li) => {
     const body = li.querySelector('.cards-pricing-trio-card-body');
-    if (body) applyPricingFromSku(body, li.dataset.sku);
+    if (body) applyPriceFromSku(body, li.dataset.sku);
   });
 
   const firstCard = ul.querySelector('li:first-child');
