@@ -1,5 +1,5 @@
 mountpoints:
-  /privacy: "https://nlok-my.sharepoint.com/:f:/g/personal/garry_davy_gendigital_com/IgDIaP9C6Zh5SIEGceqy9D0nAToyEv1nyGKNsNkCf8m4N9E"
+  /privacy: "https://nlok-my.sharepoint.com/personal/garry_davy_gendigital_com/Documents/avg-poc"
   /:
     url: "https://author-p149556-e1749225.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main"
     type: "markup"
