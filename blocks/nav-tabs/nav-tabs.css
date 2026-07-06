@@ -1,0 +1,53 @@
+/* Container for the nav tabs */
+.nav-tabs {
+  margin: 0 0 40px 0;
+  width: 100%;
+}
+
+.nav-tabs .nav-tabs-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--Grays5, #d1d5db);
+}
+
+/* Individual list items */
+.nav-tabs .nav-tab-item {
+  flex: 1 0 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* The actual clickable links */
+.nav-tabs .nav-tab-item a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 96px;
+  max-height: 96px;
+  padding: 0 32px;
+  color: var(--Grays3, #4b5563);
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  text-decoration: none; /* Removes the default blue link underline */
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Hover State */
+.nav-tabs .nav-tab-item a:hover:not(.active) {
+  background-color: #f9fafb;
+}
+
+/* Active Page State (The Green Underline) 
+   Triggered automatically by our JS */
+.nav-tabs .nav-tab-item a.active {
+  color: #000;
+  border-bottom: 3px solid #00B259;
+  cursor: default; /* Tells the user they are already on this page */
+}
