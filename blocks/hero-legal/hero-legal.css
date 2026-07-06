@@ -1,0 +1,22 @@
+/* Hero Container Setup */
+.hero-legal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 64px 20px 88px 20px; /* Matched to Figma constraints */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* H1 Typography Setup */
+.hero-legal h1 {
+  color: var(--Black, #1C222E);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 72px; /* 128.57% from Figma */
+  margin: 0;
+}
