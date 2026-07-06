@@ -4,6 +4,14 @@
   width: 100%;
 }
 
+/* Pull the entire block up by 48px (50% of the 96px height) to overlap the Hero */
+.nav-tabs.block {
+  margin-top: -48px;
+  position: relative;
+  z-index: 10; /* Ensures the tabs sit ON TOP of the hero section */
+  background-color: #ffffff; /* Ensures the hero content doesn't bleed through the tabs */
+}
+
 .nav-tabs .nav-tabs-list {
   display: flex;
   justify-content: center;
