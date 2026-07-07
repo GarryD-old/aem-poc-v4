@@ -1,15 +1,17 @@
-/* Restrict the dark background to this specific section wrapper */
+/* Ensure the overall section stays white so the intro text below is visible */
 .section.hero-legal-container {
-  background-color: #1c222e; 
+  background-color: #ffffff; 
   padding: 0;
 }
 
+/* Apply the light gray/blue background STRICTLY to the hero */
 .hero-legal-wrapper {
+  background-color: #f5f7fa; 
   width: 100%;
 }
 
 .hero-legal.block {
-  padding: 64px 24px 96px; /* 96px bottom padding creates the space for the nav-tabs overlap */
+  padding: 64px 24px 100px; /* 100px bottom padding gives the tabs room to float */
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
@@ -17,14 +19,15 @@
 }
 
 .hero-legal.block h1 {
-  color: #ffffff;
+  color: #0c1524; /* Dark navy/black text */
   margin: 0;
-  font-size: var(--heading-font-size-xxl, 2.5rem);
+  font-size: var(--heading-font-size-xxl, 3rem);
   font-weight: 900;
+  letter-spacing: -0.5px;
 }
 
 @media (width >= 900px) {
   .hero-legal.block {
-    padding: 64px 32px 96px;
+    padding: 80px 32px 120px;
   }
 }
