@@ -1,17 +1,18 @@
-/* Keep the outer section transparent so it doesn't bleed */
+/* 1. Nuke the horizontal scrollbar at the section level */
 .section.hero-legal-container {
   background-color: transparent;
   padding: 0;
+  overflow: hidden; /* This kills the bottom scrollbar instantly! */
+  width: 100%;
 }
 
-/* The wrapper holds the content, but the ::before element paints the edge-to-edge background */
 .hero-legal-wrapper {
   width: 100%;
   position: relative;
   z-index: 1; 
 }
 
-/* THE MAGIC BREAKOUT: Forces the background to stretch across the whole monitor */
+/* Background breakout spanning the whole desktop */
 .hero-legal-wrapper::before {
   content: "";
   position: absolute;
@@ -24,11 +25,11 @@
   z-index: -1;
 }
 
-/* The 100px padding creates the empty space for the tabs */
+/* 2. Responsive layout scaling down gracefully to 360px mobile */
 .hero-legal.block {
-  padding: 80px 24px 100px; 
+  padding: 60px 16px 80px; /* Slimmer padding for mobile/small screens */
   text-align: center;
-  max-width: 1000px;
+  max-width: 1600px; /* Based on your desktop target */
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -36,7 +37,18 @@
 .hero-legal.block h1 {
   color: #0c1524;
   margin: 0;
-  font-size: var(--heading-font-size-xxl, 3rem);
+  font-size: 2rem; /* Mobile first sizing */
   font-weight: 900;
   letter-spacing: -0.5px;
+}
+
+/* 3. Desktop Media Query for 1600px targets */
+@media (width >= 900px) {
+  .hero-legal.block {
+    padding: 80px 24px 100px; /* Deeper spacing for desktop */
+  }
+  
+  .hero-legal.block h1 {
+    font-size: 3rem; /* Snaps to full size on desktop */
+  }
 }
