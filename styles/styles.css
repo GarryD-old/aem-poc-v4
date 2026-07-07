@@ -490,3 +490,21 @@ main .section.legal-grid .default-content-wrapper h2 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
+
+/* 5. Force standalone links to look like standard text links, not buttons */
+main .section.legal-grid .default-content-wrapper .button-container a.button {
+  background-color: transparent;
+  color: var(--link-color);
+  padding: 0;
+  min-height: auto;
+  border: none;
+  font-weight: 400;
+  border-radius: 0;
+  display: inline;
+}
+
+main .section.legal-grid .default-content-wrapper .button-container a.button:hover {
+  background-color: transparent;
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
