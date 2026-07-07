@@ -1,11 +1,13 @@
 /* The negative margin yanks the tabs UP into the hero's padding */
 .nav-tabs-wrapper {
   max-width: 900px;
-  margin: -60px auto 40px auto !important; 
+  margin: -36px auto 40px auto !important; 
   position: relative;
-  z-index: 10; /* Forces the tabs to sit ON TOP of the hero background */
+  z-index: 10; 
   padding: 0 20px;
 }
+
+/* (Leave the rest of your nav-tabs.css exactly as it is!) */
 
 .nav-tabs.block {
   background-color: #ffffff;
