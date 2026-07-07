@@ -1,19 +1,20 @@
-/* The negative margin yanks the tabs UP into the hero's padding */
+/* Responsive container maxed out for desktop layouts */
 .nav-tabs-wrapper {
-  max-width: 900px;
+  max-width: 900px; /* Keeps the tabs elegantly centered within the desktop design */
   margin: -36px auto 40px auto !important; 
   position: relative;
   z-index: 10; 
-  padding: 0 20px;
+  padding: 0 16px; /* Generous padding so it never touches screen edges on mobile */
+  box-sizing: border-box;
 }
-
-/* (Leave the rest of your nav-tabs.css exactly as it is!) */
 
 .nav-tabs.block {
   background-color: #ffffff;
   border-radius: 10px;
   border: 1px solid #e1e3e6;
   box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08);
+  overflow-x: auto; /* If tabs exceed mobile width, they scroll smoothly inside the box instead of breaking the page */
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav-tabs-list {
@@ -24,37 +25,5 @@
   margin: 0;
   padding: 0;
   width: 100%;
-}
-
-.nav-tab-item {
-  flex: 1;
-  text-align: center;
-  display: flex;
-  border: none !important; /* Kills the AEM default vertical lines */
-  border-right: 0 !important; /* Double kills them just to be safe */
-}
-
-.nav-tab-item a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 24px 16px;
-  color: #687385;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.nav-tab-item a:hover {
-  background-color: #fdfdfd;
-  color: #0c1524;
-}
-
-/* Active Tab State */
-.nav-tab-item:first-child a {
-  color: #0c1524;
-  border-bottom: 3px solid #00a85d;
+  min-width: 600px; /* Ensures tabs don't squish into tiny columns on mobile; they retain their structure */
 }
