@@ -1,61 +1,62 @@
-/* Container for the nav tabs */
-.nav-tabs {
-  margin: 0 0 40px 0;
-  width: 100%;
-}
-
-/* Pull the entire block up by 48px (50% of the 96px height) to overlap the Hero */
-.nav-tabs.block {
-  margin-top: -48px;
+/* Pull the tabs UP over the light background */
+.nav-tabs-wrapper {
+  max-width: 900px; 
+  margin: -60px auto 40px auto; /* -60px creates the overlap */
   position: relative;
-  z-index: 10; /* Ensures the tabs sit ON TOP of the hero section */
-  background-color: #ffffff; /* Ensures the hero content doesn't bleed through the tabs */
+  z-index: 10;
+  padding: 0 20px;
 }
 
-.nav-tabs .nav-tabs-list {
+.nav-tabs.block {
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* Soft drop shadow from Figma */
+  overflow: hidden;
+  border: 1px solid #eef0f2;
+}
+
+.nav-tabs-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
+  align-items: stretch; 
   list-style: none;
-  border-bottom: 1px solid var(--Grays5, #d1d5db);
-}
-
-/* Individual list items */
-.nav-tabs .nav-tab-item {
-  flex: 1 0 0;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
-/* The actual clickable links */
-.nav-tabs .nav-tab-item a {
+.nav-tab-item {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #eef0f2; /* Light divider lines */
   display: flex;
-  justify-content: center;
+}
+
+.nav-tab-item:last-child {
+  border-right: none;
+}
+
+.nav-tab-item a {
+  display: flex;
   align-items: center;
-  min-height: 96px;
-  max-height: 96px;
-  padding: 0 32px;
-  color: var(--Grays3, #4b5563);
-  font-size: var(--body-font-size-s);
-  font-weight: 500;
-  text-decoration: none; /* Removes the default blue link underline */
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s ease-in-out;
-  white-space: nowrap;
-  box-sizing: border-box;
+  justify-content: center;
+  width: 100%;
+  padding: 24px 16px;
+  color: #687385; /* Gray text for inactive tabs */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent; 
 }
 
-/* Hover State */
-.nav-tabs .nav-tab-item a:hover:not(.active) {
-  background-color: #f9fafb;
+.nav-tab-item a:hover {
+  background-color: #fdfdfd;
+  color: #0c1524;
 }
 
-/* Active Page State (The Green Underline) 
-   Triggered automatically by our JS */
-.nav-tabs .nav-tab-item a.active {
-  color: #000;
-  border-bottom: 3px solid #00B259;
-  cursor: default; /* Tells the user they are already on this page */
+/* HARDCODED ACTIVE STATE: Forces the first tab to look active for the POC */
+.nav-tab-item:first-child a {
+  color: #0c1524; 
+  border-bottom: 3px solid #00a85d; /* AVG Green */
 }
