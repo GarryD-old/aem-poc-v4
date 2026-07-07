@@ -1,20 +1,17 @@
-/* 1. Bulletproof 50% Overlap */
+/* The negative margin yanks the tabs UP into the hero's padding */
 .nav-tabs-wrapper {
   max-width: 900px;
-  margin: 0 auto !important; /* Overrides AEM boilerplate margins */
+  margin: -60px auto 40px auto !important; 
   position: relative;
-  z-index: 10;
+  z-index: 10; /* Forces the tabs to sit ON TOP of the hero background */
   padding: 0 20px;
-  transform: translateY(-50%); /* Forces the exact 50% float over the hero edge */
 }
 
-/* 2. Exact Figma Box Styling */
 .nav-tabs.block {
   background-color: #ffffff;
   border-radius: 10px;
   border: 1px solid #e1e3e6;
   box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08);
-  overflow: hidden;
 }
 
 .nav-tabs-list {
@@ -31,7 +28,8 @@
   flex: 1;
   text-align: center;
   display: flex;
-  /* Vertical separation borders completely removed! */
+  border: none !important; /* Kills the AEM default vertical lines */
+  border-right: 0 !important; /* Double kills them just to be safe */
 }
 
 .nav-tab-item a {
@@ -42,7 +40,7 @@
   padding: 24px 16px;
   color: #687385;
   text-decoration: none;
-  font-weight: 700; /* Bolded to match Figma */
+  font-weight: 700;
   font-size: 16px;
   border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
