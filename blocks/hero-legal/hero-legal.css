@@ -1,17 +1,20 @@
-/* Ensure the overall section stays white so the intro text below is visible */
+/* Keep the outer section white */
 .section.hero-legal-container {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   padding: 0;
 }
 
-/* Apply the light gray/blue background STRICTLY to the hero */
+/* Apply the background to the wrapper and lock it in place */
 .hero-legal-wrapper {
-  background-color: #f5f7fa; 
+  background-color: #f5f7fa;
   width: 100%;
+  position: relative;
+  z-index: 1; 
 }
 
+/* The 120px bottom padding is CRITICAL. This is the empty gray space the tabs will float over */
 .hero-legal.block {
-  padding: 64px 24px 100px; /* 100px bottom padding gives the tabs room to float */
+  padding: 80px 24px 120px; 
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
@@ -19,15 +22,9 @@
 }
 
 .hero-legal.block h1 {
-  color: #0c1524; /* Dark navy/black text */
+  color: #0c1524;
   margin: 0;
   font-size: var(--heading-font-size-xxl, 3rem);
   font-weight: 900;
   letter-spacing: -0.5px;
-}
-
-@media (width >= 900px) {
-  .hero-legal.block {
-    padding: 80px 32px 120px;
-  }
 }
