@@ -454,26 +454,38 @@ a.sticky-bar-btn-primary:hover {
     font-size: 12px;
   }
 
-  /* Only applies to sections specifically tagged with 'legal-text' via Section Metadata */
-main .section.legal-text .default-content-wrapper {
-  display: block !important; /* Kills the flexbox centering */
-  text-align: left;
-  max-width: 900px; /* Aligns perfectly with your nav-tabs */
-  margin: 0 auto; 
-  padding: 0 20px; 
+/* ========================================= */
+/*             LEGAL GRID LAYOUT             */
+/* ========================================= */
+
+/* 1. Mobile/Tablet (Up to 992px): 12 Columns (Full Width) */
+main .section.legal-grid .default-content-wrapper {
+  display: block !important; /* Kills the AEM boilerplate flexbox */
+  width: 100%; 
+  margin: 0 auto;
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
-main .section.legal-text .default-content-wrapper h2,
-main .section.legal-text .default-content-wrapper h3,
-main .section.legal-text .default-content-wrapper p,
-main .section.legal-text .default-content-wrapper li {
+/* 2. Desktop (993px and larger): 10 Columns */
+@media (width > 992px) {
+  main .section.legal-grid .default-content-wrapper {
+    width: 83.333%; /* Mathematically forces 10 out of 12 columns */
+    max-width: 1000px; /* Safety cap so it doesn't get infinitely wide on massive monitors */
+  }
+}
+
+/* 3. Enforce Left-Aligned Document Flow */
+main .section.legal-grid .default-content-wrapper h2,
+main .section.legal-grid .default-content-wrapper h3,
+main .section.legal-grid .default-content-wrapper p,
+main .section.legal-grid .default-content-wrapper li {
   text-align: left;
 }
 
-/* Breathing room below headings */
-main .section.legal-text .default-content-wrapper h2 {
-  margin-top: 2rem;
+/* 4. Formatting & Breathing Room */
+main .section.legal-grid .default-content-wrapper h2 {
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
   
