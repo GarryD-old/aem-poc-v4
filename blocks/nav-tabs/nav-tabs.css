@@ -1,47 +1,37 @@
-/* Pull the tabs UP over the light background */
+/* 1. Bulletproof 50% Overlap */
 .nav-tabs-wrapper {
-  max-width: 900px; 
-  margin: -60px auto 40px auto; /* -60px creates the overlap */
+  max-width: 900px;
+  margin: 0 auto !important; /* Overrides AEM boilerplate margins */
   position: relative;
   z-index: 10;
   padding: 0 20px;
+  transform: translateY(-50%); /* Forces the exact 50% float over the hero edge */
 }
 
+/* 2. Exact Figma Box Styling */
 .nav-tabs.block {
   background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* Soft drop shadow from Figma */
-  overflow: hidden;
-  border: 1px solid #eef0f2;
-}
-
-.nav-tabs.block {
-  background-color: #ffffff;
-  border-radius: 10px; /* Updated to match Figma exactly */
-  border: 1px solid #e1e3e6; /* Standard light gray border */
-  box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08); /* Updated to match Figma shadow */
+  border-radius: 10px;
+  border: 1px solid #e1e3e6;
+  box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08);
   overflow: hidden;
 }
 
 .nav-tabs-list {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; 
+  align-items: stretch;
   list-style: none;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .nav-tab-item {
   flex: 1;
   text-align: center;
-  border-right: 1px solid #eef0f2; /* Light divider lines */
   display: flex;
-}
-
-.nav-tab-item:last-child {
-  border-right: none;
+  /* Vertical separation borders completely removed! */
 }
 
 .nav-tab-item a {
@@ -50,12 +40,12 @@
   justify-content: center;
   width: 100%;
   padding: 24px 16px;
-  color: #687385; /* Gray text for inactive tabs */
+  color: #687385;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700; /* Bolded to match Figma */
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
-  border-bottom: 3px solid transparent; 
 }
 
 .nav-tab-item a:hover {
@@ -63,8 +53,8 @@
   color: #0c1524;
 }
 
-/* HARDCODED ACTIVE STATE: Forces the first tab to look active for the POC */
+/* Active Tab State */
 .nav-tab-item:first-child a {
-  color: #0c1524; 
-  border-bottom: 3px solid #00a85d; /* AVG Green */
+  color: #0c1524;
+  border-bottom: 3px solid #00a85d;
 }
