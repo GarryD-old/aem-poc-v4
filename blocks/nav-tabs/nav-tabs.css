@@ -1,22 +1,24 @@
-/* Responsive container maxed out for desktop layouts */
+/* 1. Wrapper positioning and responsive padding */
 .nav-tabs-wrapper {
-  max-width: 900px; /* Keeps the tabs elegantly centered within the desktop design */
+  max-width: 900px;
   margin: -36px auto 40px auto !important; 
   position: relative;
   z-index: 10; 
-  padding: 0 16px; /* Generous padding so it never touches screen edges on mobile */
+  padding: 0 16px;
   box-sizing: border-box;
 }
 
+/* 2. The Box Style (White background, shadow, border) */
 .nav-tabs.block {
   background-color: #ffffff;
   border-radius: 10px;
   border: 1px solid #e1e3e6;
   box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08);
-  overflow-x: auto; /* If tabs exceed mobile width, they scroll smoothly inside the box instead of breaking the page */
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+/* 3. List layout */
 .nav-tabs-list {
   display: flex;
   justify-content: space-between;
@@ -25,5 +27,40 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  min-width: 600px; /* Ensures tabs don't squish into tiny columns on mobile; they retain their structure */
+  min-width: 600px; /* Prevents squishing on mobile */
+}
+
+/* 4. Individual List Items */
+.nav-tab-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  border: none !important; 
+  border-right: 0 !important;
+}
+
+/* 5. Link styling (The text inside) */
+.nav-tab-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 24px 16px;
+  color: #687385; 
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-tab-item a:hover {
+  background-color: #fdfdfd;
+  color: #0c1524;
+}
+
+/* 6. Active Tab State */
+.nav-tab-item:first-child a {
+  color: #0c1524;
+  border-bottom: 3px solid #00a85d; 
 }
