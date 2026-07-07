@@ -1,20 +1,32 @@
-/* Keep the outer section white */
+/* Keep the outer section transparent so it doesn't bleed */
 .section.hero-legal-container {
-  background-color: #ffffff;
+  background-color: transparent;
   padding: 0;
 }
 
-/* Apply the background to the wrapper and lock it in place */
+/* The wrapper holds the content, but the ::before element paints the edge-to-edge background */
 .hero-legal-wrapper {
-  background-color: #f5f7fa;
   width: 100%;
   position: relative;
   z-index: 1; 
 }
 
-/* The 120px bottom padding is CRITICAL. This is the empty gray space the tabs will float over */
+/* THE MAGIC BREAKOUT: Forces the background to stretch across the whole monitor */
+.hero-legal-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background-color: #f5f7fa; 
+  z-index: -1;
+}
+
+/* The 100px padding creates the empty space for the tabs */
 .hero-legal.block {
-  padding: 80px 24px 120px; 
+  padding: 80px 24px 100px; 
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
