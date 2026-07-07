@@ -453,4 +453,28 @@ a.sticky-bar-btn-primary:hover {
     min-width: unset;
     font-size: 12px;
   }
+
+  /* Only applies to sections specifically tagged with 'legal-text' via Section Metadata */
+main .section.legal-text .default-content-wrapper {
+  display: block !important; /* Kills the flexbox centering */
+  text-align: left;
+  max-width: 900px; /* Aligns perfectly with your nav-tabs */
+  margin: 0 auto; 
+  padding: 0 20px; 
+  box-sizing: border-box;
+}
+
+main .section.legal-text .default-content-wrapper h2,
+main .section.legal-text .default-content-wrapper h3,
+main .section.legal-text .default-content-wrapper p,
+main .section.legal-text .default-content-wrapper li {
+  text-align: left;
+}
+
+/* Breathing room below headings */
+main .section.legal-text .default-content-wrapper h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+  
 }
