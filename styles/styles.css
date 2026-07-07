@@ -460,7 +460,7 @@ a.sticky-bar-btn-primary:hover {
 
 /* 1. Mobile/Tablet (Up to 992px): 12 Columns (Full Width) */
 main .section.legal-grid .default-content-wrapper {
-  display: block !important; /* Kills the AEM boilerplate flexbox */
+  display: block !important; 
   width: 100%; 
   margin: 0 auto;
   padding: 0 20px;
@@ -468,10 +468,11 @@ main .section.legal-grid .default-content-wrapper {
 }
 
 /* 2. Desktop (993px and larger): 10 Columns */
-@media (width > 992px) {
+/* UPDATED: Changed to classic min-width syntax so AEM reads it properly */
+@media (min-width: 993px) {
   main .section.legal-grid .default-content-wrapper {
     width: 83.333%; /* Mathematically forces 10 out of 12 columns */
-    max-width: 1000px; /* Safety cap so it doesn't get infinitely wide on massive monitors */
+    max-width: 1000px; 
   }
 }
 
