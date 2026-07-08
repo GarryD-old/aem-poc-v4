@@ -6,10 +6,8 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const footerMeta = getMetadata('footer');
-  
-  // UPDATED LINE: Forces the footerPath to use the /global tunnel
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/global/footer';
+  // FORCE proxy tunnel, ignore metadata
+  const footerPath = '/global/footer';
   
   const fragment = await loadFragment(footerPath);
 
