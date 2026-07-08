@@ -7,7 +7,10 @@ import { loadFragment } from '../fragment/fragment.js';
  */
 export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  
+  // UPDATED LINE: Forces the footerPath to use the /global tunnel
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/global/footer';
+  
   const fragment = await loadFragment(footerPath);
 
   block.textContent = '';
