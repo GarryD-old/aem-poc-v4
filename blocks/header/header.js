@@ -176,7 +176,10 @@ async function buildBreadcrumbs() {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  
+  // UPDATED LINE: Forces the navPath to use the /global tunnel
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/global/nav';
+  
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
