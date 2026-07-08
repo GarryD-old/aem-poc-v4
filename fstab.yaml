@@ -1,2 +1,3 @@
-#
+mountpoints:
+  /global: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry"
     
