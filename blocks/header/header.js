@@ -175,11 +175,8 @@ async function buildBreadcrumbs() {
  */
 export default async function decorate(block) {
   // load nav as fragment
-  const navMeta = getMetadata('nav');
-  
-  // UPDATED LINE: Forces the navPath to use the /global tunnel
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/global/nav';
-  
+  // FORCE proxy tunnel, ignore metadata
+  const navPath = '/global/nav';
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
@@ -305,32 +302,4 @@ export default async function decorate(block) {
             <a href="/en-eu/">Europe (English)</a>
           </div>
         </div>`;
-        document.body.appendChild(modal);
-        modal.querySelector('.region-modal-close').addEventListener('click', () => modal.remove());
-        modal.addEventListener('click', (ev) => { if (ev.target === modal) modal.remove(); });
-      });
-    }
-  }
-
-  // hamburger for mobile
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
-    </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
-  nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
-  // prevent mobile nav behavior on window resize
-  toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
-  const navWrapper = document.createElement('div');
-  navWrapper.className = 'nav-wrapper';
-  navWrapper.append(nav);
-  block.append(navWrapper);
-
-  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
-    navWrapper.append(await buildBreadcrumbs());
-  }
-}
+        document.body.
