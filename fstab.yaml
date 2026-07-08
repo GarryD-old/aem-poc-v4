@@ -1,7 +1,14 @@
 mountpoints:
-  /privacy: "https://nlok-my.sharepoint.com/personal/garry_davy_gendigital_com/Documents/avg-poc"
-  /:
-    url: "https://author-p149556-e1749225.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main"
+  /nav:
+    url: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry/nav"
+    type: "markup"
+    suffix: ".html"
+  /footer:
+    url: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry/footer"
+    type: "markup"
+    suffix: ".html"
+  /antitrack:
+    url: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry/antitrack"
     type: "markup"
     suffix: ".html"
     
