@@ -9,7 +9,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 :root {
   /* colors - extracted from Figma frame 2268:29672 (AVG AntiTrack - Desktop) */
   --background-color: #fff;
