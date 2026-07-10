@@ -430,6 +430,21 @@
           }
         },
         {
+          "title": "Hero Blog",
+          "id": "hero-blog",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero Blog",
+                  "model": "hero-blog"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
