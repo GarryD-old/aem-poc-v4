@@ -1,0 +1,30 @@
+.quote-callout {
+  box-sizing: border-box;
+}
+
+.quote-callout .quote-callout-content {
+  border-left: 6px solid #ffe600;
+  padding: 4px 0 4px 28px;
+}
+
+.quote-callout .quote-callout-content p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: -0.3px;
+  color: rgb(36 36 36);
+}
+
+.quote-callout .quote-callout-content p + p {
+  margin-top: 12px;
+}
+
+/* Bold lead-in (e.g. "Keep in mind:") authored as strong text */
+.quote-callout .quote-callout-content strong {
+  font-weight: 700;
+}
+
+.quote-callout .quote-callout-content a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
