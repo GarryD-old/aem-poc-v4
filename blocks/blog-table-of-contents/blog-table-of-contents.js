@@ -83,28 +83,49 @@ export default function decorate(block) {
   });
 
   // Limit to MAX_VISIBLE items; enable arrow scrolling only when needed.
+  const updateArrows = () => {
+    const atTop = scroll.scrollTop <= 1;
+    const atBottom = scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 1;
+    arrowUp.disabled = atTop;
+    arrowDown.disabled = atBottom;
+  };
+
+  const measureAndCap = () => {
+    const items = [...list.children];
+    if (items.length <= MAX_VISIBLE) return true;
+    // Use bounding rects (robust vs offsetTop, which can be 0 before layout).
+    const listTop = list.getBoundingClientRect().top;
+    const cutTop = items[MAX_VISIBLE].getBoundingClientRect().top;
+    const maxH = Math.round(cutTop - listTop);
+    if (maxH <= 0) return false; // layout not ready yet
+    scroll.style.maxHeight = `${maxH}px`;
+    updateArrows();
+    return true;
+  };
+
   const setupScroll = () => {
     if (links.length <= MAX_VISIBLE) {
       block.classList.remove('blog-toc-scrollable');
       return;
     }
-    const items = [...list.children];
-    // Height from the top of the list to the top of item[MAX_VISIBLE].
-    const maxH = items[MAX_VISIBLE].offsetTop - items[0].offsetTop;
-    scroll.style.maxHeight = `${maxH}px`;
     block.classList.add('blog-toc-scrollable');
 
-    const updateArrows = () => {
-      const atTop = scroll.scrollTop <= 1;
-      const atBottom = scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 1;
-      arrowUp.disabled = atTop;
-      arrowDown.disabled = atBottom;
-    };
     const step = () => Math.max(scroll.clientHeight * 0.8, 80);
     arrowUp.addEventListener('click', () => scroll.scrollBy({ top: -step(), behavior: 'smooth' }));
     arrowDown.addEventListener('click', () => scroll.scrollBy({ top: step(), behavior: 'smooth' }));
     scroll.addEventListener('scroll', updateArrows);
-    updateArrows();
+
+    // Retry measurement across frames until layout yields a real height.
+    let attempts = 0;
+    const tryMeasure = () => {
+      if (measureAndCap() || attempts >= 20) return;
+      attempts += 1;
+      requestAnimationFrame(tryMeasure);
+    };
+    tryMeasure();
+
+    // Re-cap on resize (item wrapping can change heights).
+    window.addEventListener('resize', measureAndCap);
   };
 
   // Scroll-spy: highlight the entry for the heading currently in view.
@@ -135,7 +156,5 @@ export default function decorate(block) {
     setActive(links[0].link);
   }
 
-  // Measure after layout so item offsets are accurate.
-  if (document.readyState === 'complete') setupScroll();
-  else window.addEventListener('load', setupScroll, { once: true });
+  setupScroll();
 }

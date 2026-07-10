@@ -175,6 +175,12 @@ main > .section.blog-table-of-contents-container .default-content-wrapper {
   align-items: initial;
 }
 
+/* Article body H2s per reference: 28px */
+main > .section.blog-table-of-contents-container .default-content-wrapper h2 {
+  font-size: 28px;
+  line-height: 1.25;
+}
+
 /* Article images: cap at 675px wide (per Norton reference) and center */
 main > .section.blog-table-of-contents-container .default-content-wrapper picture,
 main > .section.blog-table-of-contents-container .default-content-wrapper img {
