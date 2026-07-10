@@ -1,3 +1,5 @@
+const MAX_VISIBLE = 6;
+
 function slugify(text) {
   return text
     .toLowerCase()
@@ -6,14 +8,20 @@ function slugify(text) {
     .replace(/^-+|-+$/g, '');
 }
 
+function arrowButton(direction) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = `blog-toc-arrow blog-toc-arrow-${direction}`;
+  btn.setAttribute('aria-label', direction === 'up' ? 'Scroll up' : 'Scroll down');
+  btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 24L0 12l2.22-2.22 9.78 9.9 9.74-9.86L24 12z" fill="currentColor"/></svg>';
+  return btn;
+}
+
 export default function decorate(block) {
   const main = document.querySelector('main');
-  // Collect the page headings we want to index. Skip any heading inside this
-  // block and anything inside the site header/footer.
   const headings = [...main.querySelectorAll('h1, h2')]
     .filter((h) => !block.contains(h) && h.textContent.trim());
 
-  // Optional author-provided title override (first cell of the block).
   const titleOverride = block.textContent.trim();
   block.textContent = '';
 
@@ -32,8 +40,17 @@ export default function decorate(block) {
   toggle.setAttribute('aria-label', 'Toggle contents');
   header.append(heading, toggle);
 
+  // Body holds the (optional) arrows and the scroll container so the
+  // collapse toggle can hide them all together.
+  const body = document.createElement('div');
+  body.className = 'blog-toc-body';
+
+  const arrowUp = arrowButton('up');
+  const scroll = document.createElement('div');
+  scroll.className = 'blog-toc-scroll';
   const list = document.createElement('ul');
   list.className = 'blog-toc-list';
+  const arrowDown = arrowButton('down');
 
   const links = [];
   headings.forEach((h) => {
@@ -53,7 +70,9 @@ export default function decorate(block) {
     links.push({ heading: h, link: a });
   });
 
-  wrapper.append(header, list);
+  scroll.append(list);
+  body.append(arrowUp, scroll, arrowDown);
+  wrapper.append(header, body);
   block.append(wrapper);
 
   // Collapse / expand
@@ -63,9 +82,38 @@ export default function decorate(block) {
     block.classList.toggle('blog-toc-collapsed', expanded);
   });
 
+  // Limit to MAX_VISIBLE items; enable arrow scrolling only when needed.
+  const setupScroll = () => {
+    if (links.length <= MAX_VISIBLE) {
+      block.classList.remove('blog-toc-scrollable');
+      return;
+    }
+    const items = [...list.children];
+    // Height from the top of the list to the top of item[MAX_VISIBLE].
+    const maxH = items[MAX_VISIBLE].offsetTop - items[0].offsetTop;
+    scroll.style.maxHeight = `${maxH}px`;
+    block.classList.add('blog-toc-scrollable');
+
+    const updateArrows = () => {
+      const atTop = scroll.scrollTop <= 1;
+      const atBottom = scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 1;
+      arrowUp.disabled = atTop;
+      arrowDown.disabled = atBottom;
+    };
+    const step = () => Math.max(scroll.clientHeight * 0.8, 80);
+    arrowUp.addEventListener('click', () => scroll.scrollBy({ top: -step(), behavior: 'smooth' }));
+    arrowDown.addEventListener('click', () => scroll.scrollBy({ top: step(), behavior: 'smooth' }));
+    scroll.addEventListener('scroll', updateArrows);
+    updateArrows();
+  };
+
   // Scroll-spy: highlight the entry for the heading currently in view.
   const setActive = (activeLink) => {
     links.forEach(({ link }) => link.classList.toggle('active', link === activeLink));
+    // Keep the active entry visible within the scroll container.
+    if (block.classList.contains('blog-toc-scrollable') && activeLink) {
+      activeLink.scrollIntoView({ block: 'nearest' });
+    }
   };
 
   if ('IntersectionObserver' in window && links.length) {
@@ -75,7 +123,6 @@ export default function decorate(block) {
         if (entry.isIntersecting) visible.add(entry.target);
         else visible.delete(entry.target);
       });
-      // Pick the topmost currently-visible heading; else the last one above the fold.
       let current = links.find(({ heading: h }) => visible.has(h));
       if (!current) {
         const scrolled = window.scrollY + 120;
@@ -87,4 +134,8 @@ export default function decorate(block) {
     links.forEach(({ heading: h }) => observer.observe(h));
     setActive(links[0].link);
   }
+
+  // Measure after layout so item offsets are accurate.
+  if (document.readyState === 'complete') setupScroll();
+  else window.addEventListener('load', setupScroll, { once: true });
 }

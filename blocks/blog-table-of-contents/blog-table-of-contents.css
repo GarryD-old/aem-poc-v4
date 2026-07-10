@@ -70,21 +70,67 @@
   opacity: 1;
 }
 
-.blog-table-of-contents .blog-toc-list {
-  list-style: none;
-  margin: 16px 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+/* Body wraps arrows + scroll container so collapse hides them together */
+.blog-table-of-contents .blog-toc-body {
+  margin-top: 16px;
   overflow: hidden;
   transition: max-height 0.25s ease, opacity 0.2s ease, margin 0.2s ease;
 }
 
-.blog-table-of-contents.blog-toc-collapsed .blog-toc-list {
+.blog-table-of-contents.blog-toc-collapsed .blog-toc-body {
   max-height: 0;
   opacity: 0;
   margin-top: 0;
+}
+
+.blog-table-of-contents .blog-toc-scroll {
+  overflow: hidden;
+}
+
+/* When more than the max items, allow internal scrolling */
+.blog-table-of-contents.blog-toc-scrollable .blog-toc-scroll {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.blog-table-of-contents.blog-toc-scrollable .blog-toc-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-table-of-contents .blog-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Up/down scroll arrows: hidden unless the list overflows */
+.blog-table-of-contents .blog-toc-arrow {
+  display: none;
+  width: 100%;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  color: rgb(36 36 36);
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-table-of-contents.blog-toc-scrollable .blog-toc-arrow {
+  display: flex;
+}
+
+.blog-table-of-contents .blog-toc-arrow-up svg {
+  transform: rotate(180deg);
+}
+
+.blog-table-of-contents .blog-toc-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
 }
 
 .blog-table-of-contents .blog-toc-item {
@@ -127,7 +173,6 @@ main > .section.blog-table-of-contents-container {
 main > .section.blog-table-of-contents-container .default-content-wrapper {
   max-width: none;
   margin: 0;
-  display: block;
   align-items: initial;
 }
 
@@ -143,12 +188,25 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
 }
 
 @media (width >= 900px) {
-  /* Float the ToC as a sticky right sidebar; subsequent article
-     content in the same section wraps to its left. */
+  /* Two-column grid per the reference: 755px content + 260px ToC, 70px gap.
+     Applied to the section itself since the ToC and content wrappers are its
+     direct children. The ToC has its own column, so its height never reflows
+     the article content. */
+  main > .section.blog-table-of-contents-container {
+    display: grid;
+    grid-template-columns: 755px 260px;
+    grid-template-areas: "content toc";
+    column-gap: 70px;
+    align-items: start;
+  }
+
+  main > .section.blog-table-of-contents-container .default-content-wrapper {
+    grid-area: content;
+    min-width: 0;
+  }
+
   .blog-table-of-contents-wrapper {
-    float: right;
-    width: 260px;
-    margin: 0 0 24px 70px;
+    grid-area: toc;
     position: sticky;
     top: 24px;
   }
