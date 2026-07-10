@@ -71,10 +71,12 @@ main .section.hero-blog-container {
   }
 
   .hero-blog .hero-blog-content {
-    flex: 0 1 46%;
+    flex: 1 1 auto;
   }
 
+  /* Image column shrinks to the capped 425px image instead of holding a wide
+     54% track, which left a large empty gap beside the content. */
   .hero-blog .hero-blog-image {
-    flex: 0 1 54%;
+    flex: 0 0 auto;
   }
 }
