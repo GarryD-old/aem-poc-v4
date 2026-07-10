@@ -1,8 +1,18 @@
 .blog-table-of-contents .blog-toc-wrapper {
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border: 0;
+  border-radius: 20px;
   padding: 20px 24px;
-  background: var(--background-color);
+  background: rgb(244 241 237);
+  color: rgb(36 36 36);
+}
+
+/* Constrain any image that may appear inside a ToC entry to a set size */
+.blog-table-of-contents .blog-toc-list img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  vertical-align: middle;
+  margin-right: 8px;
 }
 
 .blog-table-of-contents .blog-toc-header {
@@ -16,7 +26,7 @@
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   margin: 0;
-  color: var(--text-color);
+  color: rgb(36 36 36);
 }
 
 .blog-table-of-contents .blog-toc-toggle {
@@ -35,7 +45,7 @@
 .blog-table-of-contents .blog-toc-toggle::after {
   content: '';
   position: absolute;
-  background: var(--text-color);
+  background: rgb(36 36 36);
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
