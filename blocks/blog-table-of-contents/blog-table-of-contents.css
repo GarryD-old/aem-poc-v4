@@ -1,0 +1,109 @@
+.blog-table-of-contents .blog-toc-wrapper {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 24px;
+  background: var(--background-color);
+}
+
+.blog-table-of-contents .blog-toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.blog-table-of-contents .blog-toc-title {
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.blog-table-of-contents .blog-toc-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.blog-table-of-contents .blog-toc-toggle::before,
+.blog-table-of-contents .blog-toc-toggle::after {
+  content: '';
+  position: absolute;
+  background: var(--text-color);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* horizontal bar (always visible) */
+.blog-table-of-contents .blog-toc-toggle::before {
+  top: 11px;
+  left: 4px;
+  width: 16px;
+  height: 2px;
+}
+
+/* vertical bar (hidden when expanded -> shows "-", visible when collapsed -> "+") */
+.blog-table-of-contents .blog-toc-toggle::after {
+  top: 4px;
+  left: 11px;
+  width: 2px;
+  height: 16px;
+  opacity: 0;
+}
+
+.blog-table-of-contents.blog-toc-collapsed .blog-toc-toggle::after {
+  opacity: 1;
+}
+
+.blog-table-of-contents .blog-toc-list {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin 0.2s ease;
+}
+
+.blog-table-of-contents.blog-toc-collapsed .blog-toc-list {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.blog-table-of-contents .blog-toc-item {
+  line-height: 1.4;
+}
+
+.blog-table-of-contents .blog-toc-level-h2 {
+  padding-left: 16px;
+}
+
+.blog-table-of-contents .blog-toc-list a {
+  color: var(--muted-text-color);
+  text-decoration: none;
+  font-size: var(--body-font-size-s);
+  transition: color 0.15s ease;
+}
+
+.blog-table-of-contents .blog-toc-list a:hover {
+  color: var(--link-color);
+}
+
+.blog-table-of-contents .blog-toc-list a.active {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+@media (width >= 900px) {
+  .blog-table-of-contents .blog-toc-wrapper {
+    position: sticky;
+    top: 24px;
+  }
+}

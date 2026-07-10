@@ -161,6 +161,18 @@
     ]
   },
   {
+    "id": "blog-table-of-contents",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "Contents"
+      }
+    ]
+  },
+  {
     "id": "cards-features-item",
     "fields": [
       {
