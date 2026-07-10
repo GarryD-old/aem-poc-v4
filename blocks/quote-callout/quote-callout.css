@@ -5,8 +5,20 @@
 }
 
 .quote-callout .quote-callout-content {
-  border-left: 6px solid #ffe600;
+  position: relative;
   padding: 4px 0 4px 28px;
+}
+
+/* Rounded yellow pill bar (per reference: ~11px wide, 20px radius). */
+.quote-callout .quote-callout-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 11px;
+  border-radius: 20px;
+  background: rgb(254 235 41);
 }
 
 .quote-callout .quote-callout-content p {
