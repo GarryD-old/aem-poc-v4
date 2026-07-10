@@ -1,5 +1,3 @@
-const MAX_VISIBLE = 6;
-
 function slugify(text) {
   return text
     .toLowerCase()
@@ -82,7 +80,9 @@ export default function decorate(block) {
     block.classList.toggle('blog-toc-collapsed', expanded);
   });
 
-  // Limit to MAX_VISIBLE items; enable arrow scrolling only when needed.
+  // The scroll area height is capped in CSS (fixed, matching the reference).
+  // JS only wires the arrows and toggles the scrollable state when the list
+  // overflows that fixed height.
   const updateArrows = () => {
     const atTop = scroll.scrollTop <= 1;
     const atBottom = scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 1;
@@ -90,42 +90,27 @@ export default function decorate(block) {
     arrowDown.disabled = atBottom;
   };
 
-  const measureAndCap = () => {
-    const items = [...list.children];
-    if (items.length <= MAX_VISIBLE) return true;
-    // Use bounding rects (robust vs offsetTop, which can be 0 before layout).
-    const listTop = list.getBoundingClientRect().top;
-    const cutTop = items[MAX_VISIBLE].getBoundingClientRect().top;
-    const maxH = Math.round(cutTop - listTop);
-    if (maxH <= 0) return false; // layout not ready yet
-    scroll.style.maxHeight = `${maxH}px`;
-    updateArrows();
-    return true;
+  const refresh = () => {
+    const overflows = scroll.scrollHeight > scroll.clientHeight + 1;
+    block.classList.toggle('blog-toc-scrollable', overflows);
+    if (overflows) updateArrows();
   };
 
+  const step = () => Math.max(scroll.clientHeight * 0.8, 80);
+  arrowUp.addEventListener('click', () => scroll.scrollBy({ top: -step(), behavior: 'smooth' }));
+  arrowDown.addEventListener('click', () => scroll.scrollBy({ top: step(), behavior: 'smooth' }));
+  scroll.addEventListener('scroll', updateArrows);
+  window.addEventListener('resize', refresh);
+
   const setupScroll = () => {
-    if (links.length <= MAX_VISIBLE) {
-      block.classList.remove('blog-toc-scrollable');
-      return;
-    }
-    block.classList.add('blog-toc-scrollable');
-
-    const step = () => Math.max(scroll.clientHeight * 0.8, 80);
-    arrowUp.addEventListener('click', () => scroll.scrollBy({ top: -step(), behavior: 'smooth' }));
-    arrowDown.addEventListener('click', () => scroll.scrollBy({ top: step(), behavior: 'smooth' }));
-    scroll.addEventListener('scroll', updateArrows);
-
-    // Retry measurement across frames until layout yields a real height.
+    // Re-check across a few frames until layout settles.
     let attempts = 0;
-    const tryMeasure = () => {
-      if (measureAndCap() || attempts >= 20) return;
+    const tick = () => {
+      refresh();
       attempts += 1;
-      requestAnimationFrame(tryMeasure);
+      if (attempts < 5) requestAnimationFrame(tick);
     };
-    tryMeasure();
-
-    // Re-cap on resize (item wrapping can change heights).
-    window.addEventListener('resize', measureAndCap);
+    tick();
   };
 
   // Scroll-spy: highlight the entry for the heading currently in view.

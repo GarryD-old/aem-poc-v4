@@ -85,9 +85,13 @@
 
 .blog-table-of-contents .blog-toc-scroll {
   overflow: hidden;
+
+  /* Fixed cap so the card stays a consistent size regardless of how long
+     individual heading labels are (they can wrap to multiple lines). */
+  max-height: 300px;
 }
 
-/* When more than the max items, allow internal scrolling */
+/* When the list overflows the fixed height, allow internal scrolling */
 .blog-table-of-contents.blog-toc-scrollable .blog-toc-scroll {
   overflow-y: auto;
   scrollbar-width: none;
