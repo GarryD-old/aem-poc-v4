@@ -114,12 +114,11 @@ export default function decorate(block) {
   };
 
   // Scroll-spy: highlight the entry for the heading currently in view.
+  // Note: we intentionally do NOT auto-scroll the list to the active entry —
+  // doing so on every page scroll fights the user when they manually scroll
+  // the ToC (it kept snapping back, so you couldn't scroll to the top).
   const setActive = (activeLink) => {
     links.forEach(({ link }) => link.classList.toggle('active', link === activeLink));
-    // Keep the active entry visible within the scroll container.
-    if (block.classList.contains('blog-toc-scrollable') && activeLink) {
-      activeLink.scrollIntoView({ block: 'nearest' });
-    }
   };
 
   if ('IntersectionObserver' in window && links.length) {

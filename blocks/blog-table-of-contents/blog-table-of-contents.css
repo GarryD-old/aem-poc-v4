@@ -1,7 +1,9 @@
 .blog-table-of-contents .blog-toc-wrapper {
+  box-sizing: border-box;
+  width: 100%;
   border: 0;
   border-radius: 20px;
-  padding: 20px 24px;
+  padding: 20px;
   background: rgb(244 241 237);
   color: rgb(36 36 36);
 }
@@ -203,7 +205,10 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
      the article content. */
   main > .section.blog-table-of-contents-container {
     display: grid;
-    grid-template-columns: 755px 260px;
+
+    /* Content flexes down on narrower viewports; ToC keeps its fixed 260px so
+       it never gets squeezed. minmax(0,...) lets the content column shrink. */
+    grid-template-columns: minmax(0, 755px) 260px;
     grid-template-areas: "content toc";
     column-gap: 70px;
     align-items: start;
@@ -218,5 +223,11 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     grid-area: toc;
     position: sticky;
     top: 50px;
+  }
+
+  /* Ensure the block and its card fill the full 260px ToC column
+     (EDS can otherwise leave the block shrink-wrapped narrower). */
+  .blog-table-of-contents-wrapper .blog-table-of-contents {
+    width: 100%;
   }
 }
