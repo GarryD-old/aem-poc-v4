@@ -187,6 +187,11 @@ main > .section.blog-table-of-contents-container .default-content-wrapper h2 {
   line-height: 1.25;
 }
 
+/* 24px gap after each article paragraph (per reference). */
+main > .section.blog-table-of-contents-container .default-content-wrapper p {
+  margin-bottom: 24px;
+}
+
 /* Article images: cap at 675px wide (per Norton reference) and center */
 main > .section.blog-table-of-contents-container .default-content-wrapper picture,
 main > .section.blog-table-of-contents-container .default-content-wrapper img {
