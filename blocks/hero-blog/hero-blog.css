@@ -67,16 +67,20 @@ main .section.hero-blog-container {
     flex-direction: row;
     gap: 64px;
     padding: 56px 0;
-    align-items: center;
+
+    /* Top-align so the H1 sits level with the top of the image (per Norton
+       reference), rather than vertically centering the shorter column. */
+    align-items: flex-start;
   }
 
   .hero-blog .hero-blog-content {
-    flex: 1 1 auto;
+    flex: 1 1 55%;
   }
 
-  /* Image column shrinks to the capped 425px image instead of holding a wide
-     54% track, which left a large empty gap beside the content. */
+  /* Image column takes the remaining space and centers the capped 425px image
+     within it, so the image sits closer to center (not pinned to the far edge)
+     matching the reference. */
   .hero-blog .hero-blog-image {
-    flex: 0 0 auto;
+    flex: 1 1 45%;
   }
 }
