@@ -111,6 +111,16 @@ export default function decorate(block) {
       if (attempts < 5) requestAnimationFrame(tick);
     };
     tick();
+
+    // Late reflows (web-font swap, image loads, sticky repositioning) can change
+    // the list height after those early frames, so keep watching for size
+    // changes and re-evaluate whether the arrows are needed.
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => refresh());
+      ro.observe(list);
+      ro.observe(scroll);
+    }
+    window.addEventListener('load', refresh);
   };
 
   // Scroll-spy: highlight the entry for the heading currently in view.
