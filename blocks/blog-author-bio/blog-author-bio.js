@@ -7,29 +7,29 @@ export default function decorate(block) {
   block.textContent = '';
 
   const media = document.createElement('div');
-  media.className = 'author-bio-media';
+  media.className = 'blog-author-bio-media';
   const pic = imageCell?.querySelector('picture, img');
   if (pic) media.append(pic.closest('picture') || pic);
 
   const info = document.createElement('div');
-  info.className = 'author-bio-info';
+  info.className = 'blog-author-bio-info';
 
   const name = document.createElement('div');
-  name.className = 'author-bio-name';
+  name.className = 'blog-author-bio-name';
   if (nameCell) name.append(...nameCell.childNodes);
 
   const profession = document.createElement('div');
-  profession.className = 'author-bio-profession';
+  profession.className = 'blog-author-bio-profession';
   if (professionCell) profession.append(...professionCell.childNodes);
 
   info.append(name, profession);
 
   const header = document.createElement('div');
-  header.className = 'author-bio-header';
+  header.className = 'blog-author-bio-header';
   header.append(media, info);
 
   const description = document.createElement('div');
-  description.className = 'author-bio-description';
+  description.className = 'blog-author-bio-description';
   if (descCell) description.append(...descCell.childNodes);
 
   block.append(header, description);

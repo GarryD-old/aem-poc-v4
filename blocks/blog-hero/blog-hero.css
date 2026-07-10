@@ -2,27 +2,27 @@
    viewport, so the background fills edge to edge; the inner > div stays
    constrained. Specificity raised (main .section...) to beat the global
    `main .section.light-gray` background rule. */
-main .section.hero-blog-container {
+main .section.blog-hero-container {
   background: rgb(244 241 237);
   border-top: 1px solid rgb(193 191 184);
 }
 
-.hero-blog {
+.blog-hero {
   padding: 0;
 }
 
-.hero-blog > div {
+.blog-hero > div {
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
 }
 
-.hero-blog .hero-blog-content {
+.blog-hero .blog-hero-content {
   flex: 1;
 }
 
-.hero-blog .hero-blog-content h1 {
+.blog-hero .blog-hero-content h1 {
   font-size: 40px;
   font-weight: 800;
   line-height: 52px;
@@ -31,7 +31,7 @@ main .section.hero-blog-container {
   color: rgb(36 36 36);
 }
 
-.hero-blog .hero-blog-content p {
+.blog-hero .blog-hero-content p {
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
@@ -40,14 +40,14 @@ main .section.hero-blog-container {
   color: rgb(36 36 36);
 }
 
-.hero-blog .hero-blog-image {
+.blog-hero .blog-hero-image {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-blog .hero-blog-image img {
+.blog-hero .blog-hero-image img {
   /* Cap at the Norton reference size (425 x 359) and center; scales down on
      narrow viewports. */
   width: 100%;
@@ -59,12 +59,12 @@ main .section.hero-blog-container {
 }
 
 @media (width >= 900px) {
-  .hero-blog-container > div {
+  .blog-hero-container > div {
     max-width: 1200px;
     padding: 0 24px;
   }
 
-  .hero-blog > div {
+  .blog-hero > div {
     flex-direction: row;
     gap: 64px;
     padding: 56px 0;
@@ -74,14 +74,14 @@ main .section.hero-blog-container {
     align-items: flex-start;
   }
 
-  .hero-blog .hero-blog-content {
+  .blog-hero .blog-hero-content {
     flex: 1 1 55%;
   }
 
   /* Image column takes the remaining space and centers the capped 425px image
      within it, so the image sits closer to center (not pinned to the far edge)
      matching the reference. */
-  .hero-blog .hero-blog-image {
+  .blog-hero .blog-hero-image {
     flex: 1 1 45%;
   }
 }

@@ -1,4 +1,4 @@
-.author-byline {
+.blog-author-byline {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -6,7 +6,7 @@
   color: rgb(36 36 36);
 }
 
-.author-byline .author-byline-media img {
+.blog-author-byline .blog-author-byline-media img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -14,12 +14,12 @@
   display: block;
 }
 
-.author-byline .author-byline-details {
+.blog-author-byline .blog-author-byline-details {
   font-size: 14px;
   line-height: 1.35;
 }
 
-.author-byline .author-byline-line a {
+.blog-author-byline .blog-author-byline-line a {
   display: inline;
   padding: 0;
   border: 0;

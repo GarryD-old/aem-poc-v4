@@ -6,16 +6,16 @@ export default function decorate(block) {
   block.textContent = '';
 
   const media = document.createElement('div');
-  media.className = 'author-byline-media';
+  media.className = 'blog-author-byline-media';
   const pic = imageCell?.querySelector('picture, img');
   if (pic) media.append(pic.closest('picture') || pic);
 
   const details = document.createElement('div');
-  details.className = 'author-byline-details';
+  details.className = 'blog-author-byline-details';
   textCells.forEach((cell) => {
     if (!cell || !cell.textContent.trim()) return;
     const line = document.createElement('div');
-    line.className = 'author-byline-line';
+    line.className = 'blog-author-byline-line';
     line.append(...cell.childNodes);
     details.append(line);
   });

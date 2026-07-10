@@ -1,16 +1,16 @@
-.quote-callout {
+.blog-quote-callout {
   box-sizing: border-box;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.quote-callout .quote-callout-content {
+.blog-quote-callout .blog-quote-callout-content {
   position: relative;
   padding: 4px 0 4px 28px;
 }
 
 /* Rounded yellow pill bar (per reference: ~11px wide, 20px radius). */
-.quote-callout .quote-callout-content::before {
+.blog-quote-callout .blog-quote-callout-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -21,7 +21,7 @@
   background: rgb(254 235 41);
 }
 
-.quote-callout .quote-callout-content p {
+.blog-quote-callout .blog-quote-callout-content p {
   margin: 0;
   font-size: 18px;
   line-height: 1.55;
@@ -29,16 +29,16 @@
   color: rgb(36 36 36);
 }
 
-.quote-callout .quote-callout-content p + p {
+.blog-quote-callout .blog-quote-callout-content p + p {
   margin-top: 12px;
 }
 
 /* Bold lead-in (e.g. "Keep in mind:") authored as strong text */
-.quote-callout .quote-callout-content strong {
+.blog-quote-callout .blog-quote-callout-content strong {
   font-weight: 700;
 }
 
-.quote-callout .quote-callout-content a {
+.blog-quote-callout .blog-quote-callout-content a {
   color: var(--link-color);
   text-decoration: underline;
 }

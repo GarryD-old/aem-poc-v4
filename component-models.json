@@ -161,7 +161,7 @@
     ]
   },
   {
-    "id": "author-bio",
+    "id": "blog-author-bio",
     "fields": [
       {
         "component": "reference",
@@ -201,7 +201,7 @@
     ]
   },
   {
-    "id": "author-byline",
+    "id": "blog-author-byline",
     "fields": [
       {
         "component": "reference",
@@ -254,6 +254,75 @@
         "name": "label",
         "label": "Label",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "blog-editors-note",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "blog-hero",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "blog-image-slider-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt"
+      }
+    ]
+  },
+  {
+    "id": "blog-quote-callout",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },
@@ -467,18 +536,6 @@
     ]
   },
   {
-    "id": "editors-note",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "embed",
     "fields": [
       {
@@ -530,32 +587,6 @@
     ]
   },
   {
-    "id": "hero-blog",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt",
-        "value": ""
-      }
-    ]
-  },
-  {
     "id": "hero",
     "fields": [
       {
@@ -582,25 +613,6 @@
     ]
   },
   {
-    "id": "image-slider-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt"
-      }
-    ]
-  },
-  {
     "id": "modal",
     "fields": [
       {
@@ -612,18 +624,6 @@
         "component": "text",
         "name": "linkText",
         "label": "Text"
-      }
-    ]
-  },
-  {
-    "id": "quote-callout",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
       }
     ]
   },

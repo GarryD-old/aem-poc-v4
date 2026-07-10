@@ -1,16 +1,16 @@
-.editors-note {
+.blog-editors-note {
   box-sizing: border-box;
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.editors-note .editors-note-content {
+.blog-editors-note .blog-editors-note-content {
   background: rgb(244 241 237);
   border-radius: 12px;
   padding: 28px 32px;
 }
 
-.editors-note .editors-note-content p {
+.blog-editors-note .blog-editors-note-content p {
   margin: 0;
   font-size: 14px;
   font-weight: 500;
@@ -19,11 +19,11 @@
   color: rgb(36 36 36);
 }
 
-.editors-note .editors-note-content strong {
+.blog-editors-note .blog-editors-note-content strong {
   font-weight: 700;
 }
 
-.editors-note .editors-note-content a {
+.blog-editors-note .blog-editors-note-content a {
   color: var(--link-color);
   text-decoration: underline;
 }
