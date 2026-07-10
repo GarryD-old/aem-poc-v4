@@ -161,6 +161,23 @@
     ]
   },
   {
+    "id": "blog-breadcrumb-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "blog-table-of-contents",
     "fields": [
       {

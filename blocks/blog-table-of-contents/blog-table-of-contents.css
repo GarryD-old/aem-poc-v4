@@ -166,8 +166,7 @@ main > .section.blog-table-of-contents-container {
   text-align: left;
   max-width: 1085px;
   margin-inline: auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 50px 0 0;
 }
 
 main > .section.blog-table-of-contents-container .default-content-wrapper {
@@ -208,6 +207,6 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
   .blog-table-of-contents-wrapper {
     grid-area: toc;
     position: sticky;
-    top: 24px;
+    top: 50px;
   }
 }

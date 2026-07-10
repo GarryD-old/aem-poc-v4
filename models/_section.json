@@ -54,6 +54,7 @@
         "hero",
         "hero-blog",
         "blog-table-of-contents",
+        "blog-breadcrumb",
         "image",
         "quote",
         "search",

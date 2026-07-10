@@ -19,6 +19,7 @@
       "hero",
       "hero-blog",
       "blog-table-of-contents",
+      "blog-breadcrumb",
       "image",
       "quote",
       "search",
@@ -33,6 +34,12 @@
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "blog-breadcrumb",
+    "components": [
+      "blog-breadcrumb-item"
     ]
   },
   {
