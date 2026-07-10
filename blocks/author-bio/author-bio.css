@@ -24,8 +24,17 @@
   letter-spacing: -0.3px;
 }
 
+/* Override the global button styling EDS applies to a lone link so the name
+   renders as plain underlined text, not a blue pill. */
 .author-bio .author-bio-name a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: rgb(36 36 36);
+  font-size: inherit;
+  font-weight: inherit;
   text-decoration: underline;
 }
 

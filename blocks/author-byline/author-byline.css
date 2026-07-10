@@ -20,7 +20,13 @@
 }
 
 .author-byline .author-byline-line a {
+  display: inline;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: rgb(36 36 36);
+  font-size: inherit;
   font-weight: 700;
   text-decoration: underline;
 }
