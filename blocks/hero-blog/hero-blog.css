@@ -36,7 +36,11 @@
 }
 
 .hero-blog .hero-blog-image img {
+  /* Cap at the Norton reference size (425 x 359) and center; scales down on
+     narrow viewports. */
   width: 100%;
+  max-width: 425px;
+  aspect-ratio: 425 / 359;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
