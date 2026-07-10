@@ -219,10 +219,13 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     min-width: 0;
   }
 
-  .blog-table-of-contents-wrapper {
+  /* Higher specificity than the global `main > .section > div` (which adds
+     32px side padding); without this the card is 260 - 64 = 196px wide. */
+  main > .section.blog-table-of-contents-container > .blog-table-of-contents-wrapper {
     grid-area: toc;
     position: sticky;
     top: 50px;
+    padding: 0;
   }
 
   /* Ensure the block and its card fill the full 260px ToC column
