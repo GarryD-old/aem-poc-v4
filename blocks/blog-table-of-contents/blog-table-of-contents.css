@@ -131,15 +131,14 @@ main > .section.blog-table-of-contents-container .default-content-wrapper {
   align-items: initial;
 }
 
-/* Article images: cap at 1261x1040 and center on the page */
+/* Article images: cap at 675px wide (per Norton reference) and center */
 main > .section.blog-table-of-contents-container .default-content-wrapper picture,
 main > .section.blog-table-of-contents-container .default-content-wrapper img {
   display: block;
   margin-inline: auto;
-  max-width: min(100%, 1261px);
-  max-height: 1040px;
-  width: auto;
+  max-width: min(100%, 675px);
   height: auto;
+  width: auto;
   object-fit: contain;
 }
 
