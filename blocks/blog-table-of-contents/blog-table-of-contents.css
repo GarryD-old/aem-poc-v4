@@ -210,14 +210,16 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
        it never gets squeezed. minmax(0,...) lets the content column shrink.
        Single explicit row so both items sit on the same row (top-aligned). */
     grid-template-columns: minmax(0, 755px) 260px;
-    grid-template-rows: auto;
     column-gap: 70px;
     align-items: start;
   }
 
-  main > .section.blog-table-of-contents-container .default-content-wrapper {
+  /* All article pieces (the content wrapper can be split into several by an
+     inline block like the slider) flow down column 1 in source order. Only
+     grid-column is fixed so grid auto-placement stacks them in successive
+     rows rather than colliding on a single pinned row. */
+  main > .section.blog-table-of-contents-container > div:not(.blog-table-of-contents-wrapper) {
     grid-column: 1;
-    grid-row: 1;
     min-width: 0;
   }
 
@@ -225,7 +227,10 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
      32px side padding); without this the card is 260 - 64 = 196px wide. */
   main > .section.blog-table-of-contents-container > .blog-table-of-contents-wrapper {
     grid-column: 2;
-    grid-row: 1;
+
+    /* Span every content row so the ToC occupies the full-height right column
+       and its sticky behaviour tracks the whole article. */
+    grid-row: 1 / -1;
     position: sticky;
     top: 50px;
     padding: 0;
