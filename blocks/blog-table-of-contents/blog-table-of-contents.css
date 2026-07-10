@@ -229,6 +229,11 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     position: sticky;
     top: 50px;
     padding: 0;
+
+    /* Zero the global `main > .section > div { margin: auto }`. In a grid item
+       auto margins consume free space and override align-self, which vertically
+       centered the ToC in the tall content row. */
+    margin: 0;
     align-self: start;
   }
 
