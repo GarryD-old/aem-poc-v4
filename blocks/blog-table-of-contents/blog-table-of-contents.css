@@ -131,6 +131,18 @@ main > .section.blog-table-of-contents-container .default-content-wrapper {
   align-items: initial;
 }
 
+/* Article images: cap at 1261x1040 and center on the page */
+main > .section.blog-table-of-contents-container .default-content-wrapper picture,
+main > .section.blog-table-of-contents-container .default-content-wrapper img {
+  display: block;
+  margin-inline: auto;
+  max-width: min(100%, 1261px);
+  max-height: 1040px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 @media (width >= 900px) {
   /* Float the ToC as a sticky right sidebar; subsequent article
      content in the same section wraps to its left. */
