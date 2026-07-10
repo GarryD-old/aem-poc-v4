@@ -111,13 +111,33 @@
   font-weight: 700;
 }
 
+/* Blog article section: left-align and constrain to the reference 1085px.
+   Overrides the global `main > .section:nth-of-type(2)` CTA rule that
+   otherwise force-centers this (the 2nd section on the page).
+   In this section the wrappers are direct children (no intermediate
+   `> div`), so constrain the section padding-box to 1085px and center it. */
+main > .section.blog-table-of-contents-container {
+  text-align: left;
+  max-width: 1085px;
+  margin-inline: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+main > .section.blog-table-of-contents-container .default-content-wrapper {
+  max-width: none;
+  margin: 0;
+  display: block;
+  align-items: initial;
+}
+
 @media (width >= 900px) {
   /* Float the ToC as a sticky right sidebar; subsequent article
      content in the same section wraps to its left. */
   .blog-table-of-contents-wrapper {
     float: right;
-    width: 320px;
-    margin: 0 0 24px 40px;
+    width: 260px;
+    margin: 0 0 24px 70px;
     position: sticky;
     top: 24px;
   }
