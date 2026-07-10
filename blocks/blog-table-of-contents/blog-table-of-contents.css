@@ -207,25 +207,29 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     display: grid;
 
     /* Content flexes down on narrower viewports; ToC keeps its fixed 260px so
-       it never gets squeezed. minmax(0,...) lets the content column shrink. */
+       it never gets squeezed. minmax(0,...) lets the content column shrink.
+       Single explicit row so both items sit on the same row (top-aligned). */
     grid-template-columns: minmax(0, 755px) 260px;
-    grid-template-areas: "content toc";
+    grid-template-rows: auto;
     column-gap: 70px;
     align-items: start;
   }
 
   main > .section.blog-table-of-contents-container .default-content-wrapper {
-    grid-area: content;
+    grid-column: 1;
+    grid-row: 1;
     min-width: 0;
   }
 
   /* Higher specificity than the global `main > .section > div` (which adds
      32px side padding); without this the card is 260 - 64 = 196px wide. */
   main > .section.blog-table-of-contents-container > .blog-table-of-contents-wrapper {
-    grid-area: toc;
+    grid-column: 2;
+    grid-row: 1;
     position: sticky;
     top: 50px;
     padding: 0;
+    align-self: start;
   }
 
   /* Ensure the block and its card fill the full 260px ToC column
