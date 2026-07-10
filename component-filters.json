@@ -20,6 +20,7 @@
       "hero-blog",
       "blog-table-of-contents",
       "blog-breadcrumb",
+      "image-slider",
       "image",
       "quote",
       "search",
@@ -103,6 +104,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "image-slider",
+    "components": [
+      "image-slider-item"
     ]
   },
   {

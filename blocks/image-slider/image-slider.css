@@ -1,0 +1,118 @@
+.image-slider {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.image-slider .image-slider-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.image-slider .image-slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.image-slider .image-slider-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider .image-slider-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Prev / next circular controls sitting outside the viewport edges */
+.image-slider .image-slider-controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.image-slider .image-slider-control-prev,
+.image-slider .image-slider-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 25%);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.15s ease;
+}
+
+.image-slider .image-slider-control-prev {
+  left: -24px;
+}
+
+.image-slider .image-slider-control-next {
+  right: -24px;
+}
+
+.image-slider .image-slider-control-prev:hover,
+.image-slider .image-slider-control-next:hover {
+  background: rgb(0 0 0 / 40%);
+}
+
+/* Chevron glyphs drawn with borders */
+.image-slider .image-slider-control-prev::before,
+.image-slider .image-slider-control-next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.image-slider .image-slider-control-prev::before {
+  transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.image-slider .image-slider-control-next::before {
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+
+/* Bullet pagination */
+.image-slider .image-slider-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.image-slider .image-slider-bullet {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(36 36 36 / 25%);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.image-slider .image-slider-bullet-active {
+  background: rgb(36 36 36);
+}
+
+@media (width >= 900px) {
+  .image-slider .image-slider-control-prev {
+    left: -64px;
+  }
+
+  .image-slider .image-slider-control-next {
+    right: -64px;
+  }
+}
