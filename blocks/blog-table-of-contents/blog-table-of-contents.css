@@ -43,33 +43,38 @@
   flex-shrink: 0;
 }
 
+/* Two crossing bars form a "+" (a plus rotated 45deg reads as "×").
+   Expanded -> "×" (rotated); collapsed -> "+" (upright). */
 .blog-table-of-contents .blog-toc-toggle::before,
 .blog-table-of-contents .blog-toc-toggle::after {
   content: '';
   position: absolute;
   background: rgb(36 36 36);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-/* horizontal bar (always visible) */
+/* horizontal bar */
 .blog-table-of-contents .blog-toc-toggle::before {
   top: 11px;
   left: 4px;
   width: 16px;
   height: 2px;
+  transform: rotate(45deg);
 }
 
-/* vertical bar (hidden when expanded -> shows "-", visible when collapsed -> "+") */
+/* vertical bar */
 .blog-table-of-contents .blog-toc-toggle::after {
   top: 4px;
   left: 11px;
   width: 2px;
   height: 16px;
-  opacity: 0;
+  transform: rotate(45deg);
 }
 
+/* Collapsed: unrotate both bars back to a "+" */
+.blog-table-of-contents.blog-toc-collapsed .blog-toc-toggle::before,
 .blog-table-of-contents.blog-toc-collapsed .blog-toc-toggle::after {
-  opacity: 1;
+  transform: rotate(0deg);
 }
 
 /* Body wraps arrows + scroll container so collapse hides them together */
@@ -144,7 +149,7 @@
 }
 
 .blog-table-of-contents .blog-toc-level-h2 {
-  padding-left: 16px;
+  padding-left: 0;
 }
 
 .blog-table-of-contents .blog-toc-list a {
