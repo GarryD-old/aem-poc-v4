@@ -161,6 +161,86 @@
     ]
   },
   {
+    "id": "author-bio",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Headshot",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Headshot Alt"
+      },
+      {
+        "component": "richtext",
+        "name": "name",
+        "value": "",
+        "label": "Name",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "profession",
+        "value": "",
+        "label": "Profession",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "author-byline",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Headshot",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Headshot Alt"
+      },
+      {
+        "component": "richtext",
+        "name": "writtenBy",
+        "value": "",
+        "label": "Written By",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "reviewedBy",
+        "value": "",
+        "label": "Reviewed By",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "meta",
+        "value": "",
+        "label": "Date / Read time",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "blog-breadcrumb-item",
     "fields": [
       {
@@ -383,6 +463,18 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "editors-note",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },
