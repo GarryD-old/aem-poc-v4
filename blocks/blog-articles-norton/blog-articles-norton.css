@@ -25,8 +25,12 @@
 
 .blog-articles-norton .blog-articles-norton-prev,
 .blog-articles-norton .blog-articles-norton-next {
+  flex: 0 0 auto;
+  box-sizing: border-box;
   width: 40px;
   height: 40px;
+  min-width: 0;
+  padding: 0;
   border: 0;
   border-radius: 50%;
   background: rgb(224 233 246);
@@ -67,11 +71,13 @@
   transform: translate(-70%, -50%) rotate(45deg);
 }
 
-/* Horizontal scroll viewport with a card track */
+/* Horizontal scroll viewport with a card track. Fade the right edge so the
+   partially-visible next card looks like it slides off, matching the reference. */
 .blog-articles-norton .blog-articles-norton-viewport {
   overflow-x: auto;
   scrollbar-width: none;
   scroll-behavior: smooth;
+  mask-image: linear-gradient(to right, #000 92%, transparent 100%);
 }
 
 .blog-articles-norton .blog-articles-norton-viewport::-webkit-scrollbar {
@@ -94,6 +100,12 @@
   aspect-ratio: 360 / 240;
   object-fit: cover;
   border-radius: 12px;
+  transition: opacity 0.15s ease;
+}
+
+/* Dim the image to 50% on hover. */
+.blog-articles-norton .blog-articles-norton-media a:hover img {
+  opacity: 0.5;
 }
 
 .blog-articles-norton .blog-articles-norton-body {
@@ -120,7 +132,10 @@
 }
 
 .blog-articles-norton .blog-articles-norton-title a {
-  display: inline;
+  /* Block so long titles wrap within the card instead of overflowing onto the
+     neighbouring card. */
+  display: block;
+  overflow-wrap: break-word;
   padding: 0;
   border: 0;
   border-radius: 0;
