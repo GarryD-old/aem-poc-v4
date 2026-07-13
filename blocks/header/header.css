@@ -39,7 +39,7 @@ header .nav-brand {
   padding: 16px 0;
   min-width: 98px;
   min-height: 40px;
-  background-image: url('https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/avg/logo/avg-logo.png');
+  background-image: url('/icons/avg-logo.png');
   background-size: 98px 40px;
   background-repeat: no-repeat;
   background-position: left center;
@@ -53,6 +53,10 @@ header nav .nav-brand a {
 header nav .nav-brand img {
   width: 98px;
   height: 40px;
+
+  /* Brand logo is drawn via the .nav-brand background-image; hide the fragment
+     <img> (its DAM src is unavailable) so no broken-image icon shows. */
+  opacity: 0;
 }
 
 /* tools row: top-right utility links - full width on its own row */
