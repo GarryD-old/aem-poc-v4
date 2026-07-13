@@ -1,0 +1,105 @@
+{
+  "definitions": [
+    {
+      "title": "Blog Articles Norton",
+      "id": "blog-articles-norton",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Blog Articles Norton",
+              "model": "blog-articles-norton",
+              "filter": "blog-articles-norton"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Article",
+      "id": "blog-articles-norton-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Article",
+              "model": "blog-articles-norton-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "blog-articles-norton",
+      "fields": [
+        {
+          "component": "text",
+          "name": "heading",
+          "value": "Related articles",
+          "label": "Heading",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "blog-articles-norton-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "value": "",
+          "label": "Image Alt"
+        },
+        {
+          "component": "aem-content",
+          "name": "tagLink",
+          "label": "Tag Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tag",
+          "value": "",
+          "label": "Tag Label"
+        },
+        {
+          "component": "aem-content",
+          "name": "titleLink",
+          "label": "Article Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Article Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "meta",
+          "value": "",
+          "label": "Date / Read time"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "blog-articles-norton",
+      "components": ["blog-articles-norton-item"]
+    }
+  ]
+}

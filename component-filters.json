@@ -25,6 +25,7 @@
       "blog-author-bio",
       "blog-editors-note",
       "blog-author-byline",
+      "blog-articles-norton",
       "image",
       "quote",
       "search",
@@ -39,6 +40,12 @@
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "blog-articles-norton",
+    "components": [
+      "blog-articles-norton-item"
     ]
   },
   {

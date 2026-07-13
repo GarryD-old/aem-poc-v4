@@ -1,0 +1,139 @@
+.blog-articles-norton {
+  box-sizing: border-box;
+  color: rgb(36 36 36);
+}
+
+.blog-articles-norton .blog-articles-norton-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.blog-articles-norton .blog-articles-norton-heading {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.blog-articles-norton .blog-articles-norton-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.blog-articles-norton .blog-articles-norton-prev,
+.blog-articles-norton .blog-articles-norton-next {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(224 233 246);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s ease;
+}
+
+.blog-articles-norton .blog-articles-norton-prev:hover,
+.blog-articles-norton .blog-articles-norton-next:hover {
+  background: rgb(206 220 240);
+}
+
+.blog-articles-norton .blog-articles-norton-prev:disabled,
+.blog-articles-norton .blog-articles-norton-next:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Chevron glyphs */
+.blog-articles-norton .blog-articles-norton-prev::before,
+.blog-articles-norton .blog-articles-norton-next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgb(36 36 36);
+  border-right: 2px solid rgb(36 36 36);
+}
+
+.blog-articles-norton .blog-articles-norton-prev::before {
+  transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.blog-articles-norton .blog-articles-norton-next::before {
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+
+/* Horizontal scroll viewport with a card track */
+.blog-articles-norton .blog-articles-norton-viewport {
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.blog-articles-norton .blog-articles-norton-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.blog-articles-norton .blog-articles-norton-track {
+  display: flex;
+  column-gap: 16px;
+}
+
+.blog-articles-norton .blog-articles-norton-card {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+.blog-articles-norton .blog-articles-norton-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 360 / 240;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.blog-articles-norton .blog-articles-norton-body {
+  padding-top: 16px;
+}
+
+.blog-articles-norton .blog-articles-norton-tag a {
+  color: var(--link-color);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.blog-articles-norton .blog-articles-norton-title {
+  margin-top: 10px;
+  min-height: 56px;
+}
+
+.blog-articles-norton .blog-articles-norton-title a {
+  color: rgb(36 36 36);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+}
+
+.blog-articles-norton .blog-articles-norton-tag a:hover,
+.blog-articles-norton .blog-articles-norton-title a:hover {
+  text-decoration: underline;
+}
+
+.blog-articles-norton .blog-articles-norton-meta {
+  margin-top: 14px;
+  font-size: 14px;
+  color: var(--muted-text-color);
+}
+
+@media (width >= 900px) {
+  .blog-articles-norton .blog-articles-norton-card {
+    width: 360px;
+  }
+}
