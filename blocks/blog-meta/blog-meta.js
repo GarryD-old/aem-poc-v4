@@ -21,6 +21,14 @@ export default function decorate(block) {
     document.documentElement.setAttribute('lang', 'en');
   }
 
+  // 1b) Ensure a robots directive so crawlers index and follow the page.
+  if (!document.head.querySelector('meta[name="robots"]')) {
+    const robots = document.createElement('meta');
+    robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'index, follow');
+    document.head.append(robots);
+  }
+
   // 2) Build Article structured data (once).
   if (document.head.querySelector('script[data-blog-meta]')) return;
 
