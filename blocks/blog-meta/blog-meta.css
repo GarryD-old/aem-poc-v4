@@ -1,0 +1,5 @@
+/* Non-visual SEO helper block. It removes itself on decorate, but hide it
+   defensively in case JS hasn't run yet. */
+.blog-meta {
+  display: none;
+}

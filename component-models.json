@@ -377,6 +377,10 @@
     ]
   },
   {
+    "id": "blog-meta",
+    "fields": []
+  },
+  {
     "id": "blog-quote-callout",
     "fields": [
       {
