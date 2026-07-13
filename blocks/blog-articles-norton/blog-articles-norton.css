@@ -128,13 +128,17 @@
 
 .blog-articles-norton .blog-articles-norton-title {
   margin-top: 10px;
-  min-height: 56px;
+  min-height: 78px;
 }
 
 .blog-articles-norton .blog-articles-norton-title a {
   /* Block so long titles wrap within the card instead of overflowing onto the
-     neighbouring card. */
+     neighbouring card. Override the global link truncation (nowrap + ellipsis)
+     so the title can span multiple lines. */
   display: block;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   overflow-wrap: break-word;
   padding: 0;
   border: 0;
