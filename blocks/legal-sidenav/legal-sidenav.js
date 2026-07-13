@@ -72,7 +72,7 @@ export default function decorate(block) {
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'legal-sidenav-toggle';
-    toggle.setAttribute('aria-label', 'Expand section');
+    toggle.setAttribute('aria-label', 'Toggle section');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.append(chevron());
     toggle.addEventListener('click', () => {
@@ -86,17 +86,39 @@ export default function decorate(block) {
     stack.push({ level: lvl, listEl: childList });
   });
 
-  // Any item that ended up with no children shouldn't show a chevron.
+  // After the whole tree is built: mark childless items as leaves (no chevron),
+  // and collapse every parent by default so each product reads as a dropdown
+  // (matching the live site — expand one at a time).
   nav.querySelectorAll('.legal-sidenav-item').forEach((li) => {
     const sub = li.querySelector(':scope > .legal-sidenav-sublist');
-    if (!sub || !sub.children.length) li.classList.add('legal-sidenav-leaf');
+    if (!sub || !sub.children.length) {
+      li.classList.add('legal-sidenav-leaf');
+    } else {
+      li.classList.add('legal-sidenav-collapsed');
+      const toggle = li.querySelector(':scope > .legal-sidenav-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
   });
 
   block.append(nav);
 
-  // Scroll-spy: highlight (green) the entry for the section currently in view.
+  // Scroll-spy: highlight (green) the entry for the section currently in view
+  // and expand its ancestor dropdowns so the active row is visible.
+  const expandAncestors = (link) => {
+    let li = link.closest('.legal-sidenav-item')?.parentElement?.closest('.legal-sidenav-item');
+    while (li) {
+      if (li.classList.contains('legal-sidenav-collapsed')) {
+        li.classList.remove('legal-sidenav-collapsed');
+        const t = li.querySelector(':scope > .legal-sidenav-toggle');
+        if (t) t.setAttribute('aria-expanded', 'true');
+      }
+      li = li.parentElement?.closest('.legal-sidenav-item');
+    }
+  };
+
   const setActive = (activeLink) => {
     links.forEach(({ link }) => link.classList.toggle('active', link === activeLink));
+    if (activeLink) expandAncestors(activeLink);
   };
 
   if ('IntersectionObserver' in window && links.length) {
