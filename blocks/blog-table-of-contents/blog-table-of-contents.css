@@ -233,6 +233,11 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
   main > .section.blog-table-of-contents-container > div:not(.blog-table-of-contents-wrapper) {
     grid-column: 1;
     min-width: 0;
+
+    /* Zero the global `margin: auto`. On a shrink-wrapping grid item (e.g. the
+       byline wrapper) auto side-margins center it, leaving a big left gap; with
+       margin 0 the item stretches and stays flush-left with the article. */
+    margin-inline: 0;
   }
 
   /* Higher specificity than the global `main > .section > div` (which adds
