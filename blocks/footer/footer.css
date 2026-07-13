@@ -61,6 +61,26 @@ footer .footer a:hover {
   opacity: 1;
 }
 
+/* Region selector link: flag + country name + chevron */
+footer .footer a.footer-region {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+footer .footer a.footer-region:hover {
+  text-decoration: none;
+}
+
+footer .footer a.footer-region img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 /* Column headings */
 footer .footer strong {
   display: block;

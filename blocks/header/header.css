@@ -105,6 +105,25 @@ header nav .nav-tools a:hover {
   color: #1c222e;
 }
 
+/* Region selector link: flag + country name + chevron */
+header nav .nav-tools a.nav-region {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #1c222e;
+}
+
+header nav .nav-tools a.nav-region img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+header nav .nav-tools a.nav-region .nav-region-chevron {
+  color: #697284;
+}
+
 /* nav sections: main links row - inline with logo */
 header nav .nav-sections {
   display: flex;

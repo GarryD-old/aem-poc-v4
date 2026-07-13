@@ -5,6 +5,53 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
+// Country code -> display name for the region selector (matches the modal list).
+const COUNTRY_NAMES = {
+  ar: 'Argentina',
+  au: 'Australia',
+  be: 'België',
+  br: 'Brasil',
+  ca: 'Canada',
+  cz: 'Česká republika',
+  cl: 'Chile',
+  co: 'Colombia',
+  dk: 'Denmark',
+  de: 'Deutschland',
+  es: 'España',
+  fr: 'France',
+  in: 'India',
+  id: 'Indonesia',
+  it: 'Italia',
+  my: 'Malaysia',
+  mx: 'México',
+  nl: 'Nederland',
+  nz: 'New Zealand',
+  no: 'Norge',
+  pl: 'Polska',
+  pt: 'Portugal',
+  ru: 'Россия',
+  ch: 'Schweiz',
+  sk: 'Slovensko',
+  za: 'South Africa',
+  se: 'Sweden',
+  tr: 'Türkiye',
+  gb: 'United Kingdom',
+  us: 'United States',
+  tw: '臺灣',
+  jp: '日本',
+  kr: '대한민국',
+};
+
+// Derive the current country from the URL. Matches a locale segment (/en-us/ -> us)
+// or a bare country segment (/us/ -> us). Falls back to United States.
+function detectCountryCode() {
+  const { pathname } = window.location;
+  const locale = pathname.match(/\/[a-z]{2}-([a-z]{2})(?:\/|$)/i);
+  const bare = pathname.match(/^\/([a-z]{2})(?:\/|$)/i);
+  const code = (locale?.[1] || bare?.[1] || '').toLowerCase();
+  return COUNTRY_NAMES[code] ? code : 'us';
+}
+
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -240,6 +287,11 @@ export default async function decorate(block) {
     }
     const regionLink = navTools.querySelector('a[href*="region"]');
     if (regionLink) {
+      const countryCode = detectCountryCode();
+      regionLink.classList.add('nav-region');
+      regionLink.innerHTML = `<img src="/icons/flags/${countryCode}.svg" alt="" width="24" height="24">
+        <span>${COUNTRY_NAMES[countryCode]}</span>
+        <svg class="nav-region-chevron" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>`;
       regionLink.addEventListener('click', (e) => {
         e.preventDefault();
         const existing = document.querySelector('.region-modal-overlay');
