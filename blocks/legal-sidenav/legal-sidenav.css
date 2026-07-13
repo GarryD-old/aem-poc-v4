@@ -154,12 +154,22 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
    applied to the section itself. */
 @media (width >= 900px) {
   main > .section.legal-sidenav-container {
-    /* Figma template: 432px nav column (incl. 32px inner gap) + content,
-       ~32px gap before the content group at x=584. */
+    /* Constrain to the same 1200px centered content region as the hero and
+       nav-tabs above (global `main > .section > div { max-width: 1200px }`), so
+       the ToC left edge and content right edge align with the hero title box
+       instead of bleeding to the full viewport width. */
+    max-width: 1200px;
+    margin: 0 auto;
+
+    /* Figma template: ~360px nav column + 32px gap + content. */
     display: grid;
-    grid-template-columns: 400px minmax(0, 1fr);
+    grid-template-columns: 360px minmax(0, 1fr);
     column-gap: 32px;
     align-items: start;
+
+    /* Drop the horizontal padding on desktop so the grid edges line up with the
+       1200px hero/nav-tabs region (which has no inner side padding at this width). */
+    padding: 40px 0;
   }
 
   main > .section.legal-sidenav-container > .legal-sidenav-wrapper {
@@ -192,5 +202,6 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
     grid-column: 2;
     min-width: 0;
     margin: 0;
+    padding: 0;
   }
 }
