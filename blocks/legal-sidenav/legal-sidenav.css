@@ -92,12 +92,10 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
   color: #00a85d; /* AVG green hover per Figma */
 }
 
-/* Active (in-view) row: green text + green left accent, matching the Figma
-   hover/selected state. */
+/* Active (in-view) row: green text, matching the Figma hover/selected state. */
 .legal-sidenav .legal-sidenav-link.active {
   color: #00a85d;
   font-weight: 700;
-  box-shadow: inset 3px 0 0 0 #00a85d;
 }
 
 /* Expand/collapse chevron button, right-aligned in the row. */
@@ -117,17 +115,19 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
   justify-content: center;
 }
 
+/* Chevron points down by default (collapsed). */
 .legal-sidenav .legal-sidenav-chevron {
   width: 16px;
   height: 16px;
   transition: transform 0.2s ease;
 }
 
-/* Collapsed state: rotate chevron and hide the child list. */
-.legal-sidenav .legal-sidenav-collapsed > .legal-sidenav-toggle .legal-sidenav-chevron {
-  transform: rotate(-90deg);
+/* Expanded state: chevron points up. */
+.legal-sidenav .legal-sidenav-toggle[aria-expanded="true"] .legal-sidenav-chevron {
+  transform: rotate(180deg);
 }
 
+/* Collapsed state hides the child list. */
 .legal-sidenav .legal-sidenav-collapsed > .legal-sidenav-sublist {
   display: none;
 }
@@ -165,10 +165,15 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
     padding: 0;
     align-self: start;
 
-    /* Cap height and scroll internally when the product list is long. */
+    /* Cap height and scroll internally when the product list is long; hide the
+       scrollbar chrome (still scrollable). */
     max-height: calc(100vh - 48px);
     overflow-y: auto;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+  }
+
+  main > .section.legal-sidenav-container > .legal-sidenav-wrapper::-webkit-scrollbar {
+    display: none;
   }
 
   main > .section.legal-sidenav-container > div:not(.legal-sidenav-wrapper) {
