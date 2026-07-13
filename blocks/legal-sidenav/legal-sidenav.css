@@ -33,7 +33,18 @@ main > .section.legal-sidenav-container .default-content-wrapper h2 {
   font-size: 32px;
   font-weight: 700;
   line-height: 1.25;
+
+  /* Grey divider above each product section (per Figma). */
+  border-top: 1px solid #ced4e0;
+  padding-top: 40px;
   margin: 40px 0 16px;
+}
+
+/* The very first product H2 shouldn't carry a top divider/padding. */
+main > .section.legal-sidenav-container .default-content-wrapper:first-of-type h2 {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
 }
 
 main > .section.legal-sidenav-container .default-content-wrapper h3 {
@@ -74,8 +85,9 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
 .legal-sidenav .legal-sidenav-link {
   display: block;
   padding: 14px 40px 14px 16px;
-  border: 1px solid #ced4e0;
-  margin-top: -1px; /* collapse adjacent borders */
+
+  /* Grey horizontal separator between rows only (no side/top box borders). */
+  border-bottom: 1px solid #ced4e0;
   color: #1c222e;
   font-size: 14px;
   line-height: 20px;
