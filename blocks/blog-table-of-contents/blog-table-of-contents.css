@@ -247,8 +247,10 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     grid-column: 2;
 
     /* Span every content row so the ToC occupies the full-height right column
-       and its sticky behaviour tracks the whole article. */
-    grid-row: 1 / -1;
+       and its sticky behaviour tracks the whole article. `1 / -1` only spans
+       the single explicit row (inflating row 1 and leaving a gap under the
+       byline), so span a large row count to cover all implicit rows. */
+    grid-row: 1 / span 100;
     position: sticky;
     top: 50px;
     padding: 0;
