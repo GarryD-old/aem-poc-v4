@@ -248,58 +248,57 @@ export default async function decorate(block) {
         modal.className = 'region-modal-overlay';
         modal.innerHTML = `<div class="region-modal">
           <div class="region-modal-header">
-            <h2>Change language</h2>
+            <h2>Change country/region</h2>
             <button class="region-modal-close" aria-label="Close">✕</button>
           </div>
           <div class="region-modal-body">
             <div class="region-modal-col">
-              <a href="/en-ar/">🇦🇷 Argentina: <span>Español</span></a>
-              <a href="/en-au/">🇦🇺 Australia: <span>English</span></a>
-              <a href="/nl-be/">🇧🇪 België: <span>Nederlands</span></a>
-              <a href="/fr-be/">🇧🇪 Belgique: <span>Français</span></a>
-              <a href="/pt-br/">🇧🇷 Brasil: <span>Português do Brasil</span></a>
-              <a href="/en-ca/">🇨🇦 Canada: <span>English</span></a>
-              <a href="/fr-ca/">🇨🇦 Canada: <span>Français</span></a>
-              <a href="/cs-cz/">🇨🇿 Česká republika: <span>Čeština</span></a>
-              <a href="/es-cl/">🇨🇱 Chile: <span>Español</span></a>
-              <a href="/es-co/">🇨🇴 Colombia: <span>Español</span></a>
-              <a href="/en-dk/">🇩🇰 Denmark: <span>English</span></a>
-              <a href="/de-de/">🇩🇪 Deutschland: <span>Deutsch</span></a>
+              <a href="/en-ar/"><img src="/icons/flags/ar.svg" alt="" width="24" height="24" loading="lazy">Argentina: <span>Español</span></a>
+              <a href="/en-au/"><img src="/icons/flags/au.svg" alt="" width="24" height="24" loading="lazy">Australia: <span>English</span></a>
+              <a href="/nl-be/"><img src="/icons/flags/be.svg" alt="" width="24" height="24" loading="lazy">België: <span>Nederlands</span></a>
+              <a href="/fr-be/"><img src="/icons/flags/be.svg" alt="" width="24" height="24" loading="lazy">Belgique: <span>Français</span></a>
+              <a href="/pt-br/"><img src="/icons/flags/br.svg" alt="" width="24" height="24" loading="lazy">Brasil: <span>Português do Brasil</span></a>
+              <a href="/en-ca/"><img src="/icons/flags/ca.svg" alt="" width="24" height="24" loading="lazy">Canada: <span>English</span></a>
+              <a href="/fr-ca/"><img src="/icons/flags/ca.svg" alt="" width="24" height="24" loading="lazy">Canada: <span>Français</span></a>
+              <a href="/cs-cz/"><img src="/icons/flags/cz.svg" alt="" width="24" height="24" loading="lazy">Česká republika: <span>Čeština</span></a>
+              <a href="/es-cl/"><img src="/icons/flags/cl.svg" alt="" width="24" height="24" loading="lazy">Chile: <span>Español</span></a>
+              <a href="/es-co/"><img src="/icons/flags/co.svg" alt="" width="24" height="24" loading="lazy">Colombia: <span>Español</span></a>
+              <a href="/en-dk/"><img src="/icons/flags/dk.svg" alt="" width="24" height="24" loading="lazy">Denmark: <span>English</span></a>
+              <a href="/de-de/"><img src="/icons/flags/de.svg" alt="" width="24" height="24" loading="lazy">Deutschland: <span>Deutsch</span></a>
             </div>
             <div class="region-modal-col">
-              <a href="/es-es/">🇪🇸 España: <span>Español</span></a>
-              <a href="/fr-fr/">🇫🇷 France: <span>Français</span></a>
-              <a href="/en-in/">🇮🇳 India: <span>English</span></a>
-              <a href="/id-id/">🇮🇩 Indonesia: <span>Bahasa Indonesia</span></a>
-              <a href="/it-it/">🇮🇹 Italia: <span>Italiano</span></a>
-              <a href="/ms-my/">🇲🇾 Malaysia: <span>Bahasa Melayu</span></a>
-              <a href="/es-mx/">🇲🇽 México: <span>Español</span></a>
-              <a href="/nl-nl/">🇳🇱 Nederland: <span>Nederlands</span></a>
-              <a href="/en-nz/">🇳🇿 New Zealand: <span>English</span></a>
-              <a href="/no-no/">🇳🇴 Norge: <span>Norsk</span></a>
-              <a href="/pl-pl/">🇵🇱 Polska: <span>Polski</span></a>
-              <a href="/pt-pt/">🇵🇹 Portugal: <span>Português</span></a>
+              <a href="/es-es/"><img src="/icons/flags/es.svg" alt="" width="24" height="24" loading="lazy">España: <span>Español</span></a>
+              <a href="/fr-fr/"><img src="/icons/flags/fr.svg" alt="" width="24" height="24" loading="lazy">France: <span>Français</span></a>
+              <a href="/en-in/"><img src="/icons/flags/in.svg" alt="" width="24" height="24" loading="lazy">India: <span>English</span></a>
+              <a href="/id-id/"><img src="/icons/flags/id.svg" alt="" width="24" height="24" loading="lazy">Indonesia: <span>Bahasa Indonesia</span></a>
+              <a href="/it-it/"><img src="/icons/flags/it.svg" alt="" width="24" height="24" loading="lazy">Italia: <span>Italiano</span></a>
+              <a href="/ms-my/"><img src="/icons/flags/my.svg" alt="" width="24" height="24" loading="lazy">Malaysia: <span>Bahasa Melayu</span></a>
+              <a href="/es-mx/"><img src="/icons/flags/mx.svg" alt="" width="24" height="24" loading="lazy">México: <span>Español</span></a>
+              <a href="/nl-nl/"><img src="/icons/flags/nl.svg" alt="" width="24" height="24" loading="lazy">Nederland: <span>Nederlands</span></a>
+              <a href="/en-nz/"><img src="/icons/flags/nz.svg" alt="" width="24" height="24" loading="lazy">New Zealand: <span>English</span></a>
+              <a href="/no-no/"><img src="/icons/flags/no.svg" alt="" width="24" height="24" loading="lazy">Norge: <span>Norsk</span></a>
+              <a href="/pl-pl/"><img src="/icons/flags/pl.svg" alt="" width="24" height="24" loading="lazy">Polska: <span>Polski</span></a>
+              <a href="/pt-pt/"><img src="/icons/flags/pt.svg" alt="" width="24" height="24" loading="lazy">Portugal: <span>Português</span></a>
             </div>
             <div class="region-modal-col">
-              <a href="/ru-ru/">🇷🇺 Россия: <span>Русский</span></a>
-              <a href="/de-ch/">🇨🇭 Schweiz: <span>Deutsch</span></a>
-              <a href="/sk-sk/">🇸🇰 Slovensko: <span>Slovenčina</span></a>
-              <a href="/en-za/">🇿🇦 South Africa: <span>English</span></a>
-              <a href="/fr-ch/">🇨🇭 Suisse: <span>Français</span></a>
-              <a href="/en-se/">🇸🇪 Sweden: <span>English</span></a>
-              <a href="/tr-tr/">🇹🇷 Türkiye: <span>Türkçe</span></a>
-              <a href="/en-gb/">🇬🇧 United Kingdom: <span>English</span></a>
-              <a href="/en-us/">🇺🇸 United States: <span>English</span></a>
-              <a href="/zh-tw/">🇹🇼 臺灣: <span>繁體中文</span></a>
-              <a href="/ja-jp/">🇯🇵 日本: <span>日本語</span></a>
-              <a href="/ko-kr/">🇰🇷 대한민국: <span>한국어</span></a>
+              <a href="/ru-ru/"><img src="/icons/flags/ru.svg" alt="" width="24" height="24" loading="lazy">Россия: <span>Русский</span></a>
+              <a href="/de-ch/"><img src="/icons/flags/ch.svg" alt="" width="24" height="24" loading="lazy">Schweiz: <span>Deutsch</span></a>
+              <a href="/sk-sk/"><img src="/icons/flags/sk.svg" alt="" width="24" height="24" loading="lazy">Slovensko: <span>Slovenčina</span></a>
+              <a href="/en-za/"><img src="/icons/flags/za.svg" alt="" width="24" height="24" loading="lazy">South Africa: <span>English</span></a>
+              <a href="/fr-ch/"><img src="/icons/flags/ch.svg" alt="" width="24" height="24" loading="lazy">Suisse: <span>Français</span></a>
+              <a href="/en-se/"><img src="/icons/flags/se.svg" alt="" width="24" height="24" loading="lazy">Sweden: <span>English</span></a>
+              <a href="/tr-tr/"><img src="/icons/flags/tr.svg" alt="" width="24" height="24" loading="lazy">Türkiye: <span>Türkçe</span></a>
+              <a href="/en-gb/"><img src="/icons/flags/gb.svg" alt="" width="24" height="24" loading="lazy">United Kingdom: <span>English</span></a>
+              <a href="/en-us/"><img src="/icons/flags/us.svg" alt="" width="24" height="24" loading="lazy">United States: <span>English</span></a>
+              <a href="/zh-tw/"><img src="/icons/flags/tw.svg" alt="" width="24" height="24" loading="lazy">臺灣: <span>繁體中文</span></a>
+              <a href="/ja-jp/"><img src="/icons/flags/jp.svg" alt="" width="24" height="24" loading="lazy">日本: <span>日本語</span></a>
+              <a href="/ko-kr/"><img src="/icons/flags/kr.svg" alt="" width="24" height="24" loading="lazy">대한민국: <span>한국어</span></a>
             </div>
           </div>
           <div class="region-modal-footer">
-            <span>🌐 Global Website:</span>
-            <a href="/es-ww/">Español</a> /
-            <a href="/en-ww/">Worldwide (English)</a> /
-            <a href="/en-eu/">Europe (English)</a>
+            <a href="/es-ww/"><img src="/icons/flags/globe.svg" alt="" width="24" height="24" loading="lazy">América Latina (español)</a>
+            <a href="/en-eu/"><img src="/icons/flags/globe.svg" alt="" width="24" height="24" loading="lazy">Europe (English)</a>
+            <a href="/en-ww/"><img src="/icons/flags/globe.svg" alt="" width="24" height="24" loading="lazy">Worldwide (English)</a>
           </div>
         </div>`;
         document.body.append(modal);
