@@ -6,12 +6,21 @@ function slugify(text) {
     .replace(/^-+|-+$/g, '');
 }
 
+const chevron = () => {
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  s.setAttribute('viewBox', '0 0 16 16');
+  s.setAttribute('class', 'legal-sidenav-chevron');
+  s.setAttribute('aria-hidden', 'true');
+  s.innerHTML = '<path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>';
+  return s;
+};
+
 export default function decorate(block) {
   const main = document.querySelector('main');
 
-  // Build the nav from the page's H2s (each legal product/section is an H2),
-  // excluding the block's own content.
-  const headings = [...main.querySelectorAll('h2')]
+  // Collect the page's H2/H3/H4 in document order to build a nested tree.
+  // H2 = product (top level), H3 = sub-product/subsection, H4 = leaf subsection.
+  const headings = [...main.querySelectorAll('h2, h3, h4')]
     .filter((h) => !block.contains(h) && h.textContent.trim());
 
   const titleOverride = block.textContent.trim();
@@ -21,32 +30,71 @@ export default function decorate(block) {
   nav.className = 'legal-sidenav-nav';
   nav.setAttribute('aria-label', titleOverride || 'On this page');
 
-  const list = document.createElement('ul');
-  list.className = 'legal-sidenav-list';
+  const rootList = document.createElement('ul');
+  rootList.className = 'legal-sidenav-list';
+  nav.append(rootList);
 
+  const level = (h) => Number(h.tagName[1]); // 2, 3 or 4
   const links = [];
+  // stack holds { level, listEl } for the currently open ancestor lists.
+  const stack = [{ level: 1, listEl: rootList }];
+
   headings.forEach((h) => {
     if (!h.id) h.id = slugify(h.textContent);
+    const lvl = level(h);
+
+    // Pop to the parent whose level is just above this heading's.
+    while (stack.length > 1 && stack[stack.length - 1].level >= lvl) stack.pop();
+    const parentList = stack[stack.length - 1].listEl;
+
     const li = document.createElement('li');
-    li.className = 'legal-sidenav-item';
-    const a = document.createElement('a');
-    a.className = 'legal-sidenav-link';
-    a.href = `#${h.id}`;
-    a.textContent = h.textContent.trim();
-    a.addEventListener('click', (e) => {
+    li.className = `legal-sidenav-item legal-sidenav-level-${lvl}`;
+
+    const rowLink = document.createElement('a');
+    rowLink.className = 'legal-sidenav-link';
+    rowLink.href = `#${h.id}`;
+    rowLink.textContent = h.textContent.trim();
+    rowLink.addEventListener('click', (e) => {
       e.preventDefault();
       h.scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.history.replaceState(null, '', `#${h.id}`);
     });
-    li.append(a);
-    list.append(li);
-    links.push({ heading: h, link: a });
+    li.append(rowLink);
+    parentList.append(li);
+    links.push({ heading: h, link: rowLink });
+
+    // Each item gets a child list it MAY fill; expand/collapse via a toggle
+    // that we only reveal (in CSS) once the list has children.
+    const childList = document.createElement('ul');
+    childList.className = 'legal-sidenav-sublist';
+    li.append(childList);
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'legal-sidenav-toggle';
+    toggle.setAttribute('aria-label', 'Expand section');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.append(chevron());
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      li.classList.toggle('legal-sidenav-collapsed', open);
+    });
+    // Insert the toggle before the child list, after the link.
+    li.insertBefore(toggle, childList);
+
+    stack.push({ level: lvl, listEl: childList });
   });
 
-  nav.append(list);
+  // Any item that ended up with no children shouldn't show a chevron.
+  nav.querySelectorAll('.legal-sidenav-item').forEach((li) => {
+    const sub = li.querySelector(':scope > .legal-sidenav-sublist');
+    if (!sub || !sub.children.length) li.classList.add('legal-sidenav-leaf');
+  });
+
   block.append(nav);
 
-  // Scroll-spy: highlight the entry for the section currently in view.
+  // Scroll-spy: highlight (green) the entry for the section currently in view.
   const setActive = (activeLink) => {
     links.forEach(({ link }) => link.classList.toggle('active', link === activeLink));
   };
