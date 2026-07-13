@@ -104,5 +104,18 @@ export default function decorate(block) {
   next.addEventListener('click', () => viewport.scrollBy({ left: step(), behavior: 'smooth' }));
   viewport.addEventListener('scroll', updateControls);
   window.addEventListener('resize', updateControls);
-  updateControls();
+  window.addEventListener('load', updateControls);
+
+  // The track width isn't final until images/fonts settle, so the first check
+  // can wrongly disable "next". Re-check across a few frames and on size change.
+  let ticks = 0;
+  const settle = () => {
+    updateControls();
+    ticks += 1;
+    if (ticks < 5) requestAnimationFrame(settle);
+  };
+  settle();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(updateControls).observe(track);
+  }
 }
