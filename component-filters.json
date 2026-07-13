@@ -28,6 +28,8 @@
       "blog-articles-norton",
       "blog-social",
       "blog-meta",
+      "legal-sidenav",
+      "legal-table",
       "image",
       "quote",
       "search",
@@ -123,6 +125,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "legal-table",
+    "components": [
+      "legal-table-row"
     ]
   },
   {

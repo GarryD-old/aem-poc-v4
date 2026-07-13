@@ -683,6 +683,37 @@
     ]
   },
   {
+    "id": "legal-sidenav",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "value": "On this page",
+        "label": "Nav Label",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "legal-table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "col1",
+        "value": "",
+        "label": "Column 1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "col2",
+        "value": "",
+        "label": "Column 2",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "modal",
     "fields": [
       {

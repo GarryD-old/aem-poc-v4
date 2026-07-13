@@ -1,0 +1,76 @@
+.legal-sidenav {
+  box-sizing: border-box;
+}
+
+.legal-sidenav .legal-sidenav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.legal-sidenav .legal-sidenav-item {
+  line-height: 1.3;
+}
+
+.legal-sidenav .legal-sidenav-link {
+  display: block;
+  padding: 8px 12px;
+  border-left: 2px solid transparent;
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.legal-sidenav .legal-sidenav-link:hover {
+  color: var(--link-color);
+}
+
+.legal-sidenav .legal-sidenav-link.active {
+  color: var(--link-color);
+  font-weight: 700;
+  border-left-color: var(--link-color);
+  background: rgb(34 118 217 / 6%);
+}
+
+/* Two-column legal layout: sticky sidenav (left) + content (right). The block
+   and the article content are direct children of the section, so the grid is
+   applied to the section itself. */
+@media (width >= 900px) {
+  main > .section.legal-sidenav-container {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    column-gap: 48px;
+    align-items: start;
+  }
+
+  main > .section.legal-sidenav-container > .legal-sidenav-wrapper {
+    grid-column: 1;
+
+    /* Span every content row so the sidenav owns the full-height left column
+       and can stick while the article scrolls. */
+    grid-row: 1 / span 100;
+    position: sticky;
+    top: 24px;
+
+    /* Zero the global `main > .section > div { margin: auto; padding: 0 32px }`
+       so the sidenav aligns to the column edge. */
+    margin: 0;
+    padding: 0;
+    align-self: start;
+
+    /* Cap height and scroll internally when the product list is long. */
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  main > .section.legal-sidenav-container > div:not(.legal-sidenav-wrapper) {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0;
+  }
+}

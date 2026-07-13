@@ -1,0 +1,47 @@
+.legal-table {
+  box-sizing: border-box;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.legal-table .legal-table-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+.legal-table .legal-table-table th,
+.legal-table .legal-table-table td {
+  border: 1px solid #d8dce3;
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal-table .legal-table-table th {
+  background: #f5f7fa;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.legal-table .legal-table-table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+.legal-table .legal-table-table p {
+  margin: 0 0 8px;
+}
+
+.legal-table .legal-table-table p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-table .legal-table-table ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.legal-table .legal-table-table a {
+  color: var(--link-color);
+}
