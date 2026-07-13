@@ -1,0 +1,45 @@
+.blog-social {
+  box-sizing: border-box;
+}
+
+.blog-social .blog-social-inner {
+  background: #feeb29;
+  border-radius: 24px;
+  padding: 56px 24px;
+  text-align: center;
+  color: rgb(36 36 36);
+}
+
+.blog-social .blog-social-title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.blog-social .blog-social-text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 16px 0 0;
+}
+
+.blog-social .blog-social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.blog-social .blog-social-icon {
+  display: inline-flex;
+  color: rgb(36 36 36);
+}
+
+.blog-social .blog-social-icon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}

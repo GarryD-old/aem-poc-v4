@@ -389,6 +389,10 @@
     ]
   },
   {
+    "id": "blog-social",
+    "fields": []
+  },
+  {
     "id": "blog-table-of-contents",
     "fields": [
       {
