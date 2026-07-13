@@ -302,4 +302,36 @@ export default async function decorate(block) {
             <a href="/en-eu/">Europe (English)</a>
           </div>
         </div>`;
-        document.body.
+        document.body.append(modal);
+        const closeModal = () => modal.remove();
+        modal.querySelector('.region-modal-close')?.addEventListener('click', closeModal);
+        modal.addEventListener('click', (evt) => {
+          if (evt.target === modal) closeModal();
+        });
+      });
+    }
+  }
+
+  // hamburger for mobile
+  const hamburger = document.createElement('div');
+  hamburger.classList.add('nav-hamburger');
+  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+      <span class="nav-hamburger-icon"></span>
+    </button>`;
+  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+  nav.prepend(hamburger);
+  nav.setAttribute('aria-expanded', 'false');
+  // prevent mobile nav behavior on window resize
+  toggleMenu(nav, navSections, isDesktop.matches);
+  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+
+  const navWrapper = document.createElement('div');
+  navWrapper.className = 'nav-wrapper';
+  navWrapper.append(nav);
+  block.append(navWrapper);
+
+  // Optional breadcrumbs, enabled per-page via the `breadcrumbs` metadata flag.
+  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
+    navWrapper.append(await buildBreadcrumbs());
+  }
+}
