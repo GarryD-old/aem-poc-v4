@@ -9,13 +9,12 @@ main > .section.legal-sidenav-container {
   text-align: left;
 }
 
+/* Bordered navigation rows per the Figma template (208:25661): each item is a
+   full-width row with a 1px #ced4e0 border, 14px/16px padding, Roboto 14px. */
 .legal-sidenav .legal-sidenav-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 .legal-sidenav .legal-sidenav-item {
@@ -24,12 +23,15 @@ main > .section.legal-sidenav-container {
 
 .legal-sidenav .legal-sidenav-link {
   display: block;
-  padding: 8px 12px;
-  border-left: 2px solid transparent;
-  color: var(--text-color);
-  font-size: var(--body-font-size-s);
+  padding: 14px 16px;
+  border: 1px solid #ced4e0;
+  margin-top: -1px; /* collapse adjacent borders */
+  color: #1c222e;
+  font-size: 14px;
+  line-height: 20px;
   text-decoration: none;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  background: #fff;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .legal-sidenav .legal-sidenav-link:hover {
@@ -39,8 +41,7 @@ main > .section.legal-sidenav-container {
 .legal-sidenav .legal-sidenav-link.active {
   color: var(--link-color);
   font-weight: 700;
-  border-left-color: var(--link-color);
-  background: rgb(34 118 217 / 6%);
+  text-decoration: underline;
 }
 
 /* Two-column legal layout: sticky sidenav (left) + content (right). The block
@@ -48,9 +49,11 @@ main > .section.legal-sidenav-container {
    applied to the section itself. */
 @media (width >= 900px) {
   main > .section.legal-sidenav-container {
+    /* Figma template: 432px nav column (incl. 32px inner gap) + content,
+       ~32px gap before the content group at x=584. */
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    column-gap: 48px;
+    grid-template-columns: 400px minmax(0, 1fr);
+    column-gap: 32px;
     align-items: start;
   }
 
