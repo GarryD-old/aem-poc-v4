@@ -234,10 +234,11 @@ main > .section.blog-table-of-contents-container .default-content-wrapper img {
     grid-column: 1;
     min-width: 0;
 
-    /* Zero the global `margin: auto`. On a shrink-wrapping grid item (e.g. the
-       byline wrapper) auto side-margins center it, leaving a big left gap; with
-       margin 0 the item stretches and stays flush-left with the article. */
-    margin-inline: 0;
+    /* Zero the global `margin: auto`. On a grid item auto margins consume free
+       space on both axes: inline-auto centered the byline (big left gap) and
+       block-auto vertically centered it in the tall ToC-spanned row. Zeroing
+       all sides keeps it flush-left and top-aligned with the article/ToC. */
+    margin: 0;
   }
 
   /* Higher specificity than the global `main > .section > div` (which adds
