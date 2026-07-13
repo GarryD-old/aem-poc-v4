@@ -1,10 +1,10 @@
 export default function decorate(block) {
   const ul = document.createElement('ul');
   ul.className = 'nav-tabs-list';
-  
+
   // Find all the links the author created in the Word doc
   const links = block.querySelectorAll('a');
-  
+
   links.forEach((link) => {
     const li = document.createElement('li');
     li.className = 'nav-tab-item';
@@ -24,7 +24,7 @@ export default function decorate(block) {
     li.append(link);
     ul.append(li);
   });
-  
+
   // Clear the original Word doc bullet list and replace it with our structured list
   block.textContent = '';
   block.append(ul);

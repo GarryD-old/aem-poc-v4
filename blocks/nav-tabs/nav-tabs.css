@@ -1,7 +1,7 @@
 /* 1. Wrapper positioning and responsive padding */
 .nav-tabs-wrapper {
   max-width: 900px;
-  margin: -36px auto 40px auto !important; 
+  margin: -36px auto 40px !important; 
   position: relative;
   z-index: 10; 
   padding: 0 16px;
@@ -10,10 +10,10 @@
 
 /* 2. The Box Style (White background, shadow, border) */
 .nav-tabs.block {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 10px;
   border: 1px solid #e1e3e6;
-  box-shadow: 0 16px 32px 0 rgba(30, 34, 46, 0.08);
+  box-shadow: 0 16px 32px 0 rgb(30 34 46 / 8%);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
