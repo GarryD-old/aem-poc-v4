@@ -40,8 +40,8 @@ main > .section.legal-sidenav-container .default-content-wrapper h2 {
   margin: 40px 0 16px;
 }
 
-/* The very first product H2 shouldn't carry a top divider/padding. */
-main > .section.legal-sidenav-container .default-content-wrapper:first-of-type h2 {
+/* The very first product H2 (#antivirus) shouldn't carry a top divider. */
+main > .section.legal-sidenav-container .default-content-wrapper h2#antivirus {
   border-top: 0;
   padding-top: 0;
   margin-top: 0;
