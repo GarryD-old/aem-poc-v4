@@ -30,12 +30,11 @@ footer .footer-top > div:first-child {
   width: 98px;
   height: 40px;
 
-  /* Use the in-repo logo; the DAM white variant is unavailable, so render the
-     colour logo white for the dark footer via a filter. */
-  background-image: url('/icons/avg-logo.png');
+  /* Footer variant: colour cube with a white "AVG" wordmark (the dark text of
+     the standard logo is recoloured white for the dark footer background). */
+  background-image: url('/icons/avg-logo-footer.png');
   background-size: contain;
   background-repeat: no-repeat;
-  filter: brightness(0) invert(1);
   margin-bottom: 32px;
 }
 
