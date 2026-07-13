@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+/* Legal content is always left-aligned; override the global
+   `main > .section:nth-of-type(2) { text-align: center }` CTA rule that would
+   otherwise center this section. */
+main > .section.legal-sidenav-container {
+  text-align: left;
+}
+
 .legal-sidenav .legal-sidenav-list {
   list-style: none;
   margin: 0;
