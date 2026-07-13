@@ -8,12 +8,18 @@ export default function decorate(block) {
   links.forEach((link) => {
     const li = document.createElement('li');
     li.className = 'nav-tab-item';
-    
+
+    // Strip EDS button decoration: a lone link in a cell gets turned into a
+    // blue "button" pill (and wrapped in .button-container) before this block
+    // runs, so remove those classes here.
+    link.classList.remove('button', 'primary', 'secondary');
+
     // Check if the link matches the page we are currently on
     if (window.location.pathname === new URL(link.href).pathname) {
-      link.classList.add('active'); // Add the active class for the green underline
+      li.classList.add('active'); // Marks the current tab for the green underline
+      link.classList.add('active');
     }
-    
+
     // Move the link into our new list item
     li.append(link);
     ul.append(li);

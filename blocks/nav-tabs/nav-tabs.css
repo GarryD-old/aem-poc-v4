@@ -39,18 +39,22 @@
   border-right: 0 !important;
 }
 
-/* 5. Link styling (The text inside) */
-.nav-tab-item a {
+/* 5. Link styling (The text inside). Reset any EDS button pill styling. */
+.nav-tab-item a,
+.nav-tab-item a.button {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   padding: 24px 16px;
-  color: #687385; 
+  border: 0;
+  border-radius: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: #687385;
   text-decoration: none;
   font-weight: 700;
   font-size: 16px;
-  border-bottom: 3px solid transparent;
   transition: all 0.2s ease;
 }
 
@@ -59,8 +63,8 @@
   color: #0c1524;
 }
 
-/* 6. Active Tab State */
-.nav-tab-item:first-child a {
+/* 6. Active Tab State — follows the current page, set by the block JS. */
+.nav-tab-item.active a {
   color: #0c1524;
-  border-bottom: 3px solid #00a85d; 
+  border-bottom: 3px solid #00a85d;
 }
