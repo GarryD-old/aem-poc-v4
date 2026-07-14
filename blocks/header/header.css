@@ -144,7 +144,7 @@ header nav .nav-sections {
   order: 0;
 }
 
-header nav .nav-sections ul {
+header nav .nav-sections .default-content-wrapper > ul {
   display: flex;
   list-style: none;
   margin: 0;
@@ -154,8 +154,10 @@ header nav .nav-sections ul {
   height: 48px;
 }
 
+/* Top-level nav items only (direct children of the sections list). The 48px
+   fixed height must NOT cascade to nested dropdown items. */
 /* stylelint-disable-next-line no-descending-specificity */
-header nav .nav-sections ul > li {
+header nav .nav-sections .default-content-wrapper > ul > li {
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
@@ -215,10 +217,11 @@ header nav .nav-sections .default-content-wrapper > ul > li:hover > ul {
   display: block;
 }
 
-/* dropdown items */
+/* dropdown items — Figma Submenu Desktop (6538:409888): links px-24 py-12,
+   line-height 20px (44px row incl. hover highlight). */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-  padding: 5px 16px;
+  padding: 12px 24px;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -229,16 +232,15 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
   background-color: #fff;
 }
 
-/* category headers via JS .nav-category class */
+/* category headers via JS .nav-category class — Figma: px-16 py-12, bold. */
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
   border-top: 2px solid #008941;
-  padding: 12px 16px 6px;
+  padding: 12px 16px;
   margin-top: 0;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child {
   border-top: none;
-  padding-top: 6px;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
@@ -253,7 +255,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li strong {
 header nav .nav-sections .default-content-wrapper > ul > li > ul > li a {
   color: #1c222e;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
   text-decoration: none;
   display: block;
 }
