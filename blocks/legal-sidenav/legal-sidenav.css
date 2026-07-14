@@ -63,8 +63,17 @@ main > .section.legal-sidenav-container .default-content-wrapper h4 {
 
 main > .section.legal-sidenav-container .default-content-wrapper p {
   font-size: 16px;
-  line-height: 1.5;
+
+  /* Figma Body Text/Body 3: 16px / 22px. */
+  line-height: 22px;
   margin: 0 0 12px;
+}
+
+/* Bulleted/numbered list items share the Body 3 16px/22px spec. */
+main > .section.legal-sidenav-container .default-content-wrapper > ul li,
+main > .section.legal-sidenav-container .default-content-wrapper > ol li {
+  font-size: 16px;
+  line-height: 22px;
 }
 
 /* Bordered navigation rows per the Figma template (208:25661): each item is a

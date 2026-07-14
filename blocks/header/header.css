@@ -188,13 +188,16 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
 
-  /* Override the 48px fixed row height so the 10/16px padding actually applies
-     (otherwise align-items:center just centres the text in 48px). */
+  /* Override the 48px fixed row height so padding drives the size (otherwise
+     align-items:center just centres the text in 48px). */
   height: auto;
 
-  /* Figma: 10px top, 16px other sides. */
-  padding: 10px 16px 16px;
-  margin: -10px -16px -1px;
+  /* Figma: 10px top, 16px sides. The tab must also reach the nav's bottom edge
+     so the dropdown opens flush with the hero band. The sections row is centred
+     in the taller two-row nav, leaving a ~12px gap below it; extra bottom
+     padding closes that gap. Negative margins cancel the layout offset. */
+  padding: 10px 16px 28px;
+  margin: -10px -16px -13px;
   z-index: 10000;
 }
 
@@ -208,7 +211,9 @@ header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
   content: '';
   position: absolute;
-  bottom: 12px;
+
+  /* Pinned just below the label text (tab top padding 10px + ~22px line). */
+  top: 36px;
   left: 50%;
   transform: translateX(-50%);
   width: 21px;
