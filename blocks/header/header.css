@@ -182,15 +182,15 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #fff;
   border: 1px solid #ced4e0;
 
-  /* No bottom border + a 1px overlap onto the panel below, so the tab's white
-     body hides the panel's top border where they meet — no grey seam. */
+  /* No bottom border; the tab overlaps the panel below by 2px so its white body
+     fully hides the panel's top border where they meet — no grey seam. */
   border-bottom: none;
   border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
 
-  /* Figma: 10px top, 16px other sides. Negative margins keep the row layout. */
-  padding: 10px 16px 17px;
-  margin: -10px -16px -1px;
+  /* Figma: 10px top, 16px other sides. */
+  padding: 10px 16px 16px;
+  margin: -10px -16px -2px;
   z-index: 10000;
 }
 
@@ -212,13 +212,13 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #008941;
 }
 
-/* dropdown panel - below tab, right edge aligned with tab right. Full 1px
-   border (incl. top) that tucks 1px under the tab so the outline is continuous;
-   right edge nudged 1px to line up with the tab's right border. */
+/* dropdown panel - below tab, right edge aligned with tab right. Tucks 2px
+   under the tab so the tab's white body covers the panel's top border on its
+   span (no grey seam); right edge nudged 1px to line up with the tab border. */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: calc(100% - 1px);
+  top: calc(100% - 2px);
   right: -1px;
   padding: 12px 0;
   background-color: #fff;
