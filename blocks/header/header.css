@@ -4,9 +4,6 @@ header .nav-wrapper {
   width: 100%;
   z-index: 999;
   position: relative;
-
-  /* Subtle bottom divider per Figma (Grays/Gray-7). */
-  border-bottom: 1px solid #edf0f7;
 }
 
 header nav {
