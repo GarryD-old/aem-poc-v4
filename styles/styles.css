@@ -10,6 +10,7 @@
  * governing permissions and limitations under the License.
  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
 :root {
   /* colors - extracted from Figma frame 2268:29672 (AVG AntiTrack - Desktop) */
   --background-color: #fff;
@@ -42,7 +43,7 @@
   --heading-font-size-xs: 16px;
 
   /* nav heights */
-  --nav-height: 106px;
+  --nav-height: 100px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
 }
@@ -456,7 +457,9 @@ a.sticky-bar-btn-primary:hover {
 }
 
 /* ========================================= */
+
 /*             LEGAL GRID LAYOUT             */
+
 /* ========================================= */
 
 /* 1. Mobile/Tablet (Up to 992px): 12 Columns (Full Width) */
@@ -469,8 +472,9 @@ main .section.legal-grid .default-content-wrapper {
 }
 
 /* 2. Desktop (993px and larger): 10 Columns */
+
 /* UPDATED: Changed to classic min-width syntax so AEM reads it properly */
-@media (min-width: 993px) {
+@media (width >= 993px) {
   main .section.legal-grid .default-content-wrapper {
     width: 83.333%; /* Mathematically forces 10 out of 12 columns */
     max-width: 1000px; 
