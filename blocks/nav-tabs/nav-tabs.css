@@ -1,11 +1,19 @@
 /* 1. Wrapper positioning and responsive padding */
 .nav-tabs-wrapper {
-  max-width: 900px;
-  margin: -36px auto 40px !important; 
+  margin: -36px auto 40px !important;
   position: relative;
-  z-index: 10; 
+  z-index: 10;
   padding: 0 16px;
   box-sizing: border-box;
+}
+
+/* Desktop: 1360px content region (120px side margins on a 1600px page), the
+   same region the header nav and legal ToC/content align to. */
+@media (width >= 900px) {
+  main > .section > .nav-tabs-wrapper {
+    max-width: 1360px;
+    padding: 0;
+  }
 }
 
 /* 2. The Box Style (White background, shadow, border) */
@@ -61,6 +69,14 @@
 .nav-tab-item a:hover {
   background-color: #fdfdfd;
   color: #0c1524;
+}
+
+/* Desktop: 32px inner padding so each 340px segment yields a 276px tab. */
+@media (width >= 900px) {
+  .nav-tab-item a,
+  .nav-tab-item a.button {
+    padding: 24px 32px;
+  }
 }
 
 /* 6. Active Tab State — follows the current page, set by the block JS. */

@@ -154,11 +154,11 @@ main > .section.legal-sidenav-container .default-content-wrapper p {
    applied to the section itself. */
 @media (width >= 900px) {
   main > .section.legal-sidenav-container {
-    /* Constrain to the same 1200px centered content region as the hero and
-       nav-tabs above (global `main > .section > div { max-width: 1200px }`), so
-       the ToC left edge and content right edge align with the hero title box
-       instead of bleeding to the full viewport width. */
-    max-width: 1200px;
+    /* Constrain to the same 1360px centered content region as the nav-tabs
+       above (120px side margins on a 1600px page), so the ToC left edge and
+       content right edge align with the tabs box instead of bleeding to the
+       full viewport width. */
+    max-width: 1360px;
     margin: 0 auto;
 
     /* Figma template: ~360px nav column + 64px gap (32px + 32px) + content. */
