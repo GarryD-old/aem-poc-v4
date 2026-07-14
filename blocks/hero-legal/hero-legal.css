@@ -49,6 +49,9 @@
   }
   
   .hero-legal.block h1 {
-    font-size: 3rem; /* Snaps to full size on desktop */
+    /* Figma Headings/H1: 56px / 72px line-height, weight 900. */
+    font-size: 56px;
+    line-height: 72px;
+    letter-spacing: normal;
   }
 }
