@@ -182,11 +182,15 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #fff;
   border: 1px solid #ced4e0;
 
-  /* No bottom border; the panel below has no top border either, so the tab's
-     rounded top edge is the only outline at the junction — no grey seam. */
+  /* No bottom border; overlaps the panel 1px so the tab's white body hides the
+     panel's top border directly beneath it (no seam under the tab). */
   border-bottom: none;
   border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
+
+  /* Override the 48px fixed row height so the 10/16px padding actually applies
+     (otherwise align-items:center just centres the text in 48px). */
+  height: auto;
 
   /* Figma: 10px top, 16px other sides. */
   padding: 10px 16px 16px;
@@ -222,11 +226,11 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   right: -1px;
   padding: 12px 0;
   background-color: #fff;
-  border: 1px solid #ced4e0;
 
-  /* No top border: the panel is wider than the tab, so a top border would show
-     as a grey line to the left of the tab. The tab supplies the top edge. */
-  border-top: none;
+  /* Full 1px border including the top: the top edge shows to the left of the
+     tab (the dropdown's top line). The tab overlaps 1px and its white body
+     hides the border segment directly beneath the tab. */
+  border: 1px solid #ced4e0;
 
   /* Figma: rounded except the top-right corner, which sits flush under the tab. */
   border-radius: 6px 0 6px 6px;
