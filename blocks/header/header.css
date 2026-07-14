@@ -181,19 +181,29 @@ header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
   border: 1px solid #ced4e0;
-  border-bottom: none;
-  border-radius: 6px 6px 0 0;
+
+  /* Figma: top-left/bottom rounded, top-right square (tab is flush at its right
+     edge with the panel below). */
+  border-radius: 6px 0 6px 6px;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
-  padding: 8px 16px 9px;
-  margin: -8px -16px -1px;
+
+  /* Figma: 10px top, 16px other sides. Negative margins keep the row layout. */
+  padding: 10px 16px 16px;
+  margin: -10px -16px -16px;
   z-index: 10000;
+}
+
+/* The mobile drill-down back header must never show on desktop (the submenu is
+   revealed on hover here). */
+.nav-mobile-back {
+  display: none;
 }
 
 header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
   content: '';
   position: absolute;
-  bottom: 8px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   width: 21px;
@@ -247,7 +257,11 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-catego
   margin-top: 0;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child {
+/* The first category has no green divider. A hidden mobile back-header (.nav-
+   mobile-back) is the real first child on desktop, so also target the category
+   immediately following it. */
+header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child,
+header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mobile-back + li.nav-category {
   border-top: none;
 }
 
