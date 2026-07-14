@@ -524,6 +524,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
+
+    /* Static so the sub-panel's containing block is the full-height menu panel,
+       not this short row (which would clip it to ~1 row tall). */
+    position: static;
   }
 
   /* Reset desktop tab decorations on mobile. */
@@ -554,15 +558,16 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     background-position: center;
   }
 
-  /* Submenu as a full sliding sub-panel. */
+  /* Submenu as a full sliding sub-panel. Positioned relative to the slide-in
+     menu panel (which is the containing block, since it has a transform), so it
+     overlays the panel exactly rather than offsetting below it. */
   /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: block;
-    position: fixed;
-    top: 64px;
-    left: 0;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100%;
     min-width: 0;
     padding: 0;
     margin: 0;
