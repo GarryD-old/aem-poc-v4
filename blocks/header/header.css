@@ -182,14 +182,15 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #fff;
   border: 1px solid #ced4e0;
 
-  /* Figma: top-left/bottom rounded, top-right square (tab is flush at its right
-     edge with the panel below). */
-  border-radius: 6px 0 6px 6px;
+  /* No bottom border + a 1px overlap onto the panel below, so the tab's white
+     body hides the panel's top border where they meet — no grey seam. */
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
 
   /* Figma: 10px top, 16px other sides. Negative margins keep the row layout. */
-  padding: 10px 16px 16px;
-  margin: -10px -16px -16px;
+  padding: 10px 16px 17px;
+  margin: -10px -16px -1px;
   z-index: 10000;
 }
 
@@ -203,7 +204,7 @@ header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
   content: '';
   position: absolute;
-  bottom: 16px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   width: 21px;
@@ -222,6 +223,9 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul {
   padding: 12px 0;
   background-color: #fff;
   border: 1px solid #ced4e0;
+
+  /* Figma: rounded except the top-right corner, which sits flush under the tab. */
+  border-radius: 6px 0 6px 6px;
   min-width: 320px;
   z-index: 9999;
   text-align: left;
