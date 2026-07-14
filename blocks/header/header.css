@@ -35,6 +35,12 @@ header nav .nav-hamburger {
   display: none;
 }
 
+/* On desktop the mobile wrapper is transparent: brand/sections/tools flow in
+   the nav flex row exactly as before. It becomes the slide-in panel on mobile. */
+header nav .nav-mobile-menu {
+  display: contents;
+}
+
 /* brand / logo: absolutely positioned so it centres vertically across the full
    two-row nav height, independent of the tools/sections rows. */
 header .nav-brand {
@@ -393,4 +399,265 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
   height: 24px;
   flex-shrink: 0;
   border-radius: 50%;
+}
+
+/* ========================================================================
+   Mobile navigation (< 900px): hamburger toggles a full-width slide-in panel;
+   top-level items drill down into full-panel submenus with a back header.
+   Matches Figma Submenu Mobile (6562:204611).
+   ======================================================================== */
+@media (width < 900px) {
+  header nav {
+    padding: 0 20px;
+    min-height: 64px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  /* Hamburger button, right-aligned. */
+  header nav .nav-hamburger {
+    display: block;
+    order: 2;
+    margin-left: auto;
+  }
+
+  header nav .nav-hamburger button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  header nav .nav-hamburger-icon,
+  header nav .nav-hamburger-icon::before,
+  header nav .nav-hamburger-icon::after {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background: #1c222e;
+  }
+
+  header nav .nav-hamburger-icon::before,
+  header nav .nav-hamburger-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  header nav .nav-hamburger-icon::before { top: -7px; }
+  header nav .nav-hamburger-icon::after { top: 7px; }
+
+  /* Open state: morph into an X. */
+  header nav[aria-expanded='true'] .nav-hamburger-icon {
+    background: transparent;
+  }
+
+  header nav[aria-expanded='true'] .nav-hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  header nav[aria-expanded='true'] .nav-hamburger-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  /* Brand stays left, statically positioned (override desktop absolute). */
+  header nav .nav-brand {
+    position: static;
+    order: 1;
+  }
+
+  /* Slide-in panel holding the sections + tools. */
+  header nav .nav-mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: #fff;
+    overflow-y: auto;
+    z-index: 998;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    padding: 0;
+    margin: 0;
+  }
+
+  header nav[aria-expanded='true'] .nav-mobile-menu {
+    transform: translateX(0);
+  }
+
+  /* Sections list becomes a vertical stack of full-width rows. */
+  header nav .nav-sections {
+    display: block;
+    flex: none;
+    width: 100%;
+    order: 1;
+    padding: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    display: block;
+    height: auto;
+    gap: 0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    min-height: 64px;
+    padding: 20px 16px;
+    border-bottom: 1px solid #e4e8f0;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+  }
+
+  /* Reset desktop tab decorations on mobile. */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li:hover,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
+    border: none;
+    border-bottom: 1px solid #e4e8f0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 16px;
+    margin: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
+    display: none;
+  }
+
+  /* Right-chevron affordance on items that drill down. */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-drop::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' stroke='%231c222e' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Submenu as a full sliding sub-panel. */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+    display: block;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background: #fff;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    z-index: 999;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-mobile-open > ul {
+    transform: translateX(0);
+  }
+
+  /* Back header at the top of each sub-panel. */
+  .nav-mobile-back {
+    padding: 0 !important;
+    border-bottom: 1px solid #e4e8f0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .nav-mobile-back button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 64px;
+    padding: 20px 16px;
+    border: 0;
+    background: #fff;
+    color: #1c222e;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* Submenu rows: links get 64px tall touch targets. */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
+    padding: 0;
+    border-bottom: 1px solid #e4e8f0;
+    white-space: normal;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
+    border-top: none;
+    padding: 20px 16px 4px;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li a {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 16px;
+    line-height: 22px;
+    font-size: 16px;
+  }
+
+  /* Tools row (login / blog / region) sits below the sections stack. */
+  header nav .nav-tools {
+    display: block;
+    order: 2;
+    width: 100%;
+    padding: 0;
+    background: #edf0f7;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-tools ul {
+    display: block;
+    gap: 0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-tools li {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 20px 16px;
+    border-bottom: 1px solid #ced4e0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-tools li + li {
+    padding-left: 16px;
+    border-left: none;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-tools a {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

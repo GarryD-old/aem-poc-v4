@@ -363,13 +363,60 @@ export default async function decorate(block) {
     }
   }
 
+  // Group the sections + tools into a single slide-in panel for mobile. On
+  // desktop `.nav-mobile-menu` is display:contents, so brand/sections/tools
+  // still flow in the nav flex row exactly as before.
+  const menuPanel = document.createElement('div');
+  menuPanel.className = 'nav-mobile-menu';
+  if (navSections) menuPanel.append(navSections);
+  if (navTools) menuPanel.append(navTools);
+  nav.append(menuPanel);
+
+  // Mobile drill-down: each top-level item with a submenu gets a back header
+  // and, when tapped, slides its submenu in as a full panel.
+  if (navSections) {
+    const closeAllDrilled = () => {
+      navSections.querySelectorAll('.nav-mobile-open').forEach((el) => el.classList.remove('nav-mobile-open'));
+    };
+    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li.nav-drop').forEach((li) => {
+      const submenu = li.querySelector(':scope > ul');
+      if (!submenu) return;
+      const title = getDirectTextContent(li);
+      const back = document.createElement('li');
+      back.className = 'nav-mobile-back';
+      back.innerHTML = `<button type="button" aria-label="Back">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>${title}</span>
+        </button>`;
+      submenu.prepend(back);
+      back.querySelector('button').addEventListener('click', (e) => {
+        e.stopPropagation();
+        li.classList.remove('nav-mobile-open');
+      });
+      li.addEventListener('click', (e) => {
+        if (isDesktop.matches) return;
+        // Ignore taps on the submenu contents (links / back button).
+        if (e.target.closest('.nav-mobile-back') || e.target.closest('a')) return;
+        if (e.target.closest(':scope > ul') && e.target.closest('ul') === submenu) return;
+        e.preventDefault();
+        li.classList.add('nav-mobile-open');
+      });
+    });
+    // Collapse any drilled submenu whenever the whole menu is toggled closed.
+    nav.addEventListener('nav-menu-close', closeAllDrilled);
+  }
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+  hamburger.addEventListener('click', () => {
+    const wasExpanded = nav.getAttribute('aria-expanded') === 'true';
+    toggleMenu(nav, navSections);
+    if (wasExpanded) nav.dispatchEvent(new CustomEvent('nav-menu-close'));
+  });
   nav.prepend(hamburger);
   nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
