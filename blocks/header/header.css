@@ -182,15 +182,15 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #fff;
   border: 1px solid #ced4e0;
 
-  /* No bottom border; the tab overlaps the panel below by 2px so its white body
-     fully hides the panel's top border where they meet — no grey seam. */
+  /* No bottom border; the panel below has no top border either, so the tab's
+     rounded top edge is the only outline at the junction — no grey seam. */
   border-bottom: none;
   border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
 
   /* Figma: 10px top, 16px other sides. */
   padding: 10px 16px 16px;
-  margin: -10px -16px -2px;
+  margin: -10px -16px -1px;
   z-index: 10000;
 }
 
@@ -218,11 +218,15 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: calc(100% - 2px);
+  top: calc(100% - 1px);
   right: -1px;
   padding: 12px 0;
   background-color: #fff;
   border: 1px solid #ced4e0;
+
+  /* No top border: the panel is wider than the tab, so a top border would show
+     as a grey line to the left of the tab. The tab supplies the top edge. */
+  border-top: none;
 
   /* Figma: rounded except the top-right corner, which sits flush under the tab. */
   border-radius: 6px 0 6px 6px;
