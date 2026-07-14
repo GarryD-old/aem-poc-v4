@@ -170,15 +170,19 @@ header nav .nav-sections .default-content-wrapper > ul > li {
   align-items: center;
 }
 
-/* active/hovered - tab wrapper with grey border + green underline */
+/* active/hovered - tab wrapper with grey border + green underline. The bottom
+   border is dropped and the tab sits above the panel (z-index) so its white
+   body covers the panel's top border where they meet — the tab + panel then
+   read as one continuous outline, matching the Figma. */
 header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
   border: 1px solid #ced4e0;
+  border-bottom: none;
   border-radius: 6px 6px 0 0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
-  padding: 8px 16px;
-  margin: -8px -16px;
+  padding: 8px 16px 9px;
+  margin: -8px -16px -1px;
   z-index: 10000;
 }
 
@@ -194,16 +198,17 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   background: #008941;
 }
 
-/* dropdown panel - below tab, right edge aligned with tab right */
+/* dropdown panel - below tab, right edge aligned with tab right. Full 1px
+   border (incl. top) that tucks 1px under the tab so the outline is continuous;
+   right edge nudged 1px to line up with the tab's right border. */
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: calc(100% - 1px);
+  right: -1px;
   padding: 12px 0;
   background-color: #fff;
   border: 1px solid #ced4e0;
-  border-top: none;
   min-width: 320px;
   z-index: 9999;
   text-align: left;
