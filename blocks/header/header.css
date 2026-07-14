@@ -14,6 +14,8 @@ header nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  align-content: center;
+  min-height: var(--nav-height);
   margin: auto;
   max-width: 1600px;
   padding: 0 120px;
@@ -36,11 +38,15 @@ header nav .nav-hamburger {
   display: none;
 }
 
-/* brand / logo */
+/* brand / logo: absolutely positioned so it centres vertically across the full
+   two-row nav height, independent of the tools/sections rows. */
 header .nav-brand {
+  position: absolute;
+  left: 120px;
+  top: 0;
+  bottom: 0;
   flex-shrink: 0;
-  padding: 8px 0;
-  min-width: 98px;
+  width: 98px;
   min-height: 40px;
   background-image: url('/icons/avg-logo.png');
   background-size: 98px 40px;
