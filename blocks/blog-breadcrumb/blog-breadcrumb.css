@@ -12,7 +12,7 @@
     padding: 20px 0 0;
   }
 
-  .blog-breadcrumb-wrapper {
+  main > .section > .blog-breadcrumb-wrapper {
     max-width: 1600px;
     margin: 0 auto;
     padding: 0 120px;
