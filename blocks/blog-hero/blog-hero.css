@@ -1,0 +1,15 @@
+/* Alias: pages that reference the block as `blog-hero` reuse the hero-blog
+   styles. The section container class differs (blog-hero-container), so mirror
+   the container background rule here; inner element styles are shared. */
+@import url('../hero-blog/hero-blog.css');
+
+main .section.blog-hero-container {
+  background: rgb(244 241 237);
+}
+
+@media (width >= 900px) {
+  .blog-hero-container > div {
+    max-width: 1300px;
+    padding: 0 24px;
+  }
+}

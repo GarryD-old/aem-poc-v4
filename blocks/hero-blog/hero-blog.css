@@ -6,11 +6,16 @@ main .section.hero-blog-container {
   background: rgb(244 241 237);
 }
 
-.hero-blog {
+/* Wrapper/layout rules apply to both block-name variants (hero-blog and its
+   blog-hero alias). Inner-element rules below are wrapper-agnostic because the
+   block JS always emits .hero-blog-content / .hero-blog-image. */
+.hero-blog,
+.blog-hero {
   padding: 0;
 }
 
-.hero-blog > div {
+.hero-blog > div,
+.blog-hero > div {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -20,17 +25,17 @@ main .section.hero-blog-container {
 /* The hero is the page's 2nd section, so the global CTA rule
    `main > .section:nth-of-type(2) .default-content-wrapper` centres text — force
    left alignment to match the Norton reference. */
-.hero-blog .hero-blog-content {
+.hero-blog-content {
   flex: 1;
   text-align: left;
 }
 
-.hero-blog .hero-blog-content h1,
-.hero-blog .hero-blog-content p {
+.hero-blog-content h1,
+.hero-blog-content p {
   text-align: left;
 }
 
-.hero-blog .hero-blog-content h1 {
+.hero-blog-content h1 {
   font-size: 40px;
   font-weight: 800;
   line-height: 52px;
@@ -39,7 +44,7 @@ main .section.hero-blog-container {
   color: rgb(36 36 36);
 }
 
-.hero-blog .hero-blog-content p {
+.hero-blog-content p {
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
@@ -48,14 +53,14 @@ main .section.hero-blog-container {
   color: rgb(36 36 36);
 }
 
-.hero-blog .hero-blog-image {
+.hero-blog-image {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-blog .hero-blog-image img {
+.hero-blog-image img {
   width: 100%;
   max-width: 490px;
   aspect-ratio: 490 / 360;
@@ -70,7 +75,8 @@ main .section.hero-blog-container {
     padding: 0 24px;
   }
 
-  .hero-blog > div {
+  .hero-blog > div,
+  .blog-hero > div {
     flex-direction: row;
     gap: 64px;
     padding: 48px 0 64px;
@@ -80,13 +86,13 @@ main .section.hero-blog-container {
     align-items: flex-start;
   }
 
-  .hero-blog .hero-blog-content {
+  .hero-blog-content {
     flex: 1 1 52%;
   }
 
   /* Image column takes the remaining space; the image hugs the right edge of
      the container to match the Norton reference layout. */
-  .hero-blog .hero-blog-image {
+  .hero-blog-image {
     flex: 1 1 48%;
     justify-content: flex-end;
   }
