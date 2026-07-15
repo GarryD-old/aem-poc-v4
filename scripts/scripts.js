@@ -190,6 +190,10 @@ async function loadLazy(doc) {
   loadFonts();
 
   buildStickyNav();
+
+  // Make in-article images open in a lightbox.
+  const { default: decorateImageLightbox } = await import(`${window.hlx.codeBasePath}/scripts/image-lightbox.js`);
+  decorateImageLightbox(main);
 }
 
 /**
