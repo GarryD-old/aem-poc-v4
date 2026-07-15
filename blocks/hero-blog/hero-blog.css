@@ -70,11 +70,12 @@ main .section.hero-blog-container {
 }
 
 @media (width >= 900px) {
-  .hero-blog-container > div {
-    max-width: 1300px;
-    padding: 0 24px;
+  main > .section.hero-blog-container > div {
+    max-width: 1085px;
+    padding: 0;
   }
 
+  /* stylelint-disable no-descending-specificity */
   .hero-blog > div,
   .blog-hero > div {
     flex-direction: row;
@@ -96,4 +97,6 @@ main .section.hero-blog-container {
     flex: 1 1 48%;
     justify-content: flex-end;
   }
+
+  /* stylelint-enable no-descending-specificity */
 }
