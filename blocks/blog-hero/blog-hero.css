@@ -8,7 +8,8 @@ main .section.blog-hero-container {
 }
 
 @media (width >= 900px) {
-  main > .section.blog-hero-container > div {
+  main > .section.blog-hero-container > .blog-hero-wrapper,
+  main > .section.blog-hero-container > .hero-blog-wrapper {
     max-width: 1085px;
     margin: 0 auto;
     padding: 0;

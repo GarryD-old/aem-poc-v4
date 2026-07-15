@@ -71,8 +71,11 @@ main .section.hero-blog-container {
 
 @media (width >= 900px) {
   /* Hero content is capped at 1085px and centred on the page (per the Norton
-     reference it sits indented from the breadcrumb, not aligned to it). */
-  main > .section.hero-blog-container > div {
+     reference it sits indented from the breadcrumb, not aligned to it). Target
+     the hero wrapper ONLY — the breadcrumb/meta share this section and must
+     keep their own alignment. */
+  main > .section.hero-blog-container > .hero-blog-wrapper,
+  main > .section.hero-blog-container > .blog-hero-wrapper {
     max-width: 1085px;
     margin: 0 auto;
     padding: 0;
