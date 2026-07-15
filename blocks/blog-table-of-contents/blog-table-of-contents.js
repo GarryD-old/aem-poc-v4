@@ -99,8 +99,28 @@ export default function decorate(block) {
   const step = () => Math.max(scroll.clientHeight * 0.8, 80);
   arrowUp.addEventListener('click', () => scroll.scrollBy({ top: -step(), behavior: 'smooth' }));
   arrowDown.addEventListener('click', () => scroll.scrollBy({ top: step(), behavior: 'smooth' }));
+  // Track manual ToC scrolling so auto-scroll (below) doesn't fight the user.
+  let manualScrollUntil = 0;
   scroll.addEventListener('scroll', updateArrows);
+  scroll.addEventListener('wheel', () => { manualScrollUntil = Date.now() + 1500; });
+  scroll.addEventListener('touchmove', () => { manualScrollUntil = Date.now() + 1500; });
   window.addEventListener('resize', refresh);
+
+  // Keep the active entry visible inside the (fixed-height) scroll container as
+  // the reader scrolls the article — the card stays sticky, its list follows.
+  const scrollActiveIntoView = (activeLink) => {
+    if (!block.classList.contains('blog-toc-scrollable')) return;
+    if (Date.now() < manualScrollUntil) return;
+    const linkTop = activeLink.offsetTop;
+    const linkBottom = linkTop + activeLink.offsetHeight;
+    const viewTop = scroll.scrollTop;
+    const viewBottom = viewTop + scroll.clientHeight;
+    if (linkTop < viewTop || linkBottom > viewBottom) {
+      // Center the active link within the visible scroll window.
+      const target = linkTop - (scroll.clientHeight - activeLink.offsetHeight) / 2;
+      scroll.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+    }
+  };
 
   const setupScroll = () => {
     // Re-check across a few frames until layout settles.
@@ -123,12 +143,16 @@ export default function decorate(block) {
     window.addEventListener('load', refresh);
   };
 
-  // Scroll-spy: highlight the entry for the heading currently in view.
-  // Note: we intentionally do NOT auto-scroll the list to the active entry —
-  // doing so on every page scroll fights the user when they manually scroll
-  // the ToC (it kept snapping back, so you couldn't scroll to the top).
+  // Scroll-spy: highlight the entry for the heading currently in view and keep
+  // it visible in the scroll container. A manual-scroll grace period (above)
+  // prevents this from snapping the list back while the user scrolls the ToC.
+  let activeLinkEl = null;
   const setActive = (activeLink) => {
     links.forEach(({ link }) => link.classList.toggle('active', link === activeLink));
+    if (activeLink && activeLink !== activeLinkEl) {
+      activeLinkEl = activeLink;
+      scrollActiveIntoView(activeLink);
+    }
   };
 
   if ('IntersectionObserver' in window && links.length) {
