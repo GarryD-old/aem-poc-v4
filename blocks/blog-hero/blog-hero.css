@@ -9,7 +9,9 @@ main .section.blog-hero-container {
 
 @media (width >= 900px) {
   main > .section.blog-hero-container > div {
-    max-width: 1085px;
-    padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 120px;
+    box-sizing: border-box;
   }
 }

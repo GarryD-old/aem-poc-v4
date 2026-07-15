@@ -70,9 +70,13 @@ main .section.hero-blog-container {
 }
 
 @media (width >= 900px) {
+  /* Wrapper spans the nav's 1600px/120px region so the hero's left edge lines
+     up with the logo and breadcrumb (content starts at the 120px inset). */
   main > .section.hero-blog-container > div {
-    max-width: 1085px;
-    padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 120px;
+    box-sizing: border-box;
   }
 
   /* stylelint-disable no-descending-specificity */
@@ -81,6 +85,11 @@ main .section.hero-blog-container {
     flex-direction: row;
     gap: 64px;
     padding: 48px 0 64px;
+
+    /* Cap the content row at 1085px and left-align it within the wider wrapper
+       so it starts at the logo edge (not centred). */
+    max-width: 1085px;
+    margin-right: auto;
 
     /* Top-align so the H1 sits level with the top of the image (per Norton
        reference), rather than vertically centering the shorter column. */
