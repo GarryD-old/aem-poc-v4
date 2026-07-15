@@ -25,15 +25,26 @@
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+
+  /* Single line: keep the trail on one row and scroll horizontally if it
+     overflows (matches the Norton cmp-breadcrumb__scroll behaviour). */
+  flex-wrap: nowrap;
   align-items: center;
   gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.blog-breadcrumb-list::-webkit-scrollbar {
+  display: none;
 }
 
 .blog-breadcrumb-item {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* separator ">" before every item except the first */

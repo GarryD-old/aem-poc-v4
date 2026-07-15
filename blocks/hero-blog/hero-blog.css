@@ -35,19 +35,20 @@ main .section.hero-blog-container {
   text-align: left;
 }
 
+/* Mobile-first: H1 32px/40px, paragraph 16px/26px (per Norton mobile). */
 .hero-blog-content h1 {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 800;
-  line-height: 52px;
+  line-height: 40px;
   letter-spacing: -0.3px;
   margin: 0 0 20px;
   color: rgb(36 36 36);
 }
 
 .hero-blog-content p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 32px;
+  line-height: 26px;
   letter-spacing: -0.3px;
   margin: 0;
   color: rgb(36 36 36);
@@ -96,6 +97,17 @@ main .section.hero-blog-container {
 
   .hero-blog-content {
     flex: 1 1 52%;
+  }
+
+  /* Desktop typography: H1 40px/52px, paragraph 20px/32px. */
+  .hero-blog-content h1 {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .hero-blog-content p {
+    font-size: 20px;
+    line-height: 32px;
   }
 
   /* Image column takes the remaining space; the image hugs the right edge of
