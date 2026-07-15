@@ -1,19 +1,28 @@
 /* add global styles that can be loaded post LCP here */
 
 /* Image lightbox: article images become a zoom-in button that opens a modal. */
-.image-lightbox-button {
+.image-lightbox-button,
+.image-lightbox-button:hover,
+.image-lightbox-button:focus,
+.image-lightbox-button:focus-visible {
   display: block;
   width: 100%;
   margin: 0;
   padding: 0;
   border: 0;
+  border-radius: 0;
+
+  /* Override the global button styles (blue background + focus ring). */
   background: none;
+  box-shadow: none;
+  outline: none;
   cursor: zoom-in;
 }
 
 .image-lightbox-button picture,
 .image-lightbox-button img {
   display: block;
+  cursor: zoom-in;
 }
 
 .image-lightbox-overlay {
@@ -31,7 +40,9 @@
   display: flex;
 }
 
-.image-lightbox-close {
+.image-lightbox-close,
+.image-lightbox-close:hover,
+.image-lightbox-close:focus {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -41,7 +52,10 @@
   align-items: center;
   justify-content: center;
   border: 0;
+  border-radius: 0;
   background: none;
+  box-shadow: none;
+  outline: none;
   color: #fff;
   cursor: pointer;
 }
