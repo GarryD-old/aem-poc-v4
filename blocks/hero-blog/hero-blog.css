@@ -2,27 +2,26 @@
    viewport, so the background fills edge to edge; the inner > div stays
    constrained. Specificity raised (main .section...) to beat the global
    `main .section.light-gray` background rule. */
-main .section.blog-hero-container {
+main .section.hero-blog-container {
   background: rgb(244 241 237);
-  border-top: 1px solid rgb(193 191 184);
 }
 
-.blog-hero {
+.hero-blog {
   padding: 0;
 }
 
-.blog-hero > div {
+.hero-blog > div {
   display: flex;
   flex-direction: column;
   gap: 32px;
   align-items: center;
 }
 
-.blog-hero .blog-hero-content {
+.hero-blog .hero-blog-content {
   flex: 1;
 }
 
-.blog-hero .blog-hero-content h1 {
+.hero-blog .hero-blog-content h1 {
   font-size: 40px;
   font-weight: 800;
   line-height: 52px;
@@ -31,7 +30,7 @@ main .section.blog-hero-container {
   color: rgb(36 36 36);
 }
 
-.blog-hero .blog-hero-content p {
+.hero-blog .hero-blog-content p {
   font-size: 20px;
   font-weight: 500;
   line-height: 32px;
@@ -40,48 +39,46 @@ main .section.blog-hero-container {
   color: rgb(36 36 36);
 }
 
-.blog-hero .blog-hero-image {
+.hero-blog .hero-blog-image {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.blog-hero .blog-hero-image img {
-  /* Cap at the Norton reference size (425 x 359) and center; scales down on
-     narrow viewports. */
+.hero-blog .hero-blog-image img {
   width: 100%;
-  max-width: 425px;
-  aspect-ratio: 425 / 359;
+  max-width: 490px;
+  aspect-ratio: 490 / 360;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
 }
 
 @media (width >= 900px) {
-  .blog-hero-container > div {
-    max-width: 1200px;
+  .hero-blog-container > div {
+    max-width: 1300px;
     padding: 0 24px;
   }
 
-  .blog-hero > div {
+  .hero-blog > div {
     flex-direction: row;
     gap: 64px;
-    padding: 56px 0;
+    padding: 48px 0 64px;
 
     /* Top-align so the H1 sits level with the top of the image (per Norton
        reference), rather than vertically centering the shorter column. */
     align-items: flex-start;
   }
 
-  .blog-hero .blog-hero-content {
-    flex: 1 1 55%;
+  .hero-blog .hero-blog-content {
+    flex: 1 1 52%;
   }
 
-  /* Image column takes the remaining space and centers the capped 425px image
-     within it, so the image sits closer to center (not pinned to the far edge)
-     matching the reference. */
-  .blog-hero .blog-hero-image {
-    flex: 1 1 45%;
+  /* Image column takes the remaining space; the image hugs the right edge of
+     the container to match the Norton reference layout. */
+  .hero-blog .hero-blog-image {
+    flex: 1 1 48%;
+    justify-content: flex-end;
   }
 }

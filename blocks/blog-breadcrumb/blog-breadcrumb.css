@@ -3,6 +3,15 @@
   line-height: 1.4;
 }
 
+/* Align the breadcrumb with the hero content below it (1300px region + 24px
+   inset), overriding the global 1200px section width. */
+@media (width >= 900px) {
+  .blog-breadcrumb-container > div {
+    max-width: 1300px;
+    padding: 16px 24px;
+  }
+}
+
 .blog-breadcrumb-list {
   list-style: none;
   margin: 0;
@@ -28,7 +37,7 @@
 .blog-breadcrumb-item a {
   color: rgb(36 36 36);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .blog-breadcrumb-item a:hover {

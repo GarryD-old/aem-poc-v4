@@ -16,11 +16,11 @@ export default function decorate(block) {
 
   const row = document.createElement('div');
   if (contentCell) {
-    contentCell.className = 'blog-hero-content';
+    contentCell.className = 'hero-blog-content';
     row.append(contentCell);
   }
   if (imageCell) {
-    imageCell.className = 'blog-hero-image';
+    imageCell.className = 'hero-blog-image';
     row.append(imageCell);
   }
 
