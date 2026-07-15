@@ -17,8 +17,17 @@ main .section.hero-blog-container {
   align-items: center;
 }
 
+/* The hero is the page's 2nd section, so the global CTA rule
+   `main > .section:nth-of-type(2) .default-content-wrapper` centres text — force
+   left alignment to match the Norton reference. */
 .hero-blog .hero-blog-content {
   flex: 1;
+  text-align: left;
+}
+
+.hero-blog .hero-blog-content h1,
+.hero-blog .hero-blog-content p {
+  text-align: left;
 }
 
 .hero-blog .hero-blog-content h1 {
