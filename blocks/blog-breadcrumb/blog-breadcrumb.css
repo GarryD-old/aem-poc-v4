@@ -3,12 +3,20 @@
   line-height: 1.4;
 }
 
-/* Align the breadcrumb with the hero content below it (1300px region + 24px
-   inset), overriding the global 1200px section width. */
+/* Align the breadcrumb with the nav logo above it: same 1600px max-width and
+   120px side padding as the header nav, so its left edge lines up with the
+   logo. Override the global 1200px section width + CTA vertical padding, and
+   sit ~20px below the top of the hero band. */
 @media (width >= 900px) {
-  .blog-breadcrumb-container > div {
-    max-width: 1300px;
-    padding: 16px 24px;
+  main > .section.blog-breadcrumb-container {
+    padding: 20px 0 0;
+  }
+
+  .blog-breadcrumb-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 120px;
+    box-sizing: border-box;
   }
 }
 
