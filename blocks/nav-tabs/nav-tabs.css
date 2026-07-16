@@ -15,11 +15,16 @@
     padding: 0;
   }
 
-  /* Installation-files template: the tabs box is a centered half-width card,
-     scoped to sections that also carry installation cards so other nav-tabs
-     usages keep the full 1360px region. 50% of the 1440px viewport = 720px. */
+  /* Installation-files template: the tabs box is a centered half-width card
+     that floats across the hero/products boundary — overlapping the hero by
+     roughly half its own height. The products section has 88px top padding, so
+     pulling the wrapper up ~128px lifts the box so its centre straddles the
+     boundary. Scoped to sections that also carry installation cards so other
+     nav-tabs usages keep the full 1360px region and default offset. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
     max-width: 50%;
+    margin-top: -128px !important;
+    margin-bottom: 56px !important;
   }
 }
 
