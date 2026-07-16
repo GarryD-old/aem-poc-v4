@@ -1,0 +1,131 @@
+.installation-hero-container {
+  background-color: #f5f7fa;
+  padding: 0;
+}
+
+.installation-hero.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 40px 16px 48px;
+  box-sizing: border-box;
+}
+
+/* Back button — sits above the title, left aligned to the content column */
+.installation-hero-back {
+  align-self: center;
+  margin-bottom: 24px;
+}
+
+.installation-hero-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.installation-hero-back a::before {
+  content: '\2190';
+  font-size: 16px;
+}
+
+.installation-hero-back a:hover {
+  border-color: var(--muted-text-color);
+  text-decoration: none;
+}
+
+/* Heading row — icon beside the title */
+.installation-hero-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.installation-hero-heading h1,
+.installation-hero-heading h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
+}
+
+.installation-hero-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.installation-hero-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Body — subheading + learn more */
+.installation-hero-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.installation-hero-body p {
+  margin: 0;
+  color: var(--muted-text-color);
+  font-size: var(--body-font-size-s);
+  line-height: 1.4;
+}
+
+.installation-hero-learn-more-wrap {
+  margin-top: 8px;
+}
+
+.installation-hero-learn-more.installation-hero-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--link-hover-color);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.installation-hero-learn-more::after {
+  content: '\2192';
+}
+
+@media (width >= 900px) {
+  .installation-hero.block {
+    padding: 64px 24px 56px;
+  }
+
+  .installation-hero-heading h1,
+  .installation-hero-heading h2 {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: normal;
+  }
+
+  .installation-hero-icon,
+  .installation-hero-icon img {
+    width: 44px;
+    height: 44px;
+  }
+}

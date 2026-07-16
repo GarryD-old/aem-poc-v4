@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "installation-files-template",
+      "urls": [
+        "https://www.avg.com/en-ww/installation-files-business#pc"
+      ],
+      "representativeUrl": "https://www.avg.com/en-ww/installation-files-business#pc",
+      "coverageGaps": [],
+      "description": "AVG installation files / downloads page — hero with title and subheading, Personal/Business tabs, repeated product installation cards, and a grey promo box for the AVG Clear tool.",
+      "blocks": [
+        {
+          "name": "installation-hero",
+          "instances": [
+            "#body-inner > div.banner.banner-0.padding-xs-top-large"
+          ]
+        },
+        {
+          "name": "nav-tabs",
+          "instances": [
+            "#products > div.container.bg-white.products-box > div.row > div.center > div.tabs"
+          ]
+        },
+        {
+          "name": "installation-card",
+          "instances": [
+            "#products > div.container.bg-white.products-box > div.row > div.center > div.product-block div.dc-item"
+          ]
+        },
+        {
+          "name": "promo-box",
+          "instances": [
+            "#products > div.container.bg-white.products-box > div.row > div.center > div.container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1-hero",
+          "name": "Hero",
+          "selector": "#body-inner > div.banner.banner-0.padding-xs-top-large",
+          "style": null,
+          "blocks": ["installation-hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2-products",
+          "name": "Products",
+          "selector": "#products",
+          "style": "light-grey",
+          "blocks": ["nav-tabs", "installation-card", "promo-box"],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

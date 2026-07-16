@@ -84,6 +84,42 @@
   color: var(--background-color);
 }
 
+/* Light variant — used on light-background sections (e.g. "Help us improve").
+   Dark text + green outline CTA instead of the default white-on-dark styling. */
+.columns-bait.light .columns-bait-content h2 {
+  color: var(--text-color);
+}
+
+.columns-bait.light .columns-bait-content p {
+  color: var(--muted-text-color);
+  opacity: 1;
+}
+
+.columns-bait.light .columns-bait-content a.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  margin: 8px 0 0;
+  padding: 0 24px;
+  border: 1px solid #008941;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #008941;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}
+
+.columns-bait.light .columns-bait-content a.button::after {
+  content: '\2192';
+}
+
+.columns-bait.light .columns-bait-content a.button:hover {
+  background-color: #f2f8ff;
+}
+
 @media (width >= 900px) {
   .columns-bait-container > .columns-bait-wrapper {
     max-width: unset;

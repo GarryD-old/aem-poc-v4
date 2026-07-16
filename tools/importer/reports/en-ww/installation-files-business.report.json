@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.avg.com/en-ww/installation-files-business#pc",
+  "path": "en-ww/installation-files-business",
+  "timestamp": "2026-07-16T13:11:37.643Z",
+  "title": "Install AVG Business Edition on your PC | AVG installation files",
+  "template": "installation-files-template",
+  "blocks": [
+    "installation-hero",
+    "nav-tabs",
+    "installation-card",
+    "installation-card",
+    "installation-card",
+    "installation-card",
+    "installation-card",
+    "promo-box"
+  ]
+}

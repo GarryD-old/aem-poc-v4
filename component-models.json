@@ -683,6 +683,105 @@
     ]
   },
   {
+    "id": "installation-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Product icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "iconAlt",
+        "value": "",
+        "label": "Icon alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "info",
+        "value": "",
+        "label": "Product info (name, description, learn more)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "ctas",
+        "value": "",
+        "label": "CTAs (paid / trial / more options)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "installation-files-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "label",
+        "value": "",
+        "label": "Label / link",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "meta",
+        "value": "",
+        "label": "Meta / CTA (optional)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "installation-hero",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "backLink",
+        "value": "",
+        "label": "Back link (optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Icon (optional)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "iconAlt",
+        "value": "",
+        "label": "Icon alt text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "subheading",
+        "value": "",
+        "label": "Subheading (optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "learnMore",
+        "value": "",
+        "label": "Learn more link (optional)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "legal-sidenav",
     "fields": [
       {
@@ -725,6 +824,51 @@
         "component": "text",
         "name": "linkText",
         "label": "Text"
+      }
+    ]
+  },
+  {
+    "id": "nav-tabs",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "tabs",
+        "value": "",
+        "label": "Tabs (list of links)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "promo-box",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Product icon",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "productName",
+        "value": "",
+        "label": "Product name",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Body text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "cta",
+        "value": "",
+        "label": "CTA button",
+        "valueType": "string"
       }
     ]
   },

@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "title": "Nav Tabs",
+      "id": "nav-tabs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Nav Tabs",
+              "model": "nav-tabs"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "nav-tabs",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "tabs",
+          "value": "",
+          "label": "Tabs (list of links)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

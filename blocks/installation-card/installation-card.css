@@ -1,0 +1,168 @@
+.installation-card.block {
+  padding: 0;
+  border: 1px solid var(--overlay-background-color);
+  border-radius: 6px;
+  background-color: var(--background-color);
+}
+
+.installation-card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px;
+}
+
+/* Info side: icon + text */
+.installation-card-info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 16px;
+  align-items: start;
+}
+
+.installation-card-icon {
+  grid-row: 1 / span 10;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.installation-card-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.installation-card-info > *:not(.installation-card-icon) {
+  grid-column: 2;
+  margin: 0;
+}
+
+.installation-card-info p {
+  color: var(--muted-text-color);
+  font-size: var(--body-font-size-xs);
+  line-height: 20px;
+}
+
+.installation-card-info p strong,
+.installation-card-info h3,
+.installation-card-info h4 {
+  color: var(--text-color);
+  font-size: var(--heading-font-size-s);
+  font-weight: 900;
+  line-height: 26px;
+}
+
+.installation-card-label.installation-card-label {
+  align-self: start;
+  width: fit-content;
+  padding: 5px 12px;
+  border-radius: 16px;
+  background-color: #2276d9;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+}
+
+.installation-card-learn-more.installation-card-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  color: var(--link-hover-color);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: underline;
+}
+
+.installation-card-learn-more::after {
+  content: '\2192';
+}
+
+/* CTA side */
+.installation-card-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.installation-card-ctas p {
+  margin: 0;
+}
+
+a.button.installation-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}
+
+a.button.installation-card-btn::after {
+  content: '\2192';
+}
+
+a.button.installation-card-btn-primary {
+  background-color: #008941;
+  border-color: #008941;
+  color: #fff;
+}
+
+a.button.installation-card-btn-primary:hover {
+  background-color: #006d34;
+}
+
+a.button.installation-card-btn-trial {
+  background-color: #fff;
+  border: 1px solid #008941;
+  color: #008941;
+}
+
+a.button.installation-card-btn-trial:hover {
+  background-color: #f2f8ff;
+}
+
+.installation-card-more.installation-card-more {
+  display: inline-block;
+  color: var(--link-hover-color);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  .installation-card-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 32px 8px;
+  }
+
+  .installation-card-info {
+    flex: 1;
+  }
+
+  .installation-card-ctas {
+    width: 316px;
+    flex-shrink: 0;
+    align-items: flex-end;
+  }
+}
