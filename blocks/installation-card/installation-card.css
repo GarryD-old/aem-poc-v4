@@ -14,9 +14,9 @@ main > .section.installation-card-container {
   padding: 56px 0;
 }
 
-/* 56px between the last card and the following block group (promo box). */
-main > .section > .installation-card-wrapper:last-of-type {
-  margin-bottom: 56px;
+/* 56px between the card group and whatever block group follows it. */
+main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) {
+  margin-top: 56px;
 }
 
 .installation-card.block {
