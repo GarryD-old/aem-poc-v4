@@ -14,8 +14,25 @@ export default function decorate(block) {
     // runs, so remove those classes here.
     link.classList.remove('button', 'primary', 'secondary');
 
-    // Check if the link matches the page we are currently on
-    if (window.location.pathname === new URL(link.href).pathname) {
+    // Author override: a tab bolded in the table (**BUSINESS**) is forced active.
+    // Lets authors mark which tab this page represents even when the tab's href
+    // points at a different page (e.g. the reusable installation-files template).
+    const forcedActive = !!link.closest('strong') || !!link.querySelector('strong');
+    if (forcedActive) {
+      // Unwrap the <strong> so it doesn't affect tab typography.
+      const strong = link.querySelector('strong');
+      if (strong) strong.replaceWith(...strong.childNodes);
+      const wrapStrong = link.closest('strong');
+      if (wrapStrong) wrapStrong.replaceWith(link);
+    }
+
+    // Otherwise fall back to matching the tab href against the current page.
+    let matchesPath = false;
+    try {
+      matchesPath = window.location.pathname === new URL(link.href).pathname;
+    } catch (e) { /* relative or malformed href — ignore */ }
+
+    if (forcedActive || matchesPath) {
       li.classList.add('active'); // Marks the current tab for the green underline
       link.classList.add('active');
     }

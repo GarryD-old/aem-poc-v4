@@ -36,7 +36,19 @@ export default function parse(element, { document }) {
     a.setAttribute('href', href);
 
     const li = document.createElement('li');
-    li.appendChild(a);
+
+    // Active tab: source marked with `.active` class or a <strong> wrapper.
+    // Emit the link inside <strong> so it survives to markdown as **LABEL**,
+    // which nav-tabs.js reads as the author's "force active" signal.
+    const isActive = source.classList.contains('active')
+      || !!source.closest('strong') || !!source.querySelector('strong');
+    if (isActive) {
+      const strong = document.createElement('strong');
+      strong.appendChild(a);
+      li.appendChild(strong);
+    } else {
+      li.appendChild(a);
+    }
     ul.appendChild(li);
   });
 

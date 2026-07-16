@@ -15,11 +15,11 @@
     padding: 0;
   }
 
-  /* Installation-files template: the tabs box is a centered ~half-width card
-     (664px in Figma), scoped to sections that also carry installation cards so
-     other nav-tabs usages keep the full 1360px region. */
+  /* Installation-files template: the tabs box is a centered half-width card,
+     scoped to sections that also carry installation cards so other nav-tabs
+     usages keep the full 1360px region. 50% of the 1440px viewport = 720px. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
-    max-width: 664px;
+    max-width: 50%;
   }
 }
 
