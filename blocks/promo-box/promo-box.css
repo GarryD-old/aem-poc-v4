@@ -1,5 +1,6 @@
-/* Match the 896px content column used by the installation cards. */
-.promo-box-wrapper {
+/* Match the 896px content column used by the installation cards. Selector must
+   out-specify the global `main > .section > div { max-width: 1200px }` rule. */
+main > .section > .promo-box-wrapper {
   max-width: 896px;
   margin-left: auto;
   margin-right: auto;
