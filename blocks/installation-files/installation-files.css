@@ -2,8 +2,7 @@
    Selector out-specifies the global `main > .section > div { max-width: 1200px }`. */
 main > .section > .installation-files-wrapper {
   max-width: 896px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 56px;
 }
 
 .installation-files.block {

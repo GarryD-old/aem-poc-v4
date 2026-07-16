@@ -7,6 +7,18 @@ main > .section > .installation-card-wrapper {
   margin-right: auto;
 }
 
+/* Products section spacing: consistent 56px rhythm (overrides the global
+   light-grey 88px). The nav-tabs wrapper floats up over the hero, so top
+   padding is kept modest; groups below are separated by 56px. */
+main > .section.installation-card-container {
+  padding: 56px 0;
+}
+
+/* 56px between the last card and the following block group (promo box). */
+main > .section > .installation-card-wrapper:last-of-type {
+  margin-bottom: 56px;
+}
+
 .installation-card.block {
   padding: 0;
   border: 1px solid var(--overlay-background-color);

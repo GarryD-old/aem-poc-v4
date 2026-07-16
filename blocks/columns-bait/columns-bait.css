@@ -168,7 +168,7 @@
   .columns-bait-container:has(.columns-bait.light) > .columns-bait-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 64px 32px;
+    padding: 56px 32px 88px;
   }
 
   .columns-bait.light > div {

@@ -2,8 +2,7 @@
    out-specify the global `main > .section > div { max-width: 1200px }` rule. */
 main > .section > .promo-box-wrapper {
   max-width: 896px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 56px;
 }
 
 .promo-box.block {
