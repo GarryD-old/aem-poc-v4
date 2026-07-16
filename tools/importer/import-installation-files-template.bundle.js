@@ -58,9 +58,30 @@ var CustomImportScript = (() => {
       frag.appendChild(node);
       return frag;
     };
+    const back = element.querySelector("a[data-hero-back]") || (() => {
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = "Back to [somewhere]";
+      return a;
+    })();
+    const icon = (() => {
+      const img = document.createElement("img");
+      img.src = "https://static2.avg.com/10004907/web/i/product-icons/antivirus-business-edition-product-icon-90x90.png";
+      img.setAttribute("alt", "Page icon");
+      return img;
+    })();
+    const learnMore = (() => {
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = "Learn more";
+      return a;
+    })();
     const cells = [];
+    cells.push([withHint("backLink", back)]);
+    cells.push([withHint("icon", icon)]);
     if (title) cells.push([withHint("title", title)]);
     if (subheading) cells.push([withHint("subheading", subheading)]);
+    cells.push([withHint("learnMore", learnMore)]);
     const block = WebImporter.Blocks.createBlock(document, { name: "installation-hero", cells });
     element.replaceWith(block);
   }

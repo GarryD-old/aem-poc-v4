@@ -1,3 +1,10 @@
+/* Match the 896px content column used by the installation cards. */
+.promo-box-wrapper {
+  max-width: 896px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .promo-box.block {
   display: flex;
   flex-direction: column;
