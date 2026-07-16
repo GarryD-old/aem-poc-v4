@@ -86,6 +86,21 @@
 
 /* Light variant — used on light-background sections (e.g. "Help us improve").
    Dark text + green outline CTA instead of the default white-on-dark styling. */
+
+/* Grey band spanning the section, matching the Figma "Help us improve" block. */
+.columns-bait.light {
+  background-color: #f5f7fa;
+}
+
+.columns-bait-container:has(.columns-bait.light) {
+  background-color: #f5f7fa;
+}
+
+/* Content reads left-aligned (override the centered section default). */
+.columns-bait.light .columns-bait-content {
+  text-align: left;
+}
+
 .columns-bait.light .columns-bait-content h2 {
   color: var(--text-color);
 }
