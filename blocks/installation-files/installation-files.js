@@ -1,47 +1,48 @@
 export default function decorate(block) {
   const rows = [...block.children];
 
-  rows.forEach((row, index) => {
+  rows.forEach((row) => {
     const cells = [...row.children];
+    const firstCell = cells[0];
+    const lastCell = cells[cells.length - 1];
 
-    // Single-cell rows: either the section headline (first row) or an alert note.
-    if (cells.length === 1) {
-      const cell = cells[0];
-      const link = cell.querySelector('a');
-      if (index === 0 && !link) {
-        row.className = 'installation-files-headline';
-      } else if (!link) {
-        row.className = 'installation-files-alert';
-      } else {
-        row.className = 'installation-files-file';
-        link.classList.remove('button', 'primary', 'secondary');
-        link.classList.add('installation-files-link');
+    const heading = firstCell?.querySelector('h2, h3, h4, h5, h6');
+    const firstLink = firstCell?.querySelector('a');
+    const lastLink = lastCell?.querySelector('a');
+    const rightHasText = lastCell !== firstCell
+      && (lastCell?.textContent || '').trim().length > 0;
+
+    // 1. Section headline — a row whose (first) cell carries a heading element.
+    if (heading && !firstLink) {
+      row.className = 'installation-files-headline';
+      return;
+    }
+
+    // 2. Featured download — a right-hand cell that contains a link (the button).
+    if (cells.length > 1 && lastLink) {
+      row.className = 'installation-files-featured';
+      firstCell.className = 'installation-files-featured-label';
+      lastCell.className = 'installation-files-featured-cta';
+      lastLink.classList.add('button', 'installation-files-download-btn');
+      lastLink.classList.remove('secondary');
+      return;
+    }
+
+    // 3. File row — a link on the left, optional meta text on the right.
+    if (firstLink) {
+      row.className = 'installation-files-file';
+      firstLink.classList.remove('button', 'primary', 'secondary');
+      firstLink.classList.add('installation-files-link');
+      if (cells.length > 1) {
+        firstCell.className = 'installation-files-file-label';
+        lastCell.className = 'installation-files-file-meta';
       }
       return;
     }
 
-    // Two-cell rows: left = label/link, right = meta text or a download button.
-    const left = cells[0];
-    const right = cells[cells.length - 1];
-    const rightLink = right.querySelector('a');
-
-    if (rightLink) {
-      // Featured download row: plain label on the left, green button on the right.
-      row.className = 'installation-files-featured';
-      left.className = 'installation-files-featured-label';
-      right.className = 'installation-files-featured-cta';
-      rightLink.classList.add('button', 'installation-files-download-btn');
-      rightLink.classList.remove('secondary');
-    } else {
-      // Standard file row: a download link on the left, meta (pdf / ###) on the right.
-      row.className = 'installation-files-file';
-      left.className = 'installation-files-file-label';
-      right.className = 'installation-files-file-meta';
-      const leftLink = left.querySelector('a');
-      if (leftLink) {
-        leftLink.classList.remove('button', 'primary', 'secondary');
-        leftLink.classList.add('installation-files-link');
-      }
-    }
+    // 4. Alert / note — a text-only row with no link and no heading.
+    // (rightHasText guards against treating a stray empty second cell as content.)
+    row.className = 'installation-files-alert';
+    if (cells.length > 1 && !rightHasText) lastCell.remove();
   });
 }
