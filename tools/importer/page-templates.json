@@ -12,12 +12,12 @@
       "coverageGaps": [],
       "description": "AVG installation files / downloads page template — hero, Personal/Business tabs, product cards, AVG Clear promo box, installation-files lists (latest / update / release notes / removal tool), and a 'Help us improve' media CTA.",
       "blocks": [
-        { "name": "installation-hero", "instances": ["#hero-section.hero-src"] },
+        { "name": "installation-hero", "instances": ["#hero-section > .hero-src"] },
         { "name": "nav-tabs", "instances": ["#products > .tabs"] },
         { "name": "installation-card", "instances": ["#products > .product-block > .dc-item"] },
         { "name": "promo-box", "instances": ["#products > .promo-src"] },
         { "name": "installation-files", "instances": ["#products > .installation-files-src"] },
-        { "name": "columns-bait", "instances": ["#help-section.cb-block"] }
+        { "name": "columns-bait", "instances": ["#help-section > .cb-block"] }
       ],
       "sections": [
         {

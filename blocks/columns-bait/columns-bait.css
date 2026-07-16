@@ -101,6 +101,17 @@
   text-align: left;
 }
 
+/* Light variant uses a landscape image (not the portrait antitrack default). */
+.columns-bait.light .columns-bait-image {
+  width: 100%;
+  height: auto;
+}
+
+.columns-bait.light .columns-bait-image img {
+  width: 100%;
+  height: auto;
+}
+
 .columns-bait.light .columns-bait-content h2 {
   color: var(--text-color);
 }
@@ -139,6 +150,25 @@
   .columns-bait-container > .columns-bait-wrapper {
     max-width: unset;
     padding: 56px 236px 56px 120px;
+  }
+
+  /* Light variant ("Help us improve"): centered content column, image left /
+     text right, vertically centered — matches the Figma media CTA band. */
+  .columns-bait-container:has(.columns-bait.light) > .columns-bait-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 32px;
+  }
+
+  .columns-bait.light > div {
+    align-items: center;
+    gap: 64px;
+  }
+
+  .columns-bait.light .columns-bait-image {
+    width: 480px;
+    height: auto;
+    flex-shrink: 0;
   }
 
   .columns-bait > div {
