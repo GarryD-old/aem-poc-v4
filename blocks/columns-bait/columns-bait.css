@@ -152,6 +152,17 @@
     padding: 56px 236px 56px 120px;
   }
 
+  .columns-bait > div {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .columns-bait .columns-bait-content h2 {
+    font-size: 46px;
+    line-height: 1.3;
+  }
+
   /* Light variant ("Help us improve"): centered content column, image left /
      text right, vertically centered — matches the Figma media CTA band. */
   .columns-bait-container:has(.columns-bait.light) > .columns-bait-wrapper {
@@ -169,17 +180,5 @@
     width: 480px;
     height: auto;
     flex-shrink: 0;
-  }
-
-  .columns-bait > div {
-    flex-direction: row;
-    gap: 32px;
-    align-items: flex-start;
-  }
-
-
-  .columns-bait .columns-bait-content h2 {
-    font-size: 46px;
-    line-height: 1.3;
   }
 }
