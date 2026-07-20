@@ -32,6 +32,7 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   flex-direction: column;
   gap: 24px;
   padding: 24px 16px;
+  text-align: left; /* Card content is left-aligned (block/section may center) */
 }
 
 /* Info side: icon + text */
@@ -111,13 +112,14 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   text-decoration: none;
 }
 
-/* CTA side. Mobile (base): the download buttons sit side-by-side on one row
-   and share the width equally; "More options" drops onto its own line below.
-   Per Figma, if the two buttons can't fit they wrap under each other. */
+/* CTA side. Mobile (base): the download buttons sit side-by-side on one row at
+   their natural width, left-aligned; per Figma, if the two don't fit they wrap
+   under each other. "More options" always drops onto its own line below. */
 .installation-card-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -125,15 +127,9 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   margin: 0;
 }
 
-/* Each button paragraph shares the row equally (min-width:0 lets them shrink
-   so both fit before wrapping). */
+/* Buttons keep their natural width (no stretch) so labels never clip. */
 .installation-card-ctas > p:not(.installation-card-more-wrap) {
-  flex: 1;
-  min-width: 0;
-}
-
-.installation-card-ctas > p:not(.installation-card-more-wrap) .installation-card-btn {
-  width: 100%;
+  flex: 0 0 auto;
 }
 
 /* "More options" always breaks to its own full-width line under the buttons. */
