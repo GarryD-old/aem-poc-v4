@@ -65,7 +65,7 @@ footer .footer-top > div:first-child .default-content-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 24px;
+  gap: 8px 16px;
 }
 
 footer .footer-top > div:first-child .default-content-wrapper p {
