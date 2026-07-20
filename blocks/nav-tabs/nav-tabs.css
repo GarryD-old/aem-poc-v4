@@ -16,14 +16,17 @@
   }
 
   /* Installation-files template: the tabs box is a centered half-width card
-     that floats across the hero/products boundary — overlapping the hero by
-     roughly half its own height. The products section has 88px top padding, so
-     pulling the wrapper up ~128px lifts the box so its centre straddles the
-     boundary. Scoped to sections that also carry installation cards so other
-     nav-tabs usages keep the full 1360px region and default offset. */
+     that floats CENTERED on the hero/products boundary. The products section
+     has 56px top padding, so the wrapper's natural top is 56px below the
+     boundary; pulling it up ~95px lifts its centre onto the boundary (≈39px
+     above it) while still clearing the hero's "Learn more" (which sits 56px
+     above the boundary) — so the overlap never covers hero content. Scoped to
+     sections that also carry installation cards; other nav-tabs usages keep
+     the full 1360px region and default offset. The hero is a separate section
+     and is unaffected by this. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
     max-width: 50%;
-    margin-top: -128px !important;
+    margin-top: -95px !important;
     margin-bottom: 56px !important;
   }
 }
