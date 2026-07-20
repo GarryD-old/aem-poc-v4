@@ -45,14 +45,14 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
 
 .installation-card-icon {
   grid-row: 1 / span 10;
-  width: 32px;
-  height: 32px;
+  width: 56px;
+  height: 56px;
   flex-shrink: 0;
 }
 
 .installation-card-icon img {
-  width: 32px;
-  height: 32px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
 }
 
