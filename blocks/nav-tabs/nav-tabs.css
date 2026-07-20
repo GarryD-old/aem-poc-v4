@@ -7,6 +7,16 @@
   box-sizing: border-box;
 }
 
+/* Mobile (< 900px): installation-files template wants 64px between the hero's
+   "Learn more" and the tabs box. Gap = hero padding-bottom (48) + products
+   padding-top (56) + nav margin-top, so 104 - 40 = 64. Scoped to the template's
+   section so other nav-tabs usages keep the default -36px offset. */
+@media (width < 900px) {
+  main > .section.installation-card-container > .nav-tabs-wrapper {
+    margin-top: -40px !important;
+  }
+}
+
 /* Desktop: 1360px content region (120px side margins on a 1600px page), the
    same region the header nav and legal ToC/content align to. */
 @media (width >= 900px) {
@@ -15,18 +25,15 @@
     padding: 0;
   }
 
-  /* Installation-files template: the tabs box is a centered half-width card
-     that floats CENTERED on the hero/products boundary. The products section
-     has 56px top padding, so the wrapper's natural top is 56px below the
-     boundary; pulling it up ~95px lifts its centre onto the boundary (≈39px
-     above it) while still clearing the hero's "Learn more" (which sits 56px
-     above the boundary) — so the overlap never covers hero content. Scoped to
-     sections that also carry installation cards; other nav-tabs usages keep
-     the full 1360px region and default offset. The hero is a separate section
-     and is unaffected by this. */
+  /* Installation-files template: centered half-width tabs card sitting 88px
+     below the hero's "Learn more" (Figma desktop spec). Gap = hero padding-
+     bottom (56) + products padding-top (56) + nav margin-top, so 112 - 24 = 88.
+     Scoped to sections that also carry installation cards; other nav-tabs usages
+     keep the full 1360px region and default offset. The hero is a separate
+     section and is unaffected by this. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
     max-width: 50%;
-    margin-top: -95px !important;
+    margin-top: -24px !important;
     margin-bottom: 56px !important;
   }
 }
