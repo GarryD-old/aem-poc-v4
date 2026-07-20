@@ -29,8 +29,9 @@ main > .section > .installation-files-wrapper {
 }
 
 /* Featured download row (label + green button) — 32px vertical padding to match
-   the Figma removal-tool / online-installer rows (node 4249:30100). */
-.installation-files-featured {
+   the Figma removal-tool / online-installer rows (node 4249:30100). Selector
+   out-specifies `.installation-files.block > div { padding: 0 }`. */
+.installation-files.block > .installation-files-featured {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -75,8 +76,8 @@ a.button.installation-files-download-btn:hover {
   background-color: #006d34;
 }
 
-/* Standard file row */
-.installation-files-file {
+/* Standard file row. Selector out-specifies the block > div padding reset. */
+.installation-files.block > .installation-files-file {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -119,8 +120,9 @@ a.button.installation-files-download-btn:hover {
 }
 
 /* Alert / update note — Figma Alert (4121:22032): light-blue panel with border
-   + subtle shadow, 16px/24px padding, 56px min height, centered text. */
-.installation-files-alert {
+   + subtle shadow, 16px/24px padding, 56px min height, centered text. Selector
+   out-specifies `.installation-files.block > div { padding: 0 }`. */
+.installation-files.block > .installation-files-alert {
   display: flex;
   align-items: center;
   justify-content: center;
