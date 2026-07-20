@@ -1,0 +1,54 @@
+name: Sync localized nav & footer (AEM → DA.live)
+
+# Authors localize nav/footer in AEM (MSM translation flow); this workflow reads
+# the localized markup from AEM and publishes it into DA.live, which is the EDS
+# runtime content source. Trigger manually, on a schedule, or via repository_dispatch
+# fired by an AEM rollout webhook.
+
+on:
+  workflow_dispatch:
+    inputs:
+      locales:
+        description: 'Comma list of <country>/<lang> (blank = all from manifest)'
+        required: false
+        default: ''
+      fragments:
+        description: 'Comma list of fragments'
+        required: false
+        default: 'nav,footer'
+      publish:
+        description: 'Also publish to live (true/false)'
+        required: false
+        default: 'false'
+  schedule:
+    # Every 6 hours; adjust or remove once an AEM rollout webhook drives it.
+    - cron: '0 */6 * * *'
+  repository_dispatch:
+    types: [aem-rollout]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Sync nav & footer
+        env:
+          AEM_AUTHOR_URL: ${{ secrets.AEM_AUTHOR_URL }}
+          AEM_TOKEN: ${{ secrets.AEM_TOKEN }}
+          DA_TOKEN: ${{ secrets.DA_TOKEN }}
+          DA_ORG: garryd-old
+          DA_REPO: aem-poc-v4
+          EDS_BRANCH: main
+          AEM_SITE_ROOT: /content/avg-eds-garry
+          # Inputs (workflow_dispatch) fall back to defaults for schedule/dispatch runs.
+          LOCALES: ${{ github.event.inputs.locales }}
+          FRAGMENTS: ${{ github.event.inputs.fragments || 'nav,footer' }}
+          PUBLISH: ${{ github.event.inputs.publish || 'false' }}
+        run: node tools/sync/aem-nav-footer-to-da.mjs
