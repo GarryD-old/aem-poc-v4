@@ -118,11 +118,15 @@ export default async function decorate(block) {
     if (!heading) return;
 
     const headingP = heading.closest('p') || heading.parentElement;
+    // Paragraphs may sit inside a `.default-content-wrapper`; operate on that
+    // actual container so we don't move the whole wrapper (and the heading)
+    // into the collapsible group.
+    const contentHost = headingP.parentElement;
 
     // Collect every link paragraph after the heading into a collapsible group.
     const links = document.createElement('div');
     links.className = 'footer-column-links';
-    [...col.children].forEach((child) => {
+    [...contentHost.children].forEach((child) => {
       if (child !== headingP) links.append(child);
     });
 
@@ -133,7 +137,7 @@ export default async function decorate(block) {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.append(...headingP.childNodes);
     headingP.replaceWith(toggle);
-    col.append(links);
+    contentHost.append(links);
 
     toggle.addEventListener('click', () => {
       const open = col.classList.toggle('open');
