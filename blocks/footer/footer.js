@@ -109,6 +109,38 @@ export default async function decorate(block) {
     brandSection.prepend(logo);
   }
 
+  // Link columns (every top-row div except the brand) become accordions on
+  // mobile: the heading is a toggle button and the links collapse below it.
+  const columns = [...topRow.children].filter((col) => col !== brandSection);
+  columns.forEach((col) => {
+    col.classList.add('footer-column');
+    const heading = col.querySelector('strong');
+    if (!heading) return;
+
+    const headingP = heading.closest('p') || heading.parentElement;
+
+    // Collect every link paragraph after the heading into a collapsible group.
+    const links = document.createElement('div');
+    links.className = 'footer-column-links';
+    [...col.children].forEach((child) => {
+      if (child !== headingP) links.append(child);
+    });
+
+    // Toggle button carries the heading text + a chevron (CSS-drawn).
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'footer-column-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.append(...headingP.childNodes);
+    headingP.replaceWith(toggle);
+    col.append(links);
+
+    toggle.addEventListener('click', () => {
+      const open = col.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  });
+
   block.append(topRow);
   block.append(bottomRow);
 

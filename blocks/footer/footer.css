@@ -89,6 +89,38 @@ footer .footer strong {
   opacity: 1;
 }
 
+/* Column toggle: a plain heading on desktop (chevron hidden, links always
+   shown). On mobile it becomes a full-width accordion header (see media query).
+   Reset native button styling so it reads as the column heading. */
+footer .footer .footer-column-toggle {
+  display: block;
+  width: 100%;
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: default;
+}
+
+footer .footer .footer-column-toggle strong {
+  margin: 0;
+}
+
+/* Chevron indicator — only visible on mobile. */
+footer .footer .footer-column-toggle::after {
+  content: '';
+  display: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
 /* Bottom row */
 footer .footer-bottom {
   border-top: 1px solid rgb(255 255 255 / 15%);
@@ -127,15 +159,55 @@ footer .footer-bottom a {
   }
 
   footer .footer-top {
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
   footer .footer-top > div {
-    flex: 1 1 45%;
+    flex: 1 1 100%;
   }
 
-  footer .footer-top > div:first-child {
-    flex: 1 1 100%;
+  /* Each link column becomes a collapsible accordion row with a divider. */
+  footer .footer .footer-column {
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+  }
+
+  footer .footer .footer-column:first-of-type {
+    border-top: 1px solid rgb(255 255 255 / 15%);
+  }
+
+  footer .footer .footer-column-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0;
+    padding: 20px 0;
+    cursor: pointer;
+  }
+
+  /* Point the chevron down when collapsed (rotate the corner glyph). */
+  footer .footer .footer-column-toggle::after {
+    display: block;
+    flex-shrink: 0;
+    transform: rotate(45deg);
+    margin-top: -4px;
+  }
+
+  footer .footer .footer-column.open .footer-column-toggle::after {
+    /* Point up when open. */
+    transform: rotate(-135deg);
+    margin-top: 2px;
+  }
+
+  /* Collapsed by default; expands when the column is open. */
+  footer .footer .footer-column-links {
+    display: none;
+    padding-bottom: 16px;
+  }
+
+  footer .footer .footer-column.open .footer-column-links {
+    display: block;
   }
 }
