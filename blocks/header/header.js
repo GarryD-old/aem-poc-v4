@@ -52,6 +52,33 @@ function detectCountryCode() {
   return COUNTRY_NAMES[code] ? code : 'us';
 }
 
+/**
+ * Resolve a locale-specific fragment path, matching the EDS language-site tree
+ * (content/avg-eds-garry/<country>/<lang>/...). A URL locale token
+ * `<lang>-<country>` (e.g. /fr-fr/) maps to the site node `<country>/<lang>`
+ * (fr/fr); a bare `<country>/<lang>` pair already in the path is used as-is.
+ * Returns the localized `/global/<country>/<lang>/<name>` path, or null when no
+ * locale can be derived (caller falls back to the global English fragment).
+ * @param {string} name Fragment name, e.g. 'nav' or 'footer'
+ * @returns {string|null}
+ */
+function getLocalizedFragmentPath(name) {
+  const { pathname } = window.location;
+  // <lang>-<country> locale token anywhere in the path (e.g. /fr-fr/, /en-us/).
+  const token = pathname.match(/\/([a-z]{2})-([a-z]{2})(?:\/|$)/i);
+  if (token) {
+    const [, lang, country] = token;
+    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+  }
+  // Bare <country>/<lang> pair as the first two path segments (e.g. /fr/fr/...).
+  const bare = pathname.match(/^\/([a-z]{2})\/([a-z]{2})(?:\/|$)/i);
+  if (bare) {
+    const [, country, lang] = bare;
+    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+  }
+  return null;
+}
+
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -221,10 +248,12 @@ async function buildBreadcrumbs() {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // load nav as fragment
-  // FORCE proxy tunnel, ignore metadata
-  const navPath = '/global/nav';
-  const fragment = await loadFragment(navPath);
+  // Load nav as a fragment from the proxied AEM tree. Prefer the locale-specific
+  // nav (e.g. /global/fr/fr/nav) so French pages get French links; fall back to
+  // the global English nav when the locale has no authored nav yet.
+  const localizedNavPath = getLocalizedFragmentPath('nav');
+  const fragment = (localizedNavPath && await loadFragment(localizedNavPath))
+    || await loadFragment('/global/nav');
 
   // decorate nav DOM
   block.textContent = '';

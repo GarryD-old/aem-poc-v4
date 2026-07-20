@@ -38,14 +38,40 @@ const FOOTER_COUNTRY_NAMES = {
 };
 
 /**
+ * Resolve a locale-specific fragment path, matching the EDS language-site tree
+ * (content/avg-eds-garry/<country>/<lang>/...). A URL locale token
+ * `<lang>-<country>` (e.g. /fr-fr/) maps to `<country>/<lang>` (fr/fr); a bare
+ * `<country>/<lang>` pair already in the path is used as-is. Returns the
+ * localized `/global/<country>/<lang>/<name>` path, or null when no locale is
+ * present (caller falls back to the global English fragment).
+ * @param {string} name Fragment name, e.g. 'footer'
+ * @returns {string|null}
+ */
+function getLocalizedFragmentPath(name) {
+  const { pathname } = window.location;
+  const token = pathname.match(/\/([a-z]{2})-([a-z]{2})(?:\/|$)/i);
+  if (token) {
+    const [, lang, country] = token;
+    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+  }
+  const bare = pathname.match(/^\/([a-z]{2})\/([a-z]{2})(?:\/|$)/i);
+  if (bare) {
+    const [, country, lang] = bare;
+    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+  }
+  return null;
+}
+
+/**
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // FORCE proxy tunnel, ignore metadata
-  const footerPath = '/global/footer';
-
-  const fragment = await loadFragment(footerPath);
+  // Prefer the locale-specific footer (e.g. /global/fr/fr/footer); fall back to
+  // the global English footer when the locale has no authored footer yet.
+  const localizedFooterPath = getLocalizedFragmentPath('footer');
+  const fragment = (localizedFooterPath && await loadFragment(localizedFooterPath))
+    || await loadFragment('/global/footer');
 
   block.textContent = '';
 
