@@ -163,9 +163,16 @@ footer .footer-bottom a {
     gap: 0;
   }
 
+  /* Column direction: flex-basis maps to HEIGHT, so the desktop `flex: 1`
+     basis would collapse every row to a share of the container height. Force
+     natural height instead. */
   /* stylelint-disable-next-line no-descending-specificity */
   footer .footer-top > div {
-    flex: 1 1 100%;
+    flex: 0 0 auto;
+  }
+
+  footer .footer-top > div:first-child {
+    flex: 0 0 auto;
   }
 
   /* Each link column becomes a collapsible accordion row with a divider. */
