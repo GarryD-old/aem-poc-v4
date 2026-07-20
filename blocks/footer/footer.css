@@ -72,6 +72,14 @@ footer .footer-top > div:first-child .default-content-wrapper p {
   margin: 0;
 }
 
+/* Brand-row text (country selector + "Log in to AVG MyAccount"): Figma
+   m.Body 5 — 11px / 16px line-height. */
+footer .footer-top > div:first-child .default-content-wrapper p,
+footer .footer-top > div:first-child .default-content-wrapper a {
+  font-size: 11px;
+  line-height: 16px;
+}
+
 /* Region selector link: flag + country name + chevron */
 footer .footer a.footer-region {
   display: inline-flex;
