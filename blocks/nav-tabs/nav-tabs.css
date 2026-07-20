@@ -39,12 +39,6 @@
     margin-top: -95px !important;
     margin-bottom: 56px !important;
   }
-
-  /* Drop the mobile anti-squish min-width on desktop so the box holds its
-     536px width (each tab = 268px) instead of stretching to 600px+. */
-  main > .section.installation-card-container > .nav-tabs-wrapper .nav-tabs-list {
-    min-width: 0;
-  }
 }
 
 /* 2. The Box Style (White background, shadow, border) */
@@ -67,6 +61,14 @@
   padding: 0;
   width: 100%;
   min-width: 600px; /* Prevents squishing on mobile */
+}
+
+/* Installation template: only two tabs, which fit the box on every viewport.
+   Drop the mobile anti-squish min-width so they don't force a horizontal
+   scroll (which hid "BUSINESS" behind an overflow scrollbar on phones). Each
+   .nav-tab-item is flex:1, so the two tabs split the box evenly. */
+main > .section.installation-card-container > .nav-tabs-wrapper .nav-tabs-list {
+  min-width: 0;
 }
 
 /* 4. Individual List Items */

@@ -44,14 +44,14 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
 
 .installation-card-icon {
   grid-row: 1 / span 10;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
 }
 
 .installation-card-icon img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
@@ -111,16 +111,34 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   text-decoration: none;
 }
 
-/* CTA side */
+/* CTA side. Mobile (base): the download buttons sit side-by-side on one row
+   and share the width equally; "More options" drops onto its own line below.
+   Per Figma, if the two buttons can't fit they wrap under each other. */
 .installation-card-ctas {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 12px;
-  align-items: stretch;
+  align-items: center;
 }
 
 .installation-card-ctas p {
   margin: 0;
+}
+
+/* Each button paragraph shares the row equally (min-width:0 lets them shrink
+   so both fit before wrapping). */
+.installation-card-ctas > p:not(.installation-card-more-wrap) {
+  flex: 1;
+  min-width: 0;
+}
+
+.installation-card-ctas > p:not(.installation-card-more-wrap) .installation-card-btn {
+  width: 100%;
+}
+
+/* "More options" always breaks to its own full-width line under the buttons. */
+.installation-card-more-wrap {
+  flex-basis: 100%;
 }
 
 a.button.installation-card-btn {
@@ -176,7 +194,7 @@ a.button.installation-card-btn-trial:hover {
   font-weight: 700;
   letter-spacing: 0.6px;
   text-decoration: underline;
-  text-align: center;
+  text-align: left;
 }
 
 @media (width >= 900px) {
@@ -195,6 +213,28 @@ a.button.installation-card-btn-trial:hover {
   .installation-card-ctas {
     width: 316px;
     flex-shrink: 0;
+    flex-flow: column nowrap;
     align-items: flex-end;
+    gap: 16px;
+  }
+
+  /* Desktop: buttons stack vertically and hug the right edge (fixed width,
+     not stretched full-column). */
+  .installation-card-ctas > p:not(.installation-card-more-wrap) {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .installation-card-ctas > p:not(.installation-card-more-wrap) .installation-card-btn {
+    width: auto;
+    min-width: 155px;
+  }
+
+  .installation-card-more-wrap {
+    flex-basis: auto;
+  }
+
+  .installation-card-more.installation-card-more {
+    text-align: right;
   }
 }
