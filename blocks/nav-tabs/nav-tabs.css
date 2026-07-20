@@ -34,9 +34,15 @@
      Scoped to the installation section; other nav-tabs usages keep the full
      1360px region and default offset. The hero section is unaffected. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
-    max-width: 50%;
+    max-width: 536px; /* Figma: two 268px tabs = 536px total */
     margin-top: -95px !important;
     margin-bottom: 56px !important;
+  }
+
+  /* Drop the mobile anti-squish min-width on desktop so the box holds its
+     536px width (each tab = 268px) instead of stretching to 600px+. */
+  main > .section.installation-card-container > .nav-tabs-wrapper .nav-tabs-list {
+    min-width: 0;
   }
 }
 
