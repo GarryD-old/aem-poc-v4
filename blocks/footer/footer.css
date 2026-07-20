@@ -60,6 +60,18 @@ footer .footer a:hover {
   opacity: 1;
 }
 
+/* Brand block: region selector + "Log in" sit on one row, vertically aligned. */
+footer .footer-top > div:first-child .default-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+footer .footer-top > div:first-child .default-content-wrapper p {
+  margin: 0;
+}
+
 /* Region selector link: flag + country name + chevron */
 footer .footer a.footer-region {
   display: inline-flex;
@@ -128,6 +140,7 @@ footer .footer-bottom {
   padding-top: 40px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 footer .footer-bottom p:first-child {
   font-size: 14px;
   opacity: 0.9;
@@ -216,5 +229,24 @@ footer .footer-bottom a {
 
   footer .footer .footer-column.open .footer-column-links {
     display: block;
+  }
+
+  /* The last accordion (Partners) drops its own divider so we don't stack two
+     lines; the footer-bottom border becomes the single grey line above "Gen". */
+  footer .footer .footer-column:last-of-type {
+    border-bottom: 0;
+  }
+
+  /* Grey separator line above the "Gen" block, with breathing room. */
+  footer .footer-bottom {
+    margin-top: 0;
+    padding-top: 40px;
+    border-top: 1px solid rgb(255 255 255 / 15%);
+  }
+
+  /* Legal links row: give the wrapped links comfortable ~16px line spacing
+     (Figma) instead of the tight default. */
+  footer .footer-bottom p:last-child {
+    line-height: 2;
   }
 }
