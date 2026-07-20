@@ -33,11 +33,20 @@ main > .section > .installation-files-wrapper {
    out-specifies `.installation-files.block > div { padding: 0 }`. */
 .installation-files.block > .installation-files-featured {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
   padding: 32px 0;
   border-bottom: 1px solid var(--overlay-background-color);
+}
+
+/* Desktop: label and button share one row (button hugs the right). */
+@media (width >= 900px) {
+  .installation-files.block > .installation-files-featured {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .installation-files-featured-label p {

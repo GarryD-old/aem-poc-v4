@@ -96,9 +96,10 @@
   background-color: #f5f7fa;
 }
 
-/* Content reads left-aligned (override the centered section default). */
+/* Mobile: the "Help us improve" media CTA is centered (heading, copy and the
+   Try now button). Desktop switches to the left-aligned split layout below. */
 .columns-bait.light .columns-bait-content {
-  text-align: left;
+  text-align: center;
 }
 
 /* Light variant uses a landscape image (not the portrait antitrack default). */
@@ -174,6 +175,11 @@
   .columns-bait.light > div {
     align-items: center;
     gap: 64px;
+  }
+
+  /* Desktop: content reads left-aligned in the image-left / text-right split. */
+  .columns-bait.light .columns-bait-content {
+    text-align: left;
   }
 
   .columns-bait.light .columns-bait-image {
