@@ -1,5 +1,5 @@
 mountpoints:
   /global:
-    url: "https://author-p149556-e1749225.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry"
+    url: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry"
     type: "markup"
     suffix: ".html"
