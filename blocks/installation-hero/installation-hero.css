@@ -112,8 +112,13 @@
 }
 
 @media (width >= 900px) {
+  /* Bottom padding = 128px places "Learn more" 128px above the hero/products
+     boundary. Combined with the nav's -95px float (products pt 56 - 95 = nav
+     top 39px above the boundary = half its ~79px height inside the hero), this
+     yields a nav that floats 50% on the hero while keeping the Figma 88px gap
+     between "Learn more" and the tabs (128 - 39 ≈ 88). Hero band ≈ 540px tall. */
   .installation-hero.block {
-    padding: 64px 24px 56px;
+    padding: 64px 24px 128px;
   }
 
   .installation-hero-heading h1,

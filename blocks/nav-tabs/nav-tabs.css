@@ -25,15 +25,17 @@
     padding: 0;
   }
 
-  /* Installation-files template: centered half-width tabs card sitting 88px
-     below the hero's "Learn more" (Figma desktop spec). Gap = hero padding-
-     bottom (56) + products padding-top (56) + nav margin-top, so 112 - 24 = 88.
-     Scoped to sections that also carry installation cards; other nav-tabs usages
-     keep the full 1360px region and default offset. The hero is a separate
-     section and is unaffected by this. */
+  /* Installation-files template: centered half-width tabs card that FLOATS 50%
+     on the hero (its centre sits on the hero/products boundary) while keeping
+     the Figma 88px gap below the hero's "Learn more". Products padding-top is
+     56px, so -95px lifts the wrapper's top to 39px above the boundary — roughly
+     half the ~79px tabs box inside the hero. Paired with the hero's 128px
+     bottom padding (Learn more 128px above boundary) the gap is 128-39 ≈ 88.
+     Scoped to the installation section; other nav-tabs usages keep the full
+     1360px region and default offset. The hero section is unaffected. */
   main > .section.installation-card-container > .nav-tabs-wrapper {
     max-width: 50%;
-    margin-top: -24px !important;
+    margin-top: -95px !important;
     margin-bottom: 56px !important;
   }
 }

@@ -19,10 +19,11 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   margin-top: 56px;
 }
 
+/* Cards are separated by a single grey divider line (not a boxed border):
+   border-bottom 1px #E4E8F0 per Figma. */
 .installation-card.block {
   padding: 0;
-  border: 1px solid var(--overlay-background-color);
-  border-radius: 6px;
+  border-bottom: 1px solid var(--overlay-background-color);
   background-color: var(--background-color);
 }
 
