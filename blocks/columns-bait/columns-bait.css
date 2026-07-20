@@ -96,6 +96,12 @@
   background-color: #f5f7fa;
 }
 
+/* Mobile: 64px breathing room above/below the media CTA band (Figma). Desktop
+   overrides this with its own padding in the media query below. */
+.columns-bait-container:has(.columns-bait.light) > .columns-bait-wrapper {
+  padding: 64px 24px;
+}
+
 /* Mobile: the "Help us improve" media CTA is centered (heading, copy and the
    Try now button). Desktop switches to the left-aligned split layout below. */
 .columns-bait.light .columns-bait-content {
