@@ -7,13 +7,14 @@
   box-sizing: border-box;
 }
 
-/* Mobile (< 900px): installation-files template wants 64px between the hero's
-   "Learn more" and the tabs box. Gap = hero padding-bottom (48) + products
-   padding-top (56) + nav margin-top, so 104 - 40 = 64. Scoped to the template's
-   section so other nav-tabs usages keep the default -36px offset. */
+/* Mobile (< 900px): the tabs box floats 50% on the hero (its centre on the
+   hero/products boundary), same as desktop. Products padding-top is 56px and
+   the tabs box is ~79px tall, so -95px lifts its top ~39px above the boundary
+   (≈ half the box inside the hero). Scoped to the template's section so other
+   nav-tabs usages keep the default -36px offset. */
 @media (width < 900px) {
   main > .section.installation-card-container > .nav-tabs-wrapper {
-    margin-top: -40px !important;
+    margin-top: -95px !important;
   }
 }
 
