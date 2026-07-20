@@ -80,7 +80,9 @@ a.button.promo-box-btn::after {
 }
 
 a.button.promo-box-btn:hover {
-  background-color: #f2f8ff;
+  background-color: #fff;
+  border-color: #006d34;
+  color: #006d34;
 }
 
 @media (width >= 900px) {

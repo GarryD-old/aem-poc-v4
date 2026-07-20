@@ -27,7 +27,12 @@ export default function parse(element, { document }) {
   // CTA: the download / action link.
   const cta = element.querySelector('a') || null;
 
-  if (!nameP && !bodyP && !cta) {
+  // Optional product icon (AVG Clear gear). An <img>/<picture> not inside a link.
+  const iconEl = [...element.querySelectorAll('img, picture')]
+    .map((el) => el.closest('picture') || el)
+    .find((el) => !el.closest('a')) || null;
+
+  if (!nameP && !bodyP && !cta && !iconEl) {
     element.replaceWith(...element.childNodes);
     return;
   }
@@ -39,10 +44,14 @@ export default function parse(element, { document }) {
     return frag;
   };
 
+  // Simple block: each model field is its own single-cell ROW —
+  // icon (reference) / productName (text) / text (richtext) / cta (richtext).
+  // The block JS re-joins the icon and name onto one line at render time.
   const cells = [];
 
+  if (iconEl) cells.push([withHint('icon', iconEl)]);
+
   if (nameP) {
-    // productName is a plain-text field — pass the text, not markup.
     const span = document.createElement('span');
     span.textContent = nameP.textContent.trim();
     cells.push([withHint('productName', span)]);

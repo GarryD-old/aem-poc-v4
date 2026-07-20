@@ -104,8 +104,11 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   text-decoration: underline;
 }
 
+/* Arrow is inline-block so the text underline does not run beneath it. */
 .installation-card-learn-more::after {
   content: '\2192';
+  display: inline-block;
+  text-decoration: none;
 }
 
 /* CTA side */
@@ -149,6 +152,11 @@ a.button.installation-card-btn-primary:hover {
   background-color: #006d34;
 }
 
+/* Green-outline CTA: white background, green border + text (Figma "Trial
+   version"). Authored by making the CTA link text contain "trial" (case-
+   insensitive) — installation-card.js tags it installation-card-btn-trial;
+   any other CTA link becomes the solid-green primary (installation-card-btn-
+   primary). Stays white on hover; only the fill deepens the green. */
 a.button.installation-card-btn-trial {
   background-color: #fff;
   border: 1px solid #008941;
@@ -156,7 +164,9 @@ a.button.installation-card-btn-trial {
 }
 
 a.button.installation-card-btn-trial:hover {
-  background-color: #f2f8ff;
+  background-color: #fff;
+  border-color: #006d34;
+  color: #006d34;
 }
 
 .installation-card-more.installation-card-more {

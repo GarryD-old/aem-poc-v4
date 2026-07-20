@@ -107,8 +107,11 @@
   border-radius: 0;
 }
 
+/* Arrow is inline-block so the text underline does not run beneath it. */
 .installation-hero-learn-more::after {
   content: '\2192';
+  display: inline-block;
+  text-decoration: none;
 }
 
 @media (width >= 900px) {
