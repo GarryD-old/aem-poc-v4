@@ -35,7 +35,10 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
   text-align: left; /* Card content is left-aligned (block/section may center) */
 }
 
-/* Info side: icon + text */
+/* Info side: icon in column 1 spanning the text rows, text in column 2. The
+   icon spans to the LAST row line (1 / -1), not a fixed `span 10`, so the grid
+   creates exactly as many rows as there are text items — the old span-10 left
+   ~7 empty rows whose row-gaps inflated the space below "Learn more". */
 .installation-card-info {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -44,7 +47,8 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
 }
 
 .installation-card-icon {
-  grid-row: 1 / span 10;
+  grid-row: 1 / -1;
+  grid-column: 1;
   width: 56px;
   height: 56px;
   flex-shrink: 0;
