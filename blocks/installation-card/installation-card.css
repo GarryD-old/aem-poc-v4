@@ -90,26 +90,27 @@ main > .section > .installation-card-wrapper + :not(.installation-card-wrapper) 
 }
 
 .installation-card-learn-more.installation-card-learn-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  display: inline;
   padding: 0;
   margin: 0;
   border: 0;
   background: none;
   border-radius: 0;
-  color: var(--link-hover-color);
+  color: var(--link-color);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.6px;
   text-decoration: underline;
 }
 
-/* Arrow is inline-block so the text underline does not run beneath it. */
+/* Arrow is a separate inline-block glyph with its own left margin (not a flex
+   gap) so the text's underline never extends beneath the arrow. */
 .installation-card-learn-more::after {
   content: '\2192';
   display: inline-block;
+  margin-left: 8px;
   text-decoration: none;
+  vertical-align: middle;
 }
 
 /* CTA side. Mobile (base): the download buttons sit side-by-side on one row at
@@ -194,9 +195,13 @@ a.button.installation-card-btn-trial:hover {
 }
 
 @media (width >= 900px) {
+  /* Top-align both columns so the row height is driven by whichever column is
+     taller (info's "Learn more" or the CTAs' "More options"). Combined with the
+     32px block padding, the lowest column's last element sits exactly 32px from
+     the card's top and bottom edges — the Figma measurement. */
   .installation-card-row {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
     padding: 32px 8px;

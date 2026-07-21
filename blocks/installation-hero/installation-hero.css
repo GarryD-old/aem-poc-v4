@@ -98,10 +98,8 @@
 }
 
 .installation-hero-learn-more.installation-hero-learn-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--link-hover-color);
+  display: inline;
+  color: var(--link-color);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -113,11 +111,14 @@
   border-radius: 0;
 }
 
-/* Arrow is inline-block so the text underline does not run beneath it. */
+/* Arrow is a separate inline-block glyph with its own left margin (not a flex
+   gap) so the text's underline never extends beneath the arrow. */
 .installation-hero-learn-more::after {
   content: '\2192';
   display: inline-block;
+  margin-left: 8px;
   text-decoration: none;
+  vertical-align: middle;
 }
 
 @media (width >= 900px) {
