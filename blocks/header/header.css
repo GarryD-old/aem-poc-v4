@@ -524,6 +524,15 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     margin: 0;
   }
 
+  /* Resize guard: while the viewport is actively resizing across the breakpoint,
+     header.js adds .nav-resizing to <nav>, which kills every nav transition so
+     the panel/submenus don't animate (the "flicker") as layout switches between
+     desktop and mobile. A single broad rule on all descendants avoids animating
+     transform/opacity mid-resize; removed shortly after resize settles. */
+  header nav.nav-resizing * {
+    transition: none !important;
+  }
+
   header nav[aria-expanded='true'] .nav-mobile-menu {
     transform: translateX(0);
   }

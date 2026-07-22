@@ -457,6 +457,16 @@ export default async function decorate(block) {
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
 
+  // Resize-flicker guard: suppress nav transitions while the window is actively
+  // resizing so the slide-in panel/submenus don't animate as the layout flips
+  // between desktop and mobile. Re-enable transitions once resize settles.
+  let resizeSettleTimer;
+  window.addEventListener('resize', () => {
+    nav.classList.add('nav-resizing');
+    clearTimeout(resizeSettleTimer);
+    resizeSettleTimer = setTimeout(() => nav.classList.remove('nav-resizing'), 200);
+  });
+
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
