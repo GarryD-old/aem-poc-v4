@@ -35,7 +35,11 @@ const FOOTER_COUNTRY_NAMES = {
   tw: '臺灣',
   jp: '日本',
   kr: '대한민국',
+  ww: 'Worldwide',
 };
+
+// Country codes with no national flag — use the globe icon instead of {code}.svg.
+const FLAG_OVERRIDE = { ww: 'globe' };
 
 /**
  * Resolve a locale-specific fragment path, matching the EDS language-site tree
@@ -156,8 +160,9 @@ export default async function decorate(block) {
     const bare = pathname.match(/^\/([a-z]{2})(?:\/|$)/i);
     const code = (locale?.[1] || bare?.[1] || '').toLowerCase();
     const countryCode = FOOTER_COUNTRY_NAMES[code] ? code : 'us';
+    const flagFile = FLAG_OVERRIDE[countryCode] || countryCode;
     regionLink.classList.add('footer-region');
-    regionLink.innerHTML = `<img src="/icons/flags/${countryCode}.svg" alt="" width="24" height="24">
+    regionLink.innerHTML = `<img src="/icons/flags/${flagFile}.svg" alt="" width="24" height="24">
       <span>${FOOTER_COUNTRY_NAMES[countryCode]}</span>
       <svg class="footer-region-chevron" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>`;
     regionLink.addEventListener('click', (e) => {

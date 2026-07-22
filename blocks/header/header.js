@@ -40,7 +40,11 @@ const COUNTRY_NAMES = {
   tw: '臺灣',
   jp: '日本',
   kr: '대한민국',
+  ww: 'Worldwide',
 };
+
+// Country codes with no national flag — use the globe icon instead of {code}.svg.
+const FLAG_OVERRIDE = { ww: 'globe' };
 
 // Derive the current country from the URL. Matches a locale segment (/en-us/ -> us)
 // or a bare country segment (/us/ -> us). Falls back to United States.
@@ -317,8 +321,9 @@ export default async function decorate(block) {
     const regionLink = navTools.querySelector('a[href*="region"]');
     if (regionLink) {
       const countryCode = detectCountryCode();
+      const flagFile = FLAG_OVERRIDE[countryCode] || countryCode;
       regionLink.classList.add('nav-region');
-      regionLink.innerHTML = `<img src="/icons/flags/${countryCode}.svg" alt="" width="24" height="24">
+      regionLink.innerHTML = `<img src="/icons/flags/${flagFile}.svg" alt="" width="24" height="24">
         <span>${COUNTRY_NAMES[countryCode]}</span>
         <svg class="nav-region-chevron" width="12" height="8" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>`;
       regionLink.addEventListener('click', (e) => {
