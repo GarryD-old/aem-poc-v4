@@ -506,21 +506,28 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     order: 1;
   }
 
-  /* Dropdown panel attached directly under the header bar (Avast-style): full
-     width, flush with the bar. No top border — the bar and panel form one
-     seamless white sheet (see the open-state rule below that carries a single
-     shadow around the combined surface). Fades/drops in on open. */
+  /* Dropdown card below the header bar (Figma Submenu Mobile 6562:204611):
+     bordered white card, radius 6px 0 6px 6px (square top-right, where the X
+     tab meets it), inset from the screen edges so the rounded bottom edge is
+     always visible. max-height (not height) lets short menus size to content;
+     taller menus scroll INSIDE the card, leaving the page behind locked. Drops
+     and fades in on open rather than sliding from the left. */
   header nav .nav-mobile-menu {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    max-height: calc(100dvh - 64px);
+    top: 72px;
+    left: 12px;
+    right: 12px;
+    max-height: calc(100dvh - 96px);
     background: #fff;
+    border: 1px solid #ced4e0;
+    border-radius: 6px 0 6px 6px;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     overflow-y: auto;
+
+    /* Keep scrolling inside the card — don't chain to the page behind it. */
+    overscroll-behavior: contain;
     z-index: 998;
     opacity: 0;
     visibility: hidden;
@@ -528,14 +535,6 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     padding: 0 0 12px;
     margin: 0;
-  }
-
-  /* Open state: the bar turns white (no divider) so it and the panel below read
-     as one continuous sheet. The panel's downward shadow (offset +8) gives the
-     combined surface its depth; the shadow between bar and panel is covered by
-     the opaque white panel, so no seam shows. */
-  header nav[aria-expanded='true'] {
-    background: #fff;
   }
 
   /* Resize guard: while the viewport is actively resizing across the breakpoint,
@@ -631,6 +630,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     box-shadow: none;
     background: #fff;
     overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateX(100%);
     transition: transform 0.25s ease;
     z-index: 999;
