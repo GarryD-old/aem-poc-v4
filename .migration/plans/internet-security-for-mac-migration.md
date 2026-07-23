@@ -1,101 +1,114 @@
-# Internet Security for Mac — New Page Migration Plan
+# PIM Pricing Architecture for EDS — Plan
 
-## Overview
-Create a new EDS page `internet-security-for-mac` that mirrors the Figma design (node `2340-50899`) and pulls content/links from the live AVG Mac product page. The page reuses the existing nav and footer, reuses most existing blocks from the antitrack page, and introduces **three new block variants**: a 3-card pricing block, an alternating feature-columns block, and a 2-column comparison table. Built as an xwalk content file at `content/internet-security-for-mac.plain.html`, pushed to GitHub, and intended to live under `/content/avg-eds-garry/language-masters/en` in AEM author.
+## Goal
+Replicate the AEM PIM pricing component (per-SKU pricing record + dynamically built buylink) in Edge Delivery Services. Pricing is **sensitive**: prices, campaign codes, and signed checkout links must be governed, locale-scoped, and never hardcoded in page content. Blocks reference a SKU; pricing data and the live signed buylink are resolved at render time.
 
-## Key Decisions (confirmed)
-- **Pricing cards**: Create a **new block** `cards-pricing-trio` based on the existing `cards-pricing` block, supporting 3 cards (1 Mac, 10 devices, free-trial card). Keep the original `cards-pricing` block untouched for the antitrack page.
-- **Feature sections**: New block variant `columns-feature` for the alternating dark-card image+text sections.
-- **Comparison table**: New block variant `table-compare2` for the 2-column Free-vs-Paid format with embedded buttons + inline pricing.
-- **Prices**: Leave placeholders; user will supply exact Mac pricing values.
-- **Nav/Footer**: Unchanged — reused as-is (shared fragments).
+## Confirmed Decisions
+- **Buylink**: fetched live from the Avast/AVG checkout/cart service at runtime (the `t` timestamp + `h` signed hash are generated server-side and expire, so they cannot be stored).
+- **Data store**: AEM **Content Fragments** — one CF per SKU, mirroring the current PIM component fields. EDS reads the published JSON.
+- **Tree location**: under `language-masters` — pricing is locale/currency scoped (`/content/avg-eds-garry/language-masters/en/pricing/...`).
+- **Scope**: design the model **and** build a working POC.
 
-## New Pricing Block: `cards-pricing-trio`
-Copy `blocks/cards-pricing/` (JS, CSS, `_cards-pricing.json`, `metadata.json`) as the base, renamed to `cards-pricing-trio`, then adapt:
-- **3-card grid** instead of 2 (CSS `grid-template-columns: repeat(3, 1fr)` at desktop).
-- **Card 1 (1 Mac)** & **Card 2 (10 devices)**: price, "It works out as €X/month", Buy now button, Subscription details — same structure as existing.
-- **Card 3 (free trial)**: "Give it a try" heading, "Start free trial" button, "(Pay €0 at checkout)" subtext — no price line.
-- Reuse existing JS patterns: platform dropdown on first card, subscription-details modal, money-back guarantee injection, AVG product heading injection (icon + title + subtitle).
-- Update `_cards-pricing-trio.json` model `id`/`name`/`filter` to `cards-pricing-trio` so AEM treats it as a distinct component (avoids model-mapping conflicts).
-- Free-trial card gets a CSS modifier (e.g. `.cards-pricing-trio-trial`) for distinct styling.
+## How the current AEM PIM component maps to fields
+From the screenshot, each pricing record (SKU `APW-00-001-12`) has:
 
-## Page Section Breakdown (top → bottom)
-1. **Hero** — bg image, icon + "AVG Internet Security for Mac" heading, subheading, 3 pricing cards overlaid (reuse `hero` + new `cards-pricing-trio`).
-2. **Shop and bank online with confidence** — text left, dark feature cards right (Payments, Website Shield) → `columns-feature`.
-3. **Protect your important files from hackers** — dark cards left (Ransomware, Hacker Attacks), text right → `columns-feature` reversed.
-4. **Secure your Wi-Fi network** — text left, dark cards right (Anti-phishing, Files & Email) → `columns-feature`.
-5. **"With AVG Internet Security for Mac you also get"** — 3 icon features (Real-time protection, Email shield, Fast performance) → reuse `cards-features` + laptop UI image below.
-6. **"Get advanced Mac protection from AVG"** — 2-column comparison table (Free Antivirus vs Internet Security) with inline pricing card + buttons → new `table-compare2`.
-7. **"You may still be wondering…"** — tabs (FAQs / How to install / System requirements) → reuse `tabs`.
-8. **"Get expert advice…"** — article cards → reuse `cards` (article links + images).
-9. **Bottom CTA** — dark section repeating icon + heading + 3 pricing cards → reuse `cards-pricing-trio` (dark variant).
+| PIM field | CF field name | Notes |
+|-----------|--------------|-------|
+| SKU / id (APW-00-001-12) | `sku` | unique key; also the lookup key |
+| Seats | `seats` | 1 |
+| Maintenance | `maintenance` | 12 (months) |
+| Entitlement Title | `entitlementTitle` | "1 Windows PC" |
+| Secondary Entitlement Title | `entitlementSubtitle` | "1 year" |
+| Campaign Code | `campaignCode` | "WDS" |
+| Discount Value | `discountValue` | optional |
+| Monthly Strikethrough / Sale Price | `monthlyFullPrice`, `monthlySalePrice` | 4.58 / 4.58 |
+| Strikethrough / Sale Price (yearly) | `yearlyFullPrice`, `yearlySalePrice` | 54.99 / 54.99 |
+| Future Strikethrough / Sale Price | `futureFullPrice`, `futureSalePrice` | 54.99 / 54.99 |
+| Price Format | `priceFormat` | "/year" |
+| Secondary Price Format | `secondaryPriceFormat` | "/month" |
+| Buylink | `buylinkBase` | base checkout URL + `product` SKU param; **t/h NOT stored** |
+| Entitlement Note | `entitlementNote` | optional |
+| Currency (implied) | `currency` | e.g. EUR/USD — needed for locale scope |
 
-## Content Source Mapping
-- **Text**: Hero, feature headings/descriptions, FAQ, system requirements from live site fetch (verbatim where available).
-- **Links**: Buy-now/checkout URLs and article links scraped from live `avg.com/en-eu/internet-security-for-mac`.
-- **Prices**: Placeholders pending user input.
+## Proposed Architecture
 
-## New Assets Required (naming convention for upload to `/content/dam/avg-eds-garry/`)
-All paths use the publish URL prefix `https://publish-p149556-e1749225.adobeaemcloud.com`.
+### 1. Content Fragment Model — "Pricing SKU"
+Create a CF Model in AEM (`/conf/avg-eds-garry/.../models/pricing-sku`) with the fields above. Each product/SKU = one Content Fragment instance.
 
-| Asset | Proposed DAM path |
-|-------|-------------------|
-| Hero background | `avg/hero/bg-is-mac-hero.jpg` |
-| IS-Mac product icon | `avg/logo/internet-security-mac.png` |
-| Payments feature card | `avg/features/feat-payments.png` |
-| Website Shield card | `avg/features/feat-website-shield.png` |
-| Ransomware card | `avg/features/feat-ransomware.png` |
-| Hacker Attacks card | `avg/features/feat-hacker-attacks.png` |
-| Anti-phishing card | `avg/features/feat-antiphishing.png` |
-| Files & Email card | `avg/features/feat-files-email.png` |
-| Real-time protection icon | `avg/icons/icon-realtime.png` |
-| Email shield icon | `avg/icons/icon-email-shield.png` |
-| Fast performance icon | `avg/icons/icon-fast-performance.png` |
-| Laptop UI screenshot | `avg/hero/ui-is-mac-laptop.png` |
-| Free Antivirus column icon | `avg/icons/icon-free-antivirus.png` |
-| Internet Security column icon | `avg/icons/icon-internet-security.png` |
-| (Reused) check-oval, win/mac icons, article images | existing paths |
+### 2. Tree / storage layout (locale-scoped)
+```
+/content/avg-eds-garry/language-masters/en/pricing/
+    apw-00-001-12        (CF: 1 Windows PC, 1yr, EUR)
+    anm-00-001-12        (CF: 1 Mac, 1yr)
+    and-00-001-12        (CF: 10 devices, 1yr)
+    ...
+/content/avg-eds-garry/language-masters/de/pricing/   (de prices/currency)
+/content/avg-eds-garry/language-masters/fr/pricing/   (fr prices/currency)
+```
+Each locale folder holds its own price CFs (different currency/amounts). Mirrors the language-masters model already in use.
+
+### 3. EDS data feed
+CFs are exposed to EDS as **published JSON**. Two viable read paths (POC will pick one):
+- **Per-SKU JSON**: fetch `/language-masters/en/pricing/{sku}.json` on demand.
+- **Aggregated index**: a single published `pricing.json` (all SKUs for a locale) that blocks fetch once and cache, then filter by SKU. Lower request count — **recommended for POC**.
+
+### 4. Buylink resolution (live, signed)
+The stored `buylinkBase` is only `https://checkout.avast.com/en-ww/web?product={SKU}&quantity=1&provider=gen&clearCart=1` (no `t`/`h`). At runtime a small **pricing service module** calls the checkout/cart signing endpoint to obtain the signed `t` + `h` and assembles the final href. Needs: the **checkout signing API endpoint + auth contract** (to be supplied). Until that's available, POC falls back to the unsigned base link so the flow is testable.
+
+### 5. How a page/block consumes pricing
+- Page content references a **SKU only** (no prices in content) — e.g. a `cards-pricing` / `cards-pricing-trio` card carries `data-sku="apw-00-001-12"` (authored via a CF reference field, not free text).
+- A shared `scripts/pricing.js` module:
+  1. loads the locale `pricing.json` (cached),
+  2. looks up the SKU record,
+  3. renders price, formats, strikethrough, campaign,
+  4. requests the signed buylink and sets the CTA href.
+- Existing pricing blocks are refactored to call this module instead of holding literal prices.
+
+## POC Build (this iteration)
+1. **Pricing data**: since CF authoring is an AEM-side task, the POC ships a representative `pricing.json` (a few real SKUs: `apw-00-001-12`, `anm-00-001-12`, `and-00-001-12`) at the locale path so the read path is real and the CF JSON shape is locked.
+2. **`scripts/pricing.js`**: fetch + cache + lookup + format + buylink builder (with live-API hook stubbed, unsigned fallback active).
+3. **Refactor `cards-pricing-trio`** (and optionally `cards-pricing`) to render from SKU lookup instead of hardcoded `€XX.XX`.
+4. Wire `internet-security-for-mac` pricing cards to real Mac SKUs.
+
+## Open Items Needed From You (for full production, not blocking POC)
+- **Checkout signing API**: endpoint URL, request/response shape, and auth method for generating `t`/`h`.
+- **Real SKU list + EUR prices** for the Mac page (currently placeholder `€XX.XX`).
+- **CF Model creation** in AEM author (I provide the field spec; you create the model + instances, or confirm I scaffold the JSON shape only).
+
+## Risks / Sensitivity Controls
+- **No prices in page content** — single source of truth in CFs; reduces accidental edits.
+- **Buylink never cached with t/h** — always freshly signed to avoid expired/invalid checkout sessions.
+- **Locale isolation** — wrong-currency leakage prevented by per-locale pricing folders.
+- **Fail-safe rendering** — if pricing JSON or signing API is unavailable, block shows a graceful fallback (e.g. "See pricing") rather than a broken/zero price.
 
 ## Checklist
 
-### Setup
-- [ ] Confirm Mac pricing values from user (1 Mac / 10 devices / free-trial terms)
-- [ ] Confirm final asset list and naming with user; user uploads to DAM
+### Architecture & Model (design)
+- [ ] Finalize CF Model field spec for "Pricing SKU" (table above) and confirm with user
+- [ ] Confirm locale-scoped tree path `/language-masters/{lang}/pricing/{sku}`
+- [ ] Decide read path: aggregated `pricing.json` index (recommended) vs per-SKU JSON
+- [ ] Document buylink signing contract requirements (endpoint, params, auth)
 
-### New Pricing Block (`cards-pricing-trio`)
-- [ ] Copy `blocks/cards-pricing/` → `blocks/cards-pricing-trio/` (JS, CSS, JSON, metadata)
-- [ ] Rename model `id`/`name`/`filter` to `cards-pricing-trio` in `_cards-pricing-trio.json`
-- [ ] Update CSS to 3-column grid; add free-trial card modifier styling
-- [ ] Adapt JS: 3-card support, free-trial card (no price, "Start free trial" CTA), retain dropdown/modal/heading injection
-- [ ] Point heading icon to `internet-security-mac.png`
+### POC Data
+- [ ] Create representative `pricing.json` at `content/language-masters/en/pricing.json` (or equivalent feed) with 3+ real SKUs and full field shape
+- [ ] Lock JSON schema so it matches the future CF JSON output
 
-### Other New Block Variants
-- [ ] Create `blocks/columns-feature/` — JS, CSS, `_columns-feature.json` model (alternating text + dark icon-card grid, supports reversed layout)
-- [ ] Create `blocks/table-compare2/` — JS, CSS, `_table-compare2.json` model (2-column Free-vs-Paid, embedded buttons, inline pricing card, green check / grey dash cells)
-
-### Content File
-- [ ] Create `content/internet-security-for-mac.plain.html` with all 9 sections
-- [ ] Hero section: bg image div + icon/heading/subheading + `cards-pricing-trio` (3 cards)
-- [ ] 3× `columns-feature` sections (alternating layout, dark feature cards)
-- [ ] `cards-features` "you also get" section + laptop UI image
-- [ ] `table-compare2` comparison section
-- [ ] `tabs` section (FAQs / How to install / System requirements) with live-site Q&A
-- [ ] `cards` articles section (reuse antitrack article links/images)
-- [ ] Bottom dark CTA: icon + heading + `cards-pricing-trio`
-- [ ] Apply `section-metadata` styles (dark, light-gray, gradient) per Figma
-
-### Block Code Adjustments
-- [ ] Verify `tabs` block handles 3 tabs (currently 2)
-
-### Asset Paths
-- [ ] All `<img>`/CSS use `https://publish-p149556-e1749225.adobeaemcloud.com/content/dam/avg-eds-garry/...`
-- [ ] No inline `<img>` inside xwalk richtext block content (use image cells, JS injection, or CSS) — per project constraint
+### POC Code
+- [ ] Build `scripts/pricing.js` — load+cache feed, `getPriceBySku()`, price/format rendering helpers, `buildBuylink(sku)` with live-API hook + unsigned fallback
+- [ ] Refactor `cards-pricing-trio` JS to render from SKU lookup (remove hardcoded `€XX.XX`); add `data-sku` support
+- [ ] (Optional) Refactor `cards-pricing` similarly
+- [ ] Wire `internet-security-for-mac` cards to Mac SKUs
 
 ### Validation & Delivery
-- [ ] Lint all new/modified CSS and JS (no `no-descending-specificity` errors)
-- [ ] Verify render on local preview (`localhost:3000/content/internet-security-for-mac`)
-- [ ] Verify AEM content-model validation passes (no "component does not exist" / mapping errors)
-- [ ] Commit and push to GitHub `main`
-- [ ] User creates/moves page in AEM author under `/content/avg-eds-garry/language-masters/en`
+- [ ] Lint JS/CSS (no errors)
+- [ ] Verify on local preview: prices render from feed, buylink builds, fallback works when feed/API missing
+- [ ] Confirm no literal prices remain in page content
+- [ ] Commit & push to GitHub `main`
 
-> Execution requires **Execute mode**. Switch to Execute mode to begin implementing this plan.
+### Production hand-off (post-POC, needs user/AEM)
+- [ ] User creates CF Model + SKU instances in AEM under `/language-masters/{lang}/pricing`
+- [ ] Supply + integrate live checkout signing API (replace unsigned fallback)
+- [ ] Provide real EUR/locale prices; remove placeholders
+- [ ] Add `de`/`fr` pricing folders when those language masters go live
+
+> Execution requires **Execute mode**. Switch to Execute mode to begin the POC build (data feed + `pricing.js` + block refactor). Architecture/model design items can be reviewed now.

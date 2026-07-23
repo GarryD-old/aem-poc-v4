@@ -1,12 +1,16 @@
 {
-  "previewOrg": "GarryD-old",
-  "previewSite": "aem-poc-v4",
   "type": "xwalk",
-  "contentHostUrl": "author-p149556-e1749225.adobeaemcloud.com",
-  "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
-  "aemSitePath": "/content/avg-eds-garry",
-  "aemAssetsFolderPath": "/content/dam/avg-eds-garry",
-  "aemSiteName": "avg-eds-garry",
-  "aemSiteTitle": "AVG-EDS-(Universal Editor)-Garry",
-  "baseUrl": "https://www.avg.com/en-ww/antitrack"
+  "sites": {
+    "aem-poc-v4": {
+      "previewOrg": "GarryD-old",
+      "previewSite": "aem-poc-v4",
+      "contentHostUrl": "author-p149556-e1749225.adobeaemcloud.com",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
+      "aemSitePath": "/content/avg-eds-garry",
+      "aemAssetsFolderPath": "/content/dam/avg-eds-garry",
+      "aemSiteName": "avg-eds-garry",
+      "aemSiteTitle": "AVG-EDS-(Universal Editor)-Garry",
+      "baseUrl": "https://www.avg.com/en-ww/installation-files-business#pc"
+    }
+  }
 }
