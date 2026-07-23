@@ -506,21 +506,28 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     order: 1;
   }
 
-  /* Slide-in panel holding the sections + tools. */
+  /* Inset floating card holding the sections + tools. Matches Figma Submenu
+     Mobile (6562:204611): white card, 1px grey border, 6px radius, 12px bottom
+     padding, sitting inset 12px from the screen edges below the header bar. */
   header nav .nav-mobile-menu {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 64px);
+    top: 76px;
+    left: 12px;
+    right: 12px;
+    max-height: calc(100dvh - 88px);
     background: #fff;
+    border: 1px solid #ced4e0;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     overflow-y: auto;
     z-index: 998;
-    transform: translateX(-100%);
+
+    /* Slide fully off-screen left, including the 12px inset, when closed. */
+    transform: translateX(calc(-100% - 12px));
     transition: transform 0.25s ease;
-    padding: 0;
+    padding: 0 0 12px;
     margin: 0;
   }
 
@@ -630,6 +637,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     border-bottom: 1px solid #e4e8f0;
   }
 
+  /* Back button: ‹ chevron pinned left, section title centered (Figma). */
   /* stylelint-disable-next-line no-descending-specificity */
   .nav-mobile-back button {
     display: flex;
@@ -647,17 +655,42 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     cursor: pointer;
   }
 
-  /* Submenu rows: links get 64px tall touch targets. */
+  .nav-mobile-back button svg {
+    flex-shrink: 0;
+  }
+
+  /* Title span grows and centers; the -24px margin offsets the chevron width so
+     the text is centered relative to the full panel, not the remaining space. */
+  .nav-mobile-back button span {
+    flex: 1;
+    text-align: center;
+    margin-right: 24px;
+  }
+
+  /* Submenu rows: no per-row separators inside a group (Figma groups are split
+     only by the green category dividers). */
   /* stylelint-disable-next-line no-descending-specificity */
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 0;
-    border-bottom: 1px solid #e4e8f0;
+    border-bottom: none;
     white-space: normal;
   }
 
+  /* Category headers: green divider above each group (except the first), bold
+     label, matching the desktop dropdown treatment. */
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category {
+    border-top: 2px solid #008941;
+    padding: 16px 16px 4px;
+    margin-top: 8px;
+  }
+
+  /* First category (real first child, or the one after the hidden back header)
+     has no green divider / top margin. */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li.nav-category:first-child,
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > .nav-mobile-back + li.nav-category {
     border-top: none;
-    padding: 20px 16px 4px;
+    margin-top: 0;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -668,6 +701,19 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     padding: 16px;
     line-height: 22px;
     font-size: 16px;
+  }
+
+  /* Footer link ("All PC products" / "Compare products" / "Store"): grey top
+     divider, centered label. */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child {
+    border-top: 1px solid #ced4e0;
+    padding: 0;
+    margin-top: 8px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child a {
+    justify-content: center;
   }
 
   /* Tools row (login / blog / region) sits below the sections stack. */
