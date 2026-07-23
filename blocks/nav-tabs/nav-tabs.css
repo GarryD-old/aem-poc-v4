@@ -112,8 +112,19 @@ main > .section.installation-card-container > .nav-tabs-wrapper .nav-tabs-list {
   }
 }
 
-/* 6. Active Tab State — follows the current page, set by the block JS. */
+/* 6. Active Tab State — follows the current page, set by the block JS.
+   The green underline rounds the corner it shares with the card's outer edge so
+   it follows the card's 10px radius instead of hitting a square corner (Figma:
+   border-radius 0 0 0 10px on the left tab / 0 0 10px 0 on the right tab). */
 .nav-tab-item.active a {
   color: #0c1524;
-  border-bottom: 3px solid #00a85d;
+  border-bottom: 3px solid #008941;
+}
+
+.nav-tab-item.active:first-child a {
+  border-radius: 0 0 0 10px;
+}
+
+.nav-tab-item.active:last-child a {
+  border-radius: 0 0 10px 0;
 }
