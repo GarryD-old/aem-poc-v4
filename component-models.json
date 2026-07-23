@@ -873,6 +873,32 @@
     ]
   },
   {
+    "id": "promo-cta",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Body text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "cta",
+        "value": "",
+        "label": "CTA button",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {

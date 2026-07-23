@@ -1,0 +1,102 @@
+/* Match the 896px content column used by the installation cards / promo box.
+   Selector must out-specify the global `main > .section > div` max-width rule. */
+main > .section > .promo-cta-wrapper {
+  max-width: 896px;
+  margin: 0 auto 56px;
+}
+
+.promo-cta.block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 48px 24px;
+  border-radius: 10px;
+  background-color: #f7f9fc;
+  text-align: left;
+}
+
+/* Heading row: CSS-drawn icon on the left, title to its right. */
+.promo-cta-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Fixed icon drawn from the git-served /icons/ folder. Absolute site-origin URL
+   (root-relative /icons/*.svg is mangled to about:error by EDS). */
+.promo-cta-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background-image: url('https://main--aem-poc-v4--garryd-old.aem.page/icons/Internet-Security1.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.promo-cta-heading h1,
+.promo-cta-heading h2,
+.promo-cta-heading h3 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 34px;
+}
+
+.promo-cta-body {
+  max-width: 640px;
+}
+
+.promo-cta-body p {
+  margin: 0 0 12px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
+  line-height: 22px;
+}
+
+.promo-cta-cta p,
+.promo-cta-body p:last-child {
+  margin: 0;
+}
+
+.promo-cta-cta {
+  margin-top: 8px;
+}
+
+/* Green CTA button — Figma tokens: radius 10px, --Green #008941, dual shadow. */
+a.button.promo-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  margin: 0;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 10px;
+  background: #008941;
+  box-shadow:
+    0 16px 32px -16px rgb(30 34 42 / 16%),
+    0 8px 32px -12px rgb(0 137 65 / 56%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+}
+
+a.button.promo-cta-btn::after {
+  content: '\2192';
+}
+
+a.button.promo-cta-btn:hover {
+  background: #006d34;
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .promo-cta.block {
+    padding: 56px 64px;
+  }
+}
