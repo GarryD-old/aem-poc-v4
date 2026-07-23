@@ -235,7 +235,12 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
 header nav .nav-sections .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: calc(100% - 1px);
+
+  /* Overlap the tab by 2px (not 1px): the tab bottom lands on a half-pixel, so
+     a 1px overlap left the dropdown's top border showing as a grey seam beneath
+     the tab. 2px guarantees the tab's white body fully covers it, so the tab and
+     panel read as one connected shape. */
+  top: calc(100% - 2px);
   right: -1px;
   padding: 12px 0;
   background-color: #fff;
