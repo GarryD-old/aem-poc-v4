@@ -32,7 +32,7 @@ footer .footer-top > div:first-child {
 
   /* Footer variant: flat colour cube with a white "AVG" wordmark. SVG renders
      crisply on the dark footer at any size (the PNG looked noisy). */
-  background-image: url('/icons/avg-logo-footer.svg');
+  background-image: url('/logos/avg-footer.svg');
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 32px;
