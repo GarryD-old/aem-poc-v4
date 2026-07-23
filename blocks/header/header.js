@@ -108,7 +108,11 @@ function closeOnFocusLost(e) {
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections, false);
-    } else if (!isDesktop.matches) {
+    } else if (!isDesktop.matches && e.relatedTarget) {
+      // Mobile: only close when focus genuinely moves to an element outside the
+      // nav. Tapping a non-focusable row (e.g. "PC") fires focusout with a null
+      // relatedTarget — ignore it, otherwise the drill-down panel would open and
+      // immediately close. The menu closes via the hamburger X or back button.
       // eslint-disable-next-line no-use-before-define
       toggleMenu(nav, navSections, false);
     }
