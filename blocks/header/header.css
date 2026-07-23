@@ -506,11 +506,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     order: 1;
   }
 
-  /* When the menu is open, the header bar becomes the inset, rounded top of the
-     card. The full-width white header background (.nav-wrapper) is dropped so
-     the 12px side margins show the page behind, and an inset white box is drawn
-     behind the logo + X via nav::before — its bottom is open so it connects
-     seamlessly to the card body below (bar + card read as one shape). */
+  /* When the menu is open the header bar stays transparent: the logo sits on its
+     own over the page (NOT inside the card), and only the X becomes a small
+     rounded tab in the top-right that connects down into the card — mirroring
+     the desktop nav tab pattern. */
   header .nav-wrapper:has(nav[aria-expanded='true']) {
     background-color: transparent;
   }
@@ -519,29 +518,28 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     position: relative;
   }
 
-  header nav[aria-expanded='true']::before {
-    content: '';
+  /* X close button as a tab: white body, border, rounded top corners, no bottom
+     border. Anchored to the nav's bottom edge (= card top at 64px) and overlaps
+     the card 1px so its white body hides the card's top border directly beneath
+     it, reading as one continuous outline (same trick as the desktop tab). */
+  header nav[aria-expanded='true'] .nav-hamburger {
     position: absolute;
-    inset: 12px 12px 0;
+    right: 12px;
+    bottom: -1px;
+    margin: 0;
+    padding: 4px 12px 0;
     background: #fff;
     border: 1px solid #ced4e0;
     border-bottom: none;
     border-radius: 6px 6px 0 0;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
-    z-index: 0;
-  }
-
-  /* Keep the bar content (logo + X) above the inset white box. */
-  header nav[aria-expanded='true'] .nav-brand,
-  header nav[aria-expanded='true'] .nav-hamburger {
-    position: relative;
-    z-index: 1;
+    z-index: 999;
   }
 
   /* Dropdown card below the header bar (Figma Submenu Mobile 6562:204611):
-     bordered white card, inset from the screen edges. It connects flush to the
-     bar above (no top border/gap) so the two form one continuous rounded card;
-     only the bottom corners are rounded (the bar rounds the top). max-height
+     bordered white card, inset from the screen edges, full border including the
+     top. radius 6px 0 6px 6px — top-right corner square where the X tab meets
+     it (the tab overlaps 1px to hide the border segment beneath it). max-height
      (not height) lets short menus size to content; taller menus scroll INSIDE
      the card, leaving the page behind locked. Drops/fades in on open. */
   header nav .nav-mobile-menu {
@@ -554,8 +552,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     max-height: calc(100dvh - 88px);
     background: #fff;
     border: 1px solid #ced4e0;
-    border-top: none;
-    border-radius: 0 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     overflow-y: auto;
 
