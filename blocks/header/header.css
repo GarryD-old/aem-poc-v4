@@ -631,8 +631,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     transform: translateX(0);
   }
 
-  /* Back header at the top of each sub-panel. */
+  /* Back header at the top of each sub-panel (overrides the desktop
+     display:none, where the submenu is revealed on hover instead). */
   .nav-mobile-back {
+    display: block;
     padding: 0 !important;
     border-bottom: 1px solid #e4e8f0;
   }
