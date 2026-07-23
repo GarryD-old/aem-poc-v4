@@ -551,7 +551,10 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
   /* X close button as a tab: white body, border, rounded top corners, no bottom
      border. Anchored to the nav's bottom edge (= card top at 64px) and overlaps
      the card 1px so its white body hides the card's top border directly beneath
-     it, reading as one continuous outline (same trick as the desktop tab). */
+     it, reading as one continuous outline (same trick as the desktop tab).
+     clip-path clips the shadow at the tab's bottom edge (0 inset) while letting
+     it spread up/left/right (negative insets) — otherwise the downward shadow
+     casts a soft grey line onto the card, making the tab look disconnected. */
   header nav[aria-expanded='true'] .nav-hamburger {
     position: absolute;
     right: 12px;
@@ -563,6 +566,7 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     border-bottom: none;
     border-radius: 12px 12px 0 0;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    clip-path: inset(-24px -24px 0);
     z-index: 999;
   }
 
