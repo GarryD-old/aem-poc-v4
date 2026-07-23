@@ -506,23 +506,56 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     order: 1;
   }
 
+  /* When the menu is open, the header bar becomes the inset, rounded top of the
+     card. The full-width white header background (.nav-wrapper) is dropped so
+     the 12px side margins show the page behind, and an inset white box is drawn
+     behind the logo + X via nav::before — its bottom is open so it connects
+     seamlessly to the card body below (bar + card read as one shape). */
+  header .nav-wrapper:has(nav[aria-expanded='true']) {
+    background-color: transparent;
+  }
+
+  header nav[aria-expanded='true'] {
+    position: relative;
+  }
+
+  header nav[aria-expanded='true']::before {
+    content: '';
+    position: absolute;
+    inset: 12px 12px 0;
+    background: #fff;
+    border: 1px solid #ced4e0;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    z-index: 0;
+  }
+
+  /* Keep the bar content (logo + X) above the inset white box. */
+  header nav[aria-expanded='true'] .nav-brand,
+  header nav[aria-expanded='true'] .nav-hamburger {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Dropdown card below the header bar (Figma Submenu Mobile 6562:204611):
-     bordered white card, radius 6px 0 6px 6px (square top-right, where the X
-     tab meets it), inset from the screen edges so the rounded bottom edge is
-     always visible. max-height (not height) lets short menus size to content;
-     taller menus scroll INSIDE the card, leaving the page behind locked. Drops
-     and fades in on open rather than sliding from the left. */
+     bordered white card, inset from the screen edges. It connects flush to the
+     bar above (no top border/gap) so the two form one continuous rounded card;
+     only the bottom corners are rounded (the bar rounds the top). max-height
+     (not height) lets short menus size to content; taller menus scroll INSIDE
+     the card, leaving the page behind locked. Drops/fades in on open. */
   header nav .nav-mobile-menu {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 72px;
+    top: 64px;
     left: 12px;
     right: 12px;
-    max-height: calc(100dvh - 96px);
+    max-height: calc(100dvh - 88px);
     background: #fff;
     border: 1px solid #ced4e0;
-    border-radius: 6px 0 6px 6px;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     overflow-y: auto;
 
