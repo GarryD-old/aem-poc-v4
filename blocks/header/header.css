@@ -190,15 +190,32 @@ header nav .nav-sections .default-content-wrapper > ul > li {
 }
 
 /* active/hovered - only colours + shadow change (geometry is already set on the
-   resting state above), so the tab fades in without the label jumping. The tab
-   sits above the panel (z-index) so its white body covers the panel's top
-   border where they meet — tab + panel read as one continuous outline. */
+   resting state above), so the tab fades in without the label jumping. */
 header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
   border-color: #ced4e0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
   z-index: 10000;
+}
+
+/* Seam mask: the dropdown panel is a CHILD of the tab, so the tab's own white
+   background can never cover the dropdown's grey top border beneath it (a
+   parent's background always paints below its children, whatever the z-index).
+   Instead paint a white strip via ::before, positioned above the dropdown
+   (z-index > the dropdown's 9999), spanning the tab's interior width at its
+   bottom edge — this masks the grey border segment directly under the tab so
+   the tab and panel read as one connected shape. Shown only when open. */
+header nav .nav-sections .default-content-wrapper > ul > li:hover::before,
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #fff;
+  z-index: 10001;
 }
 
 /* The mobile drill-down back header must never show on desktop (the submenu is
