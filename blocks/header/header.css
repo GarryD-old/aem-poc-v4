@@ -507,8 +507,9 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
   }
 
   /* Dropdown panel attached directly under the header bar (Avast-style): full
-     width, flush with the bar so the logo + X row and the panel read as one
-     connected unit. Fades/drops in on open rather than sliding from the left. */
+     width, flush with the bar. No top border — the bar and panel form one
+     seamless white sheet (see the open-state rule below that carries a single
+     shadow around the combined surface). Fades/drops in on open. */
   header nav .nav-mobile-menu {
     display: flex;
     flex-direction: column;
@@ -518,7 +519,6 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     right: 0;
     max-height: calc(100dvh - 64px);
     background: #fff;
-    border-top: 1px solid #e4e8f0;
     box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
     overflow-y: auto;
     z-index: 998;
@@ -528,6 +528,14 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
     padding: 0 0 12px;
     margin: 0;
+  }
+
+  /* Open state: the bar turns white (no divider) so it and the panel below read
+     as one continuous sheet. The panel's downward shadow (offset +8) gives the
+     combined surface its depth; the shadow between bar and panel is covered by
+     the opaque white panel, so no seam shows. */
+  header nav[aria-expanded='true'] {
+    background: #fff;
   }
 
   /* Resize guard: while the viewport is actively resizing across the breakpoint,
