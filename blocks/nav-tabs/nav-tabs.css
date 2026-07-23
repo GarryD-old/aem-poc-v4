@@ -126,5 +126,5 @@ main > .section.installation-card-container > .nav-tabs-wrapper .nav-tabs-list {
 }
 
 .nav-tab-item.active:last-child a {
-  border-radius: 0 0 10px 0;
+  border-radius: 0 0 10px;
 }
