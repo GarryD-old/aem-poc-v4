@@ -157,10 +157,17 @@ header nav .nav-sections .default-content-wrapper > ul {
   height: 48px;
 }
 
-/* Top-level nav items only (direct children of the sections list). The 48px
-   fixed height must NOT cascade to nested dropdown items. */
+/* Top-level nav items only (direct children of the sections list). The tab box
+   (padding, negative margins, reserved transparent border) is applied in BOTH
+   the resting and hover states so hovering changes only colours + shadow, which
+   transition smoothly — no layout jump. The negative horizontal margins cancel
+   the side padding so the row spacing is identical to a plain text row.
+   Reserving a 1px transparent top/left/right border (bottom omitted, since the
+   tab connects to the dropdown) means the hover border-colour change doesn't
+   shift the label by 1px. */
 /* stylelint-disable-next-line no-descending-specificity */
 header nav .nav-sections .default-content-wrapper > ul > li {
+  box-sizing: border-box;
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
@@ -168,36 +175,29 @@ header nav .nav-sections .default-content-wrapper > ul > li {
   white-space: nowrap;
   position: relative;
   cursor: pointer;
-  height: 48px;
+  height: auto;
   display: flex;
   align-items: center;
+
+  /* Figma: 10px top, 16px sides. Extra bottom padding + negative margins reach
+     the nav's bottom edge so the dropdown opens flush with the hero band. */
+  padding: 10px 16px 28px;
+  margin: -10px -16px -13px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* active/hovered - tab wrapper with grey border + green underline. The bottom
-   border is dropped and the tab sits above the panel (z-index) so its white
-   body covers the panel's top border where they meet — the tab + panel then
-   read as one continuous outline, matching the Figma. */
+/* active/hovered - only colours + shadow change (geometry is already set on the
+   resting state above), so the tab fades in without the label jumping. The tab
+   sits above the panel (z-index) so its white body covers the panel's top
+   border where they meet — tab + panel read as one continuous outline. */
 header nav .nav-sections .default-content-wrapper > ul > li:hover,
 header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] {
   background: #fff;
-  border: 1px solid #ced4e0;
-
-  /* No bottom border; overlaps the panel 1px so the tab's white body hides the
-     panel's top border directly beneath it (no seam under the tab). */
-  border-bottom: none;
-  border-radius: 6px 6px 0 0;
+  border-color: #ced4e0;
   box-shadow: 0 8px 24px 0 rgb(0 0 0 / 8%);
-
-  /* Override the 48px fixed row height so padding drives the size (otherwise
-     align-items:center just centres the text in 48px). */
-  height: auto;
-
-  /* Figma: 10px top, 16px sides. The tab must also reach the nav's bottom edge
-     so the dropdown opens flush with the hero band. The sections row is centred
-     in the taller two-row nav, leaving a ~12px gap below it; extra bottom
-     padding closes that gap. Negative margins cancel the layout offset. */
-  padding: 10px 16px 28px;
-  margin: -10px -16px -13px;
   z-index: 10000;
 }
 
@@ -207,8 +207,9 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   display: none;
 }
 
-header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
-header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
+/* Green underline: always present but transparent so it fades in on hover
+   rather than popping in. */
+header nav .nav-sections .default-content-wrapper > ul > li::after {
   content: '';
   position: absolute;
 
@@ -219,6 +220,13 @@ header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'
   width: 21px;
   height: 2px;
   background: #008941;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
+header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
+  opacity: 1;
 }
 
 /* dropdown panel - below tab, right edge aligned with tab right. Tucks 2px
@@ -608,7 +616,12 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     height: auto;
     min-height: 48px;
     padding: 20px 16px;
+
+    /* Reset the desktop tab box (negative margins, tab border, rounded top). */
+    margin: 0;
+    border: none;
     border-bottom: 1px solid #e4e8f0;
+    border-radius: 0;
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
@@ -630,8 +643,8 @@ header nav .nav-sections .default-content-wrapper > ul > li > ul > li:last-child
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li:hover::after,
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true']::after {
+  /* No green underline on mobile (desktop-tab decoration). */
+  header nav .nav-sections .default-content-wrapper > ul > li::after {
     display: none;
   }
 
