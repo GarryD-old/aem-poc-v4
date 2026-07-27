@@ -53,6 +53,49 @@ sites, one shared codebase.
 
 ---
 
+## Where the site configs actually live
+
+The sites are **not** on GitHub and **not** on anyone's laptop. Each is a small
+JSON record stored in **Adobe's Admin Config Service**, addressed by a URL.
+
+Address pattern: `https://admin.hlx.page/config/<org>/sites/<site-name>.json`
+(our org is `garryd-old`).
+
+| What you want to see | URL (open in a browser to view the JSON) |
+|----------------------|-------------------------------------------|
+| **List of all our sites** | https://admin.hlx.page/config/garryd-old/sites.json |
+| **The `aem-poc-v4-aem` config** (AEM-backed) | https://admin.hlx.page/config/garryd-old/sites/aem-poc-v4-aem.json |
+| **The `aem-poc-v4` config** (DA-backed) | https://admin.hlx.page/config/garryd-old/sites/aem-poc-v4.json |
+
+What the `aem-poc-v4-aem` entry looks like (trimmed), and how to read it:
+
+```json
+{
+  "code": {                       // WHERE THE CODE COMES FROM
+    "owner": "garryd-old",
+    "repo": "aem-poc-v4",         // the ONE shared GitHub repo (reused)
+    "source": { "url": "https://github.com/garryd-old/aem-poc-v4" }
+  },
+  "content": {                    // WHERE THE CONTENT COMES FROM
+    "source": {
+      "url": "https://author-p149556-e1749225.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry",
+      "type": "markup"            // pulled from AEM (not DA)
+    }
+  },
+  "version": 3                    // bumps each time the config is updated
+}
+```
+
+The two lines that prove the "repoless" model: `code.repo` is the **same repo**
+as the other site, while `content.source.url` points at **AEM**. Change code once
+in that repo → both sites get it; the only per-site difference is this content URL.
+
+> **Note:** viewing these URLs (GET) is read-only. Creating or changing a site
+> config is done by the team via the Admin API (a `POST`/`PUT` to the same URL)
+> or Adobe's site-management UI — not by editing anything in this GitHub repo.
+
+---
+
 ## Which URL shows my page?
 
 The URL host tells you **which site**; the path tells you **where in the content
