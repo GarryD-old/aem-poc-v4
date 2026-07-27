@@ -3,11 +3,3 @@ mountpoints:
     url: "https://author-p149556-e1749182.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry"
     type: "markup"
     suffix: ".html"
-  # Complex / localized / rollout product pages (AntiTrack, 52-site rollout) are
-  # authored in AEM (dev instance e1749225) and fetched from there. Everything
-  # NOT matched by a mountpoint falls through to the site's default DA.live
-  # source (configured at the admin config level), so simple pages stay on DA.
-  /language-masters/:
-    url: "https://author-p149556-e1749225.adobeaemcloud.com/bin/franklin.delivery/GarryD-old/aem-poc-v4/main/content/avg-eds-garry/language-masters"
-    type: "markup"
-    suffix: ".html"
