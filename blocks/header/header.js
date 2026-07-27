@@ -57,30 +57,50 @@ function detectCountryCode() {
 }
 
 /**
- * Resolve a locale-specific fragment path, matching the EDS language-site tree
- * (content/avg-eds-garry/<country>/<lang>/...). A URL locale token
- * `<lang>-<country>` (e.g. /fr-fr/) maps to the site node `<country>/<lang>`
- * (fr/fr); a bare `<country>/<lang>` pair already in the path is used as-is.
- * Returns the localized `/global/<country>/<lang>/<name>` path, or null when no
- * locale can be derived (caller falls back to the global English fragment).
+ * Resolve candidate locale-specific fragment paths, in priority order, for the
+ * page's locale. Two site layouts share this codebase (repoless):
+ *  - AEM-sourced site: content mounted at .../language-masters, so nav/footer
+ *    live at `/<lang>/navigation/<name>` (e.g. /en/navigation/nav) or
+ *    `/<lang>/<country>/navigation/<name>` for market locales (e.g. fr/fr).
+ *  - DA-sourced site: locale trees under `/global/<country>/<lang>/<name>`.
+ * The caller tries each candidate then falls back to `/global/<name>`.
  * @param {string} name Fragment name, e.g. 'nav' or 'footer'
- * @returns {string|null}
+ * @returns {string[]} Candidate paths, most-specific first (may be empty).
  */
-function getLocalizedFragmentPath(name) {
+function getLocalizedFragmentPaths(name) {
   const { pathname } = window.location;
+  const candidates = [];
   // <lang>-<country> locale token anywhere in the path (e.g. /fr-fr/, /en-us/).
   const token = pathname.match(/\/([a-z]{2})-([a-z]{2})(?:\/|$)/i);
   if (token) {
     const [, lang, country] = token;
-    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+    const l = lang.toLowerCase();
+    const c = country.toLowerCase();
+    // DA language-site tree.
+    candidates.push(`/global/${c}/${l}/${name}`);
+    // AEM language-masters tree (market locale, then language root).
+    candidates.push(`/${l}/${c}/navigation/${name}`);
+    candidates.push(`/${l}/navigation/${name}`);
+    return candidates;
   }
-  // Bare <country>/<lang> pair as the first two path segments (e.g. /fr/fr/...).
+  // Bare <a>/<b> pair as the first two path segments. On the AEM tree this is
+  // <lang>/<country> (e.g. /fr/fr/); on the DA tree it's <country>/<lang>.
   const bare = pathname.match(/^\/([a-z]{2})\/([a-z]{2})(?:\/|$)/i);
   if (bare) {
-    const [, country, lang] = bare;
-    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+    const [, a, b] = bare;
+    const x = a.toLowerCase();
+    const y = b.toLowerCase();
+    candidates.push(`/${x}/${y}/navigation/${name}`); // AEM <lang>/<country>
+    candidates.push(`/global/${x}/${y}/${name}`); // DA <country>/<lang>
+    return candidates;
   }
-  return null;
+  // Single leading locale segment (e.g. /en/products/...): AEM language root.
+  const lang = pathname.match(/^\/([a-z]{2})(?:\/|$)/i);
+  if (lang) {
+    const l = lang[1].toLowerCase();
+    candidates.push(`/${l}/navigation/${name}`);
+  }
+  return candidates;
 }
 
 function closeOnEscape(e) {
@@ -256,12 +276,15 @@ async function buildBreadcrumbs() {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
-  // Load nav as a fragment from the proxied AEM tree. Prefer the locale-specific
-  // nav (e.g. /global/fr/fr/nav) so French pages get French links; fall back to
-  // the global English nav when the locale has no authored nav yet.
-  const localizedNavPath = getLocalizedFragmentPath('nav');
-  const fragment = (localizedNavPath && await loadFragment(localizedNavPath))
-    || await loadFragment('/global/nav');
+  // Load nav as a fragment. Try each locale-specific candidate (AEM
+  // language-masters and DA language-site layouts), then fall back to the
+  // global English nav when the locale has no authored nav yet.
+  const navCandidates = [...getLocalizedFragmentPaths('nav'), '/global/nav'];
+  let fragment = null;
+  for (let i = 0; i < navCandidates.length && !fragment; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    fragment = await loadFragment(navCandidates[i]);
+  }
 
   // decorate nav DOM
   block.textContent = '';

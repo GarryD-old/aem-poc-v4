@@ -42,28 +42,41 @@ const FOOTER_COUNTRY_NAMES = {
 const FLAG_OVERRIDE = { ww: 'globe' };
 
 /**
- * Resolve a locale-specific fragment path, matching the EDS language-site tree
- * (content/avg-eds-garry/<country>/<lang>/...). A URL locale token
- * `<lang>-<country>` (e.g. /fr-fr/) maps to `<country>/<lang>` (fr/fr); a bare
- * `<country>/<lang>` pair already in the path is used as-is. Returns the
- * localized `/global/<country>/<lang>/<name>` path, or null when no locale is
- * present (caller falls back to the global English fragment).
+ * Resolve candidate locale-specific fragment paths, in priority order. Two site
+ * layouts share this codebase (repoless): the AEM-sourced site mounts content
+ * at .../language-masters, so nav/footer live at `/<lang>/navigation/<name>` or
+ * `/<lang>/<country>/navigation/<name>`; the DA-sourced site uses
+ * `/global/<country>/<lang>/<name>`. Caller tries each then `/global/<name>`.
  * @param {string} name Fragment name, e.g. 'footer'
- * @returns {string|null}
+ * @returns {string[]} Candidate paths, most-specific first (may be empty).
  */
-function getLocalizedFragmentPath(name) {
+function getLocalizedFragmentPaths(name) {
   const { pathname } = window.location;
+  const candidates = [];
   const token = pathname.match(/\/([a-z]{2})-([a-z]{2})(?:\/|$)/i);
   if (token) {
     const [, lang, country] = token;
-    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+    const l = lang.toLowerCase();
+    const c = country.toLowerCase();
+    candidates.push(`/global/${c}/${l}/${name}`);
+    candidates.push(`/${l}/${c}/navigation/${name}`);
+    candidates.push(`/${l}/navigation/${name}`);
+    return candidates;
   }
   const bare = pathname.match(/^\/([a-z]{2})\/([a-z]{2})(?:\/|$)/i);
   if (bare) {
-    const [, country, lang] = bare;
-    return `/global/${country.toLowerCase()}/${lang.toLowerCase()}/${name}`;
+    const [, a, b] = bare;
+    const x = a.toLowerCase();
+    const y = b.toLowerCase();
+    candidates.push(`/${x}/${y}/navigation/${name}`);
+    candidates.push(`/global/${x}/${y}/${name}`);
+    return candidates;
   }
-  return null;
+  const lang = pathname.match(/^\/([a-z]{2})(?:\/|$)/i);
+  if (lang) {
+    candidates.push(`/${lang[1].toLowerCase()}/navigation/${name}`);
+  }
+  return candidates;
 }
 
 /**
@@ -71,11 +84,15 @@ function getLocalizedFragmentPath(name) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // Prefer the locale-specific footer (e.g. /global/fr/fr/footer); fall back to
-  // the global English footer when the locale has no authored footer yet.
-  const localizedFooterPath = getLocalizedFragmentPath('footer');
-  const fragment = (localizedFooterPath && await loadFragment(localizedFooterPath))
-    || await loadFragment('/global/footer');
+  // Try each locale-specific footer candidate (AEM language-masters and DA
+  // language-site layouts), then fall back to the global English footer when
+  // the locale has no authored footer yet.
+  const footerCandidates = [...getLocalizedFragmentPaths('footer'), '/global/footer'];
+  let fragment = null;
+  for (let i = 0; i < footerCandidates.length && !fragment; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    fragment = await loadFragment(footerCandidates[i]);
+  }
 
   block.textContent = '';
 
